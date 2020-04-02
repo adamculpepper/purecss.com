@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:400,600,700,900&display=swap');
 
 html, body {height:100%;}
-body {font-family:'Open Sans'; background-color:#29a5d1;}
+body {font-family:'Open Sans'; margin:0; background-color:#29a5d1;}
 h1 {font-family:'Montserrat'; font-weight:900; font-size:3rem;}
 a {transition:background 200ms linear;}
 a:hover {text-decoration:none;}
