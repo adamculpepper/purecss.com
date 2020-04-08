@@ -26,4 +26,4 @@ footer {flex-shrink:0;}
 
 #coming-soon {text-align:center;}
 #coming-soon .icon {font-size:25rem; line-height:25rem;}
-#coming-soon .message {font-size:3rem;}
+#coming-soon .message {font-size:3rem; font-weight:900; letter-spacing:1px;}
