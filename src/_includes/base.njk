@@ -82,6 +82,15 @@
 	<link rel="stylesheet" href="/css/global.css">
 	{% if cssFile %}<link rel="stylesheet" href="/css/examples/{{ cssFile }}">{% endif %}
 	{% block head %}{% endblock %}
+
+	<!-- Google tag (gtag.js) -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXJYYP5NE6"></script>
+	<script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag(){dataLayer.push(arguments);}
+		gtag('js', new Date());
+		gtag('config', 'G-XXJYYP5NE6');
+	</script>
 </head>
 <body>
 	<input type="checkbox" id="theme-toggle" class="theme-toggle-input">
