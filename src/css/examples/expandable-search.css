@@ -1,0 +1,42 @@
+﻿/*
+ * PureCSS.com
+ * https://purecss.com/examples/expandable-search/
+ * A search bar that expands on focus with a smooth CSS transition.
+ */
+
+.demo-expandable-search .search-wrap {
+	display: inline-flex;
+	align-items: center;
+	background: var(--surface-2);
+	border: 2px solid var(--border);
+	border-radius: 999px;
+	padding: .5rem .75rem;
+	transition: border-color .25s, background .25s;
+}
+
+.demo-expandable-search .search-wrap:focus-within {
+	background: var(--surface);
+	border-color: var(--accent);
+}
+
+.demo-expandable-search .search-icon {
+	display: flex;
+	color: var(--text-muted);
+	flex-shrink: 0;
+}
+
+.demo-expandable-search .search-input {
+	border: none;
+	background: transparent;
+	outline: none;
+	font-size: .95rem;
+	font-family: inherit;
+	width: 120px;
+	padding: 0 .5rem;
+	transition: width .35s;
+	color: var(--text);
+}
+
+.demo-expandable-search .search-input:focus {
+	width: 240px;
+}

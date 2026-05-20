@@ -1,0 +1,52 @@
+﻿---
+title: CSS Input Validation
+description: "Real-time form validation feedback using `:valid`, `:invalid`, and `:user-invalid`."
+slug: input-validation
+cssFile: input-validation.css
+explanation: "<code>:user-invalid</code> is the key — unlike <code>:invalid</code>, it only applies after the user has interacted with the field, preventing red borders on untouched empty required inputs. <code>:user-valid</code> triggers on a valid value after interaction. Sibling combinators let the hint text and icon react to the <code>&lt;input&gt;</code>'s state."
+---
+{% extends "example.njk" %}
+{% block demo %}
+<form style="width:fit-content" onsubmit="return false">
+	<div class="field">
+		<input type="email" placeholder="Email address" required>
+		<span class="field-icon"></span>
+		<div class="hint">Enter a valid email address</div>
+	</div>
+	<div class="field">
+		<input type="text" placeholder="Username (min 3 chars)" minlength="3" required>
+		<span class="field-icon"></span>
+		<div class="hint">At least 3 characters required</div>
+	</div>
+</form>
+{% endblock %}
+
+{% block html_code %}
+{%- highlight "html" %}
+<div class="field">
+  <input type="email" placeholder="Email" required>
+  <span class="field-icon"></span>
+  <div class="hint">Enter a valid email</div>
+</div>
+{%- endhighlight %}
+{% endblock %}
+
+{% block css_code %}
+{%- highlight "css" %}
+input {
+  border: 2px solid #ccc;
+  border-radius: 8px;
+  transition: border-color .2s;
+}
+
+input:user-invalid { border-color: #ef4444; }
+input:user-valid   { border-color: #22c55e; }
+
+/* Sibling icon reacts to input state */
+input:user-invalid ~ .field-icon { color: #ef4444; }
+input:user-valid   ~ .field-icon { color: #22c55e; }
+
+/* Hint text reacts too */
+input:user-invalid ~ .hint { color: #ef4444; }
+{%- endhighlight %}
+{% endblock %}

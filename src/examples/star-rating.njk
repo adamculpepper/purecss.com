@@ -1,0 +1,56 @@
+﻿---
+title: Star Rating
+description: Clickable star rating using radio inputs and the general sibling combinator.
+slug: star-rating
+cssFile: star-rating.css
+explanation: Radio inputs are reversed with <code>flex-direction:row-reverse</code> so that <code>input:checked ~ label</code> can select all stars to the left of the checked one. Hovering uses the same sibling trick. The inputs themselves are hidden — only their labels (the ★ characters) are visible.
+---
+{% extends "example.njk" %}
+{% block demo %}
+<div class="stars">
+	<input type="radio" name="rating" id="s5" value="5"><label for="s5">★</label>
+	<input type="radio" name="rating" id="s4" value="4"><label for="s4">★</label>
+	<input type="radio" name="rating" id="s3" value="3"><label for="s3">★</label>
+	<input type="radio" name="rating" id="s2" value="2"><label for="s2">★</label>
+	<input type="radio" name="rating" id="s1" value="1"><label for="s1">★</label>
+</div>
+{% endblock %}
+
+{% block html_code %}
+{%- highlight "html" %}
+<div class="stars">
+  <input type="radio" name="rating" id="s5" value="5"><label for="s5">★</label>
+  <input type="radio" name="rating" id="s4" value="4"><label for="s4">★</label>
+  <input type="radio" name="rating" id="s3" value="3"><label for="s3">★</label>
+  <input type="radio" name="rating" id="s2" value="2"><label for="s2">★</label>
+  <input type="radio" name="rating" id="s1" value="1"><label for="s1">★</label>
+</div>
+{%- endhighlight %}
+{% endblock %}
+
+{% block css_code %}
+{%- highlight "css" %}
+.stars {
+  display: inline-flex;
+  flex-direction: row-reverse;
+  gap: .25rem;
+}
+
+.stars input {
+  display: none;
+}
+
+.stars label {
+  font-size: 2rem;
+  color: #88888f;
+  cursor: pointer;
+  transition: color .15s;
+}
+
+.stars input:checked ~ label,
+.stars label:hover,
+.stars label:hover ~ label {
+  color: #ffd444;
+}
+{%- endhighlight %}
+{% endblock %}

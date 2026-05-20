@@ -1,0 +1,226 @@
+.brand-page {
+	max-width: 960px;
+	margin: 0 auto;
+	padding: 3rem 2rem 5rem;
+	width: 100%;
+}
+
+.brand-hero {
+	margin-bottom: 4rem;
+}
+
+.brand-hero h1 {
+	font-size: clamp(2rem, 5vw, 3rem);
+	font-weight: 800;
+	letter-spacing: -.04em;
+	margin-bottom: .5rem;
+}
+
+.brand-hero-sub {
+	color: var(--text-muted);
+	font-size: 1.05rem;
+}
+
+/* ── Sections ───────────────────────────────────────── */
+
+.brand-section {
+	margin-bottom: 4rem;
+}
+
+.brand-section-label {
+	font-family: var(--font-mono);
+	font-size: .7rem;
+	font-weight: 500;
+	text-transform: uppercase;
+	letter-spacing: .12em;
+	color: var(--accent);
+	margin-bottom: 2rem;
+	padding-bottom: .75rem;
+	border-bottom: 1px solid var(--border);
+}
+
+.brand-sub-label {
+	font-family: var(--font-mono);
+	font-size: .65rem;
+	font-weight: 500;
+	text-transform: uppercase;
+	letter-spacing: .1em;
+	color: var(--text-muted);
+	margin: 2rem 0 1rem;
+}
+
+/* ── Color Swatches ─────────────────────────────────── */
+
+.swatch-row {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 1rem;
+}
+
+.swatch {
+	display: flex;
+	align-items: center;
+	gap: .875rem;
+	background: var(--surface);
+	border: 1px solid var(--border);
+	border-radius: var(--radius);
+	padding: .75rem 1rem .75rem .75rem;
+	min-width: 220px;
+	flex: 1;
+}
+
+.swatch-chip {
+	width: 48px;
+	height: 48px;
+	border-radius: var(--radius);
+	flex-shrink: 0;
+}
+
+.swatch-text-chip {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 1.25rem;
+}
+
+.swatch-info {
+	display: flex;
+	flex-direction: column;
+	gap: .2rem;
+}
+
+.swatch-name {
+	font-family: var(--font-mono);
+	font-size: .75rem;
+	color: var(--text);
+	font-weight: 500;
+}
+
+.swatch-value {
+	font-family: var(--font-mono);
+	font-size: .68rem;
+	color: var(--text-muted);
+}
+
+/* show dark values in dark mode, light values in light mode */
+.light-value { display: none; }
+body:has(#theme-toggle:checked) .dark-value { display: none; }
+body:has(#theme-toggle:checked) .light-value { display: block; }
+
+.swatch-label {
+	font-size: .72rem;
+	color: var(--text-muted);
+}
+
+/* ── Typography ─────────────────────────────────────── */
+
+.type-specimens {
+	display: flex;
+	flex-direction: column;
+	gap: 1px;
+	background: var(--border);
+	border: 1px solid var(--border);
+	border-radius: var(--radius-lg);
+	overflow: hidden;
+}
+
+.type-specimen {
+	background: var(--surface);
+	padding: 2rem;
+	display: grid;
+	grid-template-columns: 220px 1fr;
+	gap: 2rem;
+	align-items: start;
+}
+
+.type-meta {
+	display: flex;
+	flex-direction: column;
+	gap: .35rem;
+	padding-top: .25rem;
+}
+
+.type-name {
+	font-weight: 600;
+	font-size: .95rem;
+}
+
+.type-role {
+	font-family: var(--font-mono);
+	font-size: .65rem;
+	color: var(--text-muted);
+	letter-spacing: .04em;
+}
+
+.type-scale {
+	display: flex;
+	flex-direction: column;
+	gap: .75rem;
+}
+
+/* ── Components ─────────────────────────────────────── */
+
+.brand-row {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: .75rem;
+	background: var(--surface);
+	border: 1px solid var(--border);
+	border-radius: var(--radius-lg);
+	padding: 1.5rem;
+}
+
+.btn-outline {
+	display: inline-flex;
+	align-items: center;
+	background: transparent;
+	color: var(--text);
+	font-family: var(--font-sans);
+	font-weight: 600;
+	font-size: .9rem;
+	padding: .7rem 1.75rem;
+	border-radius: 999px;
+	border: 1px solid var(--border);
+	cursor: pointer;
+	transition: border-color .15s, color .15s;
+}
+
+.btn-outline:hover {
+	border-color: var(--accent);
+	color: var(--accent);
+}
+
+.inline-code {
+	font-family: var(--font-mono);
+	font-size: .8em;
+	color: var(--text-muted);
+	background: var(--surface-2);
+	padding: .15em .4em;
+	border-radius: 4px;
+	border: 1px solid var(--border);
+}
+
+/* ── Radius ─────────────────────────────────────────── */
+
+.radius-swatch {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: .75rem;
+}
+
+.radius-box {
+	width: 80px;
+	height: 80px;
+	background: var(--surface-2);
+	border: 1px solid var(--border);
+}
+
+/* ── Responsive ─────────────────────────────────────── */
+
+@media (max-width: 700px) {
+	.brand-page { padding: 1.5rem 1rem 3rem; }
+	.type-specimen { grid-template-columns: 1fr; gap: 1rem; }
+	.swatch { min-width: 100%; }
+}

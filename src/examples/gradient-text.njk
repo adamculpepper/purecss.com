@@ -1,0 +1,51 @@
+﻿---
+title: Gradient Text
+description: Text filled with a gradient using `background-clip:text`.
+slug: gradient-text
+cssFile: gradient-text.css
+explanation: The gradient is applied to the <code>background</code> property, then <code>background-clip:text</code> clips it to the shape of the text. Setting <code>color:transparent</code> (or <code>-webkit-text-fill-color:transparent</code>) makes the text itself invisible, revealing the gradient behind it. Animating <code>background-position</code> creates the flowing color effect.
+---
+{% extends "example.njk" %}
+{% block demo %}
+<div style="display:flex;flex-direction:column;gap:.75rem;align-items:center">
+	<span class="grad">Gradient Text</span>
+	<span class="grad-2">Multi Color</span>
+	<span class="grad-animated">Animated Flow</span>
+</div>
+{% endblock %}
+
+{% block html_code %}
+{%- highlight "html" %}
+<span class="grad">Gradient Text</span>
+<span class="grad-animated">Animated</span>
+{%- endhighlight %}
+{% endblock %}
+
+{% block css_code %}
+{%- highlight "css" %}
+.grad {
+  background: linear-gradient(135deg, #5b4cdb, #e040fb);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  display: inline-block;
+}
+
+.grad-animated {
+  background: linear-gradient(270deg, #5b4cdb, #e040fb, #22d3ee, #5b4cdb);
+  background-size: 300% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  display: inline-block;
+  animation: gradient-shift 4s linear infinite;
+}
+
+@keyframes gradient-shift {
+  0%   { background-position: 0% 50%; }
+  100% { background-position: 100% 50%; }
+}
+{%- endhighlight %}
+{% endblock %}

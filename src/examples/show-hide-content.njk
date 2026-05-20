@@ -1,0 +1,54 @@
+﻿---
+title: Show / Hide Content
+description: Toggle visibility of content using a checkbox and the ~ combinator.
+slug: show-hide-content
+cssFile: show-hide-content.css
+explanation: A hidden checkbox acts as state. The <code>&lt;label&gt;</code> becomes the clickable button. The <code>~</code> general sibling combinator lets CSS target elements that follow the checkbox in the DOM — so <code>.toggle-check:checked ~ .toggle-content</code> shows the panel when checked.
+---
+{% extends "example.njk" %}
+{% block demo %}
+<input class="toggle-check" type="checkbox" id="shc1">
+<label class="toggle-btn" for="shc1">Show content</label>
+<div class="toggle-content">
+	This content was hidden until you clicked the button — no JavaScript needed.
+</div>
+{% endblock %}
+
+{% block html_code %}
+{%- highlight "html" %}
+<input class="toggle-check" type="checkbox" id="shc1">
+<label class="toggle-btn" for="shc1">Show content</label>
+<div class="toggle-content">
+  Hidden content here.
+</div>
+{%- endhighlight %}
+{% endblock %}
+
+{% block css_code %}
+{%- highlight "css" %}
+.toggle-check {
+  display: none;
+}
+
+.toggle-btn {
+  display: inline-block;
+  padding: .6rem 1.25rem;
+  background: #5b4cdb;
+  color: #fff;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.toggle-content {
+  display: none;
+  margin-top: 1rem;
+  padding: 1rem 1.25rem;
+  background: #ede9ff;
+  border-left: 4px solid #5b4cdb;
+}
+
+.toggle-check:checked ~ .toggle-content {
+  display: block;
+}
+{%- endhighlight %}
+{% endblock %}

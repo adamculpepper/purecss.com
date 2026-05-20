@@ -1,0 +1,73 @@
+﻿---
+title: Dark / Light Mode
+description: A theme switcher using a checkbox, CSS custom properties, and no JS.
+slug: dark-light-mode
+cssFile: dark-light-mode.css
+explanation: A hidden checkbox holds the theme state. A sibling combinator (<code>~</code>) lets elements further down the DOM respond to its <code>:checked</code> state. For a real page-wide theme, put the checkbox near the top of the DOM and use the <code>~</code> combinator on the body or a wrapper element with CSS custom property overrides.
+---
+{% extends "example.njk" %}
+{% block demo %}
+<input class="theme-check" type="checkbox" id="theme1">
+<label class="theme-toggle" for="theme1">
+	<span class="theme-track"></span>
+	Dark mode
+</label>
+<div class="theme-preview">
+	This area reacts to the theme toggle — background, text, and border all change.
+</div>
+{% endblock %}
+
+{% block html_code %}
+{%- highlight "html" %}
+<input class="theme-check" type="checkbox" id="theme1">
+<label class="theme-toggle" for="theme1">
+  <span class="theme-track"></span>
+  Dark mode
+</label>
+<div class="theme-preview">Content area</div>
+{%- endhighlight %}
+{% endblock %}
+
+{% block css_code %}
+{%- highlight "css" %}
+.theme-check { display: none; }
+
+.theme-track {
+  width: 52px;
+  height: 28px;
+  background: #f0c040;
+  border-radius: 999px;
+  position: relative;
+  transition: background .3s;
+}
+
+.theme-track::after {
+  content: "";
+  position: absolute;
+  top: 3px; left: 3px;
+  width: 22px; height: 22px;
+  background: #fff;
+  border-radius: 50%;
+  transition: transform .3s;
+}
+
+.theme-check:checked + .theme-toggle .theme-track {
+  background: #2d2d4e;
+}
+
+.theme-check:checked + .theme-toggle .theme-track::after {
+  transform: translateX(24px);
+}
+
+.theme-preview {
+  background: #fffbe6;
+  color: #333;
+  transition: background .3s, color .3s;
+}
+
+.theme-check:checked ~ .theme-preview {
+  background: #1a1a2e;
+  color: #e0e0ff;
+}
+{%- endhighlight %}
+{% endblock %}

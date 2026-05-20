@@ -1,0 +1,49 @@
+﻿---
+title: Image Zoom on Hover
+description: Smooth image zoom on hover using CSS transform and `overflow:hidden`.
+slug: image-zoom
+cssFile: image-zoom.css
+explanation: <code>overflow:hidden</code> on the container clips the image when it scales beyond its bounds. The <code>&lt;img&gt;</code> itself gets <code>transform:scale()</code> on <code>:hover</code> with a transition. Because <code>scale()</code> grows from the center, the effect is a smooth zoom-in without shifting the image position. The container dimensions stay fixed throughout.
+---
+{% extends "example.njk" %}
+{% block demo %}
+<div style="display:flex;gap:1rem;flex-wrap:wrap;justify-content:center">
+	<div class="zoom-wrap">
+		<img src="https://picsum.photos/seed/css1/400/260" alt="Hover to zoom">
+	</div>
+	<div class="zoom-wrap">
+		<img src="https://picsum.photos/seed/css2/400/260" alt="Hover to zoom">
+	</div>
+</div>
+{% endblock %}
+
+{% block html_code %}
+{%- highlight "html" %}
+<div class="zoom-wrap">
+  <img src="image.jpg" alt="Hover to zoom">
+</div>
+{%- endhighlight %}
+{% endblock %}
+
+{% block css_code %}
+{%- highlight "css" %}
+.zoom-wrap {
+  width: 200px;
+  height: 130px;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.zoom-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform .4s ease;
+}
+
+.zoom-wrap:hover img {
+  transform: scale(1.15);
+}
+{%- endhighlight %}
+{% endblock %}

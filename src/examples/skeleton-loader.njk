@@ -1,0 +1,62 @@
+﻿---
+title: Skeleton Loader
+description: Animated placeholder loading state using CSS keyframes.
+slug: skeleton-loader
+cssFile: skeleton-loader.css
+explanation: The shimmer effect uses a gradient as the <code>background</code> with a very wide <code>background-size</code> (200%). Animating <code>background-position</code> sweeps the lighter band across the element. Each skeleton element is just a <code>&lt;div&gt;</code> with rounded corners — the animation makes them all shimmer in sync.
+---
+{% extends "example.njk" %}
+{% block demo %}
+<div style="display:flex;gap:1rem;flex-wrap:wrap;justify-content:center">
+	<div class="skeleton-card">
+		<div class="skel skel-avatar"></div>
+		<div class="skel skel-line w-full"></div>
+		<div class="skel skel-line w-3q"></div>
+		<div class="skel skel-line w-half"></div>
+	</div>
+	<div class="skeleton-card">
+		<div class="skel skel-avatar"></div>
+		<div class="skel skel-line w-full"></div>
+		<div class="skel skel-line w-3q"></div>
+		<div class="skel skel-line w-half"></div>
+	</div>
+</div>
+{% endblock %}
+
+{% block html_code %}
+{%- highlight "html" %}
+<div class="skeleton-card">
+  <div class="skel skel-avatar"></div>
+  <div class="skel skel-line w-full"></div>
+  <div class="skel skel-line w-3q"></div>
+  <div class="skel skel-line w-half"></div>
+</div>
+{%- endhighlight %}
+{% endblock %}
+
+{% block css_code %}
+{%- highlight "css" %}
+.skel {
+  background: linear-gradient(
+    90deg,
+    #f0f0f5 25%,
+    #e0e0ea 50%,
+    #f0f0f5 75%
+  );
+  background-size: 200% 100%;
+  border-radius: 6px;
+  animation: shimmer 1.5s infinite;
+}
+
+.skel-avatar { width: 44px; height: 44px; border-radius: 50%; }
+.skel-line   { height: 12px; margin-bottom: .5rem; }
+.w-full  { width: 100%; }
+.w-3q    { width: 75%; }
+.w-half  { width: 50%; }
+
+@keyframes shimmer {
+  0%   { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+{%- endhighlight %}
+{% endblock %}

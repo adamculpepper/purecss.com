@@ -1,0 +1,49 @@
+﻿/*
+ * PureCSS.com
+ * https://purecss.com/examples/click-reveal/
+ * Content that reveals on click using a checkbox as state.
+ */
+
+.demo-click-reveal .reveal-check {
+	display: none;
+}
+
+.demo-click-reveal .reveal-btn {
+	display: inline-flex;
+	align-items: center;
+	gap: .5rem;
+	padding: .6rem 1.25rem;
+	background: var(--surface-2);
+	color: var(--text);
+	border-radius: 8px;
+	cursor: pointer;
+	font-size: .9rem;
+	user-select: none;
+	border: 1px solid var(--border);
+	transition: background .2s, color .2s, border-color .2s;
+}
+
+.demo-click-reveal .reveal-icon { flex-shrink: 0; }
+.demo-click-reveal .icon-lock   { display: none; }
+
+.demo-click-reveal .reveal-panel {
+	display: none;
+	margin-top: 1rem;
+	padding: 1.25rem;
+	background: var(--accent-dim);
+	border-radius: 10px;
+	font-size: .95rem;
+}
+
+.demo-click-reveal .reveal-check:checked ~ .reveal-btn {
+	background: var(--accent);
+	color: var(--bg);
+	border-color: var(--accent);
+}
+
+.demo-click-reveal .reveal-check:checked ~ .reveal-btn .icon-eye  { display: none; }
+.demo-click-reveal .reveal-check:checked ~ .reveal-btn .icon-lock { display: block; }
+
+.demo-click-reveal .reveal-check:checked ~ .reveal-panel {
+	display: block;
+}

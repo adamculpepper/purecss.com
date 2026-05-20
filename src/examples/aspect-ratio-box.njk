@@ -1,0 +1,43 @@
+﻿---
+title: Aspect Ratio Box
+description: Maintain a fixed aspect ratio on any element using the `aspect-ratio` property.
+slug: aspect-ratio-box
+cssFile: aspect-ratio-box.css
+explanation: The <code>aspect-ratio</code> property makes an element maintain a width-to-height ratio automatically. Set a width (fixed, percentage, or auto) and the height adjusts to match the ratio. This replaces the old padding-top hack (<code>padding-top:56.25%</code> for 16:9) with a clean, readable one-liner.
+---
+{% extends "example.njk" %}
+{% block demo %}
+<div class="ratio-grid">
+	<div class="ratio-box ratio-16-9">16 / 9</div>
+	<div class="ratio-box ratio-1-1">1 / 1</div>
+	<div class="ratio-box ratio-4-3">4 / 3</div>
+</div>
+{% endblock %}
+
+{% block html_code %}
+{%- highlight "html" %}
+<div class="box-16-9">16:9 video</div>
+<div class="box-square">Square</div>
+<div class="box-4-3">4:3 image</div>
+{%- endhighlight %}
+{% endblock %}
+
+{% block css_code %}
+{%- highlight "css" %}
+/* Set width, height is auto-calculated */
+.box-16-9 {
+  aspect-ratio: 16 / 9;
+  width: 100%;
+}
+
+.box-square {
+  aspect-ratio: 1 / 1;
+  width: 200px;
+}
+
+.box-4-3 {
+  aspect-ratio: 4 / 3;
+  width: 300px;
+}
+{%- endhighlight %}
+{% endblock %}

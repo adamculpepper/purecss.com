@@ -1,0 +1,138 @@
+﻿/*
+ * PureCSS.com
+ * https://purecss.com/examples/number-counter/
+ * Numbers that count up using @property, CSS counters, and animations.
+ */
+
+.demo-number-counter .counter-grid {
+	display: flex;
+	gap: 2rem;
+	flex-wrap: wrap;
+	justify-content: center;
+}
+
+.demo-number-counter .counter-item {
+	text-align: center;
+}
+
+.demo-number-counter .counter-value {
+	font-size: 2.5rem;
+	font-weight: 800;
+	color: var(--accent);
+	counter-reset: num var(--target);
+	animation: count-up var(--count-dur, 2s) ease-out forwards;
+}
+
+.demo-number-counter .counter-value::after {
+	content: counter(num);
+}
+
+.demo-number-counter .counter-label {
+	font-size: .85rem;
+	color: var(--text-muted);
+	margin-top: .25rem;
+}
+
+@property --target {
+	syntax: "<integer>";
+	initial-value: 0;
+	inherits: false;
+}
+
+@property --decimal {
+	syntax: "<integer>";
+	initial-value: 0;
+	inherits: false;
+}
+
+@keyframes count-up {
+	from { --target: 0; }
+}
+
+@keyframes count-frac {
+	from { --decimal: 0; }
+}
+
+.demo-number-counter .counter-value[data-suffix]::after {
+	content: counter(num) attr(data-suffix);
+}
+
+.demo-number-counter .counter-value.counter-decimal {
+	counter-reset: num var(--target) frac var(--decimal);
+	animation: count-up var(--count-dur, 2s) ease-out forwards, count-frac var(--count-dur, 2s) ease-out forwards;
+}
+
+.demo-number-counter .counter-value.counter-decimal::after {
+	content: counter(num) "." counter(frac);
+}
+
+/* ── Controls ─── */
+
+.demo-number-counter .counter-preview-wrap {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 1.75rem;
+}
+
+.demo-number-counter .counter-controls {
+	display: flex;
+	gap: .35rem;
+	justify-content: center;
+	align-items: center;
+}
+
+.demo-number-counter .counter-speed-btn,
+.demo-number-counter .counter-restart-mini {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	background: var(--surface-2);
+	border: 1px solid var(--border);
+	border-radius: 999px;
+	color: var(--text-muted);
+	font-size: .7rem;
+	font-family: var(--font-mono);
+	padding: .2rem .55rem;
+	cursor: pointer;
+	transition: color .15s, border-color .15s, background .15s;
+	line-height: 1;
+}
+
+.demo-number-counter .counter-restart-mini {
+	font-size: .8rem;
+	padding: .2rem .45rem;
+}
+
+.demo-number-counter .counter-speed-btn.active,
+.demo-number-counter .counter-speed-btn:hover,
+.demo-number-counter .counter-restart-mini:hover {
+	color: var(--text);
+	border-color: var(--accent);
+	background: var(--accent-dim);
+}
+
+/* ── Absolute restart (example page) ─── */
+
+.demo-number-counter .counter-restart {
+	position: absolute;
+	bottom: .75rem;
+	right: .75rem;
+	display: inline-flex;
+	align-items: center;
+	gap: .35rem;
+	background: var(--surface-2);
+	border: 1px solid var(--border);
+	border-radius: 999px;
+	color: var(--text-muted);
+	font-size: .75rem;
+	font-family: var(--font-mono);
+	padding: .3rem .7rem;
+	cursor: pointer;
+	transition: color .15s, border-color .15s;
+}
+
+.demo-number-counter .counter-restart:hover {
+	color: var(--text);
+	border-color: var(--text-muted);
+}

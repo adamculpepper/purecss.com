@@ -1,0 +1,67 @@
+﻿---
+title: Floating Labels
+description: Form labels that float above the input on focus using `:placeholder-shown`.
+slug: floating-labels
+cssFile: floating-labels.css
+explanation: The <code>&lt;label&gt;</code> sits on top of the <code>&lt;input&gt;</code> at normal size. The key selector is <code>input:not(:placeholder-shown) + label</code> — when the placeholder is hidden (because the user typed something), the label floats up. A placeholder of a single space is required to make <code>:placeholder-shown</code> work correctly on empty inputs.
+---
+{% extends "example.njk" %}
+{% block demo %}
+<div class="field">
+	<input type="text" id="fl-name" placeholder=" ">
+	<label for="fl-name">Full name</label>
+</div>
+<div class="field">
+	<input type="email" id="fl-email" placeholder=" ">
+	<label for="fl-email">Email address</label>
+</div>
+{% endblock %}
+
+{% block html_code %}
+{%- highlight "html" %}
+<div class="field">
+  <input type="text" id="name" placeholder=" ">
+  <label for="name">Full name</label>
+</div>
+{%- endhighlight %}
+{% endblock %}
+
+{% block css_code %}
+{%- highlight "css" %}
+.field {
+  position: relative;
+}
+
+input {
+  padding: 1.25rem 1rem .5rem;
+  border: 2px solid #ccc;
+  border-radius: 8px;
+  font-size: 1rem;
+  outline: none;
+  transition: border-color .2s;
+}
+
+input:focus {
+  border-color: #5b4cdb;
+}
+
+label {
+  position: absolute;
+  top: 50%;
+  left: 1rem;
+  transform: translateY(-50%);
+  font-size: 1rem;
+  color: #999;
+  pointer-events: none;
+  transition: top .2s, font-size .2s, color .2s;
+}
+
+input:focus + label,
+input:not(:placeholder-shown) + label {
+  top: .5rem;
+  font-size: .75rem;
+  color: #5b4cdb;
+  transform: none;
+}
+{%- endhighlight %}
+{% endblock %}

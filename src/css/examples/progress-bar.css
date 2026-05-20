@@ -1,0 +1,85 @@
+﻿/*
+ * PureCSS.com
+ * https://purecss.com/examples/progress-bar/
+ * Animated progress bars using the <progress> element and CSS.
+ */
+
+.demo-progress-bar .progress-row {
+	display: flex;
+	align-items: center;
+	gap: 1rem;
+	margin: .5rem 0;
+}
+
+.demo-progress-bar .progress-label {
+	font-size: .85rem;
+	color: var(--text-muted);
+	width: 60px;
+	flex-shrink: 0;
+}
+
+.demo-progress-bar progress {
+	-webkit-appearance: none;
+	appearance: none;
+	flex: 1;
+	height: 10px;
+	border: none;
+	border-radius: 999px;
+	overflow: hidden;
+}
+
+.demo-progress-bar progress::-webkit-progress-bar {
+	background: var(--surface-2);
+	border-radius: 999px;
+}
+
+.demo-progress-bar progress::-webkit-progress-value {
+	background: var(--accent);
+	border-radius: 999px;
+	transition: width .3s;
+}
+
+.demo-progress-bar progress::-moz-progress-bar {
+	background: var(--accent);
+	border-radius: 999px;
+}
+
+.demo-progress-bar progress.success::-webkit-progress-value {
+	background: var(--teal);
+}
+
+.demo-progress-bar progress.warning::-webkit-progress-value {
+	background: var(--orange);
+}
+
+.demo-progress-bar progress.danger::-webkit-progress-value {
+	background: var(--coral);
+}
+
+.demo-progress-bar progress.success::-moz-progress-bar { background: var(--teal); }
+.demo-progress-bar progress.warning::-moz-progress-bar { background: var(--orange); }
+.demo-progress-bar progress.danger::-moz-progress-bar  { background: var(--coral); }
+
+.demo-progress-bar progress.shimmer::-webkit-progress-value {
+	background: linear-gradient(90deg,
+		var(--accent) 30%,
+		rgba(255,255,255,.3) 50%,
+		var(--accent) 70%
+	);
+	background-size: 200% 100%;
+	animation: progress-shimmer 1.4s linear infinite;
+}
+.demo-progress-bar progress.shimmer::-moz-progress-bar {
+	background: linear-gradient(90deg,
+		var(--accent) 30%,
+		rgba(255,255,255,.3) 50%,
+		var(--accent) 70%
+	);
+	background-size: 200% 100%;
+	animation: progress-shimmer 1.4s linear infinite;
+}
+
+@keyframes progress-shimmer {
+	0%   { background-position: 200% 0; }
+	100% { background-position: -200% 0; }
+}

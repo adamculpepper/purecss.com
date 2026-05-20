@@ -1,0 +1,71 @@
+﻿---
+title: Expandable Search
+description: A search bar that expands on focus with a smooth CSS transition.
+slug: expandable-search
+cssFile: expandable-search.css
+explanation: The `input` starts at a narrow fixed width and transitions to a wider one on `:focus`. The wrapping container uses `:focus-within` to react when any child is focused — perfect for changing the `border-color` and `background` together without JavaScript.
+---
+{% extends "example.njk" %}
+{% block demo %}
+<div class="search-wrap">
+	<span class="search-icon">
+		<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+	</span>
+	<input class="search-input" type="search" placeholder="Search...">
+</div>
+{% endblock %}
+
+{% block html_code %}
+{%- highlight "html" %}
+<div class="search-wrap">
+  <span class="search-icon">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none"
+         stroke="currentColor" stroke-width="2"
+         stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="11" cy="11" r="8"/>
+      <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+    </svg>
+  </span>
+  <input class="search-input" type="search" placeholder="Search...">
+</div>
+{%- endhighlight %}
+{% endblock %}
+
+{% block css_code %}
+{%- highlight "css" %}
+.search-wrap {
+  display: inline-flex;
+  align-items: center;
+  background: #f0f0f5;
+  border: 2px solid #d0ccc0;
+  border-radius: 999px;
+  padding: .5rem .75rem;
+  transition: border-color .25s, background .25s;
+}
+
+.search-wrap:focus-within {
+  background: #fff;
+  border-color: #4a7c00;
+}
+
+.search-icon {
+  display: flex;
+  color: #888;
+  flex-shrink: 0;
+}
+
+.search-input {
+  border: none;
+  background: transparent;
+  outline: none;
+  font-size: .95rem;
+  width: 120px;
+  padding: 0 .5rem;
+  transition: width .35s;
+}
+
+.search-input:focus {
+  width: 240px;
+}
+{%- endhighlight %}
+{% endblock %}

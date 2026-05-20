@@ -1,0 +1,71 @@
+﻿/*
+ * PureCSS.com
+ * https://purecss.com/examples/hover-dropdown/
+ * A navigation dropdown that opens on hover using :hover and visibility.
+ */
+
+.demo-hover-dropdown .dropdown {
+	position: relative;
+	display: inline-block;
+}
+
+.demo-hover-dropdown .dropdown-trigger {
+	display: inline-flex;
+	align-items: center;
+	gap: .4rem;
+	padding: .55rem 1rem;
+	background: var(--accent);
+	color: var(--bg);
+	border-radius: 8px;
+	font-size: .9rem;
+	font-weight: 500;
+	cursor: default;
+	user-select: none;
+}
+
+.demo-hover-dropdown .dropdown-arrow {
+	transition: transform .2s;
+	flex-shrink: 0;
+}
+
+.demo-hover-dropdown .dropdown:hover .dropdown-arrow {
+	transform: rotate(180deg);
+}
+
+.demo-hover-dropdown .dropdown-menu {
+	position: absolute;
+	top: calc(100% + 6px);
+	left: 0;
+	background: var(--surface);
+	border: 1px solid var(--border);
+	border-radius: 8px;
+	box-shadow: 0 4px 16px rgba(0,0,0,.1);
+	min-width: 160px;
+	opacity: 0;
+	visibility: hidden;
+	transform: translateY(-6px);
+	transition: opacity .2s, transform .2s, visibility .2s;
+}
+
+.demo-hover-dropdown .dropdown:hover .dropdown-menu {
+	opacity: 1;
+	visibility: visible;
+	transform: translateY(0);
+}
+
+.demo-hover-dropdown .dropdown-menu a {
+	display: block;
+	padding: .6rem 1rem;
+	font-size: .875rem;
+	color: var(--text);
+	text-decoration: none;
+	transition: background .15s;
+}
+
+.demo-hover-dropdown .dropdown-menu a:first-child { border-radius: 8px 8px 0 0; }
+.demo-hover-dropdown .dropdown-menu a:last-child  { border-radius: 0 0 8px 8px; }
+
+.demo-hover-dropdown .dropdown-menu a:hover {
+	background: var(--accent-dim);
+	color: var(--accent);
+}

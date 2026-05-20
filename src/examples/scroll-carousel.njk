@@ -1,0 +1,55 @@
+﻿---
+title: Scroll Snap Carousel
+description: A horizontal carousel using `scroll-snap-type` and `scroll-snap-align`.
+slug: scroll-carousel
+cssFile: scroll-carousel.css
+explanation: <code>scroll-snap-type:x mandatory</code> on the container forces snapping after each scroll gesture. <code>scroll-snap-align:start</code> on each slide defines where it snaps to. The container is just a flex row with <code>overflow-x:auto</code>. No JS, no next/prev buttons required — the browser handles the snapping physics.
+---
+{% extends "example.njk" %}
+{% block demo %}
+<div class="carousel-wrap">
+	<div class="carousel">
+		<div class="carousel-slide">Slide 1 of 5</div>
+		<div class="carousel-slide">Slide 2 of 5</div>
+		<div class="carousel-slide">Slide 3 of 5</div>
+		<div class="carousel-slide">Slide 4 of 5</div>
+		<div class="carousel-slide">Slide 5 of 5</div>
+	</div>
+	<p class="carousel-hint">← scroll or swipe →</p>
+</div>
+{% endblock %}
+
+{% block html_code %}
+{%- highlight "html" %}
+<div class="carousel">
+  <div class="carousel-slide">Slide 1</div>
+  <div class="carousel-slide">Slide 2</div>
+  <div class="carousel-slide">Slide 3</div>
+</div>
+{%- endhighlight %}
+{% endblock %}
+
+{% block css_code %}
+{%- highlight "css" %}
+.carousel {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  gap: 1rem;
+}
+
+.carousel-slide {
+  flex: 0 0 200px;
+  height: 130px;
+  border-radius: 10px;
+  scroll-snap-align: start;
+}
+{%- endhighlight %}
+{% endblock %}
+
+{% block notes %}
+<section class="explanation-section">
+	<h2>JavaScript needed for drag</h2>
+	<p>Click-and-drag scrolling on desktop is a browser limitation — <code>overflow-x: auto</code> containers don't respond to mouse drag without JavaScript pointer event handlers. Scrollwheel on desktop and touch swipe on mobile work natively with pure CSS.</p>
+</section>
+{% endblock %}

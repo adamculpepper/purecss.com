@@ -1,0 +1,58 @@
+﻿---
+title: Modal Dialog
+description: A modal using `:target` to show/hide without JavaScript.
+slug: modal-dialog
+cssFile: modal-dialog.css
+explanation: The <code>:target</code> pseudo-class matches an element whose <code>id</code> matches the URL fragment. Clicking the open link sets the URL hash, which makes <code>:target</code> match and shows the overlay. Clicking the close link clears the hash (<code>href="#"</code>), hiding the modal. The overlay is <code>display:none</code> by default and <code>display:flex</code> when <code>:target</code>.
+---
+{% extends "example.njk" %}
+{% block demo %}
+<a class="modal-open-btn" href="#demo-modal">Open Modal</a>
+
+<div class="modal-overlay" id="demo-modal">
+	<div class="modal-box">
+		<h3>Pure CSS Modal</h3>
+		<p>This modal is controlled entirely by the URL hash and :target — zero JavaScript needed.</p>
+		<a class="modal-close" href="#">Close modal</a>
+	</div>
+</div>
+{% endblock %}
+
+{% block html_code %}
+{%- highlight "html" %}
+<a href="#my-modal">Open Modal</a>
+
+<div class="modal-overlay" id="my-modal">
+  <div class="modal-box">
+    <h3>Modal Title</h3>
+    <p>Modal content here.</p>
+    <a href="#">Close</a>
+  </div>
+</div>
+{%- endhighlight %}
+{% endblock %}
+
+{% block css_code %}
+{%- highlight "css" %}
+.modal-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,.5);
+  z-index: 200;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-overlay:target {
+  display: flex;
+}
+
+.modal-box {
+  background: #fff;
+  border-radius: 12px;
+  padding: 2rem;
+  max-width: 400px;
+}
+{%- endhighlight %}
+{% endblock %}

@@ -1,0 +1,70 @@
+﻿---
+title: Toggle Switch
+description: A styled on/off toggle built with a checkbox and CSS.
+slug: toggle-switch
+cssFile: toggle-switch.css
+explanation: The trick is hiding the real checkbox with <code>display:none</code> and using an adjacent sibling <code>&lt;label&gt;</code> element as the visual track. The <code>::after</code> pseudo-element acts as the thumb. When the checkbox is <code>:checked</code>, CSS shifts the thumb with <code>translateX</code> and changes the track color — no JavaScript needed.
+---
+{% extends "example.njk" %}
+{% block demo %}
+<label class="toggle-label">
+	<input class="toggle-input" type="checkbox" checked>
+	<span class="toggle-track"></span>
+	Toggle
+</label>
+{% endblock %}
+
+{% block html_code %}
+{%- highlight "html" %}
+<label class="toggle-label">
+  <input class="toggle-input" type="checkbox">
+  <span class="toggle-track"></span>
+  Toggle me
+</label>
+{%- endhighlight %}
+{% endblock %}
+
+{% block css_code %}
+{%- highlight "css" %}
+.toggle-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 1rem;
+  cursor: pointer;
+}
+
+.toggle-input {
+  display: none;
+}
+
+.toggle-track {
+  width: 52px;
+  height: 28px;
+  background: #ccc;
+  border-radius: 999px;
+  position: relative;
+  transition: background .25s;
+}
+
+.toggle-track::after {
+  content: "";
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 22px;
+  height: 22px;
+  background: #fff;
+  border-radius: 50%;
+  box-shadow: 0 1px 4px rgba(0,0,0,.2);
+  transition: transform .25s;
+}
+
+.toggle-input:checked + .toggle-track {
+  background: #5b4cdb;
+}
+
+.toggle-input:checked + .toggle-track::after {
+  transform: translateX(24px);
+}
+{%- endhighlight %}
+{% endblock %}

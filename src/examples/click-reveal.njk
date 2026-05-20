@@ -1,0 +1,57 @@
+﻿---
+title: Click-to-Reveal
+description: Content that reveals on click using a checkbox as state.
+slug: click-reveal
+cssFile: click-reveal.css
+explanation: Identical in mechanism to Show/Hide Content — a hidden checkbox acts as a boolean state variable. The <code>&lt;label&gt;</code> is styled as a button. This example adds a visual state change on the button itself when checked, using <code>:checked ~ .reveal-btn</code> to restyle the trigger.
+---
+{% extends "example.njk" %}
+{% block demo %}
+<input class="reveal-check" type="checkbox" id="cr1">
+<label class="reveal-btn" for="cr1">
+	<svg class="reveal-icon icon-eye" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+	<svg class="reveal-icon icon-lock" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+	Reveal the answer
+</label>
+<div class="reveal-panel">
+	The answer to life, the universe, and everything is <strong>42</strong>. All without JavaScript.
+</div>
+{% endblock %}
+
+{% block html_code %}
+{%- highlight "html" %}
+<input class="reveal-check" type="checkbox" id="cr1">
+<label class="reveal-btn" for="cr1">Reveal</label>
+<div class="reveal-panel">Hidden content here.</div>
+{%- endhighlight %}
+{% endblock %}
+
+{% block css_code %}
+{%- highlight "css" %}
+.reveal-check { display: none; }
+
+.reveal-btn {
+  padding: .6rem 1.25rem;
+  background: #1a1a2e;
+  color: #fff;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.reveal-panel {
+  display: none;
+  margin-top: 1rem;
+  padding: 1.25rem;
+  background: #ede9ff;
+  border-radius: 10px;
+}
+
+.reveal-check:checked ~ .reveal-btn {
+  background: #5b4cdb;
+}
+
+.reveal-check:checked ~ .reveal-panel {
+  display: block;
+}
+{%- endhighlight %}
+{% endblock %}

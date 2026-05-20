@@ -1,0 +1,260 @@
+---
+title: Brand Style Guide
+description: Design tokens, typography, color palette, and component guidelines for Pure CSS.
+---
+{% extends "base.njk" %}
+{% block head %}
+<link rel="stylesheet" href="/css/brand.css">
+{% endblock %}
+
+{% block content %}
+<div class="brand-page">
+
+	<header class="brand-hero">
+		<p class="hero-eyebrow">// purecss.com</p>
+		<h1>Brand Style Guide</h1>
+		<p class="brand-hero-sub">Design tokens, typography, and components used across the site.</p>
+	</header>
+
+	<!-- ── Colors ─────────────────────────────────── -->
+	<section class="brand-section">
+		<h2 class="brand-section-label">Colors</h2>
+
+		<h3 class="brand-sub-label">Primary</h3>
+		<div class="swatch-row">
+			<div class="swatch">
+				<div class="swatch-chip" style="background: var(--accent);"></div>
+				<div class="swatch-info">
+					<span class="swatch-name">--accent</span>
+					<span class="swatch-value dark-value">#b8ff57</span>
+					<span class="swatch-value light-value">#4a7c00</span>
+					<span class="swatch-label">Lime Green · Primary</span>
+				</div>
+			</div>
+			<div class="swatch">
+				<div class="swatch-chip" style="background: var(--accent-dim); border: 1px solid var(--border);"></div>
+				<div class="swatch-info">
+					<span class="swatch-name">--accent-dim</span>
+					<span class="swatch-value dark-value">rgba(184,255,87,.10)</span>
+					<span class="swatch-value light-value">rgba(74,124,0,.08)</span>
+					<span class="swatch-label">Accent tint · Hover fills</span>
+				</div>
+			</div>
+		</div>
+
+		<h3 class="brand-sub-label">Palette</h3>
+		<div class="swatch-row">
+			<div class="swatch">
+				<div class="swatch-chip" style="background: var(--coral);"></div>
+				<div class="swatch-info">
+					<span class="swatch-name">--coral</span>
+					<span class="swatch-value dark-value">#ff6b6b</span>
+					<span class="swatch-value light-value">#dc2626</span>
+					<span class="swatch-label">Coral · Advanced / Danger</span>
+				</div>
+			</div>
+			<div class="swatch">
+				<div class="swatch-chip" style="background: var(--orange);"></div>
+				<div class="swatch-info">
+					<span class="swatch-name">--orange</span>
+					<span class="swatch-value dark-value">#ff9040</span>
+					<span class="swatch-value light-value">#c05000</span>
+					<span class="swatch-label">Orange · Intermediate / Warning</span>
+				</div>
+			</div>
+			<div class="swatch">
+				<div class="swatch-chip" style="background: var(--yellow);"></div>
+				<div class="swatch-info">
+					<span class="swatch-name">--yellow</span>
+					<span class="swatch-value dark-value">#ffd444</span>
+					<span class="swatch-value light-value">#907200</span>
+					<span class="swatch-label">Yellow · Stars / Highlight</span>
+				</div>
+			</div>
+			<div class="swatch">
+				<div class="swatch-chip" style="background: var(--teal);"></div>
+				<div class="swatch-info">
+					<span class="swatch-name">--teal</span>
+					<span class="swatch-value dark-value">#57d9a3</span>
+					<span class="swatch-value light-value">#0d9488</span>
+					<span class="swatch-label">Teal · Beginner / Success</span>
+				</div>
+			</div>
+			<div class="swatch">
+				<div class="swatch-chip" style="background: var(--violet);"></div>
+				<div class="swatch-info">
+					<span class="swatch-name">--violet</span>
+					<span class="swatch-value dark-value">#c084fc</span>
+					<span class="swatch-value light-value">#7c3aed</span>
+					<span class="swatch-label">Violet · Accent / Info</span>
+				</div>
+			</div>
+			<div class="swatch">
+				<div class="swatch-chip" style="background: var(--sky);"></div>
+				<div class="swatch-info">
+					<span class="swatch-name">--sky</span>
+					<span class="swatch-value dark-value">#38bdf8</span>
+					<span class="swatch-value light-value">#0284c7</span>
+					<span class="swatch-label">Sky · Links / Highlight</span>
+				</div>
+			</div>
+			<div class="swatch">
+				<div class="swatch-chip" style="background: var(--rose);"></div>
+				<div class="swatch-info">
+					<span class="swatch-name">--rose</span>
+					<span class="swatch-value dark-value">#f472b6</span>
+					<span class="swatch-value light-value">#db2777</span>
+					<span class="swatch-label">Rose · Special / Promo</span>
+				</div>
+			</div>
+		</div>
+
+		<h3 class="brand-sub-label">Surfaces &amp; Text</h3>
+		<div class="swatch-row">
+			<div class="swatch">
+				<div class="swatch-chip" style="background: var(--bg); border: 1px solid var(--border);"></div>
+				<div class="swatch-info">
+					<span class="swatch-name">--bg</span>
+					<span class="swatch-value dark-value">#0c0c0d</span>
+					<span class="swatch-value light-value">#f4f1eb</span>
+					<span class="swatch-label">Page background</span>
+				</div>
+			</div>
+			<div class="swatch">
+				<div class="swatch-chip" style="background: var(--surface); border: 1px solid var(--border);"></div>
+				<div class="swatch-info">
+					<span class="swatch-name">--surface</span>
+					<span class="swatch-value dark-value">#141415</span>
+					<span class="swatch-value light-value">#ffffff</span>
+					<span class="swatch-label">Card / panel surface</span>
+				</div>
+			</div>
+			<div class="swatch">
+				<div class="swatch-chip" style="background: var(--surface-2); border: 1px solid var(--border);"></div>
+				<div class="swatch-info">
+					<span class="swatch-name">--surface-2</span>
+					<span class="swatch-value dark-value">#1c1c1e</span>
+					<span class="swatch-value light-value">#ede9e0</span>
+					<span class="swatch-label">Inset / code background</span>
+				</div>
+			</div>
+			<div class="swatch">
+				<div class="swatch-chip" style="background: var(--border); border: 1px solid var(--border);"></div>
+				<div class="swatch-info">
+					<span class="swatch-name">--border</span>
+					<span class="swatch-value dark-value">#2a2a2d</span>
+					<span class="swatch-value light-value">#d0ccc0</span>
+					<span class="swatch-label">Borders &amp; dividers</span>
+				</div>
+			</div>
+			<div class="swatch">
+				<div class="swatch-chip swatch-text-chip" style="background: var(--surface); border: 1px solid var(--border); color: var(--text); font-family: var(--font-sans); font-weight: 700;">Aa</div>
+				<div class="swatch-info">
+					<span class="swatch-name">--text</span>
+					<span class="swatch-value dark-value">#f0f0f0</span>
+					<span class="swatch-value light-value">#1a1a1a</span>
+					<span class="swatch-label">Primary text</span>
+				</div>
+			</div>
+			<div class="swatch">
+				<div class="swatch-chip swatch-text-chip" style="background: var(--surface); border: 1px solid var(--border); color: var(--text-muted); font-family: var(--font-sans); font-weight: 500;">Aa</div>
+				<div class="swatch-info">
+					<span class="swatch-name">--text-muted</span>
+					<span class="swatch-value dark-value">#88888f</span>
+					<span class="swatch-value light-value">#666660</span>
+					<span class="swatch-label">Secondary text</span>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- ── Typography ─────────────────────────────── -->
+	<section class="brand-section">
+		<h2 class="brand-section-label">Typography</h2>
+
+		<div class="type-specimens">
+			<div class="type-specimen">
+				<div class="type-meta">
+					<span class="type-name">Bricolage Grotesque</span>
+					<span class="type-role">--font-sans · Headlines, UI, body</span>
+				</div>
+				<div class="type-scale">
+					<p style="font-family: var(--font-sans); font-size: 3rem; font-weight: 800; letter-spacing: -.04em; line-height: 1;">Display 800</p>
+					<p style="font-family: var(--font-sans); font-size: 1.5rem; font-weight: 600; letter-spacing: -.02em;">Heading 600</p>
+					<p style="font-family: var(--font-sans); font-size: 1rem; font-weight: 400;">Body Regular 400 — The quick brown fox jumps over the lazy dog.</p>
+				</div>
+			</div>
+
+			<div class="type-specimen">
+				<div class="type-meta">
+					<span class="type-name">Instrument Serif</span>
+					<span class="type-role">--font-serif · Italic accents in headlines</span>
+				</div>
+				<div class="type-scale">
+					<p style="font-family: var(--font-serif); font-size: 3rem; font-style: italic; line-height: 1; color: var(--accent);">Italic Accent</p>
+					<p style="font-family: var(--font-serif); font-size: 1.5rem;">Regular weight</p>
+					<p style="font-family: var(--font-sans); font-size: 1rem;">CSS does <em style="font-family: var(--font-serif); font-style: italic; color: var(--accent);">more</em> than you think.</p>
+				</div>
+			</div>
+
+			<div class="type-specimen">
+				<div class="type-meta">
+					<span class="type-name">DM Mono</span>
+					<span class="type-role">--font-mono · Code, labels, stats, badges</span>
+				</div>
+				<div class="type-scale">
+					<p style="font-family: var(--font-mono); font-size: 1.5rem; font-weight: 500; color: var(--accent);">26 examples</p>
+					<p style="font-family: var(--font-mono); font-size: .8rem; color: var(--text-muted); letter-spacing: .08em; text-transform: uppercase;">FORM · BEGINNER · // purecss.com</p>
+					<p style="font-family: var(--font-mono); font-size: .8rem;"><code style="font-family: inherit; color: var(--accent); background: var(--accent-dim); padding: .15em .4em; border-radius: 4px;">::after</code> <code style="font-family: inherit; color: var(--accent); background: var(--accent-dim); padding: .15em .4em; border-radius: 4px;">:checked</code> <code style="font-family: inherit; color: var(--accent); background: var(--accent-dim); padding: .15em .4em; border-radius: 4px;">:has()</code></p>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- ── Components ─────────────────────────────── -->
+	<section class="brand-section">
+		<h2 class="brand-section-label">Components</h2>
+
+		<h3 class="brand-sub-label">Buttons</h3>
+		<div class="brand-row">
+			<a class="hero-cta" href="#">Browse Examples ↓</a>
+			<button class="btn-outline">Outline Button</button>
+		</div>
+
+		<h3 class="brand-sub-label">Badges</h3>
+		<div class="brand-row">
+			<span class="badge badge-cat">Form</span>
+			<span class="badge badge-cat">Navigation</span>
+			<span class="badge badge-cat">Layout</span>
+			<span class="badge badge-cat">Feedback</span>
+			<span class="badge badge-level badge-beginner">Beginner</span>
+			<span class="badge badge-level badge-intermediate">Intermediate</span>
+			<span class="badge badge-level badge-advanced">Advanced</span>
+		</div>
+
+		<h3 class="brand-sub-label">Inline Code</h3>
+		<div class="brand-row">
+			<p style="color: var(--text-muted); line-height: 1.75;">
+				The trick uses <code class="inline-code">::after</code> as the thumb. When <code class="inline-code">:checked</code>, CSS shifts it with <code class="inline-code">translateX</code> — no JavaScript needed.
+			</p>
+		</div>
+
+		<h3 class="brand-sub-label">Shape &amp; Radius</h3>
+		<div class="brand-row">
+			<div class="radius-swatch">
+				<div class="radius-box" style="border-radius: var(--radius);"></div>
+				<span class="swatch-label">--radius · 8px</span>
+			</div>
+			<div class="radius-swatch">
+				<div class="radius-box" style="border-radius: var(--radius-lg);"></div>
+				<span class="swatch-label">--radius-lg · 12px</span>
+			</div>
+			<div class="radius-swatch">
+				<div class="radius-box" style="border-radius: 999px;"></div>
+				<span class="swatch-label">pill · 999px</span>
+			</div>
+		</div>
+	</section>
+
+</div>
+{% endblock %}

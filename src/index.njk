@@ -1,0 +1,98 @@
+---
+title: Pure CSS — Interactive UI Patterns, No JavaScript
+description: Interactive UI patterns built with pure CSS — toggle switches, modals, tabs, animations, and more. Zero JavaScript required.
+---
+{% extends "base.njk" %}
+{% block head %}
+<link rel="stylesheet" href="/css/examples/toggle-switch.css">
+<link rel="stylesheet" href="/css/examples/floating-labels.css">
+<link rel="stylesheet" href="/css/examples/star-rating.css">
+<link rel="stylesheet" href="/css/examples/expandable-search.css">
+<link rel="stylesheet" href="/css/examples/show-hide-content.css">
+<link rel="stylesheet" href="/css/examples/dark-light-mode.css">
+<link rel="stylesheet" href="/css/examples/accordion.css">
+<link rel="stylesheet" href="/css/examples/tab-navigation.css">
+<link rel="stylesheet" href="/css/examples/hover-tooltip.css">
+<link rel="stylesheet" href="/css/examples/custom-checkboxes.css">
+<link rel="stylesheet" href="/css/examples/custom-radio.css">
+<link rel="stylesheet" href="/css/examples/range-slider.css">
+<link rel="stylesheet" href="/css/examples/progress-bar.css">
+<link rel="stylesheet" href="/css/examples/click-reveal.css">
+<link rel="stylesheet" href="/css/examples/card-flip.css">
+<link rel="stylesheet" href="/css/examples/image-zoom.css">
+<link rel="stylesheet" href="/css/examples/gradient-text.css">
+<link rel="stylesheet" href="/css/examples/skeleton-loader.css">
+<link rel="stylesheet" href="/css/examples/hover-dropdown.css">
+<link rel="stylesheet" href="/css/examples/modal-dialog.css">
+<link rel="stylesheet" href="/css/examples/offcanvas-nav.css">
+<link rel="stylesheet" href="/css/examples/input-validation.css">
+<link rel="stylesheet" href="/css/examples/number-counter.css">
+<link rel="stylesheet" href="/css/examples/scroll-carousel.css">
+<link rel="stylesheet" href="/css/examples/aspect-ratio-box.css">
+<link rel="stylesheet" href="/css/examples/scroll-spy.css">
+<link rel="stylesheet" href="/css/examples/glitch-effect.css">
+{% endblock %}
+
+{% block content %}
+<section class="home-hero">
+	<div class="hero-glow"></div>
+	<div class="hero-content">
+		<p class="hero-eyebrow">// purecss.com</p>
+		<h1>CSS does <em>more</em><br>than you think.</h1>
+		<p class="hero-sub">{{ examples.length }} interactive UI patterns — zero JavaScript required.</p>
+		<div class="hero-stats">
+			<div class="hero-stat">
+				<strong style="--stat-target:{{ examples.length }}"></strong>
+				<span>examples</span>
+			</div>
+			<div class="hero-stat">
+				<strong style="--stat-target:100" data-suffix="%"></strong>
+				<span>Pure CSS</span>
+			</div>
+			<div class="hero-stat">
+				<strong style="--stat-target:0"></strong>
+				<span>dependencies</span>
+			</div>
+			<div class="hero-stat">
+				<strong style="--stat-target:0"></strong>
+				<span>JavaScript</span>
+			</div>
+		</div>
+		<a href="#examples" class="hero-cta">Browse Examples ↓</a>
+	</div>
+	<input type="radio" name="filter" id="fc-all" class="filter-radio" checked>
+	<input type="radio" name="filter" id="fc-form" class="filter-radio">
+	<input type="radio" name="filter" id="fc-nav" class="filter-radio">
+	<input type="radio" name="filter" id="fc-layout" class="filter-radio">
+	<input type="radio" name="filter" id="fc-feedback" class="filter-radio">
+	<div class="filter-bar">
+		<label for="fc-all">All</label>
+		<label for="fc-form">Forms</label>
+		<label for="fc-nav">Navigation</label>
+		<label for="fc-layout">Layout</label>
+		<label for="fc-feedback">Feedback</label>
+	</div>
+</section>
+
+<section class="examples-section" id="examples">
+	<div class="examples-grid">
+		{% for example in examples %}
+		<div class="example-card" data-cat="{{ example.category }}">
+			<div class="card-preview">
+				<div class="card-preview-inner demo-{{ example.slug }}">
+					{% include "previews/" + example.slug + ".njk" ignore missing %}
+				</div>
+			</div>
+			<a href="/examples/{{ example.slug }}/" class="card-body">
+				<div class="card-meta">
+					<span class="badge badge-cat">{{ example.categoryLabel }}</span>
+					<span class="badge badge-level badge-{{ example.level }}">{{ example.levelLabel }}</span>
+				</div>
+				<div class="card-title">{{ example.title }}</div>
+				<div class="card-description">{{ example.description | markCode | safe }}</div>
+			</a>
+		</div>
+		{% endfor %}
+	</div>
+</section>
+{% endblock %}

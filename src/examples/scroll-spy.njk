@@ -1,0 +1,59 @@
+﻿---
+title: Scroll Spy Indicator
+description: A reading progress bar that tracks scroll position using CSS scroll-driven animations.
+slug: scroll-spy
+cssFile: scroll-spy.css
+explanation: <code>animation-timeline:scroll()</code> links an animation's progress to a scroll container. <code>scroll(root block)</code> tracks the page scroll; <code>scroll(nearest block)</code> tracks the nearest scrollable ancestor. The <code>@keyframes</code> simply go from <code>width:0</code> to <code>width:100%</code>. The browser drives the animation position based on scroll — no requestAnimationFrame needed.
+---
+{% extends "example.njk" %}
+{% block demo %}
+<div class="scroll-area">
+	<div class="scroll-header">
+		<span class="scroll-label">Reading Progress</span>
+		<div class="bar-track"><div class="bar-local"></div></div>
+	</div>
+	<div class="scroll-content">
+		<h4>The Future of CSS</h4>
+		<p>CSS has evolved dramatically over the past decade. What began as a simple styling language now supports animations, logical properties, and even scroll-driven effects.</p>
+		<p>Scroll-driven animations are one of the most exciting additions to the platform. They let you tie animation progress directly to a scroll position — entirely without JavaScript.</p>
+		<h4>How It Works</h4>
+		<p>The <code>animation-timeline</code> property accepts a <code>scroll()</code> function that references a scroll container. The browser maps the scroll range to the animation's progress.</p>
+		<p>A simple <code>@keyframes</code> that goes from <code>width: 0%</code> to <code>width: 100%</code> becomes a reading progress bar with a single CSS property.</p>
+		<h4>Browser Support</h4>
+		<p>Scroll-driven animations are supported in all modern evergreen browsers. No polyfill, no fallback JavaScript needed for the vast majority of users.</p>
+	</div>
+</div>
+{% endblock %}
+
+{% block html_code %}
+{%- highlight "html" %}
+<div class="reading-bar"></div>
+<article><!-- page content --></article>
+{%- endhighlight %}
+{% endblock %}
+
+{% block css_code %}
+{%- highlight "css" %}
+.reading-bar {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  height: 5px;
+  background: #e0e0ea;
+}
+
+.reading-bar::after {
+  content: "";
+  display: block;
+  height: 100%;
+  background: linear-gradient(90deg, #5b4cdb, #e040fb);
+  animation: reading-progress linear;
+  animation-timeline: scroll(root block);
+}
+
+@keyframes reading-progress {
+  from { width: 0%; }
+  to   { width: 100%; }
+}
+{%- endhighlight %}
+{% endblock %}

@@ -1,0 +1,60 @@
+﻿---
+title: Custom Radio Buttons
+description: Styled radio buttons without any images or JavaScript.
+slug: custom-radio
+cssFile: custom-radio.css
+explanation: Same technique as custom checkboxes — <code>appearance:none</code> strips default styling. The <code>::after</code> pseudo-element draws the inner dot and is centered with absolute positioning + <code>translate</code>. The dot only appears when <code>:checked</code>, which the browser manages natively.
+---
+{% extends "example.njk" %}
+{% block demo %}
+<div class="radio-group">
+	<label class="radio-label"><input type="radio" name="plan" checked> Free plan</label>
+	<label class="radio-label"><input type="radio" name="plan"> Pro plan</label>
+	<label class="radio-label"><input type="radio" name="plan"> Enterprise</label>
+</div>
+{% endblock %}
+
+{% block html_code %}
+{%- highlight "html" %}
+<label class="radio-label">
+  <input type="radio" name="group"> Option
+</label>
+{%- endhighlight %}
+{% endblock %}
+
+{% block css_code %}
+{%- highlight "css" %}
+.radio-label {
+  display: inline-flex;
+  align-items: center;
+  gap: .65rem;
+  cursor: pointer;
+}
+
+input[type="radio"] {
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  border: 2px solid #ccc;
+  border-radius: 50%;
+  position: relative;
+  transition: border-color .2s;
+}
+
+input[type="radio"]:checked {
+  border-color: #5b4cdb;
+}
+
+input[type="radio"]:checked::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 10px;
+  height: 10px;
+  background: #5b4cdb;
+  border-radius: 50%;
+}
+{%- endhighlight %}
+{% endblock %}

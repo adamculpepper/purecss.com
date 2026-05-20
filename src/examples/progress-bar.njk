@@ -1,0 +1,71 @@
+﻿---
+title: Progress Bars
+description: Animated progress bars using the `&lt;progress&gt;` element and CSS.
+slug: progress-bar
+cssFile: progress-bar.css
+explanation: The native <code>&lt;progress&gt;</code> element is styled using vendor-prefixed pseudo-elements. <code>appearance:none</code> removes defaults. <code>::-webkit-progress-bar</code> styles the track; <code>::-webkit-progress-value</code> styles the filled portion. Firefox uses <code>::-moz-progress-bar</code> for the fill. Color variants are just class-based overrides.
+---
+{% extends "example.njk" %}
+{% block demo %}
+<div style="width:100%;max-width:360px">
+	<div class="progress-row">
+		<span class="progress-label">CSS</span>
+		<progress value="92" max="100"></progress>
+	</div>
+	<div class="progress-row">
+		<span class="progress-label">HTML</span>
+		<progress class="success" value="85" max="100"></progress>
+	</div>
+	<div class="progress-row">
+		<span class="progress-label">JS</span>
+		<progress class="warning" value="45" max="100"></progress>
+	</div>
+	<div class="progress-row">
+		<span class="progress-label">Rust</span>
+		<progress class="danger" value="12" max="100"></progress>
+	</div>
+	<div class="progress-row">
+		<span class="progress-label">Upload</span>
+		<progress class="shimmer" value="65" max="100"></progress>
+	</div>
+</div>
+{% endblock %}
+
+{% block html_code %}
+{%- highlight "html" %}
+<progress value="75" max="100"></progress>
+<progress class="success" value="85" max="100"></progress>
+<progress class="warning" value="45" max="100"></progress>
+<progress class="danger"  value="12" max="100"></progress>
+{%- endhighlight %}
+{% endblock %}
+
+{% block css_code %}
+{%- highlight "css" %}
+progress {
+  appearance: none;
+  height: 10px;
+  border: none;
+  border-radius: 999px;
+}
+
+progress::-webkit-progress-bar {
+  background: #e0e0ea;
+  border-radius: 999px;
+}
+
+progress::-webkit-progress-value {
+  background: #5b4cdb;
+  border-radius: 999px;
+}
+
+progress::-moz-progress-bar {
+  background: #5b4cdb;
+  border-radius: 999px;
+}
+
+progress.success::-webkit-progress-value { background: #22c55e; }
+progress.warning::-webkit-progress-value { background: #f59e0b; }
+progress.danger::-webkit-progress-value  { background: #ef4444; }
+{%- endhighlight %}
+{% endblock %}

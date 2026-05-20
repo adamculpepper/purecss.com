@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	{% if slug %}
+		{% set pageTitle = "CSS " + title + " — No JavaScript | Pure CSS" %}
+	{% elif title %}
+		{% set pageTitle = title + " | Pure CSS" %}
+	{% else %}
+		{% set pageTitle = "Pure CSS — Interactive UI Patterns, No JavaScript" %}
+	{% endif %}
+	{% set pageDescription = (description if description else site.description) | replace("`", "") %}
+	{% set pageUrl = site.url + page.url %}
+
+	<title>{{ pageTitle }}</title>
+	<meta name="description" content="{{ pageDescription }}">
+	<meta name="author" content="Adam Culpepper">
+	<link rel="canonical" href="{{ pageUrl }}">
+
+	<!-- Open Graph -->
+	<meta property="og:type" content="{{ 'article' if slug else 'website' }}">
+	<meta property="og:title" content="{{ pageTitle }}">
+	<meta property="og:description" content="{{ pageDescription }}">
+	<meta property="og:url" content="{{ pageUrl }}">
+	<meta property="og:site_name" content="{{ site.name }}">
+	<meta property="og:image" content="{{ site.ogImage }}">
+
+	<!-- Twitter -->
+	<meta name="twitter:card" content="summary_large_image">
+	<meta name="twitter:site" content="{{ site.twitterHandle }}">
+	<meta name="twitter:creator" content="{{ site.twitterHandle }}">
+	<meta name="twitter:title" content="{{ pageTitle }}">
+	<meta name="twitter:description" content="{{ pageDescription }}">
+	<meta name="twitter:image" content="{{ site.ogImage }}">
+
+	<!-- Structured Data -->
+	{% if slug %}
+	<script type="application/ld+json">
+	{
+		"@context": "https://schema.org",
+		"@type": "TechArticle",
+		"headline": "{{ pageTitle }}",
+		"description": "{{ pageDescription }}",
+		"url": "{{ pageUrl }}",
+		"author": {
+			"@type": "Person",
+			"name": "Adam Culpepper",
+			"url": "https://x.com/adamculpepper"
+		},
+		"publisher": {
+			"@type": "Organization",
+			"name": "Pure CSS",
+			"url": "{{ site.url }}"
+		}
+	}
+	</script>
+	{% else %}
+	<script type="application/ld+json">
+	{
+		"@context": "https://schema.org",
+		"@type": "WebSite",
+		"name": "{{ site.name }}",
+		"url": "{{ site.url }}",
+		"description": "{{ site.description }}",
+		"author": {
+			"@type": "Person",
+			"name": "Adam Culpepper",
+			"url": "https://x.com/adamculpepper"
+		}
+	}
+	</script>
+	{% endif %}
+
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=Instrument+Serif:ital@0;1&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+	<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+	<link rel="icon" type="image/png" href="/favicon.png">
+	<link rel="icon" href="/favicon.ico">
+	<link rel="stylesheet" href="/css/global.css">
+	{% if cssFile %}<link rel="stylesheet" href="/css/examples/{{ cssFile }}">{% endif %}
+	{% block head %}{% endblock %}
+</head>
+<body>
+	<input type="checkbox" id="theme-toggle" class="theme-toggle-input">
+	<div class="progress-bar"></div>
+
+	<header class="site-header">
+		<a href="/" class="site-logo">pure<span>css</span></a>
+		<nav class="site-nav">
+			<a href="/">Examples</a>
+			<a href="https://github.com/adamculpepper/purecss.com" target="_blank" rel="noopener">GitHub</a>
+			<label for="theme-toggle" class="theme-toggle-btn" title="Toggle light/dark theme">
+				<span class="icon-dark">
+					<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+				</span>
+				<span class="icon-light">
+					<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+				</span>
+			</label>
+		</nav>
+	</header>
+
+	<main>
+		{% block content %}{% endblock %}
+	</main>
+
+	<script>
+		// you know JavaScript is required for copying code
+		document.querySelectorAll('.copy-btn').forEach(btn => {
+			btn.addEventListener('click', () => {
+				const pre = btn.nextElementSibling;
+				navigator.clipboard.writeText(pre.textContent.trimEnd()).then(() => {
+					btn.classList.add('copied');
+					setTimeout(() => btn.classList.remove('copied'), 1500);
+				});
+			});
+		});
+	</script>
+
+	<footer class="site-footer">
+		<p>Pure CSS. Zero JavaScript. Built with <a href="https://www.11ty.dev" target="_blank" rel="noopener">Eleventy</a>. By <a href="https://x.com/adamculpepper" target="_blank" rel="noopener">Adam Culpepper</a>. <a href="/brand/">Brand</a>.</p>
+	</footer>
+</body>
+</html>

@@ -1,0 +1,73 @@
+﻿---
+title: Off-Canvas Navigation
+description: A slide-in navigation panel using a checkbox and CSS translate.
+slug: offcanvas-nav
+cssFile: offcanvas-nav.css
+explanation: A checkbox acts as the open/closed state. The nav panel starts at <code>translateX(-100%)</code> and slides to <code>translateX(0)</code> when <code>:checked</code>. A second <code>&lt;label&gt;</code> element over the overlay acts as the backdrop close button. The overlay fades in simultaneously using the same sibling combinator on the checkbox.
+---
+{% extends "example.njk" %}
+{% block demo %}
+<div style="position:relative;overflow:hidden;min-height:260px;background:#f5f5f8;border-radius:10px;padding:1.5rem">
+	<input class="offcanvas-check" type="checkbox" id="oc1">
+	<label class="offcanvas-open" for="oc1">☰ Open Nav</label>
+	<label class="offcanvas-overlay" for="oc1"></label>
+	<div class="offcanvas-panel">
+		<label class="offcanvas-close" for="oc1">✕ Close</label>
+		<nav>
+			<a href="#">Home</a>
+			<a href="#">About</a>
+			<a href="#">Work</a>
+			<a href="#">Contact</a>
+		</nav>
+	</div>
+</div>
+{% endblock %}
+
+{% block html_code %}
+{%- highlight "html" %}
+<input class="offcanvas-check" type="checkbox" id="oc1">
+<label class="offcanvas-open" for="oc1">☰ Menu</label>
+<label class="offcanvas-overlay" for="oc1"></label>
+<div class="offcanvas-panel">
+  <label class="offcanvas-close" for="oc1">✕ Close</label>
+  <nav>
+    <a href="#">Link</a>
+  </nav>
+</div>
+{%- endhighlight %}
+{% endblock %}
+
+{% block css_code %}
+{%- highlight "css" %}
+.offcanvas-check { display: none; }
+
+.offcanvas-panel {
+  position: fixed;
+  top: 0; left: 0;
+  width: 260px; height: 100%;
+  background: #1a1a2e;
+  transform: translateX(-100%);
+  transition: transform .3s ease;
+  z-index: 100;
+}
+
+.offcanvas-check:checked ~ .offcanvas-panel {
+  transform: translateX(0);
+}
+
+.offcanvas-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,.45);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .3s;
+  z-index: 99;
+}
+
+.offcanvas-check:checked ~ .offcanvas-overlay {
+  opacity: 1;
+  pointer-events: auto;
+}
+{%- endhighlight %}
+{% endblock %}

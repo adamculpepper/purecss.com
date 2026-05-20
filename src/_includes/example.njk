@@ -1,0 +1,51 @@
+{% extends "base.njk" %}
+{% block content %}
+<article class="example-page">
+
+	<header class="example-header">
+		<a href="/" class="back-link">← All Examples</a>
+		<h1>{{ title }}</h1>
+		<p class="example-description">{{ description | markCode | safe }}</p>
+	</header>
+
+	<section class="demo-section">
+		<h2>Demo</h2>
+		<div class="demo-wrapper demo-{{ slug }}">
+			{% block demo %}{% endblock %}
+		</div>
+	</section>
+
+	<section class="code-section">
+		<div class="code-block">
+			<h2>HTML</h2>
+			<div class="code-pre-wrap">
+				<button class="copy-btn" title="Copy code">
+					<svg class="icon-copy" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+					<svg class="icon-check" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+				</button>
+				{% block html_code %}{% endblock %}
+			</div>
+		</div>
+		<div class="code-block">
+			<h2>CSS</h2>
+			<div class="code-pre-wrap">
+				<button class="copy-btn" title="Copy code">
+					<svg class="icon-copy" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+					<svg class="icon-check" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+				</button>
+				{% block css_code %}{% endblock %}
+			</div>
+		</div>
+	</section>
+
+	{% if explanation %}
+	<section class="explanation-section">
+		<h2>How it works</h2>
+		<p>{{ explanation | markCode | safe }}</p>
+	</section>
+	{% endif %}
+
+	{% block notes %}{% endblock %}
+
+</article>
+{% endblock %}

@@ -1,0 +1,50 @@
+﻿/*
+ * PureCSS.com
+ * https://purecss.com/examples/skeleton-loader/
+ * Animated placeholder loading state using CSS keyframes.
+ */
+
+.demo-skeleton-loader .skeleton-card {
+	background: var(--border);
+	border: 1px solid var(--border);
+	border-radius: 10px;
+	padding: 1rem;
+	width: 240px;
+	box-shadow: 0 4px 20px rgba(0,0,0,.35);
+}
+
+body:has(#theme-toggle:checked) .demo-skeleton-loader .skeleton-card {
+	background: var(--surface);
+}
+
+.demo-skeleton-loader .skel {
+	background: linear-gradient(90deg,
+		rgba(128,128,128,0.15) 25%,
+		rgba(128,128,128,0.35) 50%,
+		rgba(128,128,128,0.15) 75%
+	);
+	background-size: 200% 100%;
+	border-radius: 6px;
+	animation: shimmer 1.5s infinite;
+}
+
+.demo-skeleton-loader .skel-avatar {
+	width: 44px;
+	height: 44px;
+	border-radius: 50%;
+	margin-bottom: .75rem;
+}
+
+.demo-skeleton-loader .skel-line {
+	height: 12px;
+	margin-bottom: .5rem;
+}
+
+.demo-skeleton-loader .skel-line.w-full { width: 100%; }
+.demo-skeleton-loader .skel-line.w-3q  { width: 75%; }
+.demo-skeleton-loader .skel-line.w-half { width: 50%; }
+
+@keyframes shimmer {
+	0%   { background-position: 200% 0; }
+	100% { background-position: -200% 0; }
+}

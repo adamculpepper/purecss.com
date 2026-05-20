@@ -1,0 +1,17 @@
+{
+  "name": "purecss-com",
+  "version": "1.0.0",
+  "description": "Pure CSS examples — no JavaScript required",
+  "type": "module",
+  "scripts": {
+    "start": "eleventy --serve",
+    "build": "eleventy"
+  },
+  "dependencies": {
+    "@11ty/eleventy": "^3.0.0",
+    "@11ty/eleventy-plugin-syntaxhighlight": "^5.0.0"
+  },
+  "devDependencies": {
+    "sharp": "^0.34.5"
+  }
+}

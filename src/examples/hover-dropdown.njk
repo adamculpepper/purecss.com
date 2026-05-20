@@ -1,0 +1,71 @@
+﻿---
+title: Hover Dropdown Menu
+description: A navigation dropdown that opens on hover using `:hover` and `visibility`.
+slug: hover-dropdown
+cssFile: hover-dropdown.css
+explanation: <code>visibility:hidden</code> + <code>opacity:0</code> hides the menu while keeping it in the layout flow for transitions. <code>opacity</code> alone can't be transitioned to/from <code>display:none</code>. Using <code>visibility</code> allows a transition on <code>opacity</code>, then <code>visibility</code> jumps to hidden after the fade completes. The parent <code>:hover</code> selector reveals the child menu.
+---
+{% extends "example.njk" %}
+{% block demo %}
+<div style="display:flex;gap:1.5rem;padding-bottom:140px">
+	<div class="dropdown">
+		<span class="dropdown-trigger">
+			Products
+			<svg class="dropdown-arrow" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+		</span>
+		<div class="dropdown-menu">
+			<a href="#">Web Design</a>
+			<a href="#">Mobile Apps</a>
+			<a href="#">Branding</a>
+		</div>
+	</div>
+	<div class="dropdown">
+		<span class="dropdown-trigger">
+			Resources
+			<svg class="dropdown-arrow" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+		</span>
+		<div class="dropdown-menu">
+			<a href="#">Documentation</a>
+			<a href="#">Blog</a>
+			<a href="#">Support</a>
+		</div>
+	</div>
+</div>
+{% endblock %}
+
+{% block html_code %}
+{%- highlight "html" %}
+<div class="dropdown">
+  <span class="dropdown-trigger">Menu</span>
+  <div class="dropdown-menu">
+    <a href="#">Item one</a>
+    <a href="#">Item two</a>
+  </div>
+</div>
+{%- endhighlight %}
+{% endblock %}
+
+{% block css_code %}
+{%- highlight "css" %}
+.dropdown { position: relative; display: inline-block; }
+
+.dropdown-menu {
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 0;
+  background: #fff;
+  border: 1px solid #e2e2e8;
+  border-radius: 8px;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-6px);
+  transition: opacity .2s, transform .2s, visibility .2s;
+}
+
+.dropdown:hover .dropdown-menu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+{%- endhighlight %}
+{% endblock %}

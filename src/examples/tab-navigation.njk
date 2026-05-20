@@ -1,0 +1,73 @@
+﻿---
+title: Tab Navigation
+description: Tabbed interface using radio inputs and the `:checked` pseudo-class.
+slug: tab-navigation
+cssFile: tab-navigation.css
+explanation: Hidden radio inputs store which tab is active. Because only one radio per group can be checked at a time, CSS can target the correct panel and <code>&lt;label&gt;</code> using the sibling combinator. Each <code>&lt;input&gt;</code>, <code>&lt;label&gt;</code>, and panel need matching <code>id</code>/<code>for</code> attributes and sibling relationships in the DOM.
+---
+{% extends "example.njk" %}
+{% block demo %}
+<div class="tabs">
+	<input class="tab-inputs" type="radio" name="tabs" id="demo-tab-navigation-t1" checked>
+	<input class="tab-inputs" type="radio" name="tabs" id="demo-tab-navigation-t2">
+	<input class="tab-inputs" type="radio" name="tabs" id="demo-tab-navigation-t3">
+	<div class="tab-labels">
+		<label class="tab-label" for="demo-tab-navigation-t1">Design</label>
+		<label class="tab-label" for="demo-tab-navigation-t2">Code</label>
+		<label class="tab-label" for="demo-tab-navigation-t3">Preview</label>
+	</div>
+	<div class="tab-panels">
+		<div class="tab-panel" id="demo-tab-navigation-p1">Design panel content goes here.</div>
+		<div class="tab-panel" id="demo-tab-navigation-p2">Code panel content goes here.</div>
+		<div class="tab-panel" id="demo-tab-navigation-p3">Preview panel content goes here.</div>
+	</div>
+</div>
+{% endblock %}
+
+{% block html_code %}
+{%- highlight "html" %}
+<div class="tabs">
+  <input type="radio" name="tabs" id="t1" checked>
+  <input type="radio" name="tabs" id="t2">
+  <div class="tab-labels">
+    <label for="t1">Tab One</label>
+    <label for="t2">Tab Two</label>
+  </div>
+  <div class="tab-panels">
+    <div class="tab-panel" id="p1">Content 1</div>
+    <div class="tab-panel" id="p2">Content 2</div>
+  </div>
+</div>
+{%- endhighlight %}
+{% endblock %}
+
+{% block css_code %}
+{%- highlight "css" %}
+input[type="radio"] { display: none; }
+
+.tab-labels {
+  display: flex;
+  border-bottom: 2px solid #e2e2e8;
+}
+
+label {
+  padding: .6rem 1.1rem;
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+  margin-bottom: -2px;
+}
+
+.tab-panel { display: none; }
+
+#t1:checked ~ .tab-labels label[for="t1"],
+#t2:checked ~ .tab-labels label[for="t2"] {
+  color: #5b4cdb;
+  border-bottom-color: #5b4cdb;
+}
+
+#t1:checked ~ .tab-panels #p1,
+#t2:checked ~ .tab-panels #p2 {
+  display: block;
+}
+{%- endhighlight %}
+{% endblock %}

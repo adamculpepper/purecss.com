@@ -1,0 +1,69 @@
+﻿---
+title: 3D Card Flip
+description: A card that flips on hover using CSS 3D transforms and perspective.
+slug: card-flip
+cssFile: card-flip.css
+explanation: The container sets <code>perspective</code> to create the 3D space. The inner element holds both faces and uses <code>transform-style:preserve-3d</code> so children exist in the same 3D plane. The back face is pre-rotated 180deg and both faces have <code>backface-visibility:hidden</code> so the correct face shows at each point of the flip.
+---
+{% extends "example.njk" %}
+{% block demo %}
+<div style="display:flex;gap:1.5rem;flex-wrap:wrap;justify-content:center">
+	<div class="flip-card">
+		<div class="flip-inner">
+			<div class="flip-front">🎨 Front Side<br><small style="font-weight:400;opacity:.8">Hover to flip</small></div>
+			<div class="flip-back">✨ Back Side<br><small style="font-weight:400;opacity:.8">Pure CSS</small></div>
+		</div>
+	</div>
+	<div class="flip-card">
+		<div class="flip-inner">
+			<div class="flip-front">Card Two<br><small style="font-weight:400;opacity:.8">Hover me</small></div>
+			<div class="flip-back">No JS needed!</div>
+		</div>
+	</div>
+</div>
+{% endblock %}
+
+{% block html_code %}
+{%- highlight "html" %}
+<div class="flip-card">
+  <div class="flip-inner">
+    <div class="flip-front">Front</div>
+    <div class="flip-back">Back</div>
+  </div>
+</div>
+{%- endhighlight %}
+{% endblock %}
+
+{% block css_code %}
+{%- highlight "css" %}
+.flip-card {
+  width: 200px;
+  height: 130px;
+  perspective: 800px;
+}
+
+.flip-inner {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform .55s ease;
+}
+
+.flip-card:hover .flip-inner {
+  transform: rotateY(180deg);
+}
+
+.flip-front,
+.flip-back {
+  position: absolute;
+  inset: 0;
+  border-radius: 12px;
+  backface-visibility: hidden;
+}
+
+.flip-back {
+  transform: rotateY(180deg);
+}
+{%- endhighlight %}
+{% endblock %}

@@ -1,0 +1,54 @@
+﻿/*
+ * PureCSS.com
+ * https://purecss.com/examples/accordion/
+ * Expandable content panels using the <details> and <summary> elements.
+ */
+
+.demo-accordion details {
+	border: 1px solid var(--border);
+	border-radius: 8px;
+	margin-bottom: .5rem;
+	overflow: hidden;
+}
+
+.demo-accordion summary {
+	padding: .9rem 1.1rem;
+	font-weight: 600;
+	font-size: .95rem;
+	cursor: pointer;
+	list-style: none;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	background: var(--surface);
+	user-select: none;
+	transition: background .2s;
+}
+
+.demo-accordion summary::-webkit-details-marker {
+	display: none;
+}
+
+.demo-accordion summary::after {
+	content: "+";
+	font-size: 1.2rem;
+	font-weight: 400;
+	color: var(--accent);
+	transition: transform .25s;
+}
+
+.demo-accordion details[open] summary {
+	background: var(--accent-dim);
+}
+
+.demo-accordion details[open] summary::after {
+	transform: rotate(45deg);
+}
+
+.demo-accordion .accordion-body {
+	padding: 1rem 1.1rem;
+	font-size: .9rem;
+	color: var(--text-muted);
+	border-top: 1px solid var(--border);
+	background: var(--surface);
+}

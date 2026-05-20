@@ -1,0 +1,68 @@
+﻿---
+title: Hover Tooltip
+description: Tooltips on hover using CSS pseudo-elements and the data-tip attribute.
+slug: hover-tooltip
+cssFile: hover-tooltip.css
+explanation: The tooltip text lives in a <code>data-tip</code> attribute on the element. The <code>::before</code> pseudo-element reads it with <code>content:attr(data-tip)</code> and displays it above the element. The <code>::after</code> pseudo-element draws the arrow. Both are invisible by default and fade in on <code>:hover</code> using <code>opacity</code>.
+---
+{% extends "example.njk" %}
+{% block demo %}
+<p style="text-align:center;line-height:3">
+	Hover over
+	<span class="tip" data-tip="I'm a CSS tooltip!">this word</span>
+	or
+	<span class="tip" data-tip="No JavaScript needed">this one</span>
+	to see tooltips.
+</p>
+{% endblock %}
+
+{% block html_code %}
+{%- highlight "html" %}
+<span class="tip" data-tip="Tooltip text here">Hover over me</span>
+{%- endhighlight %}
+{% endblock %}
+
+{% block css_code %}
+{%- highlight "css" %}
+.tip {
+  position: relative;
+  cursor: default;
+  border-bottom: 2px dashed #5b4cdb;
+}
+
+.tip::before {
+  content: attr(data-tip);
+  position: absolute;
+  bottom: calc(100% + 8px);
+  left: 50%;
+  transform: translateX(-50%);
+  background: #1a1a2e;
+  color: #fff;
+  font-size: .8rem;
+  white-space: nowrap;
+  padding: .4rem .7rem;
+  border-radius: 6px;
+  opacity: 0;
+  transition: opacity .2s;
+  pointer-events: none;
+}
+
+.tip::after {
+  content: "";
+  position: absolute;
+  bottom: calc(100% + 2px);
+  left: 50%;
+  transform: translateX(-50%);
+  border: 6px solid transparent;
+  border-top-color: #1a1a2e;
+  opacity: 0;
+  transition: opacity .2s;
+  pointer-events: none;
+}
+
+.tip:hover::before,
+.tip:hover::after {
+  opacity: 1;
+}
+{%- endhighlight %}
+{% endblock %}

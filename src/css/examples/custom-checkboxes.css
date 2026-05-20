@@ -1,0 +1,52 @@
+﻿/*
+ * PureCSS.com
+ * https://purecss.com/examples/custom-checkboxes/
+ * Fully styled checkboxes using appearance:none and :checked.
+ */
+
+.demo-custom-checkboxes .check-group {
+	display: flex;
+	flex-direction: column;
+	gap: .5rem;
+}
+
+.demo-custom-checkboxes .check-label {
+	display: inline-flex;
+	align-items: center;
+	gap: .65rem;
+	cursor: pointer;
+	font-size: .95rem;
+	user-select: none;
+	margin: .25rem 0;
+}
+
+.demo-custom-checkboxes input[type="checkbox"] {
+	appearance: none;
+	-webkit-appearance: none;
+	width: 20px;
+	height: 20px;
+	border: 2px solid var(--border);
+	border-radius: 5px;
+	flex-shrink: 0;
+	position: relative;
+	transition: border-color .2s, background .2s;
+	cursor: pointer;
+}
+
+.demo-custom-checkboxes input[type="checkbox"]:checked {
+	background: var(--accent);
+	border-color: var(--accent);
+}
+
+.demo-custom-checkboxes input[type="checkbox"]:checked::after {
+	content: "";
+	position: absolute;
+	top: 2px;
+	left: 5px;
+	width: 6px;
+	height: 10px;
+	border: 2px solid var(--bg);
+	border-top: none;
+	border-left: none;
+	transform: rotate(45deg);
+}

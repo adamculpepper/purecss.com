@@ -1,0 +1,64 @@
+﻿---
+title: Accordion / FAQ
+description: Expandable content panels using the `&lt;details&gt;` and `&lt;summary&gt;` elements.
+slug: accordion
+cssFile: accordion.css
+explanation: The <code>&lt;details&gt;</code> element has built-in open/closed state managed by the browser. The <code>open</code> attribute is added/removed natively — no JavaScript. CSS targets <code>details[open]</code> to style the expanded state and animates the + icon with a rotate <code>transform</code>.
+---
+{% extends "example.njk" %}
+{% block demo %}
+<details open>
+	<summary>What is Pure CSS?</summary>
+	<div class="accordion-body">Pure CSS refers to techniques that achieve interactive UI patterns using only CSS — no JavaScript required.</div>
+</details>
+<details>
+	<summary>Which browsers are supported?</summary>
+	<div class="accordion-body">All modern browsers support the features used in these examples. Check caniuse.com for specific properties.</div>
+</details>
+<details>
+	<summary>Can I use these in production?</summary>
+	<div class="accordion-body">Yes! These are real CSS techniques used in production sites. Always consider accessibility requirements for your use case.</div>
+</details>
+{% endblock %}
+
+{% block html_code %}
+{%- highlight "html" %}
+<details>
+  <summary>Question here?</summary>
+  <div class="accordion-body">Answer here.</div>
+</details>
+{%- endhighlight %}
+{% endblock %}
+
+{% block css_code %}
+{%- highlight "css" %}
+details {
+  border: 1px solid #e2e2e8;
+  border-radius: 8px;
+  margin-bottom: .5rem;
+}
+
+summary {
+  padding: .9rem 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+}
+
+summary::after {
+  content: "+";
+  transition: transform .25s;
+}
+
+details[open] summary::after {
+  transform: rotate(45deg);
+}
+
+.accordion-body {
+  padding: 1rem 1.1rem;
+  border-top: 1px solid #e2e2e8;
+}
+{%- endhighlight %}
+{% endblock %}

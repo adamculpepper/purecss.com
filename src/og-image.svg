@@ -1,0 +1,110 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <pattern id="grid" width="60" height="60" patternUnits="userSpaceOnUse">
+      <path d="M 60 0 L 0 0 0 60" fill="none" stroke="rgba(255,255,255,0.035)" stroke-width="1"/>
+    </pattern>
+    <radialGradient id="glow" cx="30%" cy="50%" r="55%">
+      <stop offset="0%" stop-color="#b8ff57" stop-opacity="0.13"/>
+      <stop offset="100%" stop-color="#b8ff57" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="code-fade" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#0c0c0d" stop-opacity="0"/>
+      <stop offset="100%" stop-color="#0c0c0d" stop-opacity="1"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="630" fill="#0c0c0d"/>
+  <rect width="1200" height="630" fill="url(#grid)"/>
+  <ellipse cx="320" cy="315" rx="520" ry="380" fill="url(#glow)"/>
+
+  <!-- Logo -->
+  <text x="80" y="88" font-family="'Courier New', Courier, monospace" font-size="22" font-weight="700" fill="#f0f0f0">pure<tspan fill="#b8ff57">css</tspan></text>
+
+  <!-- Headline line 1: "CSS does more" -->
+  <text y="292" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, Arial, sans-serif" font-size="78" font-weight="800" letter-spacing="-3" fill="#f0f0f0">
+    <tspan x="80">CSS does </tspan><tspan font-family="Georgia, 'Times New Roman', serif" font-weight="400" font-style="italic" fill="#b8ff57">more</tspan>
+  </text>
+
+  <!-- Headline line 2: "than you think." -->
+  <text x="80" y="384" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, Arial, sans-serif" font-size="78" font-weight="800" letter-spacing="-3" fill="#f0f0f0">than you think.</text>
+
+  <!-- Subtitle -->
+  <text x="80" y="454" font-family="'Courier New', Courier, monospace" font-size="18" fill="#88888f">27 interactive patterns — zero JavaScript</text>
+
+  <!-- Accent bar -->
+  <rect x="80" y="478" width="52" height="3" rx="1.5" fill="#b8ff57"/>
+
+  <!-- URL -->
+  <text x="80" y="578" font-family="'Courier New', Courier, monospace" font-size="16" fill="#3a3a3f">purecss.com</text>
+
+  <!-- Code block -->
+  <rect x="720" y="94" width="410" height="438" rx="12" fill="#141415" stroke="#2a2a2d" stroke-width="1"/>
+
+  <!-- Editor dots -->
+  <circle cx="750" cy="125" r="5.5" fill="#ff6b6b" opacity="0.75"/>
+  <circle cx="771" cy="125" r="5.5" fill="#ffd444" opacity="0.75"/>
+  <circle cx="792" cy="125" r="5.5" fill="#57d9a3" opacity="0.75"/>
+
+  <!-- Separator under dots -->
+  <line x1="720" y1="142" x2="1130" y2="142" stroke="#2a2a2d" stroke-width="1"/>
+
+  <!-- /* toggle switch */ -->
+  <text x="748" y="172" font-family="'Courier New', Courier, monospace" font-size="13.5" fill="#5a5a65" font-style="italic">/* toggle switch */</text>
+
+  <!-- .toggle:checked ~ .panel { -->
+  <text x="748" y="196" font-family="'Courier New', Courier, monospace" font-size="13.5">
+    <tspan fill="#88d4f5">.toggle</tspan><tspan fill="#d9a6ff">:checked</tspan><tspan fill="#f0f0f0"> ~ </tspan><tspan fill="#88d4f5">.panel</tspan><tspan fill="#6a6a75"> {</tspan>
+  </text>
+
+  <!--   display: block; -->
+  <text x="766" y="218" font-family="'Courier New', Courier, monospace" font-size="13.5">
+    <tspan fill="#b8ff57">display</tspan><tspan fill="#6a6a75">: </tspan><tspan fill="#ffd080">block</tspan><tspan fill="#6a6a75">;</tspan>
+  </text>
+
+  <!-- } -->
+  <text x="748" y="240" font-family="'Courier New', Courier, monospace" font-size="13.5" fill="#6a6a75">}</text>
+
+  <!-- /* number counter */ -->
+  <text x="748" y="274" font-family="'Courier New', Courier, monospace" font-size="13.5" fill="#5a5a65" font-style="italic">/* number counter */</text>
+
+  <text x="748" y="298" font-family="'Courier New', Courier, monospace" font-size="13.5">
+    <tspan fill="#d9a6ff">@property</tspan><tspan fill="#f0f0f0"> </tspan><tspan fill="#b8ff57">&#x2D;&#x2D;target</tspan><tspan fill="#6a6a75"> {</tspan>
+  </text>
+
+  <!--   syntax: "<integer>"; -->
+  <text x="766" y="320" font-family="'Courier New', Courier, monospace" font-size="13.5">
+    <tspan fill="#b8ff57">syntax</tspan><tspan fill="#6a6a75">: </tspan><tspan fill="#ffd080">"&lt;integer&gt;"</tspan><tspan fill="#6a6a75">;</tspan>
+  </text>
+
+  <!--   initial-value: 0; -->
+  <text x="766" y="342" font-family="'Courier New', Courier, monospace" font-size="13.5">
+    <tspan fill="#b8ff57">initial-value</tspan><tspan fill="#6a6a75">: </tspan><tspan fill="#ffd080">0</tspan><tspan fill="#6a6a75">;</tspan>
+  </text>
+
+  <!-- } -->
+  <text x="748" y="364" font-family="'Courier New', Courier, monospace" font-size="13.5" fill="#6a6a75">}</text>
+
+  <!-- @keyframes count-up { -->
+  <text x="748" y="398" font-family="'Courier New', Courier, monospace" font-size="13.5">
+    <tspan fill="#d9a6ff">@keyframes</tspan><tspan fill="#f0f0f0"> count-up </tspan><tspan fill="#6a6a75">{</tspan>
+  </text>
+
+  <text x="766" y="420" font-family="'Courier New', Courier, monospace" font-size="13.5">
+    <tspan fill="#d9a6ff">from</tspan><tspan fill="#6a6a75"> { </tspan><tspan fill="#b8ff57">&#x2D;&#x2D;target</tspan><tspan fill="#6a6a75">: </tspan><tspan fill="#ffd080">0</tspan><tspan fill="#6a6a75">; }</tspan>
+  </text>
+
+  <!-- } -->
+  <text x="748" y="442" font-family="'Courier New', Courier, monospace" font-size="13.5" fill="#6a6a75">}</text>
+
+  <!-- /* scroll-driven */ -->
+  <text x="748" y="476" font-family="'Courier New', Courier, monospace" font-size="13.5" fill="#5a5a65" font-style="italic">/* scroll-driven */</text>
+
+  <!-- .bar { animation-timeline: scroll(); } -->
+  <text x="748" y="500" font-family="'Courier New', Courier, monospace" font-size="13.5">
+    <tspan fill="#88d4f5">.bar</tspan><tspan fill="#6a6a75"> { </tspan><tspan fill="#b8ff57">animation-timeline</tspan><tspan fill="#6a6a75">: </tspan><tspan fill="#ffd080">scroll()</tspan><tspan fill="#6a6a75">; }</tspan>
+  </text>
+
+  <!-- Right edge fade over code block -->
+  <rect x="960" y="94" width="170" height="438" fill="url(#code-fade)"/>
+</svg>

@@ -1,0 +1,28 @@
+﻿/*
+ * PureCSS.com
+ * https://purecss.com/examples/star-rating/
+ * Clickable star rating using radio inputs and the general sibling combinator.
+ */
+
+.demo-star-rating .stars {
+	display: inline-flex;
+	flex-direction: row-reverse;
+	gap: .25rem;
+}
+
+.demo-star-rating .stars input {
+	display: none;
+}
+
+.demo-star-rating .stars label {
+	font-size: 2rem;
+	color: var(--text-muted);
+	cursor: pointer;
+	transition: color .15s;
+}
+
+.demo-star-rating .stars input:checked ~ label,
+.demo-star-rating .stars label:hover,
+.demo-star-rating .stars label:hover ~ label {
+	color: var(--yellow);
+}

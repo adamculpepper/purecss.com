@@ -1,0 +1,47 @@
+﻿/*
+ * PureCSS.com
+ * https://purecss.com/examples/gradient-text/
+ * Text filled with a gradient using background-clip:text.
+ */
+
+.demo-gradient-text .grad {
+	font-size: 2.5rem;
+	font-weight: 800;
+	background: linear-gradient(90deg, var(--accent), var(--teal), var(--sky), var(--violet), var(--rose));
+	-webkit-background-clip: text;
+	background-clip: text;
+	-webkit-text-fill-color: transparent;
+	color: transparent;
+	display: inline-block;
+}
+
+.demo-gradient-text .grad-2 {
+	font-size: 2.5rem;
+	font-weight: 800;
+	background: linear-gradient(90deg, var(--accent), var(--teal), var(--sky), var(--violet), var(--rose));
+	-webkit-background-clip: text;
+	background-clip: text;
+	-webkit-text-fill-color: transparent;
+	color: transparent;
+	display: inline-block;
+}
+
+.demo-gradient-text .grad-animated {
+	font-size: 2.5rem;
+	font-weight: 800;
+	background: linear-gradient(90deg,
+		var(--accent), var(--teal), var(--sky), var(--violet), var(--rose)
+	);
+	background-size: 400% 100%;
+	-webkit-background-clip: text;
+	background-clip: text;
+	-webkit-text-fill-color: transparent;
+	color: transparent;
+	display: inline-block;
+	animation: gradient-shift 3s ease-in-out infinite alternate;
+}
+
+@keyframes gradient-shift {
+	from { background-position: 0% 50%; }
+	to   { background-position: 100% 50%; }
+}
