@@ -12,6 +12,7 @@ export default function (eleventyConfig) {
 	eleventyConfig.addPassthroughCopy("src/favicon.ico");
 	eleventyConfig.addPassthroughCopy("src/favicon.svg");
 	eleventyConfig.addPassthroughCopy("src/og-image.svg");
+	eleventyConfig.addPassthroughCopy({ "CNAME": "CNAME" });
 
 	eleventyConfig.on("eleventy.after", async () => {
 		const ogSvg = await readFile("./src/og-image.svg");
