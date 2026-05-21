@@ -11,5 +11,9 @@
     "@11ty/eleventy": "^3.0.0",
     "@11ty/eleventy-plugin-syntaxhighlight": "^5.0.0",
     "sharp": "^0.34.5"
+  },
+  "devDependencies": {
+    "postcss": "^8.5.15",
+    "postcss-nesting": "^14.0.0"
   }
 }

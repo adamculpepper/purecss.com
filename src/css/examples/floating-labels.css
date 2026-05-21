@@ -4,13 +4,12 @@
  * Form labels that float above the input on focus using :placeholder-shown.
  */
 
-.demo-floating-labels {
-	.field {
+.demo-floating-labels .field {
 		position: relative;
 		margin: .5rem 0;
 	}
 
-	input {
+.demo-floating-labels input {
 		width: 240px;
 		padding: 1.25rem 1rem .5rem;
 		border: 2px solid var(--border);
@@ -20,21 +19,20 @@
 		background: var(--surface);
 		outline: none;
 		transition: border-color .2s;
+	}
 
-		&:focus {
+:is(.demo-floating-labels input):focus {
 			border-color: var(--accent);
 		}
 
-		&:focus + label,
-		&:not(:placeholder-shown) + label {
+:is(.demo-floating-labels input):focus + label,:is(.demo-floating-labels input):not(:placeholder-shown) + label {
 			top: .5rem;
 			font-size: .75rem;
 			color: var(--accent);
 			transform: none;
 		}
-	}
 
-	label {
+.demo-floating-labels label {
 		position: absolute;
 		top: 50%;
 		left: 1rem;
@@ -44,4 +42,3 @@
 		pointer-events: none;
 		transition: top .2s, font-size .2s, color .2s;
 	}
-}

@@ -4,12 +4,11 @@
  * Radio inputs control which step panel is visible — no JavaScript, no page reload.
  */
 
-.demo-multi-step-form {
-	.msf-radio {
+.demo-multi-step-form .msf-radio {
 		display: none;
 	}
 
-	.msf-wrap {
+.demo-multi-step-form .msf-wrap {
 		max-width: 400px;
 		margin: 0 auto;
 		background: var(--surface);
@@ -18,13 +17,13 @@
 		overflow: hidden;
 	}
 
-	.msf-progress {
+.demo-multi-step-form .msf-progress {
 		display: flex;
 		background: var(--surface-2);
 		border-bottom: 1px solid var(--border);
 	}
 
-	.msf-step-label {
+.demo-multi-step-form .msf-step-label {
 		flex: 1;
 		padding: .6rem;
 		text-align: center;
@@ -34,23 +33,22 @@
 		position: relative;
 	}
 
-	.msf-body {
+.demo-multi-step-form .msf-body {
 		padding: 1.5rem;
 	}
 
-	.msf-panel {
+.demo-multi-step-form .msf-panel {
 		display: none;
 		flex-direction: column;
 		gap: .75rem;
+	}
 
-		h3 {
+:is(.demo-multi-step-form .msf-panel) h3 {
 			font-size: 1.1rem;
 			margin-bottom: .25rem;
 		}
 
-		input[type="text"],
-		input[type="email"],
-		input[type="tel"] {
+:is(.demo-multi-step-form .msf-panel) input[type="text"],:is(.demo-multi-step-form .msf-panel) input[type="email"],:is(.demo-multi-step-form .msf-panel) input[type="tel"] {
 			width: 100%;
 			padding: .65rem .9rem;
 			background: var(--surface-2);
@@ -63,18 +61,17 @@
 			transition: border-color .2s;
 		}
 
-		input:focus {
+:is(.demo-multi-step-form .msf-panel) input:focus {
 			border-color: var(--accent);
 		}
-	}
 
-	.msf-actions {
+.demo-multi-step-form .msf-actions {
 		display: flex;
 		gap: .5rem;
 		margin-top: .5rem;
 	}
 
-	.msf-btn {
+.demo-multi-step-form .msf-btn {
 		display: inline-block;
 		padding: .6rem 1.2rem;
 		background: var(--accent);
@@ -86,25 +83,24 @@
 		text-align: center;
 		user-select: none;
 		transition: opacity .15s;
-
-		&:hover {
-			opacity: .85;
-		}
 	}
 
-	.msf-btn-back {
+:is(.demo-multi-step-form .msf-btn):hover {
+			opacity: .85;
+		}
+
+.demo-multi-step-form .msf-btn-back {
 		background: var(--surface-2);
 		color: var(--text);
 		border: 1px solid var(--border);
 	}
 
-	.msf-success {
+.demo-multi-step-form .msf-success {
 		text-align: center;
 		padding: 1rem 0;
 		color: var(--teal);
 		font-size: 1rem;
 	}
-}
 
 /* Show the active panel */
 #msf-step1:checked ~ .msf-wrap .msf-panel-1 { display: flex; }

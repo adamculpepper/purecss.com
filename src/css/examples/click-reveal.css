@@ -4,12 +4,11 @@
  * Content that reveals on click using a checkbox as state.
  */
 
-.demo-click-reveal {
-	.reveal-check {
+.demo-click-reveal .reveal-check {
 		display: none;
 	}
 
-	.reveal-btn {
+.demo-click-reveal .reveal-btn {
 		display: inline-flex;
 		align-items: center;
 		gap: .5rem;
@@ -24,10 +23,11 @@
 		transition: background .2s, color .2s, border-color .2s;
 	}
 
-	.reveal-icon { flex-shrink: 0; }
-	.icon-lock   { display: none; }
+.demo-click-reveal .reveal-icon { flex-shrink: 0; }
 
-	.reveal-panel {
+.demo-click-reveal .icon-lock   { display: none; }
+
+.demo-click-reveal .reveal-panel {
 		display: none;
 		margin-top: 1rem;
 		padding: 1.25rem;
@@ -36,16 +36,16 @@
 		font-size: .95rem;
 	}
 
-	.reveal-check:checked ~ .reveal-btn {
+.demo-click-reveal .reveal-check:checked ~ .reveal-btn {
 		background: var(--accent);
 		color: var(--bg);
 		border-color: var(--accent);
 	}
 
-	.reveal-check:checked ~ .reveal-btn .icon-eye  { display: none; }
-	.reveal-check:checked ~ .reveal-btn .icon-lock { display: block; }
+.demo-click-reveal .reveal-check:checked ~ .reveal-btn .icon-eye  { display: none; }
 
-	.reveal-check:checked ~ .reveal-panel {
+.demo-click-reveal .reveal-check:checked ~ .reveal-btn .icon-lock { display: block; }
+
+.demo-click-reveal .reveal-check:checked ~ .reveal-panel {
 		display: block;
 	}
-}

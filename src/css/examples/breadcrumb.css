@@ -4,15 +4,14 @@
  * Navigation breadcrumbs with ::before arrow separators using CSS content.
  */
 
-.demo-breadcrumb {
-	.breadcrumb-variants {
+.demo-breadcrumb .breadcrumb-variants {
 		display: flex;
 		flex-direction: column;
 		gap: 1.5rem;
 		align-items: flex-start;
 	}
 
-	nav ol {
+.demo-breadcrumb nav ol {
 		list-style: none;
 		display: flex;
 		align-items: center;
@@ -20,42 +19,44 @@
 		gap: 0;
 	}
 
-	nav li {
+.demo-breadcrumb nav li {
 		display: flex;
 		align-items: center;
 		font-size: .9rem;
+	}
 
-		& + li::before {
+:is(.demo-breadcrumb nav li) + li::before {
 			content: "/";
 			color: var(--text-muted);
 			margin: 0 .5rem;
 		}
 
-		&:last-child {
+:is(.demo-breadcrumb nav li):last-child {
 			color: var(--text);
 			font-weight: 500;
 		}
-	}
 
-	nav a {
+.demo-breadcrumb nav a {
 		color: var(--text-muted);
 		text-decoration: none;
 		transition: color .15s;
-
-		&:hover {
-			color: var(--accent);
-		}
 	}
 
-	/* Arrow variant */
-	.bc-arrow li + li::before {
+:is(.demo-breadcrumb nav a):hover {
+			color: var(--accent);
+		}
+
+/* Arrow variant */
+
+.demo-breadcrumb .bc-arrow li + li::before {
 		content: "›";
 		font-size: 1.1rem;
 		line-height: 1;
 	}
 
-	/* Chevron variant */
-	.bc-chevron li + li::before {
+/* Chevron variant */
+
+.demo-breadcrumb .bc-chevron li + li::before {
 		content: "";
 		display: inline-block;
 		width: 6px;
@@ -66,24 +67,24 @@
 		margin: 0 .6rem;
 	}
 
-	/* Pill variant */
-	.bc-pill li {
+/* Pill variant */
+
+.demo-breadcrumb .bc-pill li {
 		background: var(--surface-2);
 		padding: .25rem .75rem;
 		border-radius: 99px;
 		font-size: .8rem;
+	}
 
-		& + li::before {
+:is(.demo-breadcrumb .bc-pill li) + li::before {
 			display: none;
 		}
 
-		& + li {
+:is(.demo-breadcrumb .bc-pill li) + li {
 			margin-left: .35rem;
 		}
 
-		&:last-child {
+:is(.demo-breadcrumb .bc-pill li):last-child {
 			background: var(--accent-dim);
 			color: var(--accent);
 		}
-	}
-}

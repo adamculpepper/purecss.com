@@ -24,67 +24,65 @@
 	from { --decimal: 0; }
 }
 
-.demo-number-counter {
-	.counter-grid {
+.demo-number-counter .counter-grid {
 		display: flex;
 		gap: 2rem;
 		flex-wrap: wrap;
 		justify-content: center;
 	}
 
-	.counter-item {
+.demo-number-counter .counter-item {
 		text-align: center;
 	}
 
-	.counter-value {
+.demo-number-counter .counter-value {
 		font-size: 2.5rem;
 		font-weight: 800;
 		color: var(--accent);
 		counter-reset: num var(--target);
 		animation: count-up var(--count-dur, 2s) ease-out forwards;
+	}
 
-		&::after {
+:is(.demo-number-counter .counter-value)::after {
 			content: counter(num);
 		}
 
-		&[data-suffix]::after {
+[data-suffix]:is(.demo-number-counter .counter-value)::after {
 			content: counter(num) attr(data-suffix);
 		}
 
-		&.counter-decimal {
+.counter-decimal:is(.demo-number-counter .counter-value) {
 			counter-reset: num var(--target) frac var(--decimal);
 			animation: count-up var(--count-dur, 2s) ease-out forwards, count-frac var(--count-dur, 2s) ease-out forwards;
+		}
 
-			&::after {
+.counter-decimal:is(.demo-number-counter .counter-value)::after {
 				content: counter(num) "." counter(frac);
 			}
-		}
-	}
 
-	.counter-label {
+.demo-number-counter .counter-label {
 		font-size: .85rem;
 		color: var(--text-muted);
 		margin-top: .25rem;
 	}
 
-	/* ── Controls ─── */
+/* ── Controls ─── */
 
-	.counter-preview-wrap {
+.demo-number-counter .counter-preview-wrap {
 		display: flex;
 		flex-direction: column;
 		align-items: center;
 		gap: 1.75rem;
 	}
 
-	.counter-controls {
+.demo-number-counter .counter-controls {
 		display: flex;
 		gap: .35rem;
 		justify-content: center;
 		align-items: center;
 	}
 
-	.counter-speed-btn,
-	.counter-restart-mini {
+.demo-number-counter .counter-speed-btn,.demo-number-counter .counter-restart-mini {
 		display: inline-flex;
 		align-items: center;
 		justify-content: center;
@@ -100,22 +98,20 @@
 		line-height: 1;
 	}
 
-	.counter-restart-mini {
+.demo-number-counter .counter-restart-mini {
 		font-size: .8rem;
 		padding: .2rem .45rem;
 	}
 
-	.counter-speed-btn.active,
-	.counter-speed-btn:hover,
-	.counter-restart-mini:hover {
+.demo-number-counter .counter-speed-btn.active,.demo-number-counter .counter-speed-btn:hover,.demo-number-counter .counter-restart-mini:hover {
 		color: var(--text);
 		border-color: var(--accent);
 		background: var(--accent-dim);
 	}
 
-	/* ── Absolute restart (example page) ─── */
+/* ── Absolute restart (example page) ─── */
 
-	.counter-restart {
+.demo-number-counter .counter-restart {
 		position: absolute;
 		bottom: .75rem;
 		right: .75rem;
@@ -131,10 +127,9 @@
 		padding: .3rem .7rem;
 		cursor: pointer;
 		transition: color .15s, border-color .15s;
+	}
 
-		&:hover {
+:is(.demo-number-counter .counter-restart):hover {
 			color: var(--text);
 			border-color: var(--text-muted);
 		}
-	}
-}

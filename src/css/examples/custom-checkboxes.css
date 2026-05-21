@@ -4,14 +4,13 @@
  * Fully styled checkboxes using appearance:none and :checked.
  */
 
-.demo-custom-checkboxes {
-	.check-group {
+.demo-custom-checkboxes .check-group {
 		display: flex;
 		flex-direction: column;
 		gap: .5rem;
 	}
 
-	.check-label {
+.demo-custom-checkboxes .check-label {
 		display: inline-flex;
 		align-items: center;
 		gap: .65rem;
@@ -21,7 +20,7 @@
 		margin: .25rem 0;
 	}
 
-	input[type="checkbox"] {
+.demo-custom-checkboxes input[type="checkbox"] {
 		appearance: none;
 		-webkit-appearance: none;
 		width: 20px;
@@ -32,12 +31,14 @@
 		position: relative;
 		transition: border-color .2s, background .2s;
 		cursor: pointer;
+	}
 
-		&:checked {
+:is(.demo-custom-checkboxes input[type="checkbox"]):checked {
 			background: var(--accent);
 			border-color: var(--accent);
+		}
 
-			&::after {
+:is(.demo-custom-checkboxes input[type="checkbox"]):checked::after {
 				content: "";
 				position: absolute;
 				top: 2px;
@@ -49,6 +50,3 @@
 				border-left: none;
 				transform: rotate(45deg);
 			}
-		}
-	}
-}

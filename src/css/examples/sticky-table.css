@@ -4,21 +4,20 @@
  * A table header that stays fixed while scrolling using position: sticky on <thead>.
  */
 
-.demo-sticky-table {
-	.table-scroll {
+.demo-sticky-table .table-scroll {
 		max-height: 240px;
 		overflow-y: auto;
 		border: 1px solid var(--border);
 		border-radius: var(--radius-lg);
 	}
 
-	table {
+.demo-sticky-table table {
 		width: 100%;
 		border-collapse: collapse;
 		font-size: .875rem;
 	}
 
-	thead th {
+.demo-sticky-table thead th {
 		position: sticky;
 		top: 0;
 		z-index: 1;
@@ -33,29 +32,29 @@
 		border-bottom: 1px solid var(--border);
 	}
 
-	tbody tr {
+.demo-sticky-table tbody tr {
 		border-bottom: 1px solid var(--border);
 		transition: background .15s;
+	}
 
-		&:last-child {
+:is(.demo-sticky-table tbody tr):last-child {
 			border-bottom: none;
 		}
 
-		&:hover {
+:is(.demo-sticky-table tbody tr):hover {
 			background: var(--surface-2);
 		}
-	}
 
-	tbody td {
+.demo-sticky-table tbody td {
 		padding: .65rem 1rem;
 		color: var(--text);
-
-		&:first-child {
-			font-weight: 500;
-		}
 	}
 
-	.badge-status {
+:is(.demo-sticky-table tbody td):first-child {
+			font-weight: 500;
+		}
+
+.demo-sticky-table .badge-status {
 		display: inline-block;
 		padding: .2rem .6rem;
 		border-radius: 99px;
@@ -63,18 +62,17 @@
 		font-weight: 600;
 	}
 
-	.badge-active {
+.demo-sticky-table .badge-active {
 		background: rgba(87, 217, 163, .12);
 		color: var(--teal);
 	}
 
-	.badge-pending {
+.demo-sticky-table .badge-pending {
 		background: rgba(255, 212, 68, .12);
 		color: var(--yellow);
 	}
 
-	.badge-inactive {
+.demo-sticky-table .badge-inactive {
 		background: var(--surface-2);
 		color: var(--text-muted);
 	}
-}

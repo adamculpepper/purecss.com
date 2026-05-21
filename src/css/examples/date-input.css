@@ -4,8 +4,7 @@
  * Custom styling for <input type="date"> including the calendar icon via CSS.
  */
 
-.demo-date-input {
-	.date-wrap {
+.demo-date-input .date-wrap {
 		display: flex;
 		flex-direction: column;
 		gap: 1rem;
@@ -13,19 +12,19 @@
 		margin: 0 auto;
 	}
 
-	.date-field {
+.demo-date-input .date-field {
 		display: flex;
 		flex-direction: column;
 		gap: .3rem;
 	}
 
-	label {
+.demo-date-input label {
 		font-size: .82rem;
 		color: var(--text-muted);
 		font-weight: 500;
 	}
 
-	input[type="date"] {
+.demo-date-input input[type="date"] {
 		appearance: none;
 		-webkit-appearance: none;
 		width: 100%;
@@ -39,38 +38,37 @@
 		outline: none;
 		cursor: pointer;
 		transition: border-color .2s;
+	}
 
-		&:focus {
+:is(.demo-date-input input[type="date"]):focus {
 			border-color: var(--accent);
 		}
 
-		&:hover {
+:is(.demo-date-input input[type="date"]):hover {
 			border-color: var(--text-muted);
 		}
 
-		&::-webkit-calendar-picker-indicator {
+:is(.demo-date-input input[type="date"])::-webkit-calendar-picker-indicator {
 			filter: invert(1) opacity(.5);
 			cursor: pointer;
-
-			&:hover {
-				filter: invert(1) opacity(1);
-			}
 		}
 
-		&::-webkit-datetime-edit {
+:is(:is(.demo-date-input input[type="date"])::-webkit-calendar-picker-indicator):hover {
+				filter: invert(1) opacity(1);
+			}
+
+:is(.demo-date-input input[type="date"])::-webkit-datetime-edit {
 			color: var(--text);
 		}
 
-		&::-webkit-datetime-edit-fields-wrapper {
+:is(.demo-date-input input[type="date"])::-webkit-datetime-edit-fields-wrapper {
 			padding: 0;
 		}
 
-		&::-webkit-inner-spin-button {
+:is(.demo-date-input input[type="date"])::-webkit-inner-spin-button {
 			display: none;
 		}
 
-		&.date-accent {
+.date-accent:is(.demo-date-input input[type="date"]) {
 			border-color: var(--accent);
 		}
-	}
-}

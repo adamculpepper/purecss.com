@@ -4,27 +4,23 @@
  * Clickable star rating using radio inputs and the general sibling combinator.
  */
 
-.demo-star-rating {
-	.stars {
+.demo-star-rating .stars {
 		display: inline-flex;
 		flex-direction: row-reverse;
 		gap: .25rem;
+	}
 
-		input {
+:is(.demo-star-rating .stars) input {
 			display: none;
 		}
 
-		label {
+:is(.demo-star-rating .stars) label {
 			font-size: 2rem;
 			color: var(--text-muted);
 			cursor: pointer;
 			transition: color .15s;
 		}
 
-		input:checked ~ label,
-		label:hover,
-		label:hover ~ label {
+:is(.demo-star-rating .stars) input:checked ~ label,:is(.demo-star-rating .stars) label:hover,:is(.demo-star-rating .stars) label:hover ~ label {
 			color: var(--yellow);
 		}
-	}
-}

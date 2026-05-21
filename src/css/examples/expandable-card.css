@@ -10,19 +10,20 @@
 	gap: .6rem;
 	width: 100%;
 	max-width: 420px;
+}
 
-	.exp-card {
+.demo-expandable-card .exp-card {
 		background: var(--surface);
 		border: 1px solid var(--border);
 		border-radius: var(--radius-lg);
 		overflow: hidden;
 	}
 
-	.exp-toggle {
+.demo-expandable-card .exp-toggle {
 		display: none;
 	}
 
-	.exp-header {
+.demo-expandable-card .exp-header {
 		padding: .9rem 1.1rem;
 		display: flex;
 		align-items: center;
@@ -31,19 +32,19 @@
 		cursor: pointer;
 		user-select: none;
 		transition: background .15s;
-
-		&:hover {
-			background: var(--surface-2);
-		}
 	}
 
-	.exp-title {
+:is(.demo-expandable-card .exp-header):hover {
+			background: var(--surface-2);
+		}
+
+.demo-expandable-card .exp-title {
 		font-size: .9rem;
 		font-weight: 600;
 		color: var(--text);
 	}
 
-	.exp-icon {
+.demo-expandable-card .exp-icon {
 		width: 22px;
 		height: 22px;
 		border: 1.5px solid var(--text-muted);
@@ -58,17 +59,17 @@
 		transition: transform .35s ease, border-color .2s, color .2s;
 	}
 
-	.exp-body {
+.demo-expandable-card .exp-body {
 		display: grid;
 		grid-template-rows: 0fr;
 		transition: grid-template-rows .35s ease;
 	}
 
-	.exp-inner {
+.demo-expandable-card .exp-inner {
 		overflow: hidden;
 	}
 
-	.exp-content {
+.demo-expandable-card .exp-content {
 		padding: .9rem 1.1rem;
 		font-size: .85rem;
 		color: var(--text-muted);
@@ -76,13 +77,12 @@
 		border-top: 1px solid var(--border);
 	}
 
-	.exp-toggle:checked ~ .exp-header .exp-icon {
+.demo-expandable-card .exp-toggle:checked ~ .exp-header .exp-icon {
 		transform: rotate(45deg);
 		border-color: var(--accent);
 		color: var(--accent);
 	}
 
-	.exp-toggle:checked ~ .exp-body {
+.demo-expandable-card .exp-toggle:checked ~ .exp-body {
 		grid-template-rows: 1fr;
 	}
-}

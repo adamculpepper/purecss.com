@@ -4,23 +4,22 @@
  * Tabbed interface using radio inputs and the :checked pseudo-class.
  */
 
-.demo-tab-navigation {
-	.tabs {
+.demo-tab-navigation .tabs {
 		display: flex;
 		flex-direction: column;
 		width: 320px;
 	}
 
-	.tab-inputs {
+.demo-tab-navigation .tab-inputs {
 		display: none;
 	}
 
-	.tab-labels {
+.demo-tab-navigation .tab-labels {
 		display: flex;
 		border-bottom: 2px solid var(--border);
 	}
 
-	.tab-label {
+.demo-tab-navigation .tab-label {
 		padding: .6rem 1.1rem;
 		cursor: pointer;
 		font-size: .9rem;
@@ -30,19 +29,18 @@
 		margin-bottom: -2px;
 		user-select: none;
 		transition: color .2s;
-
-		&:hover {
-			color: var(--accent);
-		}
 	}
 
-	.tab-panel {
+:is(.demo-tab-navigation .tab-label):hover {
+			color: var(--accent);
+		}
+
+.demo-tab-navigation .tab-panel {
 		display: none;
 		padding: 1.25rem 0;
 		font-size: .9rem;
 		color: var(--text);
 	}
-}
 
 #demo-tab-navigation-t1:checked ~ .tab-labels label[for="demo-tab-navigation-t1"],
 #demo-tab-navigation-t2:checked ~ .tab-labels label[for="demo-tab-navigation-t2"],

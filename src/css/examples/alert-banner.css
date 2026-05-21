@@ -4,14 +4,13 @@
  * Info, success, warning, and error alert variants styled with CSS custom properties.
  */
 
-.demo-alert-banner {
-	.alerts {
+.demo-alert-banner .alerts {
 		display: flex;
 		flex-direction: column;
 		gap: .65rem;
 	}
 
-	.alert {
+.demo-alert-banner .alert {
 		display: flex;
 		align-items: flex-start;
 		gap: .75rem;
@@ -22,58 +21,59 @@
 		line-height: 1.5;
 	}
 
-	.alert-icon {
+.demo-alert-banner .alert-icon {
 		font-size: 1rem;
 		flex-shrink: 0;
 		margin-top: .05rem;
 	}
 
-	.alert-body {
+.demo-alert-banner .alert-body {
 		flex: 1;
+	}
 
-		strong {
+:is(.demo-alert-banner .alert-body) strong {
 			display: block;
 			font-size: .875rem;
 			font-weight: 600;
 			margin-bottom: .1rem;
 		}
-	}
 
-	.alert-info {
+.demo-alert-banner .alert-info {
 		background: var(--sky-dim);
 		border-color: var(--sky);
 		color: var(--sky);
 	}
 
-	.alert-success {
+.demo-alert-banner .alert-success {
 		background: rgba(87,217,163,.1);
 		border-color: var(--teal);
 		color: var(--teal);
 	}
 
-	.alert-warning {
+.demo-alert-banner .alert-warning {
 		background: var(--yellow-dim);
 		border-color: var(--yellow);
 		color: var(--yellow);
 	}
 
-	.alert-error {
+.demo-alert-banner .alert-error {
 		background: var(--coral-dim);
 		border-color: var(--coral);
 		color: var(--coral);
 	}
 
-	/* Dismissible variant */
-	.alert-dismiss-input {
+/* Dismissible variant */
+
+.demo-alert-banner .alert-dismiss-input {
 		display: none;
 	}
 
-	.alert-dismissible {
+.demo-alert-banner .alert-dismissible {
 		position: relative;
 		transition: opacity .2s, max-height .3s;
 	}
 
-	.alert-close {
+.demo-alert-banner .alert-close {
 		margin-left: auto;
 		cursor: pointer;
 		opacity: .6;
@@ -81,13 +81,12 @@
 		line-height: 1;
 		flex-shrink: 0;
 		user-select: none;
+	}
 
-		&:hover {
+:is(.demo-alert-banner .alert-close):hover {
 			opacity: 1;
 		}
-	}
 
-	.alert-dismiss-input:checked ~ .alert-dismissible {
+.demo-alert-banner .alert-dismiss-input:checked ~ .alert-dismissible {
 		display: none;
 	}
-}

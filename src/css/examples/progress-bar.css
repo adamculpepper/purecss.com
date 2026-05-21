@@ -4,22 +4,21 @@
  * Animated progress bars using the <progress> element and CSS.
  */
 
-.demo-progress-bar {
-	.progress-row {
+.demo-progress-bar .progress-row {
 		display: flex;
 		align-items: center;
 		gap: 1rem;
 		margin: .5rem 0;
 	}
 
-	.progress-label {
+.demo-progress-bar .progress-label {
 		font-size: .85rem;
 		color: var(--text-muted);
 		width: 60px;
 		flex-shrink: 0;
 	}
 
-	progress {
+.demo-progress-bar progress {
 		-webkit-appearance: none;
 		appearance: none;
 		flex: 1;
@@ -27,40 +26,43 @@
 		border: none;
 		border-radius: 999px;
 		overflow: hidden;
+	}
 
-		&::-webkit-progress-bar {
+:is(.demo-progress-bar progress)::-webkit-progress-bar {
 			background: var(--surface-2);
 			border-radius: 999px;
 		}
 
-		&::-webkit-progress-value {
+:is(.demo-progress-bar progress)::-webkit-progress-value {
 			background: var(--accent);
 			border-radius: 999px;
 			transition: width .3s;
 		}
 
-		&::-moz-progress-bar {
+:is(.demo-progress-bar progress)::-moz-progress-bar {
 			background: var(--accent);
 			border-radius: 999px;
 		}
 
-		&.success::-webkit-progress-value {
+.success:is(.demo-progress-bar progress)::-webkit-progress-value {
 			background: var(--teal);
 		}
 
-		&.warning::-webkit-progress-value {
+.warning:is(.demo-progress-bar progress)::-webkit-progress-value {
 			background: var(--orange);
 		}
 
-		&.danger::-webkit-progress-value {
+.danger:is(.demo-progress-bar progress)::-webkit-progress-value {
 			background: var(--coral);
 		}
 
-		&.success::-moz-progress-bar { background: var(--teal); }
-		&.warning::-moz-progress-bar { background: var(--orange); }
-		&.danger::-moz-progress-bar  { background: var(--coral); }
+.success:is(.demo-progress-bar progress)::-moz-progress-bar { background: var(--teal); }
 
-		&.shimmer::-webkit-progress-value {
+.warning:is(.demo-progress-bar progress)::-moz-progress-bar { background: var(--orange); }
+
+.danger:is(.demo-progress-bar progress)::-moz-progress-bar  { background: var(--coral); }
+
+.shimmer:is(.demo-progress-bar progress)::-webkit-progress-value {
 			background: linear-gradient(90deg,
 				var(--accent) 30%,
 				rgba(255,255,255,.3) 50%,
@@ -70,7 +72,7 @@
 			animation: progress-shimmer 1.4s linear infinite;
 		}
 
-		&.shimmer::-moz-progress-bar {
+.shimmer:is(.demo-progress-bar progress)::-moz-progress-bar {
 			background: linear-gradient(90deg,
 				var(--accent) 30%,
 				rgba(255,255,255,.3) 50%,
@@ -79,8 +81,6 @@
 			background-size: 200% 100%;
 			animation: progress-shimmer 1.4s linear infinite;
 		}
-	}
-}
 
 @keyframes progress-shimmer {
 	0%   { background-position: 200% 0; }

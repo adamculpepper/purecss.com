@@ -4,12 +4,11 @@
  * Toggle visibility of content using a checkbox and the ~ combinator.
  */
 
-.demo-show-hide-content {
-	.toggle-check {
+.demo-show-hide-content .toggle-check {
 		display: none;
 	}
 
-	.toggle-btn {
+.demo-show-hide-content .toggle-btn {
 		display: inline-block;
 		padding: .6rem 1.25rem;
 		background: var(--accent);
@@ -19,13 +18,13 @@
 		font-size: .95rem;
 		user-select: none;
 		transition: background .2s;
-
-		&:hover {
-			background: var(--accent);
-		}
 	}
 
-	.toggle-content {
+:is(.demo-show-hide-content .toggle-btn):hover {
+			background: var(--accent);
+		}
+
+.demo-show-hide-content .toggle-content {
 		display: none;
 		margin-top: 1rem;
 		padding: 1rem 1.25rem;
@@ -35,11 +34,10 @@
 		font-size: .95rem;
 	}
 
-	.toggle-check:checked ~ .toggle-content {
+.demo-show-hide-content .toggle-check:checked ~ .toggle-content {
 		display: block;
 	}
 
-	.toggle-check:checked ~ .toggle-btn {
+.demo-show-hide-content .toggle-check:checked ~ .toggle-btn {
 		background: var(--accent);
 	}
-}

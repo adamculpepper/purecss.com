@@ -4,19 +4,18 @@
  * A two-stage destructive action button that uses a checkbox to reveal the confirm step.
  */
 
-.demo-confirm-button {
-	.confirm-wrap {
+.demo-confirm-button .confirm-wrap {
 		display: flex;
 		flex-direction: column;
 		align-items: center;
 		gap: 1.25rem;
 	}
 
-	.confirm-input {
+.demo-confirm-button .confirm-input {
 		display: none;
 	}
 
-	.btn-trigger {
+.demo-confirm-button .btn-trigger {
 		display: inline-flex;
 		align-items: center;
 		gap: .5rem;
@@ -30,18 +29,18 @@
 		user-select: none;
 	}
 
-	.btn-danger {
+.demo-confirm-button .btn-danger {
 		background: var(--coral-dim);
 		color: var(--coral);
 		border: 2px solid var(--coral);
+	}
 
-		&:hover {
+:is(.demo-confirm-button .btn-danger):hover {
 			background: var(--coral);
 			color: #fff;
 		}
-	}
 
-	.confirm-panel {
+.demo-confirm-button .confirm-panel {
 		display: none;
 		align-items: center;
 		gap: .75rem;
@@ -50,15 +49,15 @@
 		border-radius: var(--radius-lg);
 		padding: .75rem 1.25rem;
 		animation: confirm-slide-in .2s ease;
+	}
 
-		p {
+:is(.demo-confirm-button .confirm-panel) p {
 			font-size: .9rem;
 			color: var(--text-muted);
 			white-space: nowrap;
 		}
-	}
 
-	.btn-yes {
+.demo-confirm-button .btn-yes {
 		padding: .45rem 1rem;
 		background: var(--coral);
 		color: #fff;
@@ -69,13 +68,13 @@
 		font-weight: 600;
 		cursor: pointer;
 		transition: opacity .15s;
-
-		&:hover {
-			opacity: .85;
-		}
 	}
 
-	.btn-cancel {
+:is(.demo-confirm-button .btn-yes):hover {
+			opacity: .85;
+		}
+
+.demo-confirm-button .btn-cancel {
 		padding: .45rem 1rem;
 		background: var(--surface-2);
 		color: var(--text-muted);
@@ -86,21 +85,20 @@
 		user-select: none;
 		display: inline-block;
 		transition: color .15s;
-
-		&:hover {
-			color: var(--text);
-		}
 	}
 
-	.confirm-input:checked ~ .confirm-panel {
+:is(.demo-confirm-button .btn-cancel):hover {
+			color: var(--text);
+		}
+
+.demo-confirm-button .confirm-input:checked ~ .confirm-panel {
 		display: flex;
 	}
 
-	.confirm-input:checked ~ .btn-trigger {
+.demo-confirm-button .confirm-input:checked ~ .btn-trigger {
 		opacity: .4;
 		pointer-events: none;
 	}
-}
 
 @keyframes confirm-slide-in {
 	from { opacity: 0; transform: translateY(-8px); }

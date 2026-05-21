@@ -10,15 +10,14 @@
 	inherits: false;
 }
 
-.demo-countdown-timer {
-	.timer-wrap {
+.demo-countdown-timer .timer-wrap {
 		display: flex;
 		flex-direction: column;
 		align-items: center;
 		gap: 1.5rem;
 	}
 
-	.timer-display {
+.demo-countdown-timer .timer-display {
 		position: relative;
 		width: 140px;
 		height: 140px;
@@ -27,7 +26,7 @@
 		justify-content: center;
 	}
 
-	.timer-ring {
+.demo-countdown-timer .timer-ring {
 		position: absolute;
 		inset: 0;
 		border-radius: 50%;
@@ -35,7 +34,7 @@
 		animation: countdown-ring 10s steps(10) infinite;
 	}
 
-	.timer-inner {
+.demo-countdown-timer .timer-inner {
 		position: absolute;
 		inset: 8px;
 		background: var(--bg);
@@ -45,7 +44,7 @@
 		justify-content: center;
 	}
 
-	.timer-num {
+.demo-countdown-timer .timer-num {
 		--countdown: 10;
 		counter-reset: num var(--countdown);
 		font-size: 3rem;
@@ -54,19 +53,18 @@
 		color: var(--accent);
 		animation: countdown-num 10s steps(10) infinite;
 		line-height: 1;
-
-		&::after {
-			content: counter(num);
-		}
 	}
 
-	.timer-label {
+:is(.demo-countdown-timer .timer-num)::after {
+			content: counter(num);
+		}
+
+.demo-countdown-timer .timer-label {
 		font-size: .8rem;
 		color: var(--text-muted);
 		letter-spacing: .1em;
 		text-transform: uppercase;
 	}
-}
 
 @keyframes countdown-ring {
 	from { --countdown: 10; }

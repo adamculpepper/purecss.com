@@ -4,15 +4,14 @@
  * Text typed letter by letter using a @keyframes width animation with steps() timing.
  */
 
-.demo-typewriter {
-	.tw-stage {
+.demo-typewriter .tw-stage {
 		display: flex;
 		flex-direction: column;
 		gap: 1.25rem;
 		padding: .5rem;
 	}
 
-	.tw-line {
+.demo-typewriter .tw-line {
 		overflow: hidden;
 		white-space: nowrap;
 		width: 0;
@@ -20,7 +19,7 @@
 		border-right: 2px solid var(--accent);
 	}
 
-	.tw-line-1 {
+.demo-typewriter .tw-line-1 {
 		font-size: 1.5rem;
 		font-weight: 600;
 		color: var(--text);
@@ -29,7 +28,7 @@
 			tw-cursor .7s step-end infinite;
 	}
 
-	.tw-line-2 {
+.demo-typewriter .tw-line-2 {
 		font-size: 1rem;
 		color: var(--accent);
 		animation:
@@ -38,7 +37,7 @@
 		border-right-color: var(--teal);
 	}
 
-	.tw-line-3 {
+.demo-typewriter .tw-line-3 {
 		font-size: .85rem;
 		color: var(--text-muted);
 		animation:
@@ -46,7 +45,6 @@
 			tw-cursor .7s step-end 3.4s infinite;
 		border-right-color: var(--text-muted);
 	}
-}
 
 @keyframes tw-type-1 { to { width: 18ch; } }
 @keyframes tw-type-2 { to { width: 14ch; } }

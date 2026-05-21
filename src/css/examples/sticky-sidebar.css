@@ -4,8 +4,7 @@
  * A sidebar that sticks to the viewport while scrolling using position: sticky.
  */
 
-.demo-sticky-sidebar {
-	.sticky-layout {
+.demo-sticky-sidebar .sticky-layout {
 		display: grid;
 		grid-template-columns: 180px 1fr;
 		gap: 1.5rem;
@@ -13,7 +12,7 @@
 		overflow-y: auto;
 	}
 
-	.sticky-nav {
+.demo-sticky-sidebar .sticky-nav {
 		position: sticky;
 		top: 0;
 		align-self: start;
@@ -22,8 +21,9 @@
 		border-radius: var(--radius);
 		padding: .75rem;
 		height: fit-content;
+	}
 
-		h3 {
+:is(.demo-sticky-sidebar .sticky-nav) h3 {
 			font-size: .75rem;
 			text-transform: uppercase;
 			letter-spacing: .08em;
@@ -31,14 +31,14 @@
 			margin-bottom: .5rem;
 		}
 
-		ul {
+:is(.demo-sticky-sidebar .sticky-nav) ul {
 			list-style: none;
 			display: flex;
 			flex-direction: column;
 			gap: .1rem;
 		}
 
-		li a {
+:is(.demo-sticky-sidebar .sticky-nav) li a {
 			display: block;
 			padding: .4rem .6rem;
 			border-radius: 6px;
@@ -46,42 +46,40 @@
 			text-decoration: none;
 			font-size: .875rem;
 			transition: background .15s, color .15s;
+		}
 
-			&:hover {
+:is(:is(.demo-sticky-sidebar .sticky-nav) li a):hover {
 				background: var(--accent-dim);
 				color: var(--accent);
 			}
 
-			&.active {
+.active:is(:is(.demo-sticky-sidebar .sticky-nav) li a) {
 				background: var(--accent-dim);
 				color: var(--accent);
 				font-weight: 600;
 			}
-		}
-	}
 
-	.sticky-content {
+.demo-sticky-sidebar .sticky-content {
 		display: flex;
 		flex-direction: column;
 		gap: 1rem;
 	}
 
-	.content-block {
+.demo-sticky-sidebar .content-block {
 		background: var(--surface);
 		border: 1px solid var(--border);
 		border-radius: var(--radius);
 		padding: 1rem;
+	}
 
-		h4 {
+:is(.demo-sticky-sidebar .content-block) h4 {
 			font-size: .9rem;
 			margin-bottom: .4rem;
 			color: var(--accent);
 		}
 
-		p {
+:is(.demo-sticky-sidebar .content-block) p {
 			font-size: .82rem;
 			color: var(--text-muted);
 			line-height: 1.5;
 		}
-	}
-}

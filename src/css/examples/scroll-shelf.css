@@ -4,12 +4,11 @@
  * A horizontally scrollable content shelf with scroll-snap for clean stopping points.
  */
 
-.demo-scroll-shelf {
-	.shelf-wrap {
+.demo-scroll-shelf .shelf-wrap {
 		position: relative;
 	}
 
-	.shelf {
+.demo-scroll-shelf .shelf {
 		display: flex;
 		gap: .75rem;
 		overflow-x: auto;
@@ -17,27 +16,27 @@
 		scroll-behavior: smooth;
 		padding-bottom: .5rem;
 		-webkit-overflow-scrolling: touch;
+	}
 
-		&::-webkit-scrollbar {
+:is(.demo-scroll-shelf .shelf)::-webkit-scrollbar {
 			height: 4px;
 		}
 
-		&::-webkit-scrollbar-track {
+:is(.demo-scroll-shelf .shelf)::-webkit-scrollbar-track {
 			background: var(--surface-2);
 			border-radius: 2px;
 		}
 
-		&::-webkit-scrollbar-thumb {
+:is(.demo-scroll-shelf .shelf)::-webkit-scrollbar-thumb {
 			background: var(--border);
 			border-radius: 2px;
+		}
 
-			&:hover {
+:is(:is(.demo-scroll-shelf .shelf)::-webkit-scrollbar-thumb):hover {
 				background: var(--text-muted);
 			}
-		}
-	}
 
-	.shelf-item {
+.demo-scroll-shelf .shelf-item {
 		flex: 0 0 160px;
 		scroll-snap-align: start;
 		background: var(--surface);
@@ -45,45 +44,50 @@
 		border-radius: var(--radius-lg);
 		overflow: hidden;
 		transition: border-color .2s;
+	}
 
-		&:hover {
+:is(.demo-scroll-shelf .shelf-item):hover {
 			border-color: var(--accent);
 		}
 
-		&:nth-child(1) .shelf-thumb { background: linear-gradient(135deg, var(--violet), var(--sky)); }
-		&:nth-child(2) .shelf-thumb { background: linear-gradient(135deg, var(--accent), var(--teal)); }
-		&:nth-child(3) .shelf-thumb { background: linear-gradient(135deg, var(--coral), var(--orange)); }
-		&:nth-child(4) .shelf-thumb { background: linear-gradient(135deg, var(--rose), var(--violet)); }
-		&:nth-child(5) .shelf-thumb { background: linear-gradient(135deg, var(--sky), var(--teal)); }
-		&:nth-child(6) .shelf-thumb { background: linear-gradient(135deg, var(--orange), var(--yellow)); }
-		&:nth-child(7) .shelf-thumb { background: linear-gradient(135deg, var(--teal), var(--accent)); }
-	}
+:is(.demo-scroll-shelf .shelf-item):nth-child(1) .shelf-thumb { background: linear-gradient(135deg, var(--violet), var(--sky)); }
 
-	.shelf-thumb {
+:is(.demo-scroll-shelf .shelf-item):nth-child(2) .shelf-thumb { background: linear-gradient(135deg, var(--accent), var(--teal)); }
+
+:is(.demo-scroll-shelf .shelf-item):nth-child(3) .shelf-thumb { background: linear-gradient(135deg, var(--coral), var(--orange)); }
+
+:is(.demo-scroll-shelf .shelf-item):nth-child(4) .shelf-thumb { background: linear-gradient(135deg, var(--rose), var(--violet)); }
+
+:is(.demo-scroll-shelf .shelf-item):nth-child(5) .shelf-thumb { background: linear-gradient(135deg, var(--sky), var(--teal)); }
+
+:is(.demo-scroll-shelf .shelf-item):nth-child(6) .shelf-thumb { background: linear-gradient(135deg, var(--orange), var(--yellow)); }
+
+:is(.demo-scroll-shelf .shelf-item):nth-child(7) .shelf-thumb { background: linear-gradient(135deg, var(--teal), var(--accent)); }
+
+.demo-scroll-shelf .shelf-thumb {
 		height: 90px;
 		background-size: cover;
 		background-position: center;
 	}
 
-	.shelf-body {
+.demo-scroll-shelf .shelf-body {
 		padding: .6rem .75rem;
 	}
 
-	.shelf-title {
+.demo-scroll-shelf .shelf-title {
 		font-size: .85rem;
 		font-weight: 600;
 		margin-bottom: .15rem;
 	}
 
-	.shelf-sub {
+.demo-scroll-shelf .shelf-sub {
 		font-size: .75rem;
 		color: var(--text-muted);
 	}
 
-	.shelf-hint {
+.demo-scroll-shelf .shelf-hint {
 		text-align: center;
 		font-size: .75rem;
 		color: var(--text-muted);
 		margin-top: .5rem;
 	}
-}

@@ -4,8 +4,7 @@
  * A slide-in notification using :target to trigger and a CSS animation to auto-dismiss.
  */
 
-.demo-toast-notification {
-	.toast-triggers {
+.demo-toast-notification .toast-triggers {
 		display: flex;
 		gap: .75rem;
 		flex-wrap: wrap;
@@ -13,7 +12,7 @@
 		margin-bottom: .5rem;
 	}
 
-	.toast-btn {
+.demo-toast-notification .toast-btn {
 		display: inline-flex;
 		align-items: center;
 		gap: .4rem;
@@ -26,17 +25,19 @@
 		cursor: pointer;
 		transition: opacity .15s;
 		border: none;
-
-		&:hover {
-			opacity: .85;
-		}
 	}
 
-	.toast-btn-success { background: rgba(87,217,163,.15); color: var(--teal); }
-	.toast-btn-error   { background: var(--coral-dim); color: var(--coral); }
-	.toast-btn-info    { background: var(--sky-dim); color: var(--sky); }
+:is(.demo-toast-notification .toast-btn):hover {
+			opacity: .85;
+		}
 
-	.toast {
+.demo-toast-notification .toast-btn-success { background: rgba(87,217,163,.15); color: var(--teal); }
+
+.demo-toast-notification .toast-btn-error   { background: var(--coral-dim); color: var(--coral); }
+
+.demo-toast-notification .toast-btn-info    { background: var(--sky-dim); color: var(--sky); }
+
+.demo-toast-notification .toast {
 		display: none;
 		position: fixed;
 		bottom: 1.5rem;
@@ -53,39 +54,40 @@
 		gap: .75rem;
 		font-size: .9rem;
 		font-weight: 500;
+	}
 
-		&:target {
+:is(.demo-toast-notification .toast):target {
 			display: flex;
 			animation: toast-in .3s ease forwards, toast-out .3s ease 3s forwards;
 		}
-	}
 
-	.toast-icon {
+.demo-toast-notification .toast-icon {
 		font-size: 1.1rem;
 		flex-shrink: 0;
 	}
 
-	.toast-msg {
+.demo-toast-notification .toast-msg {
 		flex: 1;
 	}
 
-	.toast-close {
+.demo-toast-notification .toast-close {
 		color: var(--text-muted);
 		text-decoration: none;
 		font-size: 1.1rem;
 		line-height: 1;
 		flex-shrink: 0;
 		transition: color .15s;
-
-		&:hover {
-			color: var(--text);
-		}
 	}
 
-	#toast-success { border-left: 3px solid var(--teal); }
-	#toast-error   { border-left: 3px solid var(--coral); }
-	#toast-info    { border-left: 3px solid var(--sky); }
-}
+:is(.demo-toast-notification .toast-close):hover {
+			color: var(--text);
+		}
+
+.demo-toast-notification #toast-success { border-left: 3px solid var(--teal); }
+
+.demo-toast-notification #toast-error   { border-left: 3px solid var(--coral); }
+
+.demo-toast-notification #toast-info    { border-left: 3px solid var(--sky); }
 
 @keyframes toast-in {
 	from { transform: translateX(120%); opacity: 0; }

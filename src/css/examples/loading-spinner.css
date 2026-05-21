@@ -4,8 +4,7 @@
  * Three spinner variants — ring, dots, and bars — built entirely with CSS animations.
  */
 
-.demo-loading-spinner {
-	.spinner-grid {
+.demo-loading-spinner .spinner-grid {
 		display: flex;
 		gap: 2.5rem;
 		align-items: center;
@@ -14,21 +13,22 @@
 		padding: .5rem;
 	}
 
-	.spinner-item {
+.demo-loading-spinner .spinner-item {
 		display: flex;
 		flex-direction: column;
 		align-items: center;
 		gap: .75rem;
 	}
 
-	.spinner-label {
+.demo-loading-spinner .spinner-label {
 		font-size: .75rem;
 		color: var(--text-muted);
 		font-weight: 500;
 	}
 
-	/* Ring spinner */
-	.spinner-ring {
+/* Ring spinner */
+
+.demo-loading-spinner .spinner-ring {
 		width: 40px;
 		height: 40px;
 		border: 3px solid var(--surface-2);
@@ -37,52 +37,60 @@
 		animation: spin-ring 0.8s linear infinite;
 	}
 
-	/* Dots spinner */
-	.spinner-dots {
+/* Dots spinner */
+
+.demo-loading-spinner .spinner-dots {
 		display: flex;
 		gap: 6px;
 		align-items: center;
+	}
 
-		span {
+:is(.demo-loading-spinner .spinner-dots) span {
 			width: 10px;
 			height: 10px;
 			background: var(--accent);
 			border-radius: 50%;
 			animation: spin-dots 1.2s ease-in-out infinite;
-
-			&:nth-child(2) { animation-delay: .2s; }
-			&:nth-child(3) { animation-delay: .4s; }
 		}
-	}
 
-	/* Bars spinner */
-	.spinner-bars {
+:is(:is(.demo-loading-spinner .spinner-dots) span):nth-child(2) { animation-delay: .2s; }
+
+:is(:is(.demo-loading-spinner .spinner-dots) span):nth-child(3) { animation-delay: .4s; }
+
+/* Bars spinner */
+
+.demo-loading-spinner .spinner-bars {
 		display: flex;
 		gap: 4px;
 		align-items: flex-end;
 		height: 36px;
+	}
 
-		span {
+:is(.demo-loading-spinner .spinner-bars) span {
 			width: 6px;
 			background: var(--accent);
 			border-radius: 3px;
 			animation: spin-bars 1s ease-in-out infinite;
-
-			&:nth-child(1) { animation-delay: 0s; }
-			&:nth-child(2) { animation-delay: .15s; }
-			&:nth-child(3) { animation-delay: .3s; }
-			&:nth-child(4) { animation-delay: .45s; }
 		}
-	}
 
-	/* Orbit spinner */
-	.spinner-orbit {
+:is(:is(.demo-loading-spinner .spinner-bars) span):nth-child(1) { animation-delay: 0s; }
+
+:is(:is(.demo-loading-spinner .spinner-bars) span):nth-child(2) { animation-delay: .15s; }
+
+:is(:is(.demo-loading-spinner .spinner-bars) span):nth-child(3) { animation-delay: .3s; }
+
+:is(:is(.demo-loading-spinner .spinner-bars) span):nth-child(4) { animation-delay: .45s; }
+
+/* Orbit spinner */
+
+.demo-loading-spinner .spinner-orbit {
 		position: relative;
 		width: 40px;
 		height: 40px;
 		animation: spin-ring .8s linear infinite;
+	}
 
-		&::before {
+:is(.demo-loading-spinner .spinner-orbit)::before {
 			content: '';
 			position: absolute;
 			inset: 0;
@@ -92,7 +100,7 @@
 			border-radius: 50%;
 		}
 
-		&::after {
+:is(.demo-loading-spinner .spinner-orbit)::after {
 			content: '';
 			position: absolute;
 			inset: 6px;
@@ -101,8 +109,6 @@
 			border-radius: 50%;
 			animation: spin-ring .5s linear infinite reverse;
 		}
-	}
-}
 
 @keyframes spin-ring {
 	to { transform: rotate(360deg); }

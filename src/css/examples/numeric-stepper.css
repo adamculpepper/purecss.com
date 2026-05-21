@@ -4,8 +4,7 @@
  * A styled <input type="number"> with custom spin button appearance.
  */
 
-.demo-numeric-stepper {
-	.stepper-group {
+.demo-numeric-stepper .stepper-group {
 		display: flex;
 		flex-direction: column;
 		gap: 1.25rem;
@@ -13,19 +12,19 @@
 		margin: 0 auto;
 	}
 
-	.stepper-field {
+.demo-numeric-stepper .stepper-field {
 		display: flex;
 		flex-direction: column;
 		gap: .3rem;
 	}
 
-	label {
+.demo-numeric-stepper label {
 		font-size: .82rem;
 		color: var(--text-muted);
 		font-weight: 500;
 	}
 
-	input[type="number"] {
+.demo-numeric-stepper input[type="number"] {
 		appearance: textfield;
 		-moz-appearance: textfield;
 		width: 100%;
@@ -40,19 +39,18 @@
 		text-align: center;
 		outline: none;
 		transition: border-color .2s;
+	}
 
-		&:focus {
+:is(.demo-numeric-stepper input[type="number"]):focus {
 			border-color: var(--accent);
 		}
 
-		&::-webkit-inner-spin-button,
-		&::-webkit-outer-spin-button {
+:is(.demo-numeric-stepper input[type="number"])::-webkit-inner-spin-button,:is(.demo-numeric-stepper input[type="number"])::-webkit-outer-spin-button {
 			-webkit-appearance: none;
 			appearance: none;
 		}
-	}
 
-	.stepper-row {
+.demo-numeric-stepper .stepper-row {
 		display: flex;
 		align-items: center;
 		gap: 0;
@@ -61,25 +59,25 @@
 		overflow: hidden;
 		background: var(--surface-2);
 		transition: border-color .2s;
+	}
 
-		&:focus-within {
+:is(.demo-numeric-stepper .stepper-row):focus-within {
 			border-color: var(--accent);
 		}
 
-		input[type="number"] {
+:is(.demo-numeric-stepper .stepper-row) input[type="number"] {
 			border: none;
 			border-radius: 0;
 			flex: 1;
 			background: transparent;
 			padding: .7rem .5rem;
+		}
 
-			&:focus {
+:is(:is(.demo-numeric-stepper .stepper-row) input[type="number"]):focus {
 				border-color: transparent;
 			}
-		}
-	}
 
-	.step-btn {
+.demo-numeric-stepper .step-btn {
 		width: 40px;
 		background: var(--surface);
 		border: none;
@@ -92,15 +90,14 @@
 		line-height: 1;
 		transition: background .15s, color .15s;
 		font-family: var(--font-sans);
+	}
 
-		&:first-child {
+:is(.demo-numeric-stepper .step-btn):first-child {
 			border-left: none;
 			border-right: 1px solid var(--border);
 		}
 
-		&:hover {
+:is(.demo-numeric-stepper .step-btn):hover {
 			background: var(--accent-dim);
 			color: var(--accent);
 		}
-	}
-}

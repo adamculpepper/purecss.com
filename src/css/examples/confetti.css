@@ -4,8 +4,7 @@
  * CSS confetti animation using transform, @keyframes, and nth-child for staggered timing.
  */
 
-.demo-confetti {
-	.confetti-stage {
+.demo-confetti .confetti-stage {
 		position: relative;
 		height: 220px;
 		overflow: hidden;
@@ -16,35 +15,45 @@
 		justify-content: center;
 	}
 
-	.confetti-text {
+.demo-confetti .confetti-text {
 		font-size: 1.25rem;
 		font-weight: 700;
 		z-index: 1;
 		position: relative;
 	}
 
-	.piece {
+.demo-confetti .piece {
 		position: absolute;
 		top: -10px;
 		width: 10px;
 		height: 10px;
 		border-radius: 2px;
 		animation: confetti-fall 3s ease-in infinite;
-
-		&:nth-child(1)  { left: 5%;  background: var(--coral);   width: 8px;  height: 12px; animation-delay: 0s;    animation-duration: 2.8s; }
-		&:nth-child(2)  { left: 12%; background: var(--accent);  width: 12px; height: 8px;  animation-delay: .3s;   animation-duration: 3.1s; border-radius: 50%; }
-		&:nth-child(3)  { left: 20%; background: var(--sky);     width: 6px;  height: 14px; animation-delay: .6s;   animation-duration: 2.6s; }
-		&:nth-child(4)  { left: 28%; background: var(--violet);  width: 10px; height: 10px; animation-delay: .1s;   animation-duration: 3.4s; border-radius: 50%; }
-		&:nth-child(5)  { left: 36%; background: var(--yellow);  width: 14px; height: 6px;  animation-delay: .8s;   animation-duration: 2.9s; }
-		&:nth-child(6)  { left: 44%; background: var(--rose);    width: 8px;  height: 8px;  animation-delay: .4s;   animation-duration: 3.2s; border-radius: 50%; }
-		&:nth-child(7)  { left: 52%; background: var(--teal);    width: 12px; height: 6px;  animation-delay: 1s;    animation-duration: 2.7s; }
-		&:nth-child(8)  { left: 60%; background: var(--orange);  width: 6px;  height: 10px; animation-delay: .2s;   animation-duration: 3.0s; }
-		&:nth-child(9)  { left: 68%; background: var(--accent);  width: 10px; height: 14px; animation-delay: .7s;   animation-duration: 2.5s; border-radius: 50%; }
-		&:nth-child(10) { left: 76%; background: var(--sky);     width: 8px;  height: 8px;  animation-delay: .5s;   animation-duration: 3.3s; }
-		&:nth-child(11) { left: 84%; background: var(--coral);   width: 14px; height: 6px;  animation-delay: .9s;   animation-duration: 2.8s; }
-		&:nth-child(12) { left: 92%; background: var(--violet);  width: 6px;  height: 12px; animation-delay: .15s;  animation-duration: 3.1s; }
 	}
-}
+
+:is(.demo-confetti .piece):nth-child(1)  { left: 5%;  background: var(--coral);   width: 8px;  height: 12px; animation-delay: 0s;    animation-duration: 2.8s; }
+
+:is(.demo-confetti .piece):nth-child(2)  { left: 12%; background: var(--accent);  width: 12px; height: 8px;  animation-delay: .3s;   animation-duration: 3.1s; border-radius: 50%; }
+
+:is(.demo-confetti .piece):nth-child(3)  { left: 20%; background: var(--sky);     width: 6px;  height: 14px; animation-delay: .6s;   animation-duration: 2.6s; }
+
+:is(.demo-confetti .piece):nth-child(4)  { left: 28%; background: var(--violet);  width: 10px; height: 10px; animation-delay: .1s;   animation-duration: 3.4s; border-radius: 50%; }
+
+:is(.demo-confetti .piece):nth-child(5)  { left: 36%; background: var(--yellow);  width: 14px; height: 6px;  animation-delay: .8s;   animation-duration: 2.9s; }
+
+:is(.demo-confetti .piece):nth-child(6)  { left: 44%; background: var(--rose);    width: 8px;  height: 8px;  animation-delay: .4s;   animation-duration: 3.2s; border-radius: 50%; }
+
+:is(.demo-confetti .piece):nth-child(7)  { left: 52%; background: var(--teal);    width: 12px; height: 6px;  animation-delay: 1s;    animation-duration: 2.7s; }
+
+:is(.demo-confetti .piece):nth-child(8)  { left: 60%; background: var(--orange);  width: 6px;  height: 10px; animation-delay: .2s;   animation-duration: 3.0s; }
+
+:is(.demo-confetti .piece):nth-child(9)  { left: 68%; background: var(--accent);  width: 10px; height: 14px; animation-delay: .7s;   animation-duration: 2.5s; border-radius: 50%; }
+
+:is(.demo-confetti .piece):nth-child(10) { left: 76%; background: var(--sky);     width: 8px;  height: 8px;  animation-delay: .5s;   animation-duration: 3.3s; }
+
+:is(.demo-confetti .piece):nth-child(11) { left: 84%; background: var(--coral);   width: 14px; height: 6px;  animation-delay: .9s;   animation-duration: 2.8s; }
+
+:is(.demo-confetti .piece):nth-child(12) { left: 92%; background: var(--violet);  width: 6px;  height: 12px; animation-delay: .15s;  animation-duration: 3.1s; }
 
 @keyframes confetti-fall {
 	0% {

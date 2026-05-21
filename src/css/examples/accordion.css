@@ -4,23 +4,22 @@
  * Expandable content panels using the <details> and <summary> elements.
  */
 
-.demo-accordion {
-	details {
+.demo-accordion details {
 		border: 1px solid var(--border);
 		border-radius: 8px;
 		margin-bottom: .5rem;
 		overflow: hidden;
+	}
 
-		&[open] summary {
+[open]:is(.demo-accordion details) summary {
 			background: var(--accent-dim);
 		}
 
-		&[open] summary::after {
+[open]:is(.demo-accordion details) summary::after {
 			transform: rotate(45deg);
 		}
-	}
 
-	summary {
+.demo-accordion summary {
 		padding: .9rem 1.1rem;
 		font-weight: 600;
 		font-size: .95rem;
@@ -32,25 +31,24 @@
 		background: var(--surface);
 		user-select: none;
 		transition: background .2s;
+	}
 
-		&::-webkit-details-marker {
+:is(.demo-accordion summary)::-webkit-details-marker {
 			display: none;
 		}
 
-		&::after {
+:is(.demo-accordion summary)::after {
 			content: "+";
 			font-size: 1.2rem;
 			font-weight: 400;
 			color: var(--accent);
 			transition: transform .25s;
 		}
-	}
 
-	.accordion-body {
+.demo-accordion .accordion-body {
 		padding: 1rem 1.1rem;
 		font-size: .9rem;
 		color: var(--text-muted);
 		border-top: 1px solid var(--border);
 		background: var(--surface);
 	}
-}

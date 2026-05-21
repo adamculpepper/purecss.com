@@ -4,12 +4,11 @@
  * A theme switcher using a checkbox, CSS custom properties, and no JS.
  */
 
-.demo-dark-light-mode {
-	.theme-check {
+.demo-dark-light-mode .theme-check {
 		display: none;
 	}
 
-	.theme-toggle {
+.demo-dark-light-mode .theme-toggle {
 		display: inline-flex;
 		align-items: center;
 		gap: .75rem;
@@ -18,15 +17,16 @@
 		font-size: .95rem;
 	}
 
-	.theme-track {
+.demo-dark-light-mode .theme-track {
 		width: 52px;
 		height: 28px;
 		background: var(--orange);
 		border-radius: 999px;
 		position: relative;
 		transition: background .3s;
+	}
 
-		&::before {
+:is(.demo-dark-light-mode .theme-track)::before {
 			content: "☀️";
 			position: absolute;
 			top: 50%;
@@ -36,7 +36,7 @@
 			transition: opacity .3s;
 		}
 
-		&::after {
+:is(.demo-dark-light-mode .theme-track)::after {
 			content: "";
 			position: absolute;
 			top: 3px;
@@ -48,21 +48,20 @@
 			box-shadow: 0 1px 4px rgba(0,0,0,.2);
 			transition: transform .3s;
 		}
-	}
 
-	.theme-check:checked + .theme-toggle .theme-track {
+.demo-dark-light-mode .theme-check:checked + .theme-toggle .theme-track {
 		background: var(--surface-2);
 	}
 
-	.theme-check:checked + .theme-toggle .theme-track::before {
+.demo-dark-light-mode .theme-check:checked + .theme-toggle .theme-track::before {
 		content: "🌙";
 	}
 
-	.theme-check:checked + .theme-toggle .theme-track::after {
+.demo-dark-light-mode .theme-check:checked + .theme-toggle .theme-track::after {
 		transform: translateX(24px);
 	}
 
-	.theme-preview {
+.demo-dark-light-mode .theme-preview {
 		margin-top: 1.25rem;
 		padding: 1.25rem;
 		border-radius: 10px;
@@ -73,9 +72,8 @@
 		transition: background .3s, color .3s, border-color .3s;
 	}
 
-	.theme-check:checked ~ .theme-preview {
+.demo-dark-light-mode .theme-check:checked ~ .theme-preview {
 		background: var(--surface);
 		color: var(--accent-dim);
 		border-color: var(--accent);
 	}
-}

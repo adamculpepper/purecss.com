@@ -4,8 +4,7 @@
  * Animated placeholder loading state using CSS keyframes.
  */
 
-.demo-skeleton-loader {
-	.skeleton-card {
+.demo-skeleton-loader .skeleton-card {
 		background: var(--border);
 		border: 1px solid var(--border);
 		border-radius: 10px;
@@ -14,7 +13,7 @@
 		box-shadow: 0 4px 20px rgba(0,0,0,.35);
 	}
 
-	.skel {
+.demo-skeleton-loader .skel {
 		background: linear-gradient(90deg,
 			rgba(128,128,128,0.15) 25%,
 			rgba(128,128,128,0.35) 50%,
@@ -25,22 +24,23 @@
 		animation: shimmer 1.5s infinite;
 	}
 
-	.skel-avatar {
+.demo-skeleton-loader .skel-avatar {
 		width: 44px;
 		height: 44px;
 		border-radius: 50%;
 		margin-bottom: .75rem;
 	}
 
-	.skel-line {
+.demo-skeleton-loader .skel-line {
 		height: 12px;
 		margin-bottom: .5rem;
-
-		&.w-full { width: 100%; }
-		&.w-3q  { width: 75%; }
-		&.w-half { width: 50%; }
 	}
-}
+
+.w-full:is(.demo-skeleton-loader .skel-line) { width: 100%; }
+
+.w-3q:is(.demo-skeleton-loader .skel-line)  { width: 75%; }
+
+.w-half:is(.demo-skeleton-loader .skel-line) { width: 50%; }
 
 body:has(#theme-toggle:checked) .demo-skeleton-loader .skeleton-card {
 	background: var(--surface);

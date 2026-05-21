@@ -4,23 +4,22 @@
  * An animated text glitch using clip-path, pseudo-elements, and CSS keyframes — no JavaScript.
  */
 
-.demo-glitch-effect {
-	.glitch-wrapper {
+.demo-glitch-effect .glitch-wrapper {
 		display: flex;
 		align-items: center;
 		justify-content: center;
 	}
 
-	.glitch {
+.demo-glitch-effect .glitch {
 		position: relative;
 		font-size: 3rem;
 		font-weight: 800;
 		letter-spacing: .05em;
 		color: var(--text);
 		font-family: var(--font-mono);
+	}
 
-		&::before,
-		&::after {
+:is(.demo-glitch-effect .glitch)::before,:is(.demo-glitch-effect .glitch)::after {
 			content: attr(data-text);
 			position: absolute;
 			top: 0;
@@ -29,29 +28,25 @@
 			height: 100%;
 		}
 
-		&::before {
+:is(.demo-glitch-effect .glitch)::before {
 			color: var(--teal);
 			animation: glitch-1 1.5s infinite;
 		}
 
-		&::after {
+:is(.demo-glitch-effect .glitch)::after {
 			color: var(--coral);
 			animation: glitch-2 1.5s infinite;
 		}
-	}
 
-	/* ── Intense version ─── */
+/* ── Intense version ─── */
 
-	.glitch-intense {
-		&::before {
+:is(.demo-glitch-effect .glitch-intense)::before {
 			animation: glitch-intense-1 0.8s infinite;
 		}
 
-		&::after {
+:is(.demo-glitch-effect .glitch-intense)::after {
 			animation: glitch-intense-2 0.8s infinite;
 		}
-	}
-}
 
 @keyframes glitch-1 {
 	0%, 90%, 100% { clip-path: inset(0 0 100% 0); left: 0; }

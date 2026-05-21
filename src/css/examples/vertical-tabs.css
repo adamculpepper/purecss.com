@@ -4,12 +4,11 @@
  * Vertical tabbed navigation using radio inputs and the :checked pseudo-class.
  */
 
-.demo-vertical-tabs {
-	.vtab-radio {
+.demo-vertical-tabs .vtab-radio {
 		display: none;
 	}
 
-	.vtab-layout {
+.demo-vertical-tabs .vtab-layout {
 		display: grid;
 		grid-template-columns: 160px 1fr;
 		gap: 0;
@@ -19,15 +18,16 @@
 		min-height: 220px;
 	}
 
-	.vtab-nav {
+.demo-vertical-tabs .vtab-nav {
 		background: var(--surface);
 		border-right: 1px solid var(--border);
 		padding: .5rem;
 		display: flex;
 		flex-direction: column;
 		gap: .2rem;
+	}
 
-		label {
+:is(.demo-vertical-tabs .vtab-nav) label {
 			display: block;
 			padding: .55rem .8rem;
 			border-radius: var(--radius);
@@ -37,34 +37,32 @@
 			transition: background .15s, color .15s;
 			font-weight: 500;
 			user-select: none;
+		}
 
-			&:hover {
+:is(:is(.demo-vertical-tabs .vtab-nav) label):hover {
 				background: var(--accent-dim);
 				color: var(--text);
 			}
-		}
-	}
 
-	.vtab-panels {
+.demo-vertical-tabs .vtab-panels {
 		background: var(--surface-2);
 		padding: 1.25rem;
 	}
 
-	.vtab-panel {
+.demo-vertical-tabs .vtab-panel {
 		display: none;
+	}
 
-		h3 {
+:is(.demo-vertical-tabs .vtab-panel) h3 {
 			font-size: 1rem;
 			margin-bottom: .5rem;
 		}
 
-		p {
+:is(.demo-vertical-tabs .vtab-panel) p {
 			font-size: .875rem;
 			color: var(--text-muted);
 			line-height: 1.6;
 		}
-	}
-}
 
 /* Active tab */
 #vtab1:checked ~ .vtab-layout .vtab-nav label[for="vtab1"],

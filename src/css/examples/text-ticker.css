@@ -9,8 +9,9 @@
 	flex-direction: column;
 	align-items: center;
 	gap: 2.5rem;
+}
 
-	.ticker-line {
+.demo-text-ticker .ticker-line {
 		display: flex;
 		align-items: center;
 		gap: .45em;
@@ -20,24 +21,24 @@
 		letter-spacing: -.02em;
 	}
 
-	.ticker-static {
+.demo-text-ticker .ticker-static {
 		color: var(--text-muted);
 		font-weight: 400;
 	}
 
-	.ticker-slot {
+.demo-text-ticker .ticker-slot {
 		height: 1.15em;
 		overflow: hidden;
 		position: relative;
 	}
 
-	.ticker-inner {
+.demo-text-ticker .ticker-inner {
 		display: flex;
 		flex-direction: column;
 		animation: ticker-up 4s ease-in-out infinite;
 	}
 
-	.ticker-word {
+.demo-text-ticker .ticker-word {
 		height: 1.15em;
 		display: flex;
 		align-items: center;
@@ -48,7 +49,6 @@
 		white-space: nowrap;
 		line-height: 1;
 	}
-}
 
 @keyframes ticker-up {
 	0%   { transform: translateY(0); }

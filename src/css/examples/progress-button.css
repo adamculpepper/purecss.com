@@ -10,19 +10,20 @@
 	gap: 1.5rem;
 	align-items: center;
 	justify-content: center;
+}
 
-	.prog-group {
+.demo-progress-button .prog-group {
 		display: flex;
 		flex-direction: column;
 		align-items: center;
 		gap: .5rem;
 	}
 
-	.prog-input {
+.demo-progress-button .prog-input {
 		display: none;
 	}
 
-	.prog-btn {
+.demo-progress-button .prog-btn {
 		position: relative;
 		display: inline-flex;
 		align-items: center;
@@ -41,8 +42,9 @@
 		user-select: none;
 		min-width: 160px;
 		transition: color .3s;
+	}
 
-		&::before {
+:is(.demo-progress-button .prog-btn)::before {
 			content: "";
 			position: absolute;
 			inset: 0;
@@ -50,16 +52,13 @@
 			transform: scaleX(0);
 			transform-origin: left;
 		}
-	}
 
-	.prog-label {
+.demo-progress-button .prog-label {
 		position: relative;
 		z-index: 1;
 	}
 
-	.prog-idle,
-	.prog-loading,
-	.prog-done {
+.demo-progress-button .prog-idle,.demo-progress-button .prog-loading,.demo-progress-button .prog-done {
 		position: absolute;
 		z-index: 1;
 		left: 50%;
@@ -68,37 +67,38 @@
 		transition: opacity .2s;
 	}
 
-	.prog-idle    { opacity: 1; }
-	.prog-loading { opacity: 0; }
-	.prog-done    { opacity: 0; }
+.demo-progress-button .prog-idle    { opacity: 1; }
 
-	.prog-hint {
+.demo-progress-button .prog-loading { opacity: 0; }
+
+.demo-progress-button .prog-done    { opacity: 0; }
+
+.demo-progress-button .prog-hint {
 		font-family: var(--font-mono);
 		font-size: .65rem;
 		color: var(--text-muted);
 		letter-spacing: .05em;
 	}
 
-	.prog-input:checked ~ .prog-btn {
+.demo-progress-button .prog-input:checked ~ .prog-btn {
 		color: #0c0c0d;
+	}
 
-		&::before {
+:is(.demo-progress-button .prog-input:checked ~ .prog-btn)::before {
 			animation: prog-fill 2s ease-in-out forwards;
 		}
 
-		.prog-idle {
+:is(.demo-progress-button .prog-input:checked ~ .prog-btn) .prog-idle {
 			animation: prog-fade-out .2s forwards;
 		}
 
-		.prog-loading {
+:is(.demo-progress-button .prog-input:checked ~ .prog-btn) .prog-loading {
 			animation: prog-fade-in .2s forwards, prog-fade-out .2s 1.8s forwards;
 		}
 
-		.prog-done {
+:is(.demo-progress-button .prog-input:checked ~ .prog-btn) .prog-done {
 			animation: prog-fade-in .2s 2s forwards;
 		}
-	}
-}
 
 @keyframes prog-fill {
 	0%   { transform: scaleX(0); }

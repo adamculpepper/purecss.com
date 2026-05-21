@@ -4,14 +4,14 @@
  * Smooth image zoom on hover using CSS transform and overflow:hidden.
  */
 
-.demo-image-zoom {
-	.zoom-wrap {
+.demo-image-zoom .zoom-wrap {
 		width: 200px;
 		height: 130px;
 		border-radius: 10px;
 		overflow: hidden;
+	}
 
-		img {
+:is(.demo-image-zoom .zoom-wrap) img {
 			width: 100%;
 			height: 100%;
 			object-fit: cover;
@@ -19,8 +19,6 @@
 			transition: transform .4s ease;
 		}
 
-		&:hover img {
+:is(.demo-image-zoom .zoom-wrap):hover img {
 			transform: scale(1.3);
 		}
-	}
-}

@@ -4,8 +4,7 @@
  * Background and foreground layers move at different speeds using scroll-driven animations.
  */
 
-.demo-parallax {
-	.parallax-scene {
+.demo-parallax .parallax-scene {
 		position: relative;
 		height: 300px;
 		overflow-y: scroll;
@@ -14,26 +13,26 @@
 		scroll-behavior: smooth;
 	}
 
-	.parallax-inner {
+.demo-parallax .parallax-inner {
 		height: 600px;
 		position: relative;
 		overflow: hidden;
 	}
 
-	.parallax-layer {
+.demo-parallax .parallax-layer {
 		position: absolute;
 		inset: 0;
 		will-change: transform;
 	}
 
-	.layer-bg {
+.demo-parallax .layer-bg {
 		background: radial-gradient(ellipse at 50% 20%, rgba(184, 255, 87, .08) 0%, transparent 60%),
 		            linear-gradient(180deg, #0c0c0d 0%, #0f1a0a 100%);
 		animation: parallax-bg linear both;
 		animation-timeline: scroll(nearest block);
 	}
 
-	.layer-mid {
+.demo-parallax .layer-mid {
 		display: flex;
 		align-items: center;
 		justify-content: center;
@@ -41,7 +40,7 @@
 		animation-timeline: scroll(nearest block);
 	}
 
-	.layer-front {
+.demo-parallax .layer-front {
 		display: flex;
 		flex-direction: column;
 		align-items: center;
@@ -51,7 +50,7 @@
 		animation-timeline: scroll(nearest block);
 	}
 
-	.parallax-stars {
+.demo-parallax .parallax-stars {
 		position: absolute;
 		inset: 0;
 		background-image:
@@ -66,7 +65,7 @@
 		animation-timeline: scroll(nearest block);
 	}
 
-	.parallax-moon {
+.demo-parallax .parallax-moon {
 		width: 80px;
 		height: 80px;
 		background: radial-gradient(circle at 35% 35%, var(--yellow), var(--orange));
@@ -77,7 +76,7 @@
 		right: 80px;
 	}
 
-	.parallax-hills {
+.demo-parallax .parallax-hills {
 		width: 120%;
 		height: 120px;
 		background: var(--surface);
@@ -85,23 +84,23 @@
 		margin-bottom: -20px;
 	}
 
-	.parallax-text {
+.demo-parallax .parallax-text {
 		position: relative;
 		text-align: center;
 		color: var(--text);
+	}
 
-		h2 {
+:is(.demo-parallax .parallax-text) h2 {
 			font-size: 1.4rem;
 			margin-bottom: .25rem;
 		}
 
-		p {
+:is(.demo-parallax .parallax-text) p {
 			font-size: .85rem;
 			color: var(--text-muted);
 		}
-	}
 
-	.scroll-hint {
+.demo-parallax .scroll-hint {
 		position: sticky;
 		bottom: .5rem;
 		text-align: center;
@@ -109,7 +108,6 @@
 		color: var(--text-muted);
 		pointer-events: none;
 	}
-}
 
 @keyframes parallax-bg {
 	from { transform: translateY(0); }

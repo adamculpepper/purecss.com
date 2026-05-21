@@ -1,5 +1,18 @@
 @charset "UTF-8";
 
+/*
+ * TODO: Example CSS files are written with flat selectors for iOS 15.2+ compat.
+ * CSS nesting without `&` requires Safari 17.2+ (December 2023).
+ * When ready to restore nesting, re-run `flatten-css.js` in reverse (or reauthor)
+ * and add a browser-compat notice for older Safari users using @supports:
+ *
+ *   @supports not (selector(&)) {
+ *     .compat-banner { display: block; }
+ *   }
+ *
+ * The banner should tell users to upgrade to iOS 17.2+ / Safari 17.2+.
+ */
+
 /* ── Reset ──────────────────────────────────────────── */
 
 *, *::before, *::after {

@@ -4,24 +4,24 @@
  * Numbered page buttons with an active state driven by radio inputs and :checked.
  */
 
-.demo-pagination {
-	.pg-radio {
+.demo-pagination .pg-radio {
 		display: none;
 	}
 
-	.pg-wrap {
+.demo-pagination .pg-wrap {
 		display: flex;
 		flex-direction: column;
 		gap: 1.25rem;
 		align-items: center;
 	}
 
-	.pg-bar {
+.demo-pagination .pg-bar {
 		display: flex;
 		align-items: center;
 		gap: .3rem;
+	}
 
-		label {
+:is(.demo-pagination .pg-bar) label {
 			display: flex;
 			align-items: center;
 			justify-content: center;
@@ -35,24 +35,22 @@
 			cursor: pointer;
 			transition: background .15s, color .15s, border-color .15s;
 			user-select: none;
+		}
 
-			&:hover {
+:is(:is(.demo-pagination .pg-bar) label):hover {
 				background: var(--surface-2);
 				color: var(--text);
 				border-color: var(--text-muted);
 			}
-		}
-	}
 
-	.pg-prev,
-	.pg-next {
+.demo-pagination .pg-prev,.demo-pagination .pg-next {
 		width: auto;
 		padding: 0 .75rem;
 		gap: .3rem;
 		font-size: .85rem;
 	}
 
-	.pg-content {
+.demo-pagination .pg-content {
 		background: var(--surface);
 		border: 1px solid var(--border);
 		border-radius: var(--radius);
@@ -67,10 +65,9 @@
 		justify-content: center;
 	}
 
-	.pg-page {
+.demo-pagination .pg-page {
 		display: none;
 	}
-}
 
 /* Active page button */
 #pg1:checked ~ .pg-wrap .pg-bar label[for="pg1"],

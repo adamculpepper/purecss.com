@@ -4,8 +4,7 @@
  * A reading progress bar that tracks scroll position using CSS scroll-driven animations.
  */
 
-.demo-scroll-spy {
-	.scroll-area {
+.demo-scroll-spy .scroll-area {
 		border: 1px solid var(--border);
 		border-radius: 10px;
 		overflow: hidden;
@@ -13,7 +12,7 @@
 		flex-direction: column;
 	}
 
-	.scroll-header {
+.demo-scroll-spy .scroll-header {
 		position: sticky;
 		top: 0;
 		background: var(--surface);
@@ -25,7 +24,7 @@
 		z-index: 2;
 	}
 
-	.scroll-label {
+.demo-scroll-spy .scroll-label {
 		font-size: .7rem;
 		font-family: var(--font-mono);
 		color: var(--text-muted);
@@ -33,14 +32,14 @@
 		letter-spacing: .08em;
 	}
 
-	.bar-track {
+.demo-scroll-spy .bar-track {
 		height: 6px;
 		background: var(--surface-2);
 		border-radius: 999px;
 		overflow: hidden;
 	}
 
-	.bar-local {
+.demo-scroll-spy .bar-local {
 		height: 100%;
 		width: 0%;
 		background: linear-gradient(90deg, var(--accent), var(--teal));
@@ -50,36 +49,35 @@
 		animation-fill-mode: both;
 	}
 
-	.scroll-content {
+.demo-scroll-spy .scroll-content {
 		padding: 1.25rem 1.25rem 2rem;
 		height: 280px;
 		overflow-y: auto;
+	}
 
-		h4 {
+:is(.demo-scroll-spy .scroll-content) h4 {
 			font-size: .9rem;
 			font-weight: 700;
 			margin: 1.25rem 0 .5rem;
 			color: var(--text);
-
-			&:first-child {
-				margin-top: 0;
-			}
 		}
 
-		p {
+:is(:is(.demo-scroll-spy .scroll-content) h4):first-child {
+				margin-top: 0;
+			}
+
+:is(.demo-scroll-spy .scroll-content) p {
 			margin-bottom: .85rem;
 			font-size: .875rem;
 			color: var(--text-muted);
 			line-height: 1.7;
 		}
 
-		code {
+:is(.demo-scroll-spy .scroll-content) code {
 			font-family: var(--font-mono);
 			font-size: .8em;
 			color: var(--accent);
 		}
-	}
-}
 
 @keyframes reading-progress {
 	from { width: 0%; }

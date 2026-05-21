@@ -4,8 +4,7 @@
  * A styled on/off toggle built with a checkbox and CSS.
  */
 
-.demo-toggle-switch {
-	.toggle-label {
+.demo-toggle-switch .toggle-label {
 		display: inline-flex;
 		align-items: center;
 		gap: 1rem;
@@ -15,19 +14,20 @@
 		user-select: none;
 	}
 
-	.toggle-input {
+.demo-toggle-switch .toggle-input {
 		display: none;
 	}
 
-	.toggle-track {
+.demo-toggle-switch .toggle-track {
 		width: 52px;
 		height: 28px;
 		background: var(--border);
 		border-radius: 999px;
 		position: relative;
 		transition: background .25s;
+	}
 
-		&::after {
+:is(.demo-toggle-switch .toggle-track)::after {
 			content: "";
 			position: absolute;
 			top: 3px;
@@ -39,13 +39,11 @@
 			box-shadow: 0 1px 4px rgba(0,0,0,.2);
 			transition: transform .25s;
 		}
-	}
 
-	.toggle-input:checked + .toggle-track {
+.demo-toggle-switch .toggle-input:checked + .toggle-track {
 		background: var(--accent);
 	}
 
-	.toggle-input:checked + .toggle-track::after {
+.demo-toggle-switch .toggle-input:checked + .toggle-track::after {
 		transform: translateX(24px);
 	}
-}

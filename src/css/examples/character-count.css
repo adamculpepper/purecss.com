@@ -4,8 +4,7 @@
  * Input border changes color based on validity using :user-invalid/:user-valid with minlength/maxlength.
  */
 
-.demo-character-count {
-	.cc-wrap {
+.demo-character-count .cc-wrap {
 		display: flex;
 		flex-direction: column;
 		gap: 1.5rem;
@@ -13,20 +12,19 @@
 		margin: 0 auto;
 	}
 
-	.cc-field {
+.demo-character-count .cc-field {
 		display: flex;
 		flex-direction: column;
 		gap: .4rem;
 	}
 
-	label {
+.demo-character-count label {
 		font-size: .85rem;
 		color: var(--text-muted);
 		font-weight: 500;
 	}
 
-	input,
-	textarea {
+.demo-character-count input,.demo-character-count textarea {
 		width: 100%;
 		padding: .75rem 1rem;
 		background: var(--surface-2);
@@ -37,39 +35,36 @@
 		font-size: .95rem;
 		transition: border-color .2s;
 		outline: none;
+	}
 
-		&:focus {
+:is(.demo-character-count input,.demo-character-count textarea):focus {
 			border-color: var(--accent);
 		}
 
-		&:user-valid {
+:is(.demo-character-count input,.demo-character-count textarea):user-valid {
 			border-color: var(--teal);
 		}
 
-		&:user-invalid {
+:is(.demo-character-count input,.demo-character-count textarea):user-invalid {
 			border-color: var(--coral);
 		}
-	}
 
-	textarea {
+.demo-character-count textarea {
 		resize: vertical;
 		min-height: 80px;
 	}
 
-	.cc-meta {
+.demo-character-count .cc-meta {
 		display: flex;
 		justify-content: space-between;
 		font-size: .75rem;
 		color: var(--text-muted);
 	}
 
-	input:user-valid ~ .cc-meta,
-	textarea:user-valid ~ .cc-meta {
+.demo-character-count input:user-valid ~ .cc-meta,.demo-character-count textarea:user-valid ~ .cc-meta {
 		color: var(--teal);
 	}
 
-	input:user-invalid ~ .cc-meta,
-	textarea:user-invalid ~ .cc-meta {
+.demo-character-count input:user-invalid ~ .cc-meta,.demo-character-count textarea:user-invalid ~ .cc-meta {
 		color: var(--coral);
 	}
-}

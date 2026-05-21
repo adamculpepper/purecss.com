@@ -4,15 +4,14 @@
  * Maintain a fixed aspect ratio on any element using the aspect-ratio property.
  */
 
-.demo-aspect-ratio-box {
-	.ratio-grid {
+.demo-aspect-ratio-box .ratio-grid {
 		display: flex;
 		gap: 1rem;
 		flex-wrap: wrap;
 		justify-content: center;
 	}
 
-	.ratio-box {
+.demo-aspect-ratio-box .ratio-box {
 		background: var(--accent);
 		border-radius: 10px;
 		display: flex;
@@ -23,21 +22,20 @@
 		font-weight: 600;
 	}
 
-	.ratio-16-9 {
+.demo-aspect-ratio-box .ratio-16-9 {
 		aspect-ratio: 16 / 9;
 		width: 160px;
 		background: var(--accent);
 	}
 
-	.ratio-1-1 {
+.demo-aspect-ratio-box .ratio-1-1 {
 		aspect-ratio: 1 / 1;
 		width: 90px;
 		background: var(--violet);
 	}
 
-	.ratio-4-3 {
+.demo-aspect-ratio-box .ratio-4-3 {
 		aspect-ratio: 4 / 3;
 		width: 120px;
 		background: var(--sky);
 	}
-}

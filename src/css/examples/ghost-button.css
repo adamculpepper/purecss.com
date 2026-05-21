@@ -4,8 +4,7 @@
  * An outlined button that fills with color from left to right on hover using a pseudo-element.
  */
 
-.demo-ghost-button {
-	.ghost-btns {
+.demo-ghost-button .ghost-btns {
 		display: flex;
 		gap: 1rem;
 		align-items: center;
@@ -14,7 +13,7 @@
 		padding: .5rem;
 	}
 
-	.ghost-btn {
+.demo-ghost-button .ghost-btn {
 		position: relative;
 		display: inline-flex;
 		align-items: center;
@@ -29,13 +28,14 @@
 		overflow: hidden;
 		transition: color .3s;
 		background: transparent;
+	}
 
-		span {
+:is(.demo-ghost-button .ghost-btn) span {
 			position: relative;
 			z-index: 1;
 		}
 
-		&::before {
+:is(.demo-ghost-button .ghost-btn)::before {
 			content: '';
 			position: absolute;
 			inset: 0;
@@ -43,55 +43,56 @@
 			transition: transform .3s cubic-bezier(0.4, 0, 0.2, 1);
 		}
 
-		&:hover::before {
+:is(.demo-ghost-button .ghost-btn):hover::before {
 			transform: translateX(0);
 		}
-	}
 
-	/* Green variant */
-	.ghost-btn-green {
+/* Green variant */
+
+.demo-ghost-button .ghost-btn-green {
 		border-color: var(--accent);
 		color: var(--accent);
+	}
 
-		&::before {
+:is(.demo-ghost-button .ghost-btn-green)::before {
 			background: var(--accent);
 		}
 
-		&:hover {
+:is(.demo-ghost-button .ghost-btn-green):hover {
 			color: var(--bg);
 		}
-	}
 
-	/* Blue variant */
-	.ghost-btn-blue {
+/* Blue variant */
+
+.demo-ghost-button .ghost-btn-blue {
 		border-color: var(--sky);
 		color: var(--sky);
+	}
 
-		&::before {
+:is(.demo-ghost-button .ghost-btn-blue)::before {
 			background: var(--sky);
 		}
 
-		&:hover {
+:is(.demo-ghost-button .ghost-btn-blue):hover {
 			color: var(--bg);
 		}
-	}
 
-	/* Pink variant — sweep from right */
-	.ghost-btn-pink {
+/* Pink variant — sweep from right */
+
+.demo-ghost-button .ghost-btn-pink {
 		border-color: var(--rose);
 		color: var(--rose);
+	}
 
-		&::before {
+:is(.demo-ghost-button .ghost-btn-pink)::before {
 			background: var(--rose);
 			transform: translateX(101%);
 		}
 
-		&:hover::before {
+:is(.demo-ghost-button .ghost-btn-pink):hover::before {
 			transform: translateX(0);
 		}
 
-		&:hover {
+:is(.demo-ghost-button .ghost-btn-pink):hover {
 			color: #fff;
 		}
-	}
-}

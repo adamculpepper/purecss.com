@@ -4,8 +4,7 @@
  * An organic shape that continuously morphs using animated border-radius keyframes.
  */
 
-.demo-morphing-blob {
-	.blob-stage {
+.demo-morphing-blob .blob-stage {
 		display: flex;
 		gap: 2rem;
 		align-items: center;
@@ -14,20 +13,20 @@
 		flex-wrap: wrap;
 	}
 
-	.blob {
+.demo-morphing-blob .blob {
 		display: flex;
 		align-items: center;
 		justify-content: center;
 		animation: blob-morph 8s ease-in-out infinite;
 	}
 
-	.blob-green {
+.demo-morphing-blob .blob-green {
 		width: 120px;
 		height: 120px;
 		background: radial-gradient(circle at 30% 30%, var(--accent), #6ddf00);
 	}
 
-	.blob-blue {
+.demo-morphing-blob .blob-blue {
 		width: 100px;
 		height: 100px;
 		background: radial-gradient(circle at 30% 30%, var(--sky), var(--violet));
@@ -35,7 +34,7 @@
 		animation-duration: 6s;
 	}
 
-	.blob-pink {
+.demo-morphing-blob .blob-pink {
 		width: 80px;
 		height: 80px;
 		background: radial-gradient(circle at 30% 30%, var(--rose), var(--orange));
@@ -43,14 +42,13 @@
 		animation-duration: 7s;
 	}
 
-	.blob-label {
+.demo-morphing-blob .blob-label {
 		font-size: .7rem;
 		color: var(--bg);
 		font-weight: 700;
 		text-align: center;
 		letter-spacing: .05em;
 	}
-}
 
 @keyframes blob-morph {
 	0%, 100% {

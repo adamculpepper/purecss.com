@@ -4,23 +4,22 @@
  * A navigation dropdown that opens on hover using :hover and visibility.
  */
 
-.demo-hover-dropdown {
-	.dropdown {
+.demo-hover-dropdown .dropdown {
 		position: relative;
 		display: inline-block;
+	}
 
-		&:hover .dropdown-arrow {
+:is(.demo-hover-dropdown .dropdown):hover .dropdown-arrow {
 			transform: rotate(180deg);
 		}
 
-		&:hover .dropdown-menu {
+:is(.demo-hover-dropdown .dropdown):hover .dropdown-menu {
 			opacity: 1;
 			visibility: visible;
 			transform: translateY(0);
 		}
-	}
 
-	.dropdown-trigger {
+.demo-hover-dropdown .dropdown-trigger {
 		display: inline-flex;
 		align-items: center;
 		gap: .4rem;
@@ -34,12 +33,12 @@
 		user-select: none;
 	}
 
-	.dropdown-arrow {
+.demo-hover-dropdown .dropdown-arrow {
 		transition: transform .2s;
 		flex-shrink: 0;
 	}
 
-	.dropdown-menu {
+.demo-hover-dropdown .dropdown-menu {
 		position: absolute;
 		top: calc(100% + 6px);
 		left: 0;
@@ -52,22 +51,22 @@
 		visibility: hidden;
 		transform: translateY(-6px);
 		transition: opacity .2s, transform .2s, visibility .2s;
+	}
 
-		a {
+:is(.demo-hover-dropdown .dropdown-menu) a {
 			display: block;
 			padding: .6rem 1rem;
 			font-size: .875rem;
 			color: var(--text);
 			text-decoration: none;
 			transition: background .15s;
+		}
 
-			&:first-child { border-radius: 8px 8px 0 0; }
-			&:last-child  { border-radius: 0 0 8px 8px; }
+:is(:is(.demo-hover-dropdown .dropdown-menu) a):first-child { border-radius: 8px 8px 0 0; }
 
-			&:hover {
+:is(:is(.demo-hover-dropdown .dropdown-menu) a):last-child  { border-radius: 0 0 8px 8px; }
+
+:is(:is(.demo-hover-dropdown .dropdown-menu) a):hover {
 				background: var(--accent-dim);
 				color: var(--accent);
 			}
-		}
-	}
-}

@@ -8,14 +8,15 @@
 	display: flex;
 	align-items: center;
 	justify-content: center;
+}
 
-	.solar-system {
+.demo-css-art .solar-system {
 		position: relative;
 		width: 280px;
 		height: 280px;
 	}
 
-	.star {
+.demo-css-art .star {
 		position: absolute;
 		border-radius: 50%;
 		top: 50%;
@@ -30,7 +31,7 @@
 		animation: star-pulse 3s ease-in-out infinite;
 	}
 
-	.orbit {
+.demo-css-art .orbit {
 		position: absolute;
 		border-radius: 50%;
 		top: 50%;
@@ -38,21 +39,22 @@
 		transform: translate(-50%, -50%);
 		border: 1px dashed rgba(255, 255, 255, .1);
 		animation: orbit-spin linear infinite;
+	}
 
-		.planet {
+:is(.demo-css-art .orbit) .planet {
 			position: absolute;
 			border-radius: 50%;
 			top: 50%;
 			left: 0;
 		}
-	}
 
-	.orbit-1 {
+.demo-css-art .orbit-1 {
 		width: 90px;
 		height: 90px;
 		animation-duration: 4s;
+	}
 
-		.planet {
+:is(.demo-css-art .orbit-1) .planet {
 			width: 10px;
 			height: 10px;
 			background: radial-gradient(circle at 35% 35%, var(--sky), #0055aa);
@@ -60,14 +62,14 @@
 			margin-left: -5px;
 			box-shadow: 0 0 6px rgba(56, 189, 248, .6);
 		}
-	}
 
-	.orbit-2 {
+.demo-css-art .orbit-2 {
 		width: 156px;
 		height: 156px;
 		animation-duration: 8s;
+	}
 
-		.planet {
+:is(.demo-css-art .orbit-2) .planet {
 			width: 14px;
 			height: 14px;
 			background: radial-gradient(circle at 35% 35%, var(--coral), #991111);
@@ -75,14 +77,14 @@
 			margin-left: -7px;
 			box-shadow: 0 0 8px rgba(255, 107, 107, .5);
 		}
-	}
 
-	.orbit-3 {
+.demo-css-art .orbit-3 {
 		width: 224px;
 		height: 224px;
 		animation-duration: 14s;
+	}
 
-		.planet {
+:is(.demo-css-art .orbit-3) .planet {
 			width: 11px;
 			height: 11px;
 			background: radial-gradient(circle at 35% 35%, var(--violet), #550099);
@@ -90,14 +92,14 @@
 			margin-left: -5.5px;
 			box-shadow: 0 0 7px rgba(192, 132, 252, .5);
 		}
-	}
 
-	.orbit-4 {
+.demo-css-art .orbit-4 {
 		width: 272px;
 		height: 272px;
 		animation-duration: 22s;
+	}
 
-		.planet {
+:is(.demo-css-art .orbit-4) .planet {
 			width: 8px;
 			height: 8px;
 			background: radial-gradient(circle at 35% 35%, var(--teal), #006644);
@@ -105,23 +107,22 @@
 			margin-left: -4px;
 			box-shadow: 0 0 6px rgba(87, 217, 163, .5);
 		}
-	}
 
-	.star-field {
+.demo-css-art .star-field {
 		position: absolute;
 		inset: 0;
 		border-radius: 50%;
 		pointer-events: none;
+	}
 
-		&::before,
-		&::after {
+:is(.demo-css-art .star-field)::before,:is(.demo-css-art .star-field)::after {
 			content: "";
 			position: absolute;
 			border-radius: 50%;
 			background: white;
 		}
 
-		&::before {
+:is(.demo-css-art .star-field)::before {
 			width: 2px;
 			height: 2px;
 			top: 20%;
@@ -135,7 +136,7 @@
 				120px 70px 0 0 rgba(255,255,255,.2);
 		}
 
-		&::after {
+:is(.demo-css-art .star-field)::after {
 			width: 1px;
 			height: 1px;
 			top: 60%;
@@ -146,8 +147,6 @@
 				-80px -10px 0 0 rgba(255,255,255,.5),
 				30px 40px 0 0 rgba(255,255,255,.2);
 		}
-	}
-}
 
 @keyframes orbit-spin {
 	to { transform: translate(-50%, -50%) rotate(360deg); }

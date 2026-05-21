@@ -4,12 +4,12 @@
  * Real-time form validation feedback using :valid, :invalid, and :user-invalid.
  */
 
-.demo-input-validation {
-	.field {
+.demo-input-validation .field {
 		position: relative;
 		margin: .75rem 0;
+	}
 
-		&::after {
+:is(.demo-input-validation .field)::after {
 			position: absolute;
 			right: .75rem;
 			top: 50%;
@@ -17,9 +17,8 @@
 			font-size: 1rem;
 			pointer-events: none;
 		}
-	}
 
-	input {
+.demo-input-validation input {
 		display: block;
 		width: 260px;
 		padding: .65rem 2.5rem .65rem .9rem;
@@ -31,22 +30,21 @@
 		color: var(--text);
 		outline: none;
 		transition: border-color .2s;
+	}
 
-		&:focus {
+:is(.demo-input-validation input):focus {
 			border-color: var(--accent);
 		}
 
-		&:user-invalid {
+:is(.demo-input-validation input):user-invalid {
 			border-color: var(--coral);
 		}
 
-		&:user-valid {
+:is(.demo-input-validation input):user-valid {
 			border-color: var(--teal);
 		}
-	}
 
-	input:user-invalid ~ .field-icon::after,
-	input:user-valid  ~ .field-icon::after {
+.demo-input-validation input:user-invalid ~ .field-icon::after,.demo-input-validation input:user-valid ~ .field-icon::after {
 		content: "";
 		display: block;
 		width: 16px;
@@ -59,19 +57,19 @@
 		mask-position: center;
 	}
 
-	input:user-invalid ~ .field-icon::after {
+.demo-input-validation input:user-invalid ~ .field-icon::after {
 		background: var(--coral);
 		-webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='12' r='10'/%3E%3Cline x1='15' y1='9' x2='9' y2='15'/%3E%3Cline x1='9' y1='9' x2='15' y2='15'/%3E%3C/svg%3E");
 		mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='12' r='10'/%3E%3Cline x1='15' y1='9' x2='9' y2='15'/%3E%3Cline x1='9' y1='9' x2='15' y2='15'/%3E%3C/svg%3E");
 	}
 
-	input:user-valid ~ .field-icon::after {
+.demo-input-validation input:user-valid ~ .field-icon::after {
 		background: var(--teal);
 		-webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='12' r='10'/%3E%3Cpolyline points='9 12 11 14 15 10'/%3E%3C/svg%3E");
 		mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='12' r='10'/%3E%3Cpolyline points='9 12 11 14 15 10'/%3E%3C/svg%3E");
 	}
 
-	.field-icon {
+.demo-input-validation .field-icon {
 		position: absolute;
 		right: .75rem;
 		top: 50%;
@@ -80,16 +78,16 @@
 		pointer-events: none;
 	}
 
-	input:user-invalid ~ .field-icon { color: var(--coral); }
-	input:user-valid  ~ .field-icon { color: var(--teal); }
+.demo-input-validation input:user-invalid ~ .field-icon { color: var(--coral); }
 
-	.hint {
+.demo-input-validation input:user-valid ~ .field-icon { color: var(--teal); }
+
+.demo-input-validation .hint {
 		font-size: .75rem;
 		color: var(--text-muted);
 		margin-top: .25rem;
 	}
 
-	input:user-invalid ~ .hint {
+.demo-input-validation input:user-invalid ~ .hint {
 		color: var(--coral);
 	}
-}

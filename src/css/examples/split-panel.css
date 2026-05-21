@@ -11,8 +11,9 @@
 	border-radius: var(--radius-lg);
 	overflow: hidden;
 	height: 260px;
+}
 
-	.split-left {
+.demo-split-panel .split-left {
 		resize: horizontal;
 		overflow: auto;
 		min-width: 80px;
@@ -26,8 +27,9 @@
 		gap: .75rem;
 		flex-shrink: 0;
 		position: relative;
+	}
 
-		&::after {
+:is(.demo-split-panel .split-left)::after {
 			content: "⠿";
 			position: absolute;
 			bottom: .4rem;
@@ -37,9 +39,8 @@
 			opacity: .5;
 			pointer-events: none;
 		}
-	}
 
-	.split-right {
+.demo-split-panel .split-right {
 		flex: 1;
 		background: var(--surface-2);
 		padding: 1.25rem;
@@ -49,7 +50,7 @@
 		overflow: auto;
 	}
 
-	.split-label {
+.demo-split-panel .split-label {
 		font-family: var(--font-mono);
 		font-size: .6rem;
 		letter-spacing: .1em;
@@ -58,7 +59,7 @@
 		margin-bottom: .25rem;
 	}
 
-	.split-item {
+.demo-split-panel .split-item {
 		background: var(--surface-2);
 		border: 1px solid var(--border);
 		border-radius: var(--radius);
@@ -70,15 +71,14 @@
 		text-overflow: ellipsis;
 	}
 
-	.split-right .split-item {
+.demo-split-panel .split-right .split-item {
 		background: var(--surface);
 	}
 
-	.split-hint {
+.demo-split-panel .split-hint {
 		font-family: var(--font-mono);
 		font-size: .65rem;
 		color: var(--accent);
 		margin-top: auto;
 		letter-spacing: .04em;
 	}
-}

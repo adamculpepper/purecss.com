@@ -4,15 +4,14 @@
  * A moving gradient shimmer across text using background-clip: text and CSS keyframes.
  */
 
-.demo-text-shimmer {
-	.shimmer-stage {
+.demo-text-shimmer .shimmer-stage {
 		display: flex;
 		flex-direction: column;
 		gap: 1.25rem;
 		align-items: center;
 	}
 
-	.shimmer {
+.demo-text-shimmer .shimmer {
 		background-clip: text;
 		-webkit-background-clip: text;
 		-webkit-text-fill-color: transparent;
@@ -21,7 +20,7 @@
 		display: inline-block;
 	}
 
-	.shimmer-green {
+.demo-text-shimmer .shimmer-green {
 		font-size: 2rem;
 		font-weight: 800;
 		background-image: linear-gradient(90deg,
@@ -33,7 +32,7 @@
 		);
 	}
 
-	.shimmer-gold {
+.demo-text-shimmer .shimmer-gold {
 		font-size: 1.4rem;
 		font-weight: 700;
 		background-image: linear-gradient(90deg,
@@ -46,7 +45,7 @@
 		animation-duration: 2.5s;
 	}
 
-	.shimmer-rainbow {
+.demo-text-shimmer .shimmer-rainbow {
 		font-size: 1.1rem;
 		font-weight: 600;
 		background-image: linear-gradient(90deg,
@@ -61,7 +60,7 @@
 		animation-duration: 3s;
 	}
 
-	.shimmer-mono {
+.demo-text-shimmer .shimmer-mono {
 		font-family: var(--font-mono);
 		font-size: .95rem;
 		font-weight: 500;
@@ -72,7 +71,6 @@
 		);
 		animation-duration: 1.5s;
 	}
-}
 
 @keyframes shimmer-sweep {
 	from { background-position: 200% center; }

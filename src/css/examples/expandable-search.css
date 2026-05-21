@@ -4,8 +4,7 @@
  * A search bar that expands on focus with a smooth CSS transition.
  */
 
-.demo-expandable-search {
-	.search-wrap {
+.demo-expandable-search .search-wrap {
 		display: inline-flex;
 		align-items: center;
 		background: var(--surface-2);
@@ -13,20 +12,20 @@
 		border-radius: 999px;
 		padding: .5rem .75rem;
 		transition: border-color .25s, background .25s;
+	}
 
-		&:focus-within {
+:is(.demo-expandable-search .search-wrap):focus-within {
 			background: var(--surface);
 			border-color: var(--accent);
 		}
-	}
 
-	.search-icon {
+.demo-expandable-search .search-icon {
 		display: flex;
 		color: var(--text-muted);
 		flex-shrink: 0;
 	}
 
-	.search-input {
+.demo-expandable-search .search-input {
 		border: none;
 		background: transparent;
 		outline: none;
@@ -36,9 +35,8 @@
 		padding: 0 .5rem;
 		transition: width .35s;
 		color: var(--text);
+	}
 
-		&:focus {
+:is(.demo-expandable-search .search-input):focus {
 			width: 240px;
 		}
-	}
-}
