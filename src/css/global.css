@@ -1,16 +1,15 @@
 @charset "UTF-8";
 
 /*
- * TODO: Example CSS files are written with flat selectors for iOS 15.2+ compat.
+ * TODO: CSS files use flat selectors for iOS 15.2+ compat (no CSS nesting).
  * CSS nesting without `&` requires Safari 17.2+ (December 2023).
- * When ready to restore nesting, re-run `flatten-css.js` in reverse (or reauthor)
- * and add a browser-compat notice for older Safari users using @supports:
+ * When iOS 17.2 is a safe baseline, reauthor with nested syntax by hand
+ * (the postcss-nesting script only goes one direction) and add a
+ * browser-compat notice for anyone still on older Safari:
  *
  *   @supports not (selector(&)) {
  *     .compat-banner { display: block; }
  *   }
- *
- * The banner should tell users to upgrade to iOS 17.2+ / Safari 17.2+.
  */
 
 /* ── Reset ──────────────────────────────────────────── */
@@ -114,10 +113,10 @@ main {
 a {
 	color: var(--accent);
 	text-decoration: none;
+}
 
-	&:hover {
-		text-decoration: underline;
-	}
+a:hover {
+	text-decoration: underline;
 }
 
 /* ── Theme Toggle Input ─────────────────────────────── */
@@ -177,31 +176,31 @@ body:has(#theme-toggle:checked) .site-header {
 	font-weight: 800;
 	color: var(--text);
 	letter-spacing: -.02em;
+}
 
-	span {
-		color: var(--accent);
-	}
+.site-logo span {
+	color: var(--accent);
+}
 
-	&:hover {
-		text-decoration: none;
-	}
+.site-logo:hover {
+	text-decoration: none;
 }
 
 .site-nav {
 	display: flex;
 	align-items: center;
 	gap: 1.5rem;
+}
 
-	a {
-		color: var(--text-muted);
-		font-size: .875rem;
-		font-weight: 500;
+.site-nav a {
+	color: var(--text-muted);
+	font-size: .875rem;
+	font-weight: 500;
+}
 
-		&:hover {
-			color: var(--text);
-			text-decoration: none;
-		}
-	}
+.site-nav a:hover {
+	color: var(--text);
+	text-decoration: none;
 }
 
 .theme-toggle-btn {
@@ -218,10 +217,10 @@ body:has(#theme-toggle:checked) .site-header {
 	line-height: 1;
 	transition: border-color .2s, background .2s;
 	user-select: none;
+}
 
-	&:hover {
-		border-color: var(--accent);
-	}
+.theme-toggle-btn:hover {
+	border-color: var(--accent);
 }
 
 .icon-light {
@@ -247,33 +246,33 @@ body:has(#theme-toggle:checked) .icon-dark { display: none; }
 		linear-gradient(90deg, rgba(255,255,255,.035) 1px, transparent 1px);
 	background-size: 60px 60px;
 	background-attachment: fixed;
+}
 
-	&::after {
-		content: "";
-		position: absolute;
-		bottom: 0;
-		left: 0;
-		right: 0;
-		height: 55%;
-		background: linear-gradient(to bottom, transparent, var(--bg));
-		pointer-events: none;
-		z-index: 0;
-	}
+.home-hero::after {
+	content: "";
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	height: 55%;
+	background: linear-gradient(to bottom, transparent, var(--bg));
+	pointer-events: none;
+	z-index: 0;
+}
 
-	h1 {
-		font-size: clamp(2.5rem, 6vw, 4.5rem);
-		font-weight: 800;
-		letter-spacing: -.04em;
-		line-height: 1.1;
-		margin-bottom: 1.25rem;
+.home-hero h1 {
+	font-size: clamp(2.5rem, 6vw, 4.5rem);
+	font-weight: 800;
+	letter-spacing: -.04em;
+	line-height: 1.1;
+	margin-bottom: 1.25rem;
+}
 
-		em {
-			font-family: var(--font-serif);
-			font-style: italic;
-			font-weight: 400;
-			color: var(--accent);
-		}
-	}
+.home-hero h1 em {
+	font-family: var(--font-serif);
+	font-style: italic;
+	font-weight: 400;
+	color: var(--accent);
 }
 
 body:has(#theme-toggle:checked) .home-hero {
@@ -331,35 +330,33 @@ body:has(#theme-toggle:checked) .hero-glow {
 	inherits: false;
 }
 
-.hero-stat {
-	strong {
-		display: block;
-		font-family: var(--font-mono);
-		font-size: 2rem;
-		font-weight: 500;
-		color: var(--accent);
-		line-height: 1.1;
-		counter-reset: stat var(--stat-target);
-		animation: hero-count 2s linear both;
-		min-width: 4ch;
-		text-align: center;
+.hero-stat strong {
+	display: block;
+	font-family: var(--font-mono);
+	font-size: 2rem;
+	font-weight: 500;
+	color: var(--accent);
+	line-height: 1.1;
+	counter-reset: stat var(--stat-target);
+	animation: hero-count 2s linear both;
+	min-width: 4ch;
+	text-align: center;
+}
 
-		&::after {
-			content: counter(stat);
-		}
+.hero-stat strong::after {
+	content: counter(stat);
+}
 
-		&[data-suffix]::after {
-			content: counter(stat) attr(data-suffix);
-		}
-	}
+.hero-stat strong[data-suffix]::after {
+	content: counter(stat) attr(data-suffix);
+}
 
-	span {
-		font-family: var(--font-mono);
-		font-size: .7rem;
-		color: var(--text-muted);
-		letter-spacing: .08em;
-		text-transform: uppercase;
-	}
+.hero-stat span {
+	font-family: var(--font-mono);
+	font-size: .7rem;
+	color: var(--text-muted);
+	letter-spacing: .08em;
+	text-transform: uppercase;
 }
 
 @keyframes hero-count {
@@ -376,12 +373,12 @@ body:has(#theme-toggle:checked) .hero-glow {
 	border-radius: 999px;
 	letter-spacing: -.01em;
 	transition: opacity .2s, transform .2s;
+}
 
-	&:hover {
-		text-decoration: none;
-		opacity: .88;
-		transform: translateY(-1px);
-	}
+.hero-cta:hover {
+	text-decoration: none;
+	opacity: .88;
+	transform: translateY(-1px);
 }
 
 /* ── Filter Bar ─────────────────────────────────────── */
@@ -402,25 +399,25 @@ body:has(#theme-toggle:checked) .hero-glow {
 	flex-wrap: wrap;
 	position: relative;
 	z-index: 1;
+}
 
-	label {
-		font-family: var(--font-mono);
-		font-size: .72rem;
-		font-weight: 500;
-		color: var(--text-muted);
-		border: 1px solid var(--border);
-		border-radius: 999px;
-		padding: .4rem 1.1rem;
-		cursor: pointer;
-		transition: color .15s, border-color .15s, background .15s;
-		letter-spacing: .06em;
-		text-transform: uppercase;
+.filter-bar label {
+	font-family: var(--font-mono);
+	font-size: .72rem;
+	font-weight: 500;
+	color: var(--text-muted);
+	border: 1px solid var(--border);
+	border-radius: 999px;
+	padding: .4rem 1.1rem;
+	cursor: pointer;
+	transition: color .15s, border-color .15s, background .15s;
+	letter-spacing: .06em;
+	text-transform: uppercase;
+}
 
-		&:hover {
-			color: var(--text);
-			border-color: var(--text-muted);
-		}
-	}
+.filter-bar label:hover {
+	color: var(--text);
+	border-color: var(--text-muted);
 }
 
 body:has(#fc-all:checked) .filter-bar label[for="fc-all"],
@@ -468,16 +465,16 @@ body:has(#fc-feedback:checked) .example-card:not([data-cat="feedback"]) { displa
 	border-radius: var(--radius-lg);
 	overflow: hidden;
 	transition: border-color .2s, transform .2s, box-shadow .2s;
+}
 
-	&:has(.card-body:hover) {
-		border-color: var(--accent);
-		transform: translateY(-2px);
-		box-shadow: 0 8px 24px rgba(0,0,0,.3);
+.example-card:has(.card-body:hover) {
+	border-color: var(--accent);
+	transform: translateY(-2px);
+	box-shadow: 0 8px 24px rgba(0,0,0,.3);
+}
 
-		.card-preview {
-			border-bottom-color: var(--accent);
-		}
-	}
+.example-card:has(.card-body:hover) .card-preview {
+	border-bottom-color: var(--accent);
 }
 
 .card-preview {
@@ -503,11 +500,11 @@ body:has(#fc-feedback:checked) .example-card:not([data-cat="feedback"]) { displa
 	text-decoration: none;
 	flex: 1;
 	transition: background .15s;
+}
 
-	&:hover {
-		background: var(--accent-dim);
-		text-decoration: none;
-	}
+.card-body:hover {
+	background: var(--accent-dim);
+	text-decoration: none;
 }
 
 .card-meta {
@@ -528,11 +525,9 @@ body:has(#fc-feedback:checked) .example-card:not([data-cat="feedback"]) { displa
 	color: var(--text-muted);
 }
 
-.badge-level {
-	&.badge-beginner { color: var(--teal); border-color: var(--teal-dim); background: var(--teal-dim); }
-	&.badge-intermediate { color: var(--orange); border-color: var(--orange-dim); background: var(--orange-dim); }
-	&.badge-advanced { color: var(--coral); border-color: var(--coral-dim); background: var(--coral-dim); }
-}
+.badge-level.badge-beginner    { color: var(--teal);   border-color: var(--teal-dim);   background: var(--teal-dim); }
+.badge-level.badge-intermediate { color: var(--orange); border-color: var(--orange-dim); background: var(--orange-dim); }
+.badge-level.badge-advanced    { color: var(--coral);  border-color: var(--coral-dim);  background: var(--coral-dim); }
 
 .card-new-badge {
 	position: absolute;
@@ -577,14 +572,14 @@ body:has(#fc-feedback:checked) .example-card:not([data-cat="feedback"]) { displa
 
 .example-header {
 	margin-bottom: 2.5rem;
+}
 
-	h1 {
-		font-size: clamp(1.75rem, 4vw, 2.5rem);
-		font-weight: 800;
-		letter-spacing: -.03em;
-		line-height: 1.2;
-		margin-bottom: .5rem;
-	}
+.example-header h1 {
+	font-size: clamp(1.75rem, 4vw, 2.5rem);
+	font-weight: 800;
+	letter-spacing: -.03em;
+	line-height: 1.2;
+	margin-bottom: .5rem;
 }
 
 .back-link {
@@ -598,12 +593,12 @@ body:has(#fc-feedback:checked) .example-card:not([data-cat="feedback"]) { displa
 	padding: .35rem .85rem;
 	margin-bottom: 1.25rem;
 	transition: color .15s, border-color .15s;
+}
 
-	&:hover {
-		color: var(--text);
-		border-color: var(--text-muted);
-		text-decoration: none;
-	}
+.back-link:hover {
+	color: var(--text);
+	border-color: var(--text-muted);
+	text-decoration: none;
 }
 
 .example-description {
@@ -621,16 +616,16 @@ body:has(#fc-feedback:checked) .example-card:not([data-cat="feedback"]) { displa
 
 .demo-section {
 	margin-bottom: 2.5rem;
+}
 
-	h2 {
-		font-family: var(--font-mono);
-		font-size: .7rem;
-		font-weight: 500;
-		text-transform: uppercase;
-		letter-spacing: .1em;
-		color: var(--text-muted);
-		margin-bottom: .75rem;
-	}
+.demo-section h2 {
+	font-family: var(--font-mono);
+	font-size: .7rem;
+	font-weight: 500;
+	text-transform: uppercase;
+	letter-spacing: .1em;
+	color: var(--text-muted);
+	margin-bottom: .75rem;
 }
 
 .code-section {
@@ -642,35 +637,35 @@ body:has(#fc-feedback:checked) .example-card:not([data-cat="feedback"]) { displa
 
 .code-block {
 	min-width: 0;
+}
 
-	h2 {
-		font-family: var(--font-mono);
-		font-size: .7rem;
-		font-weight: 500;
-		text-transform: uppercase;
-		letter-spacing: .1em;
-		color: var(--text-muted);
-		margin-bottom: .75rem;
-	}
+.code-block h2 {
+	font-family: var(--font-mono);
+	font-size: .7rem;
+	font-weight: 500;
+	text-transform: uppercase;
+	letter-spacing: .1em;
+	color: var(--text-muted);
+	margin-bottom: .75rem;
 }
 
 .explanation-section {
 	margin-bottom: 2.5rem;
+}
 
-	h2 {
-		font-family: var(--font-mono);
-		font-size: .7rem;
-		font-weight: 500;
-		text-transform: uppercase;
-		letter-spacing: .1em;
-		color: var(--text-muted);
-		margin-bottom: .75rem;
-	}
+.explanation-section h2 {
+	font-family: var(--font-mono);
+	font-size: .7rem;
+	font-weight: 500;
+	text-transform: uppercase;
+	letter-spacing: .1em;
+	color: var(--text-muted);
+	margin-bottom: .75rem;
+}
 
-	p {
-		color: var(--text-muted);
-		line-height: 1.75;
-	}
+.explanation-section p {
+	color: var(--text-muted);
+	line-height: 1.75;
 }
 
 .demo-wrapper {
@@ -706,20 +701,20 @@ body:has(#fc-feedback:checked) .example-card:not([data-cat="feedback"]) { displa
 	justify-content: center;
 	transition: color .15s, border-color .15s;
 	padding: 0;
-
-	&:hover {
-		color: var(--text);
-		border-color: var(--text-muted);
-	}
-
-	&.copied {
-		color: var(--accent);
-		border-color: var(--accent);
-
-		.icon-copy { display: none; }
-		.icon-check { display: block; }
-	}
 }
+
+.copy-btn:hover {
+	color: var(--text);
+	border-color: var(--text-muted);
+}
+
+.copy-btn.copied {
+	color: var(--accent);
+	border-color: var(--accent);
+}
+
+.copy-btn.copied .icon-copy { display: none; }
+.copy-btn.copied .icon-check { display: block; }
 
 .icon-check {
 	display: none;
@@ -753,24 +748,24 @@ pre[class*="language-"] {
 	padding: 1.25rem 1.5rem;
 	background: var(--surface-2) !important;
 	border: 1px solid var(--border);
+}
 
-	&::-webkit-scrollbar {
-		width: 4px;
-		height: 4px;
-	}
+pre[class*="language-"]::-webkit-scrollbar {
+	width: 4px;
+	height: 4px;
+}
 
-	&::-webkit-scrollbar-track {
-		background: transparent;
-	}
+pre[class*="language-"]::-webkit-scrollbar-track {
+	background: transparent;
+}
 
-	&::-webkit-scrollbar-thumb {
-		background: var(--border);
-		border-radius: 999px;
+pre[class*="language-"]::-webkit-scrollbar-thumb {
+	background: var(--border);
+	border-radius: 999px;
+}
 
-		&:hover {
-			background: var(--text-muted);
-		}
-	}
+pre[class*="language-"]::-webkit-scrollbar-thumb:hover {
+	background: var(--text-muted);
 }
 
 body:has(#theme-toggle:checked) pre[class*="language-"] {
@@ -846,15 +841,15 @@ body:has(#theme-toggle:checked) .token.punctuation { color: #999; }
 	border-top: 1px solid var(--border);
 	background: var(--surface);
 	margin-top: 4rem;
+}
 
-	a {
-		color: var(--text-muted);
+.site-footer a {
+	color: var(--text-muted);
+}
 
-		&:hover {
-			color: var(--accent);
-			text-decoration: none;
-		}
-	}
+.site-footer a:hover {
+	color: var(--accent);
+	text-decoration: none;
 }
 
 /* ── Responsive ─────────────────────────────────────── */
