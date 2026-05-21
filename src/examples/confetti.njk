@@ -1,0 +1,56 @@
+---
+title: Confetti Burst
+description: CSS confetti animation using `transform`, `@keyframes`, and `nth-child` for staggered timing.
+slug: confetti
+cssFile: confetti.css
+explanation: "Each confetti piece is an absolutely-positioned `<div>` with a unique color. The `@keyframes` animation moves pieces from `top: -10px` to below the container using `translateY`, adding rotation and horizontal scale flipping for a tumbling effect. `nth-child` selectors assign different `animation-duration` and `animation-delay` values to each piece so they fall at varied speeds and start times, making it feel organic."
+---
+{% extends "example.njk" %}
+{% block demo %}
+<div class="confetti-stage">
+	<div class="piece"></div>
+	<div class="piece"></div>
+	<div class="piece"></div>
+	<div class="piece"></div>
+	<div class="piece"></div>
+	<div class="piece"></div>
+	<div class="piece"></div>
+	<div class="piece"></div>
+	<div class="piece"></div>
+	<div class="piece"></div>
+	<div class="piece"></div>
+	<div class="piece"></div>
+	<p class="confetti-text">🎉 Congrats!</p>
+</div>
+{% endblock %}
+
+{% block html_code %}
+{%- highlight "html" %}
+<div class="confetti-stage">
+  <div class="piece"></div>
+  <div class="piece"></div>
+  <!-- repeat for more pieces -->
+</div>
+{%- endhighlight %}
+{% endblock %}
+
+{% block css_code %}
+{%- highlight "css" %}
+.piece {
+  position: absolute;
+  top: -10px;
+  width: 10px;
+  height: 10px;
+  animation: confetti-fall 3s ease-in infinite;
+}
+
+.piece:nth-child(1) { left: 5%; background: var(--coral); animation-delay: 0s; }
+.piece:nth-child(2) { left: 20%; background: var(--accent); animation-delay: .3s; }
+/* ...more pieces */
+
+@keyframes confetti-fall {
+  0%   { transform: translateY(0) rotate(0deg); opacity: 1; }
+  100% { transform: translateY(230px) rotate(360deg); opacity: 0; }
+}
+{%- endhighlight %}
+{% endblock %}

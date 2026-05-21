@@ -1,0 +1,58 @@
+---
+title: Styled Select Dropdown
+description: Custom `<select>` appearance using `appearance:none` and an inline SVG background arrow.
+slug: styled-select
+cssFile: styled-select.css
+explanation: "The native `<select>` dropdown is notoriously hard to style. `appearance: none` (with its `-webkit-` prefix) removes the browser's default arrow and appearance. A custom arrow is injected as an inline SVG via `background-image`, positioned with `background-position` to the right. The `background-repeat: no-repeat` prevents it from tiling, and extra right padding ensures text doesn't overlap the arrow."
+---
+{% extends "example.njk" %}
+{% block demo %}
+<div class="select-wrap">
+	<div>
+		<label>Default styled select</label>
+		<select>
+			<option>Choose an option</option>
+			<option>Apple</option>
+			<option>Banana</option>
+			<option>Cherry</option>
+			<option>Date</option>
+		</select>
+	</div>
+	<div>
+		<label>Accent border variant</label>
+		<select class="select-accent">
+			<option>Frontend</option>
+			<option>Backend</option>
+			<option>Full Stack</option>
+			<option>Design</option>
+		</select>
+	</div>
+</div>
+{% endblock %}
+
+{% block html_code %}
+{%- highlight "html" %}
+<select class="custom-select">
+  <option>Choose an option</option>
+  <option>Apple</option>
+  <option>Banana</option>
+</select>
+{%- endhighlight %}
+{% endblock %}
+
+{% block css_code %}
+{%- highlight "css" %}
+select {
+  appearance: none;
+  -webkit-appearance: none;
+  padding: .7rem 2.75rem .7rem 1rem;
+  background-image: url("data:image/svg+xml,..."); /* SVG arrow */
+  background-repeat: no-repeat;
+  background-position: right 1rem center;
+  border: 2px solid var(--border);
+  border-radius: 8px;
+  color: var(--text);
+  cursor: pointer;
+}
+{%- endhighlight %}
+{% endblock %}

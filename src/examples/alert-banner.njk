@@ -1,0 +1,77 @@
+---
+title: Alert Banners
+description: Info, success, warning, and error alert variants styled with CSS custom properties.
+slug: alert-banner
+cssFile: alert-banner.css
+explanation: "Alert variants share a base `.alert` class and extend it with modifier classes like `.alert-success`. Each modifier applies a `background` using color palette variables like `var(--teal-dim)` and a `border-left` in the matching accent color, creating a consistent visual system. The dismissible variant uses a hidden checkbox — checking it sets `display: none` on the alert via the `~` sibling combinator."
+---
+{% extends "example.njk" %}
+{% block demo %}
+<div class="alerts">
+	<div class="alert alert-info">
+		<span class="alert-icon">ℹ</span>
+		<div class="alert-body">
+			<strong>Info</strong>
+			Your password will expire in 7 days.
+		</div>
+	</div>
+	<div class="alert alert-success">
+		<span class="alert-icon">✓</span>
+		<div class="alert-body">
+			<strong>Success</strong>
+			Your profile was updated successfully.
+		</div>
+	</div>
+	<div class="alert alert-warning">
+		<span class="alert-icon">⚠</span>
+		<div class="alert-body">
+			<strong>Warning</strong>
+			You have unsaved changes on this page.
+		</div>
+	</div>
+	<input type="checkbox" id="dismiss-1" class="alert-dismiss-input">
+	<div class="alert alert-error alert-dismissible">
+		<span class="alert-icon">✕</span>
+		<div class="alert-body">
+			<strong>Error</strong>
+			Failed to connect. Check your network.
+		</div>
+		<label for="dismiss-1" class="alert-close">✕</label>
+	</div>
+</div>
+{% endblock %}
+
+{% block html_code %}
+{%- highlight "html" %}
+<div class="alert alert-success">
+  <span class="alert-icon">✓</span>
+  <div class="alert-body">
+    <strong>Success</strong>
+    Your changes were saved.
+  </div>
+</div>
+
+<!-- Dismissible -->
+<input type="checkbox" id="close-alert" class="alert-dismiss-input">
+<div class="alert alert-error alert-dismissible">
+  <strong>Error</strong> Something went wrong.
+  <label for="close-alert" class="alert-close">✕</label>
+</div>
+{%- endhighlight %}
+{% endblock %}
+
+{% block css_code %}
+{%- highlight "css" %}
+.alert-success {
+  background: rgba(87,217,163,.1);
+  border-left: 3px solid var(--teal);
+  color: var(--teal);
+}
+
+/* Dismissible pattern */
+.alert-dismiss-input { display: none; }
+.alert-dismiss-input:checked ~ .alert-dismissible {
+  display: none;
+}
+{%- endhighlight %}
+{% endblock %}

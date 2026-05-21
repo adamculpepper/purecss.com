@@ -1,0 +1,91 @@
+---
+title: Scroll Shelf
+description: A horizontally scrollable content shelf with `scroll-snap` for clean stopping points.
+slug: scroll-shelf
+cssFile: scroll-shelf.css
+explanation: "`overflow-x: auto` on the container enables horizontal scrolling. `display: flex` makes child items sit in a row. `scroll-snap-type: x mandatory` on the container and `scroll-snap-align: start` on each item ensures the scroll stops cleanly at item boundaries. `-webkit-overflow-scrolling: touch` enables smooth momentum scrolling on iOS."
+---
+{% extends "example.njk" %}
+{% block demo %}
+<div class="shelf-wrap">
+	<div class="shelf">
+		<div class="shelf-item">
+			<div class="shelf-thumb"></div>
+			<div class="shelf-body">
+				<div class="shelf-title">Design Systems</div>
+				<div class="shelf-sub">12 articles</div>
+			</div>
+		</div>
+		<div class="shelf-item">
+			<div class="shelf-thumb"></div>
+			<div class="shelf-body">
+				<div class="shelf-title">CSS Tricks</div>
+				<div class="shelf-sub">8 articles</div>
+			</div>
+		</div>
+		<div class="shelf-item">
+			<div class="shelf-thumb"></div>
+			<div class="shelf-body">
+				<div class="shelf-title">Typography</div>
+				<div class="shelf-sub">15 articles</div>
+			</div>
+		</div>
+		<div class="shelf-item">
+			<div class="shelf-thumb"></div>
+			<div class="shelf-body">
+				<div class="shelf-title">Animation</div>
+				<div class="shelf-sub">9 articles</div>
+			</div>
+		</div>
+		<div class="shelf-item">
+			<div class="shelf-thumb"></div>
+			<div class="shelf-body">
+				<div class="shelf-title">Layout</div>
+				<div class="shelf-sub">20 articles</div>
+			</div>
+		</div>
+		<div class="shelf-item">
+			<div class="shelf-thumb"></div>
+			<div class="shelf-body">
+				<div class="shelf-title">Performance</div>
+				<div class="shelf-sub">6 articles</div>
+			</div>
+		</div>
+		<div class="shelf-item">
+			<div class="shelf-thumb"></div>
+			<div class="shelf-body">
+				<div class="shelf-title">Accessibility</div>
+				<div class="shelf-sub">11 articles</div>
+			</div>
+		</div>
+	</div>
+	<p class="shelf-hint">← scroll or swipe →</p>
+</div>
+{% endblock %}
+
+{% block html_code %}
+{%- highlight "html" %}
+<div class="shelf">
+  <div class="shelf-item">Card 1</div>
+  <div class="shelf-item">Card 2</div>
+  <div class="shelf-item">Card 3</div>
+</div>
+{%- endhighlight %}
+{% endblock %}
+
+{% block css_code %}
+{%- highlight "css" %}
+.shelf {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  gap: .75rem;
+  -webkit-overflow-scrolling: touch;
+}
+
+.shelf-item {
+  flex: 0 0 160px;
+  scroll-snap-align: start;
+}
+{%- endhighlight %}
+{% endblock %}

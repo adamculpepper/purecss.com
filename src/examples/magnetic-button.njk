@@ -1,0 +1,43 @@
+---
+title: Magnetic Button
+description: A button with a dramatic lift and shadow on hover using CSS transitions and `@starting-style`.
+slug: magnetic-button
+cssFile: magnetic-button.css
+explanation: "The lift effect uses `transform: translateY(-6px) scale(1.04)` on `:hover` with a `cubic-bezier(0.34, 1.56, 0.64, 1)` timing function — the Y₂ value above 1.0 creates a spring overshoot. A `box-shadow` with a large blur and spread grows on hover to simulate the button floating above the surface. `@starting-style` defines where the animation begins when the element first enters the DOM, creating a smooth entrance."
+---
+{% extends "example.njk" %}
+{% block demo %}
+<div class="mag-btns">
+	<button class="mag-btn mag-btn-primary">Primary</button>
+	<button class="mag-btn mag-btn-sky">Blue</button>
+	<button class="mag-btn mag-btn-ghost">Ghost</button>
+</div>
+{% endblock %}
+
+{% block html_code %}
+{%- highlight "html" %}
+<button class="mag-btn">Hover me</button>
+{%- endhighlight %}
+{% endblock %}
+
+{% block css_code %}
+{%- highlight "css" %}
+.mag-btn {
+  transition:
+    transform .3s cubic-bezier(0.34, 1.56, 0.64, 1),
+    box-shadow .3s ease;
+}
+
+.mag-btn:hover {
+  transform: translateY(-6px) scale(1.04);
+  box-shadow: 0 16px 40px rgba(184, 255, 87, .35);
+}
+
+@starting-style {
+  .mag-btn {
+    transform: translateY(10px);
+    opacity: 0;
+  }
+}
+{%- endhighlight %}
+{% endblock %}

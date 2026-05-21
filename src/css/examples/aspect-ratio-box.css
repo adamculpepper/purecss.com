@@ -1,41 +1,43 @@
-﻿/*
+/*
  * PureCSS.com
  * https://purecss.com/examples/aspect-ratio-box/
  * Maintain a fixed aspect ratio on any element using the aspect-ratio property.
  */
 
-.demo-aspect-ratio-box .ratio-grid {
-	display: flex;
-	gap: 1rem;
-	flex-wrap: wrap;
-	justify-content: center;
-}
+.demo-aspect-ratio-box {
+	.ratio-grid {
+		display: flex;
+		gap: 1rem;
+		flex-wrap: wrap;
+		justify-content: center;
+	}
 
-.demo-aspect-ratio-box .ratio-box {
-	background: var(--accent);
-	border-radius: 10px;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	color: var(--bg);
-	font-size: .8rem;
-	font-weight: 600;
-}
+	.ratio-box {
+		background: var(--accent);
+		border-radius: 10px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		color: var(--bg);
+		font-size: .8rem;
+		font-weight: 600;
+	}
 
-.demo-aspect-ratio-box .ratio-16-9 {
-	aspect-ratio: 16 / 9;
-	width: 160px;
-	background: var(--accent);
-}
+	.ratio-16-9 {
+		aspect-ratio: 16 / 9;
+		width: 160px;
+		background: var(--accent);
+	}
 
-.demo-aspect-ratio-box .ratio-1-1 {
-	aspect-ratio: 1 / 1;
-	width: 90px;
-	background: var(--violet);
-}
+	.ratio-1-1 {
+		aspect-ratio: 1 / 1;
+		width: 90px;
+		background: var(--violet);
+	}
 
-.demo-aspect-ratio-box .ratio-4-3 {
-	aspect-ratio: 4 / 3;
-	width: 120px;
-	background: var(--sky);
+	.ratio-4-3 {
+		aspect-ratio: 4 / 3;
+		width: 120px;
+		background: var(--sky);
+	}
 }

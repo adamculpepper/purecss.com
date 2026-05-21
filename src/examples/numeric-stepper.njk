@@ -1,0 +1,49 @@
+---
+title: Numeric Stepper
+description: A styled `<input type="number">` with custom spin button appearance using CSS pseudo-elements.
+slug: numeric-stepper
+cssFile: numeric-stepper.css
+explanation: "The native number input can be restyled by removing default spinners with `appearance: textfield` (or `-moz-appearance: textfield` for Firefox) and hiding the WebKit spin buttons via `::-webkit-inner-spin-button`. A custom stepper UI wraps the input with styled +/− `<button>` elements and JavaScript to increment/decrement — or for a pure-CSS range approach, use `<input type=range>` styled with the same techniques."
+---
+{% extends "example.njk" %}
+{% block demo %}
+<div class="stepper-group">
+	<div class="stepper-field">
+		<label>Plain styled number input</label>
+		<input type="number" value="42" min="0" max="100">
+	</div>
+	<div class="stepper-field">
+		<label>Inline stepper layout</label>
+		<div class="stepper-row">
+			<button class="step-btn" onclick="this.nextElementSibling.stepDown()">−</button>
+			<input type="number" value="1" min="0" max="99">
+			<button class="step-btn" onclick="this.previousElementSibling.stepUp()">+</button>
+		</div>
+	</div>
+</div>
+{% endblock %}
+
+{% block html_code %}
+{%- highlight "html" %}
+<div class="stepper-row">
+  <button class="step-btn" onclick="this.nextElementSibling.stepDown()">−</button>
+  <input type="number" value="1" min="0" max="99">
+  <button class="step-btn" onclick="this.previousElementSibling.stepUp()">+</button>
+</div>
+{%- endhighlight %}
+{% endblock %}
+
+{% block css_code %}
+{%- highlight "css" %}
+input[type="number"] {
+  appearance: textfield;
+  -moz-appearance: textfield;
+  text-align: center;
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+}
+{%- endhighlight %}
+{% endblock %}

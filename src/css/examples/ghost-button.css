@@ -1,0 +1,97 @@
+/*
+ * PureCSS.com
+ * https://purecss.com/examples/ghost-button/
+ * An outlined button that fills with color from left to right on hover using a pseudo-element.
+ */
+
+.demo-ghost-button {
+	.ghost-btns {
+		display: flex;
+		gap: 1rem;
+		align-items: center;
+		justify-content: center;
+		flex-wrap: wrap;
+		padding: .5rem;
+	}
+
+	.ghost-btn {
+		position: relative;
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		padding: .7rem 1.75rem;
+		border-radius: var(--radius);
+		font-family: var(--font-sans);
+		font-size: .95rem;
+		font-weight: 600;
+		cursor: pointer;
+		border: 2px solid;
+		overflow: hidden;
+		transition: color .3s;
+		background: transparent;
+
+		span {
+			position: relative;
+			z-index: 1;
+		}
+
+		&::before {
+			content: '';
+			position: absolute;
+			inset: 0;
+			transform: translateX(-101%);
+			transition: transform .3s cubic-bezier(0.4, 0, 0.2, 1);
+		}
+
+		&:hover::before {
+			transform: translateX(0);
+		}
+	}
+
+	/* Green variant */
+	.ghost-btn-green {
+		border-color: var(--accent);
+		color: var(--accent);
+
+		&::before {
+			background: var(--accent);
+		}
+
+		&:hover {
+			color: var(--bg);
+		}
+	}
+
+	/* Blue variant */
+	.ghost-btn-blue {
+		border-color: var(--sky);
+		color: var(--sky);
+
+		&::before {
+			background: var(--sky);
+		}
+
+		&:hover {
+			color: var(--bg);
+		}
+	}
+
+	/* Pink variant — sweep from right */
+	.ghost-btn-pink {
+		border-color: var(--rose);
+		color: var(--rose);
+
+		&::before {
+			background: var(--rose);
+			transform: translateX(101%);
+		}
+
+		&:hover::before {
+			transform: translateX(0);
+		}
+
+		&:hover {
+			color: #fff;
+		}
+	}
+}

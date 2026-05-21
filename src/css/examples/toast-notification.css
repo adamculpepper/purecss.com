@@ -1,0 +1,98 @@
+/*
+ * PureCSS.com
+ * https://purecss.com/examples/toast-notification/
+ * A slide-in notification using :target to trigger and a CSS animation to auto-dismiss.
+ */
+
+.demo-toast-notification {
+	.toast-triggers {
+		display: flex;
+		gap: .75rem;
+		flex-wrap: wrap;
+		justify-content: center;
+		margin-bottom: .5rem;
+	}
+
+	.toast-btn {
+		display: inline-flex;
+		align-items: center;
+		gap: .4rem;
+		padding: .55rem 1.1rem;
+		border-radius: var(--radius);
+		font-family: var(--font-sans);
+		font-size: .875rem;
+		font-weight: 600;
+		text-decoration: none;
+		cursor: pointer;
+		transition: opacity .15s;
+		border: none;
+
+		&:hover {
+			opacity: .85;
+		}
+	}
+
+	.toast-btn-success { background: rgba(87,217,163,.15); color: var(--teal); }
+	.toast-btn-error   { background: var(--coral-dim); color: var(--coral); }
+	.toast-btn-info    { background: var(--sky-dim); color: var(--sky); }
+
+	.toast {
+		display: none;
+		position: fixed;
+		bottom: 1.5rem;
+		right: 1.5rem;
+		min-width: 260px;
+		max-width: 340px;
+		padding: .85rem 1.1rem;
+		border-radius: var(--radius-lg);
+		background: var(--surface);
+		border: 1px solid var(--border);
+		box-shadow: 0 8px 32px rgba(0,0,0,.3);
+		z-index: 9999;
+		align-items: center;
+		gap: .75rem;
+		font-size: .9rem;
+		font-weight: 500;
+
+		&:target {
+			display: flex;
+			animation: toast-in .3s ease forwards, toast-out .3s ease 3s forwards;
+		}
+	}
+
+	.toast-icon {
+		font-size: 1.1rem;
+		flex-shrink: 0;
+	}
+
+	.toast-msg {
+		flex: 1;
+	}
+
+	.toast-close {
+		color: var(--text-muted);
+		text-decoration: none;
+		font-size: 1.1rem;
+		line-height: 1;
+		flex-shrink: 0;
+		transition: color .15s;
+
+		&:hover {
+			color: var(--text);
+		}
+	}
+
+	#toast-success { border-left: 3px solid var(--teal); }
+	#toast-error   { border-left: 3px solid var(--coral); }
+	#toast-info    { border-left: 3px solid var(--sky); }
+}
+
+@keyframes toast-in {
+	from { transform: translateX(120%); opacity: 0; }
+	to   { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes toast-out {
+	from { transform: translateX(0); opacity: 1; }
+	to   { transform: translateX(120%); opacity: 0; }
+}

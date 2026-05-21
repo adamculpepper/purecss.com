@@ -1,0 +1,80 @@
+/*
+ * PureCSS.com
+ * https://purecss.com/examples/sticky-table/
+ * A table header that stays fixed while scrolling using position: sticky on <thead>.
+ */
+
+.demo-sticky-table {
+	.table-scroll {
+		max-height: 240px;
+		overflow-y: auto;
+		border: 1px solid var(--border);
+		border-radius: var(--radius-lg);
+	}
+
+	table {
+		width: 100%;
+		border-collapse: collapse;
+		font-size: .875rem;
+	}
+
+	thead th {
+		position: sticky;
+		top: 0;
+		z-index: 1;
+		background: var(--surface);
+		padding: .75rem 1rem;
+		text-align: left;
+		font-weight: 600;
+		font-size: .8rem;
+		text-transform: uppercase;
+		letter-spacing: .06em;
+		color: var(--text-muted);
+		border-bottom: 1px solid var(--border);
+	}
+
+	tbody tr {
+		border-bottom: 1px solid var(--border);
+		transition: background .15s;
+
+		&:last-child {
+			border-bottom: none;
+		}
+
+		&:hover {
+			background: var(--surface-2);
+		}
+	}
+
+	tbody td {
+		padding: .65rem 1rem;
+		color: var(--text);
+
+		&:first-child {
+			font-weight: 500;
+		}
+	}
+
+	.badge-status {
+		display: inline-block;
+		padding: .2rem .6rem;
+		border-radius: 99px;
+		font-size: .75rem;
+		font-weight: 600;
+	}
+
+	.badge-active {
+		background: rgba(87, 217, 163, .12);
+		color: var(--teal);
+	}
+
+	.badge-pending {
+		background: rgba(255, 212, 68, .12);
+		color: var(--yellow);
+	}
+
+	.badge-inactive {
+		background: var(--surface-2);
+		color: var(--text-muted);
+	}
+}

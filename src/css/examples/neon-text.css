@@ -1,0 +1,68 @@
+/*
+ * PureCSS.com
+ * https://purecss.com/examples/neon-text/
+ * Glowing neon text using layered text-shadow values and a flicker CSS animation.
+ */
+
+.demo-neon-text {
+	.neon-stage {
+		display: flex;
+		flex-direction: column;
+		gap: 1.5rem;
+		align-items: center;
+		padding: 1rem;
+		background: #0a0a0b;
+		border-radius: var(--radius-lg);
+	}
+
+	.neon {
+		font-family: var(--font-sans);
+		font-size: 2.5rem;
+		font-weight: 800;
+		letter-spacing: .02em;
+		animation: neon-flicker 4s infinite;
+	}
+
+	.neon-green {
+		color: #b8ff57;
+		text-shadow:
+			0 0 4px #b8ff57,
+			0 0 10px #b8ff57,
+			0 0 20px #b8ff57,
+			0 0 40px #6ddf00,
+			0 0 80px #6ddf00;
+	}
+
+	.neon-blue {
+		color: #38bdf8;
+		text-shadow:
+			0 0 4px #38bdf8,
+			0 0 10px #38bdf8,
+			0 0 20px #38bdf8,
+			0 0 40px #0ea5e9,
+			0 0 80px #0ea5e9;
+		animation-delay: .5s;
+	}
+
+	.neon-pink {
+		color: #f472b6;
+		font-size: 1.5rem;
+		text-shadow:
+			0 0 4px #f472b6,
+			0 0 10px #f472b6,
+			0 0 20px #f472b6,
+			0 0 40px #ec4899,
+			0 0 80px #ec4899;
+		animation-delay: 1s;
+	}
+}
+
+@keyframes neon-flicker {
+	0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
+		opacity: 1;
+	}
+	20%, 24%, 55% {
+		opacity: .7;
+		filter: brightness(.8);
+	}
+}

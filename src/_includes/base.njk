@@ -76,13 +76,14 @@
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=Instrument+Serif:ital@0;1&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
-	<link rel="icon" type="image/svg+xml" href="/favicon.svg">
-	<link rel="icon" type="image/png" href="/favicon.png">
-	<link rel="icon" href="/favicon.ico">
+	<link rel="icon" type="image/svg+xml" href="{{ '/favicon-dev.svg' if not env.isProduction else '/favicon.svg' }}">
+	<link rel="icon" type="image/png" href="{{ '/favicon-dev.png' if not env.isProduction else '/favicon.png' }}">
+	<link rel="icon" href="{{ '/favicon-dev.ico' if not env.isProduction else '/favicon.ico' }}">
 	<link rel="stylesheet" href="/css/global.css">
 	{% if cssFile %}<link rel="stylesheet" href="/css/examples/{{ cssFile }}">{% endif %}
 	{% block head %}{% endblock %}
 
+	{% if env.isProduction %}
 	<!-- Google tag (gtag.js) -->
 	<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXJYYP5NE6"></script>
 	<script>
@@ -91,6 +92,7 @@
 		gtag('js', new Date());
 		gtag('config', 'G-XXJYYP5NE6');
 	</script>
+	{% endif %}
 </head>
 <body>
 	<input type="checkbox" id="theme-toggle" class="theme-toggle-input">
@@ -130,7 +132,7 @@
 	</script>
 
 	<footer class="site-footer">
-		<p>Pure CSS. Zero JavaScript. Built with <a href="https://www.11ty.dev" target="_blank" rel="noopener">Eleventy</a>. By <a href="https://x.com/adamculpepper" target="_blank" rel="noopener">Adam Culpepper</a>. <a href="/brand/">Brand</a>.</p>
+		<p>Pure CSS. Zero JavaScript. Built with <a href="https://www.11ty.dev" target="_blank" rel="noopener">Eleventy</a>. By <a href="https://x.com/adamculpepper" target="_blank" rel="noopener">Adam Culpepper</a>.{% if not env.isProduction %} <a href="/brand/">Brand</a>. <a href="/sitemap/">Sitemap</a>.{% endif %}</p>
 	</footer>
 </body>
 </html>

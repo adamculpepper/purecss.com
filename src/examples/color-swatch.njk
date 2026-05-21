@@ -1,0 +1,75 @@
+---
+title: Color Swatch Picker
+description: Radio buttons styled as color circles with a `:checked` ring indicator — zero JavaScript.
+slug: color-swatch
+cssFile: color-swatch.css
+explanation: "Each radio input is hidden with `display: none`. Its paired `<label>` is styled as a colored circle using a CSS custom property `--c` for the background color. The `:checked` selector targets the hidden input, and since the label is its immediate sibling, `input:checked + label` adds a visible `outline` ring to show the selection — all without JavaScript."
+---
+{% extends "example.njk" %}
+{% block demo %}
+<div class="swatch-section">
+	<div>
+		<p class="swatch-label">Pick a color</p>
+		<div class="swatch-group">
+			<input type="radio" name="swatch1" id="sw1" checked>
+			<label for="sw1" style="background: #ff6b6b"></label>
+			<input type="radio" name="swatch1" id="sw2">
+			<label for="sw2" style="background: #ff9040"></label>
+			<input type="radio" name="swatch1" id="sw3">
+			<label for="sw3" style="background: #ffd444"></label>
+			<input type="radio" name="swatch1" id="sw4">
+			<label for="sw4" style="background: #b8ff57"></label>
+			<input type="radio" name="swatch1" id="sw5">
+			<label for="sw5" style="background: #38bdf8"></label>
+			<input type="radio" name="swatch1" id="sw6">
+			<label for="sw6" style="background: #c084fc"></label>
+			<input type="radio" name="swatch1" id="sw7">
+			<label for="sw7" style="background: #f472b6"></label>
+		</div>
+	</div>
+	<div>
+		<p class="swatch-label">Product variant</p>
+		<div class="swatch-group swatch-group--large">
+			<input type="radio" name="swatch2" id="sw8" checked>
+			<label for="sw8" style="background: #1a1a2e"></label>
+			<input type="radio" name="swatch2" id="sw9">
+			<label for="sw9" style="background: #f4f1eb"></label>
+			<input type="radio" name="swatch2" id="sw10">
+			<label for="sw10" style="background: #2d4a22"></label>
+			<input type="radio" name="swatch2" id="sw11">
+			<label for="sw11" style="background: #4a1f1f"></label>
+		</div>
+	</div>
+</div>
+{% endblock %}
+
+{% block html_code %}
+{%- highlight "html" %}
+<input type="radio" name="color" id="c1" checked>
+<label for="c1" style="background: #ff6b6b"></label>
+
+<input type="radio" name="color" id="c2">
+<label for="c2" style="background: #38bdf8"></label>
+{%- endhighlight %}
+{% endblock %}
+
+{% block css_code %}
+{%- highlight "css" %}
+input[type="radio"] { display: none; }
+
+label {
+  display: block;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  cursor: pointer;
+  outline: 2px solid transparent;
+  outline-offset: 2px;
+  transition: outline-color .15s, transform .15s;
+}
+
+label:hover { transform: scale(1.1); }
+
+input:checked + label { outline-color: var(--text); }
+{%- endhighlight %}
+{% endblock %}

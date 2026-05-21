@@ -1,0 +1,55 @@
+---
+title: Elastic Bounce
+description: A ball that bounces with a spring-like overshoot using a custom `cubic-bezier` easing.
+slug: elastic-bounce
+cssFile: elastic-bounce.css
+explanation: "`cubic-bezier(0.68, -0.55, 0.265, 1.55)` is the classic elastic easing — the negative Y₁ value (-0.55) makes the animation briefly go backwards before springing forward, and the Y₂ > 1 value (1.55) causes it to overshoot the target before settling. The realistic bounce uses `@keyframes` with `scaleX` and `scaleY` squash-and-stretch at the floor, a CSS trick from traditional animation principles."
+---
+{% extends "example.njk" %}
+{% block demo %}
+<div class="bounce-stage">
+	<div class="bounce-lane">
+		<div class="ball ball-elastic"></div>
+		<span class="bounce-label">Elastic<br>bounce</span>
+	</div>
+	<div class="bounce-lane">
+		<div class="ball ball-spring"></div>
+		<span class="bounce-label">Spring<br>overshoot</span>
+	</div>
+	<div class="bounce-lane">
+		<div class="ball ball-linear"></div>
+		<span class="bounce-label">Linear<br>(for reference)</span>
+	</div>
+	<div class="bounce-floor"></div>
+</div>
+{% endblock %}
+
+{% block html_code %}
+{%- highlight "html" %}
+<div class="ball"></div>
+{%- endhighlight %}
+{% endblock %}
+
+{% block css_code %}
+{%- highlight "css" %}
+/* Classic elastic overshoot */
+.ball-spring {
+  animation: bounce-spring 1.2s
+    cubic-bezier(0.68, -0.55, 0.265, 1.55)
+    infinite alternate;
+}
+
+/* Squash-and-stretch bounce */
+@keyframes bounce-elastic {
+  30% { transform: translateY(-140px); }
+  /* squash on impact */
+  40% { transform: translateY(0) scaleX(1.3) scaleY(0.7); }
+  60% { transform: translateY(-70px); }
+}
+
+@keyframes bounce-spring {
+  from { transform: translateY(0); }
+  to   { transform: translateY(-140px); }
+}
+{%- endhighlight %}
+{% endblock %}

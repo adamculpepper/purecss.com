@@ -1,0 +1,191 @@
+---
+title: Publish Schedule
+permalink: /sitemap/
+eleventyExcludeFromCollections: true
+---
+{% extends "base.njk" %}
+
+{% block head %}
+<meta name="robots" content="noindex, nofollow">
+<style>
+.sitemap-page {
+	max-width: 900px;
+	margin: 0 auto;
+	padding: 2.5rem 2rem;
+}
+
+.sitemap-page h1 {
+	font-family: var(--font-mono);
+	font-size: 1.1rem;
+	color: var(--accent);
+	letter-spacing: .06em;
+	margin-bottom: .5rem;
+}
+
+.sitemap-page > p {
+	font-size: .85rem;
+	color: var(--text-muted);
+	margin-bottom: 2rem;
+}
+
+.sitemap-table {
+	width: 100%;
+	border-collapse: collapse;
+	font-size: .875rem;
+}
+
+.sitemap-table th {
+	font-family: var(--font-mono);
+	font-size: .65rem;
+	text-transform: uppercase;
+	letter-spacing: .08em;
+	color: var(--text-muted);
+	padding: .5rem .75rem;
+	border-bottom: 1px solid var(--border);
+	text-align: left;
+	white-space: nowrap;
+}
+
+.sitemap-table td {
+	padding: .6rem .75rem;
+	border-bottom: 1px solid var(--border);
+	color: var(--text);
+	vertical-align: middle;
+}
+
+.sitemap-table td:first-child {
+	width: 2.5rem;
+	font-family: var(--font-mono);
+	font-size: .7rem;
+	color: var(--text-muted);
+	text-align: right;
+}
+
+.sitemap-table td:nth-child(3),
+.sitemap-table td:nth-child(4) {
+	font-family: var(--font-mono);
+	font-size: .75rem;
+	white-space: nowrap;
+	width: 140px;
+}
+
+.sitemap-table tr.sitemap-pending td {
+	opacity: .45;
+}
+
+.sitemap-table tr.sitemap-pending td:first-child,
+.sitemap-table tr.sitemap-pending td:nth-child(3) {
+	opacity: .45;
+}
+
+.sitemap-table a {
+	color: var(--text);
+}
+
+.sitemap-table a:hover {
+	color: var(--accent);
+}
+
+.sitemap-pending-dash {
+	color: var(--text-muted);
+}
+
+.sitemap-badge-wrap {
+	display: inline-flex;
+	align-items: center;
+	gap: .5rem;
+}
+
+.rel-time {
+	cursor: help;
+	border-bottom: 1px dotted var(--border);
+}
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="sitemap-page">
+	<h1>// Publish Schedule</h1>
+	<p>{{ allExamples.length + 1 }} total pages &middot; {{ allExamples.length }} examples &middot; JavaScript computes live relative times</p>
+
+	<table class="sitemap-table">
+		<thead>
+			<tr>
+				<th>#</th>
+				<th>Page</th>
+				<th>Publish Date</th>
+				<th>Published</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>—</td>
+				<td><a href="/">Home</a></td>
+				<td><span class="rel-time" data-date="2026-05-19T00:00:00-05:00" data-col="date">2026-05-19T00:00:00-05:00</span></td>
+				<td><span class="rel-time" data-date="2026-05-19T00:00:00-05:00" data-col="age">2026-05-19T00:00:00-05:00</span></td>
+			</tr>
+			{% for example in allExamples %}
+			<tr>
+				<td>{{ loop.index }}</td>
+				<td>
+					<span class="sitemap-badge-wrap">
+						<a href="/examples/{{ example.slug }}/">{{ example.title }}</a>
+					</span>
+				</td>
+				<td><span class="rel-time" data-date="{{ example.publishDate }}" data-col="date">{{ example.publishDate }}</span></td>
+				<td><span class="rel-time" data-date="{{ example.publishDate }}" data-col="age">—</span></td>
+			</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+</div>
+
+<script>
+(function () {
+	function relTime(days, future) {
+		var s;
+		if (days === 0)      s = 'today';
+		else if (days === 1) s = future ? 'tomorrow' : 'yesterday';
+		else if (days < 7)   s = days + ' days';
+		else if (days < 14)  s = '1 week';
+		else if (days < 30)  s = Math.floor(days / 7) + ' weeks';
+		else if (days < 45)  s = '1 month';
+		else if (days < 335) s = Math.round(days / 30) + ' months';
+		else if (days < 548) s = '1 year';
+		else                 s = Math.round(days / 365) + ' years';
+		if (s !== 'today' && s !== 'yesterday' && s !== 'tomorrow')
+			s = future ? 'in ' + s : s + ' ago';
+		return s;
+	}
+
+	function longDate(dateStr) {
+		return new Date(dateStr).toLocaleString('en-US', {
+			timeZone: 'America/Chicago',
+			weekday: 'short', year: 'numeric', month: 'long', day: 'numeric',
+			hour: 'numeric', minute: '2-digit', timeZoneName: 'short'
+		});
+	}
+
+	var now = new Date();
+	now.setHours(0, 0, 0, 0);
+
+	document.querySelectorAll('.rel-time[data-date]').forEach(function (el) {
+		var dateStr = el.dataset.date;
+		var col = el.dataset.col;
+		var pub = new Date(dateStr);
+		var future = pub > now;
+		var days = Math.round(Math.abs(now - pub) / 86400000);
+
+		el.title = longDate(dateStr);
+
+		if (col === 'date') {
+			el.textContent = relTime(days, future);
+			var row = el.closest('tr');
+			if (future) row.classList.add('sitemap-pending');
+		} else if (col === 'age') {
+			el.textContent = future ? '—' : relTime(days, false);
+		}
+	});
+})();
+</script>
+{% endblock %}

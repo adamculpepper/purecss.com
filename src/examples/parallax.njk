@@ -1,0 +1,57 @@
+---
+title: Parallax Scrolling
+description: Background and foreground layers move at different speeds using scroll-driven animations.
+slug: parallax
+cssFile: parallax.css
+explanation: "CSS scroll-driven animations use `animation-timeline: scroll()` to link animation progress to scroll position instead of time. Each layer gets its own `@keyframes` with different `translateY` ranges — background elements move less (−15%), creating depth. The `scroll()` function can target the nearest scrolling ancestor or a named scroll timeline. `will-change: transform` hints to the browser to optimize these layers for GPU compositing."
+---
+{% extends "example.njk" %}
+{% block demo %}
+<div class="parallax-scene">
+	<div class="parallax-inner">
+		<div class="parallax-layer layer-bg">
+			<div class="parallax-stars"></div>
+		</div>
+		<div class="parallax-layer layer-mid">
+			<div class="parallax-moon"></div>
+			<div class="parallax-text">
+				<h2>Scroll to explore</h2>
+				<p>Each layer moves at a different speed</p>
+			</div>
+		</div>
+		<div class="parallax-layer layer-front">
+			<div class="parallax-hills"></div>
+		</div>
+	</div>
+	<p class="scroll-hint">↑ scroll inside the box ↑</p>
+</div>
+{% endblock %}
+
+{% block html_code %}
+{%- highlight "html" %}
+<div class="parallax-scene">
+  <div class="layer-bg">Background</div>
+  <div class="layer-mid">Midground</div>
+  <div class="layer-front">Foreground</div>
+</div>
+{%- endhighlight %}
+{% endblock %}
+
+{% block css_code %}
+{%- highlight "css" %}
+.parallax-scene {
+  overflow-y: scroll;
+  height: 300px;
+}
+
+.layer-bg {
+  animation: parallax-bg linear both;
+  animation-timeline: scroll(nearest block);
+}
+
+@keyframes parallax-bg {
+  from { transform: translateY(0); }
+  to   { transform: translateY(-15%); }
+}
+{%- endhighlight %}
+{% endblock %}

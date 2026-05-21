@@ -1,0 +1,50 @@
+---
+title: Ghost Button Fill Sweep
+description: An outlined button that fills with color from left to right on hover using a pseudo-element.
+slug: ghost-button
+cssFile: ghost-button.css
+explanation: "A `::before` pseudo-element is positioned absolutely inside the button with `overflow: hidden` on the parent. Starting at `translateX(-101%)` places it completely off-screen to the left. On hover, it transitions to `translateX(0)` — sweeping the fill across the button. The button text sits in a `<span>` with `position: relative; z-index: 1` so it stays on top of the pseudo-element. Changing text `color` on hover completes the effect."
+---
+{% extends "example.njk" %}
+{% block demo %}
+<div class="ghost-btns">
+	<button class="ghost-btn ghost-btn-green"><span>Hover me →</span></button>
+	<button class="ghost-btn ghost-btn-blue"><span>Fill sweep</span></button>
+	<button class="ghost-btn ghost-btn-pink"><span>Right to left</span></button>
+</div>
+{% endblock %}
+
+{% block html_code %}
+{%- highlight "html" %}
+<button class="ghost-btn">
+  <span>Hover me</span>
+</button>
+{%- endhighlight %}
+{% endblock %}
+
+{% block css_code %}
+{%- highlight "css" %}
+.ghost-btn {
+  position: relative;
+  overflow: hidden;
+  background: transparent;
+  border: 2px solid var(--accent);
+  color: var(--accent);
+  transition: color .3s;
+}
+
+.ghost-btn span { position: relative; z-index: 1; }
+
+.ghost-btn::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--accent);
+  transform: translateX(-101%);
+  transition: transform .3s ease;
+}
+
+.ghost-btn:hover::before { transform: translateX(0); }
+.ghost-btn:hover { color: var(--bg); }
+{%- endhighlight %}
+{% endblock %}

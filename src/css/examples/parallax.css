@@ -1,0 +1,132 @@
+/*
+ * PureCSS.com
+ * https://purecss.com/examples/parallax/
+ * Background and foreground layers move at different speeds using scroll-driven animations.
+ */
+
+.demo-parallax {
+	.parallax-scene {
+		position: relative;
+		height: 300px;
+		overflow-y: scroll;
+		overflow-x: hidden;
+		border-radius: var(--radius-lg);
+		scroll-behavior: smooth;
+	}
+
+	.parallax-inner {
+		height: 600px;
+		position: relative;
+		overflow: hidden;
+	}
+
+	.parallax-layer {
+		position: absolute;
+		inset: 0;
+		will-change: transform;
+	}
+
+	.layer-bg {
+		background: radial-gradient(ellipse at 50% 20%, rgba(184, 255, 87, .08) 0%, transparent 60%),
+		            linear-gradient(180deg, #0c0c0d 0%, #0f1a0a 100%);
+		animation: parallax-bg linear both;
+		animation-timeline: scroll(nearest block);
+	}
+
+	.layer-mid {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		animation: parallax-mid linear both;
+		animation-timeline: scroll(nearest block);
+	}
+
+	.layer-front {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: flex-end;
+		padding-bottom: 2rem;
+		animation: parallax-front linear both;
+		animation-timeline: scroll(nearest block);
+	}
+
+	.parallax-stars {
+		position: absolute;
+		inset: 0;
+		background-image:
+			radial-gradient(circle 1px at 15% 20%, var(--text-muted) 0%, transparent 100%),
+			radial-gradient(circle 1px at 35% 45%, var(--text-muted) 0%, transparent 100%),
+			radial-gradient(circle 2px at 55% 15%, var(--accent) 0%, transparent 100%),
+			radial-gradient(circle 1px at 70% 60%, var(--text-muted) 0%, transparent 100%),
+			radial-gradient(circle 1px at 85% 30%, var(--text-muted) 0%, transparent 100%),
+			radial-gradient(circle 2px at 25% 70%, var(--sky) 0%, transparent 100%),
+			radial-gradient(circle 1px at 90% 75%, var(--text-muted) 0%, transparent 100%);
+		animation: parallax-stars linear both;
+		animation-timeline: scroll(nearest block);
+	}
+
+	.parallax-moon {
+		width: 80px;
+		height: 80px;
+		background: radial-gradient(circle at 35% 35%, var(--yellow), var(--orange));
+		border-radius: 50%;
+		box-shadow: 0 0 30px rgba(255, 212, 68, .3);
+		position: absolute;
+		top: 60px;
+		right: 80px;
+	}
+
+	.parallax-hills {
+		width: 120%;
+		height: 120px;
+		background: var(--surface);
+		border-radius: 50% 50% 0 0;
+		margin-bottom: -20px;
+	}
+
+	.parallax-text {
+		position: relative;
+		text-align: center;
+		color: var(--text);
+
+		h2 {
+			font-size: 1.4rem;
+			margin-bottom: .25rem;
+		}
+
+		p {
+			font-size: .85rem;
+			color: var(--text-muted);
+		}
+	}
+
+	.scroll-hint {
+		position: sticky;
+		bottom: .5rem;
+		text-align: center;
+		font-size: .72rem;
+		color: var(--text-muted);
+		pointer-events: none;
+	}
+}
+
+@keyframes parallax-bg {
+	from { transform: translateY(0); }
+	to   { transform: translateY(-15%); }
+}
+
+@keyframes parallax-stars {
+	from { transform: translateY(0); }
+	to   { transform: translateY(-30%); }
+}
+
+@keyframes parallax-mid {
+	from { transform: translateY(0); }
+	to   { transform: translateY(-20%); }
+}
+
+@keyframes parallax-front {
+	from { transform: translateY(0); }
+	to   { transform: translateY(-5%); }
+}

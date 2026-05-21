@@ -3,6 +3,9 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches: [master]
+  schedule:
+    # Runs daily at 6:00 AM UTC so newly-scheduled examples publish on time
+    - cron: '0 6 * * *'
   workflow_dispatch:
 
 permissions:
@@ -25,6 +28,8 @@ jobs:
           cache: 'npm'
       - run: npm ci
       - run: npm run build
+        env:
+          ELEVENTY_ENV: production
       - uses: actions/upload-pages-artifact@v3
         with:
           path: public/

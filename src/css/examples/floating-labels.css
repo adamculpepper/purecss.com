@@ -1,45 +1,47 @@
-﻿/*
+/*
  * PureCSS.com
  * https://purecss.com/examples/floating-labels/
  * Form labels that float above the input on focus using :placeholder-shown.
  */
 
-.demo-floating-labels .field {
-	position: relative;
-	margin: .5rem 0;
-}
+.demo-floating-labels {
+	.field {
+		position: relative;
+		margin: .5rem 0;
+	}
 
-.demo-floating-labels input {
-	width: 240px;
-	padding: 1.25rem 1rem .5rem;
-	border: 2px solid var(--border);
-	border-radius: 8px;
-	font-size: 1rem;
-	font-family: inherit;
-	background: var(--surface);
-	outline: none;
-	transition: border-color .2s;
-}
+	input {
+		width: 240px;
+		padding: 1.25rem 1rem .5rem;
+		border: 2px solid var(--border);
+		border-radius: 8px;
+		font-size: 1rem;
+		font-family: inherit;
+		background: var(--surface);
+		outline: none;
+		transition: border-color .2s;
 
-.demo-floating-labels input:focus {
-	border-color: var(--accent);
-}
+		&:focus {
+			border-color: var(--accent);
+		}
 
-.demo-floating-labels label {
-	position: absolute;
-	top: 50%;
-	left: 1rem;
-	transform: translateY(-50%);
-	font-size: 1rem;
-	color: var(--text-muted);
-	pointer-events: none;
-	transition: top .2s, font-size .2s, color .2s;
-}
+		&:focus + label,
+		&:not(:placeholder-shown) + label {
+			top: .5rem;
+			font-size: .75rem;
+			color: var(--accent);
+			transform: none;
+		}
+	}
 
-.demo-floating-labels input:focus + label,
-.demo-floating-labels input:not(:placeholder-shown) + label {
-	top: .5rem;
-	font-size: .75rem;
-	color: var(--accent);
-	transform: none;
+	label {
+		position: absolute;
+		top: 50%;
+		left: 1rem;
+		transform: translateY(-50%);
+		font-size: 1rem;
+		color: var(--text-muted);
+		pointer-events: none;
+		transition: top .2s, font-size .2s, color .2s;
+	}
 }

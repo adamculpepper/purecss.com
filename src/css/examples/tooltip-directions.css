@@ -1,0 +1,143 @@
+/*
+ * PureCSS.com
+ * https://purecss.com/examples/tooltip-directions/
+ * Tooltips pointing top, right, bottom, and left using ::before and ::after pseudo-elements.
+ */
+
+.demo-tooltip-directions {
+	.td-grid {
+		display: grid;
+		grid-template-columns: repeat(2, 1fr);
+		gap: 1rem;
+		max-width: 360px;
+		margin: 0 auto;
+	}
+
+	.td-tip {
+		position: relative;
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		padding: .6rem 1rem;
+		background: var(--surface-2);
+		border: 1px solid var(--border);
+		border-radius: var(--radius);
+		font-size: .875rem;
+		font-weight: 500;
+		cursor: default;
+		color: var(--text);
+
+		/* Tooltip bubble */
+		&::before {
+			content: attr(data-tip);
+			position: absolute;
+			background: var(--text);
+			color: var(--bg);
+			font-size: .78rem;
+			font-weight: 400;
+			white-space: nowrap;
+			padding: .35rem .65rem;
+			border-radius: 6px;
+			pointer-events: none;
+			opacity: 0;
+			transition: opacity .2s, transform .2s;
+			z-index: 10;
+		}
+
+		/* Arrow */
+		&::after {
+			content: '';
+			position: absolute;
+			border: 5px solid transparent;
+			pointer-events: none;
+			opacity: 0;
+			transition: opacity .2s;
+			z-index: 10;
+		}
+
+		&:hover::before,
+		&:hover::after {
+			opacity: 1;
+		}
+	}
+
+	/* Top */
+	[data-pos="top"] {
+		&::before {
+			bottom: calc(100% + 8px);
+			left: 50%;
+			transform: translateX(-50%) translateY(4px);
+		}
+
+		&:hover::before {
+			transform: translateX(-50%) translateY(0);
+		}
+
+		&::after {
+			bottom: calc(100% + 0px);
+			left: 50%;
+			transform: translateX(-50%);
+			border-top-color: var(--text);
+		}
+	}
+
+	/* Bottom */
+	[data-pos="bottom"] {
+		&::before {
+			top: calc(100% + 8px);
+			left: 50%;
+			transform: translateX(-50%) translateY(-4px);
+		}
+
+		&:hover::before {
+			transform: translateX(-50%) translateY(0);
+		}
+
+		&::after {
+			top: calc(100% + 0px);
+			left: 50%;
+			transform: translateX(-50%);
+			border-bottom-color: var(--text);
+		}
+	}
+
+	/* Right */
+	[data-pos="right"] {
+		&::before {
+			left: calc(100% + 8px);
+			top: 50%;
+			transform: translateY(-50%) translateX(-4px);
+		}
+
+		&:hover::before {
+			transform: translateY(-50%) translateX(0);
+		}
+
+		&::after {
+			left: calc(100% + 0px);
+			top: 50%;
+			transform: translateY(-50%);
+			border-right-color: var(--text);
+		}
+	}
+
+	/* Left */
+	[data-pos="left"] {
+		&::before {
+			right: calc(100% + 8px);
+			top: 50%;
+			transform: translateY(-50%) translateX(4px);
+		}
+
+		&:hover::before {
+			transform: translateY(-50%) translateX(0);
+		}
+
+		&::after {
+			right: calc(100% + 0px);
+			top: 50%;
+			transform: translateY(-50%);
+			border-left-color: var(--text);
+		}
+	}
+}

@@ -1,4 +1,4 @@
----
+﻿---
 title: Pure CSS — Interactive UI Patterns, No JavaScript
 description: Interactive UI patterns built with pure CSS — toggle switches, modals, tabs, animations, and more. Zero JavaScript required.
 ---
@@ -31,6 +31,40 @@ description: Interactive UI patterns built with pure CSS — toggle switches, mo
 <link rel="stylesheet" href="/css/examples/aspect-ratio-box.css">
 <link rel="stylesheet" href="/css/examples/scroll-spy.css">
 <link rel="stylesheet" href="/css/examples/glitch-effect.css">
+<link rel="stylesheet" href="/css/examples/character-count.css">
+<link rel="stylesheet" href="/css/examples/multi-step-form.css">
+<link rel="stylesheet" href="/css/examples/styled-select.css">
+<link rel="stylesheet" href="/css/examples/date-input.css">
+<link rel="stylesheet" href="/css/examples/numeric-stepper.css">
+<link rel="stylesheet" href="/css/examples/color-swatch.css">
+<link rel="stylesheet" href="/css/examples/sticky-sidebar.css">
+<link rel="stylesheet" href="/css/examples/breadcrumb.css">
+<link rel="stylesheet" href="/css/examples/pagination.css">
+<link rel="stylesheet" href="/css/examples/vertical-tabs.css">
+<link rel="stylesheet" href="/css/examples/sticky-table.css">
+<link rel="stylesheet" href="/css/examples/css-lightbox.css">
+<link rel="stylesheet" href="/css/examples/scroll-shelf.css">
+<link rel="stylesheet" href="/css/examples/neon-text.css">
+<link rel="stylesheet" href="/css/examples/typewriter.css">
+<link rel="stylesheet" href="/css/examples/confetti.css">
+<link rel="stylesheet" href="/css/examples/parallax.css">
+<link rel="stylesheet" href="/css/examples/morphing-blob.css">
+<link rel="stylesheet" href="/css/examples/particle-float.css">
+<link rel="stylesheet" href="/css/examples/css-rain.css">
+<link rel="stylesheet" href="/css/examples/loading-spinner.css">
+<link rel="stylesheet" href="/css/examples/elastic-bounce.css">
+<link rel="stylesheet" href="/css/examples/countdown-timer.css">
+<link rel="stylesheet" href="/css/examples/border-draw-button.css">
+<link rel="stylesheet" href="/css/examples/magnetic-button.css">
+<link rel="stylesheet" href="/css/examples/ghost-button.css">
+<link rel="stylesheet" href="/css/examples/confirm-button.css">
+<link rel="stylesheet" href="/css/examples/toast-notification.css">
+<link rel="stylesheet" href="/css/examples/alert-banner.css">
+<link rel="stylesheet" href="/css/examples/tooltip-directions.css">
+<link rel="stylesheet" href="/css/examples/text-shimmer.css">
+<link rel="stylesheet" href="/css/examples/pie-chart.css">
+<link rel="stylesheet" href="/css/examples/bar-chart.css">
+<link rel="stylesheet" href="/css/examples/donut-chart.css">
 {% endblock %}
 
 {% block content %}
@@ -39,10 +73,10 @@ description: Interactive UI patterns built with pure CSS — toggle switches, mo
 	<div class="hero-content">
 		<p class="hero-eyebrow">// purecss.com</p>
 		<h1>CSS does <em>more</em><br>than you think.</h1>
-		<p class="hero-sub">{{ examples.length }} interactive UI patterns — zero JavaScript required.</p>
+		<p class="hero-sub">{{ examples | published | length }} interactive UI patterns — zero JavaScript required.</p>
 		<div class="hero-stats">
 			<div class="hero-stat">
-				<strong style="--stat-target:{{ examples.length }}"></strong>
+				<strong style="--stat-target:{{ examples | published | length }}"></strong>
 				<span>examples</span>
 			</div>
 			<div class="hero-stat">
@@ -79,6 +113,7 @@ description: Interactive UI patterns built with pure CSS — toggle switches, mo
 		{% for example in examples %}
 		<div class="example-card" data-cat="{{ example.category }}">
 			<div class="card-preview">
+				{% if example.isNew %}<span class="card-new-badge">New</span>{% endif %}
 				<div class="card-preview-inner demo-{{ example.slug }}">
 					{% include "previews/" + example.slug + ".njk" ignore missing %}
 				</div>

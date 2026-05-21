@@ -1,0 +1,74 @@
+---
+title: Loading Spinners
+description: Three spinner variants — ring, dots, and bars — built entirely with CSS animations.
+slug: loading-spinner
+cssFile: loading-spinner.css
+explanation: "Ring spinner: a circle `border` with one side transparent, rotating via `@keyframes`. Dots spinner: three circles that scale up/down with staggered `animation-delay`. Bars spinner: vertical bars that animate `height` with staggered delays. Orbit spinner: two pseudo-elements rotating at different speeds in opposite directions using `animation-direction: reverse`. All use only `@keyframes`, `border`, and transforms."
+---
+{% extends "example.njk" %}
+{% block demo %}
+<div class="spinner-grid">
+	<div class="spinner-item">
+		<div class="spinner-ring"></div>
+		<span class="spinner-label">Ring</span>
+	</div>
+	<div class="spinner-item">
+		<div class="spinner-dots">
+			<span></span>
+			<span></span>
+			<span></span>
+		</div>
+		<span class="spinner-label">Dots</span>
+	</div>
+	<div class="spinner-item">
+		<div class="spinner-bars">
+			<span></span>
+			<span></span>
+			<span></span>
+			<span></span>
+		</div>
+		<span class="spinner-label">Bars</span>
+	</div>
+	<div class="spinner-item">
+		<div class="spinner-orbit"></div>
+		<span class="spinner-label">Orbit</span>
+	</div>
+</div>
+{% endblock %}
+
+{% block html_code %}
+{%- highlight "html" %}
+<!-- Ring -->
+<div class="spinner-ring"></div>
+
+<!-- Dots -->
+<div class="spinner-dots">
+  <span></span><span></span><span></span>
+</div>
+{%- endhighlight %}
+{% endblock %}
+
+{% block css_code %}
+{%- highlight "css" %}
+/* Ring */
+.spinner-ring {
+  width: 40px; height: 40px;
+  border: 3px solid var(--surface-2);
+  border-top-color: var(--accent);
+  border-radius: 50%;
+  animation: spin .8s linear infinite;
+}
+
+/* Dots */
+.spinner-dots span {
+  width: 10px; height: 10px;
+  background: var(--accent);
+  border-radius: 50%;
+  animation: spin-dots 1.2s ease-in-out infinite;
+}
+.spinner-dots span:nth-child(2) { animation-delay: .2s; }
+.spinner-dots span:nth-child(3) { animation-delay: .4s; }
+
+@keyframes spin { to { transform: rotate(360deg); } }
+{%- endhighlight %}
+{% endblock %}

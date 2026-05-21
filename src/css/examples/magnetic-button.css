@@ -1,0 +1,76 @@
+/*
+ * PureCSS.com
+ * https://purecss.com/examples/magnetic-button/
+ * A button with a dramatic lift and shadow on hover using CSS transitions and @starting-style.
+ */
+
+.demo-magnetic-button {
+	.mag-btns {
+		display: flex;
+		gap: 1.25rem;
+		align-items: center;
+		justify-content: center;
+		flex-wrap: wrap;
+		padding: 1rem .5rem;
+	}
+
+	.mag-btn {
+		display: inline-flex;
+		align-items: center;
+		gap: .5rem;
+		padding: .75rem 1.75rem;
+		border-radius: var(--radius);
+		font-family: var(--font-sans);
+		font-size: .95rem;
+		font-weight: 600;
+		cursor: pointer;
+		border: none;
+		transition:
+			transform .3s cubic-bezier(0.34, 1.56, 0.64, 1),
+			box-shadow .3s ease,
+			background .2s;
+
+		&:hover {
+			transform: translateY(-6px) scale(1.04);
+		}
+	}
+
+	.mag-btn-primary {
+		background: var(--accent);
+		color: var(--bg);
+		box-shadow: 0 2px 8px rgba(184, 255, 87, .2);
+
+		&:hover {
+			box-shadow: 0 16px 40px rgba(184, 255, 87, .35);
+		}
+	}
+
+	.mag-btn-sky {
+		background: var(--sky);
+		color: #0a0a0b;
+		box-shadow: 0 2px 8px rgba(56, 189, 248, .2);
+
+		&:hover {
+			box-shadow: 0 16px 40px rgba(56, 189, 248, .35);
+		}
+	}
+
+	.mag-btn-ghost {
+		background: transparent;
+		color: var(--text);
+		border: 2px solid var(--border);
+		box-shadow: 0 2px 8px rgba(0,0,0,.1);
+
+		&:hover {
+			border-color: var(--text-muted);
+			box-shadow: 0 16px 40px rgba(0,0,0,.2);
+		}
+	}
+}
+
+@starting-style {
+	.demo-magnetic-button .mag-btn {
+		transform: translateY(10px);
+		opacity: 0;
+	}
+}

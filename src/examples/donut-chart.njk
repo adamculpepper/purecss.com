@@ -1,0 +1,84 @@
+---
+title: Animated Donut Chart
+description: SVG donut chart animated with `stroke-dashoffset` — no JavaScript required.
+slug: donut-chart
+cssFile: donut-chart.css
+explanation: "An SVG `<circle>` with `fill: none` and `stroke` becomes a ring. `stroke-dasharray` sets the dash length equal to the circle's circumference (`2πr`). `stroke-dashoffset` shifts the dash — at full offset (equal to circumference) the stroke is invisible; at 0 the full ring is drawn. Animating from full offset to the target value fills the arc. The percentage shown is `dashoffset = circumference × (1 - percentage)`. A `rotate(-90deg)` on the SVG starts drawing from the top."
+---
+{% extends "example.njk" %}
+{% block demo %}
+<div class="donuts">
+	<div class="donut-wrap">
+		<div class="donut-center" style="position:relative">
+			<svg class="donut-svg" width="100" height="100" viewBox="0 0 80 80">
+				<circle class="donut-track" cx="40" cy="40" r="35"/>
+				<circle class="donut-fill donut-fill-green" cx="40" cy="40" r="35"/>
+			</svg>
+			<div class="donut-label-wrap">
+				<span class="donut-pct" style="color:var(--accent)">75%</span>
+			</div>
+		</div>
+		<span class="donut-name">CSS</span>
+	</div>
+	<div class="donut-wrap">
+		<div class="donut-center" style="position:relative">
+			<svg class="donut-svg" width="100" height="100" viewBox="0 0 80 80">
+				<circle class="donut-track" cx="40" cy="40" r="35"/>
+				<circle class="donut-fill donut-fill-sky" cx="40" cy="40" r="35"/>
+			</svg>
+			<div class="donut-label-wrap">
+				<span class="donut-pct" style="color:var(--sky)">60%</span>
+			</div>
+		</div>
+		<span class="donut-name">JS</span>
+	</div>
+	<div class="donut-wrap">
+		<div class="donut-center" style="position:relative">
+			<svg class="donut-svg" width="100" height="100" viewBox="0 0 80 80">
+				<circle class="donut-track" cx="40" cy="40" r="35"/>
+				<circle class="donut-fill donut-fill-coral" cx="40" cy="40" r="35"/>
+			</svg>
+			<div class="donut-label-wrap">
+				<span class="donut-pct" style="color:var(--coral)">88%</span>
+			</div>
+		</div>
+		<span class="donut-name">HTML</span>
+	</div>
+</div>
+{% endblock %}
+
+{% block html_code %}
+{%- highlight "html" %}
+<svg width="100" height="100" viewBox="0 0 80 80"
+     style="transform: rotate(-90deg)">
+  <circle class="track" cx="40" cy="40" r="35"/>
+  <circle class="fill"  cx="40" cy="40" r="35"/>
+</svg>
+{%- endhighlight %}
+{% endblock %}
+
+{% block css_code %}
+{%- highlight "css" %}
+.track {
+  fill: none;
+  stroke: var(--surface-2);
+  stroke-width: 10;
+}
+
+.fill {
+  fill: none;
+  stroke: var(--accent);
+  stroke-width: 10;
+  stroke-linecap: round;
+  /* circumference of r=35: 2π×35 ≈ 220 */
+  stroke-dasharray: 220;
+  /* offset = 220 × (1 - 0.75) = 55 for 75% */
+  stroke-dashoffset: 55;
+  animation: donut-draw 1.4s ease .2s both;
+}
+
+@keyframes donut-draw {
+  from { stroke-dashoffset: 220; }
+}
+{%- endhighlight %}
+{% endblock %}

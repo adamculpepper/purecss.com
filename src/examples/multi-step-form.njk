@@ -1,0 +1,80 @@
+---
+title: Multi-Step Form
+description: Radio inputs control which step panel is visible — no JavaScript, no page reload.
+slug: multi-step-form
+cssFile: multi-step-form.css
+explanation: "Hidden radio inputs act as state holders. Each radio's `id` corresponds to a step. CSS uses the `:checked` pseudo-class combined with the general sibling combinator `~` to show only the matching `.msf-panel`. Navigation buttons are `<label>` elements pointing to the next step's radio input — clicking them changes the checked state and CSS handles the rest."
+---
+{% extends "example.njk" %}
+{% block demo %}
+<input type="radio" name="step" id="msf-step1" class="msf-radio" checked>
+<input type="radio" name="step" id="msf-step2" class="msf-radio">
+<input type="radio" name="step" id="msf-step3" class="msf-radio">
+
+<div class="msf-wrap">
+	<div class="msf-progress">
+		<span class="msf-step-label">1. Your Info</span>
+		<span class="msf-step-label">2. Details</span>
+		<span class="msf-step-label">3. Done</span>
+	</div>
+	<div class="msf-body">
+		<div class="msf-panel msf-panel-1">
+			<h3>Your Info</h3>
+			<input type="text" placeholder="Full name">
+			<input type="email" placeholder="Email address">
+			<div class="msf-actions">
+				<label for="msf-step2" class="msf-btn">Next →</label>
+			</div>
+		</div>
+		<div class="msf-panel msf-panel-2">
+			<h3>Details</h3>
+			<input type="text" placeholder="Company (optional)">
+			<input type="tel" placeholder="Phone number">
+			<div class="msf-actions">
+				<label for="msf-step1" class="msf-btn msf-btn-back">← Back</label>
+				<label for="msf-step3" class="msf-btn">Next →</label>
+			</div>
+		</div>
+		<div class="msf-panel msf-panel-3">
+			<h3>All done!</h3>
+			<p class="msf-success">✓ Form submitted — zero JavaScript used!</p>
+			<div class="msf-actions">
+				<label for="msf-step1" class="msf-btn">Start Over</label>
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock %}
+
+{% block html_code %}
+{%- highlight "html" %}
+<input type="radio" name="step" id="step1" checked>
+<input type="radio" name="step" id="step2">
+<input type="radio" name="step" id="step3">
+
+<div class="msf-wrap">
+  <div class="msf-panel msf-panel-1">
+    <!-- Step 1 content -->
+    <label for="step2">Next →</label>
+  </div>
+  <div class="msf-panel msf-panel-2">
+    <!-- Step 2 content -->
+    <label for="step1">← Back</label>
+    <label for="step3">Next →</label>
+  </div>
+  <div class="msf-panel msf-panel-3">
+    <!-- Step 3 content -->
+  </div>
+</div>
+{%- endhighlight %}
+{% endblock %}
+
+{% block css_code %}
+{%- highlight "css" %}
+.msf-panel { display: none; }
+
+#step1:checked ~ .msf-wrap .msf-panel-1 { display: flex; }
+#step2:checked ~ .msf-wrap .msf-panel-2 { display: flex; }
+#step3:checked ~ .msf-wrap .msf-panel-3 { display: flex; }
+{%- endhighlight %}
+{% endblock %}

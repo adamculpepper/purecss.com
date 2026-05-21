@@ -1,50 +1,52 @@
-﻿/*
+/*
  * PureCSS.com
  * https://purecss.com/examples/custom-radio/
  * Styled radio buttons without any images or JavaScript.
  */
 
-.demo-custom-radio .radio-group {
-	display: flex;
-	flex-direction: column;
-	gap: .5rem;
-}
+.demo-custom-radio {
+	.radio-group {
+		display: flex;
+		flex-direction: column;
+		gap: .5rem;
+	}
 
-.demo-custom-radio .radio-label {
-	display: inline-flex;
-	align-items: center;
-	gap: .65rem;
-	cursor: pointer;
-	font-size: .95rem;
-	user-select: none;
-	margin: .25rem 0;
-}
+	.radio-label {
+		display: inline-flex;
+		align-items: center;
+		gap: .65rem;
+		cursor: pointer;
+		font-size: .95rem;
+		user-select: none;
+		margin: .25rem 0;
+	}
 
-.demo-custom-radio input[type="radio"] {
-	appearance: none;
-	-webkit-appearance: none;
-	width: 20px;
-	height: 20px;
-	border: 2px solid var(--border);
-	border-radius: 50%;
-	flex-shrink: 0;
-	position: relative;
-	transition: border-color .2s;
-	cursor: pointer;
-}
+	input[type="radio"] {
+		appearance: none;
+		-webkit-appearance: none;
+		width: 20px;
+		height: 20px;
+		border: 2px solid var(--border);
+		border-radius: 50%;
+		flex-shrink: 0;
+		position: relative;
+		transition: border-color .2s;
+		cursor: pointer;
 
-.demo-custom-radio input[type="radio"]:checked {
-	border-color: var(--accent);
-}
+		&:checked {
+			border-color: var(--accent);
 
-.demo-custom-radio input[type="radio"]:checked::after {
-	content: "";
-	position: absolute;
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%, -50%);
-	width: 10px;
-	height: 10px;
-	background: var(--accent);
-	border-radius: 50%;
+			&::after {
+				content: "";
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				transform: translate(-50%, -50%);
+				width: 10px;
+				height: 10px;
+				background: var(--accent);
+				border-radius: 50%;
+			}
+		}
+	}
 }

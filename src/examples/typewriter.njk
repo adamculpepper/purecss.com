@@ -1,0 +1,38 @@
+---
+title: Typewriter Effect
+description: Text typed letter by letter using a `@keyframes` width animation with `steps()` timing.
+slug: typewriter
+cssFile: typewriter.css
+explanation: "The typewriter illusion works by animating `width` from `0` to the full text length (`Nch`, where N is the character count) combined with `overflow: hidden` and `white-space: nowrap`. The `steps(N)` timing function — where N matches the character count — advances the animation in discrete jumps instead of smoothly, making each character appear one at a time. A blinking border-right acts as the cursor."
+---
+{% extends "example.njk" %}
+{% block demo %}
+<div class="tw-stage">
+	<p class="tw-line tw-line-1">Hello, World! 👋</p>
+	<p class="tw-line tw-line-2">Pure CSS only</p>
+	<p class="tw-line tw-line-3">// no JavaScript required</p>
+</div>
+{% endblock %}
+
+{% block html_code %}
+{%- highlight "html" %}
+<p class="typewriter">Hello, World!</p>
+{%- endhighlight %}
+{% endblock %}
+
+{% block css_code %}
+{%- highlight "css" %}
+.typewriter {
+  overflow: hidden;
+  white-space: nowrap;
+  width: 0;
+  border-right: 2px solid var(--accent);
+  animation:
+    type 1.8s steps(13) forwards,
+    cursor .7s step-end infinite;
+}
+
+@keyframes type   { to { width: 13ch; } }
+@keyframes cursor { 50% { border-right-color: transparent; } }
+{%- endhighlight %}
+{% endblock %}

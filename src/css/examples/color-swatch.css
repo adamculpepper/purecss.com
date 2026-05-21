@@ -1,0 +1,63 @@
+/*
+ * PureCSS.com
+ * https://purecss.com/examples/color-swatch/
+ * Radio buttons styled as color circles with a :checked ring indicator.
+ */
+
+.demo-color-swatch {
+	.swatch-section {
+		display: flex;
+		flex-direction: column;
+		gap: 1.5rem;
+		max-width: 340px;
+		margin: 0 auto;
+	}
+
+	.swatch-label {
+		font-size: .82rem;
+		color: var(--text-muted);
+		font-weight: 500;
+		margin-bottom: .4rem;
+	}
+
+	.swatch-group {
+		display: flex;
+		gap: .6rem;
+		flex-wrap: wrap;
+
+		input[type="radio"] {
+			display: none;
+		}
+
+		label {
+			display: block;
+			width: 32px;
+			height: 32px;
+			border-radius: 50%;
+			cursor: pointer;
+			border: 3px solid transparent;
+			outline: 2px solid transparent;
+			outline-offset: 2px;
+			transition: outline-color .15s, transform .15s;
+
+			&:hover {
+				transform: scale(1.1);
+			}
+		}
+
+		input[type="radio"]:checked + label {
+			outline-color: var(--text);
+		}
+
+		&--large label {
+			width: 42px;
+			height: 42px;
+		}
+	}
+
+	.selected-label {
+		font-size: .85rem;
+		color: var(--text-muted);
+		margin-top: .5rem;
+	}
+}

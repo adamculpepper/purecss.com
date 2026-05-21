@@ -1,0 +1,49 @@
+---
+title: Confirm Button
+description: A two-stage destructive action button that uses a checkbox to reveal the confirm step.
+slug: confirm-button
+cssFile: confirm-button.css
+explanation: "A hidden checkbox stores the \"are you sure?\" state. The danger button is styled as a `<label>` that toggles the checkbox. When checked, CSS shows the confirmation panel using `input:checked ~ .confirm-panel { display: flex; }` and dims/disables the original button with `pointer-events: none`. The Cancel label unchecks the box. No JavaScript — just the checkbox pattern used as a two-state toggle."
+---
+{% extends "example.njk" %}
+{% block demo %}
+<div class="confirm-wrap">
+	<input type="checkbox" id="confirm-toggle" class="confirm-input">
+	<label for="confirm-toggle" class="btn-trigger btn-danger">🗑 Delete Account</label>
+	<div class="confirm-panel">
+		<p>Are you sure?</p>
+		<button class="btn-yes">Yes, delete</button>
+		<label for="confirm-toggle" class="btn-cancel">Cancel</label>
+	</div>
+</div>
+{% endblock %}
+
+{% block html_code %}
+{%- highlight "html" %}
+<input type="checkbox" id="confirm-toggle" class="confirm-input">
+<label for="confirm-toggle" class="btn-danger">Delete</label>
+
+<div class="confirm-panel">
+  <p>Are you sure?</p>
+  <button class="btn-yes">Yes</button>
+  <label for="confirm-toggle" class="btn-cancel">Cancel</label>
+</div>
+{%- endhighlight %}
+{% endblock %}
+
+{% block css_code %}
+{%- highlight "css" %}
+.confirm-input { display: none; }
+
+.confirm-panel { display: none; }
+
+.confirm-input:checked ~ .confirm-panel {
+  display: flex;
+}
+
+.confirm-input:checked ~ .btn-danger {
+  opacity: .4;
+  pointer-events: none;
+}
+{%- endhighlight %}
+{% endblock %}

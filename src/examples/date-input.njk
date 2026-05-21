@@ -1,0 +1,44 @@
+---
+title: Styled Date Input
+description: Custom styling for `<input type="date">` including the calendar icon via CSS pseudo-elements.
+slug: date-input
+cssFile: date-input.css
+explanation: "Date inputs can be styled with `appearance: none` to remove browser defaults. The `::webkit-calendar-picker-indicator` pseudo-element targets the calendar icon — applying `filter: invert(1)` makes it visible on dark backgrounds. `::webkit-datetime-edit-fields-wrapper` controls the text portion. Note: styling varies across browsers; Firefox and Safari have different support levels."
+---
+{% extends "example.njk" %}
+{% block demo %}
+<div class="date-wrap">
+	<div class="date-field">
+		<label>Default styling</label>
+		<input type="date">
+	</div>
+	<div class="date-field">
+		<label>Accent border</label>
+		<input type="date" class="date-accent">
+	</div>
+</div>
+{% endblock %}
+
+{% block html_code %}
+{%- highlight "html" %}
+<input type="date">
+{%- endhighlight %}
+{% endblock %}
+
+{% block css_code %}
+{%- highlight "css" %}
+input[type="date"] {
+  appearance: none;
+  padding: .7rem 1rem;
+  background: var(--surface-2);
+  border: 2px solid var(--border);
+  border-radius: 8px;
+  color: var(--text);
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+  filter: invert(1) opacity(.5);
+  cursor: pointer;
+}
+{%- endhighlight %}
+{% endblock %}

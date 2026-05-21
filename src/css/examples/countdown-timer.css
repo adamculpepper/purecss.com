@@ -1,0 +1,79 @@
+/*
+ * PureCSS.com
+ * https://purecss.com/examples/countdown-timer/
+ * A visual countdown using @property integers, CSS counters, and steps() animation.
+ */
+
+@property --countdown {
+	syntax: "<integer>";
+	initial-value: 10;
+	inherits: false;
+}
+
+.demo-countdown-timer {
+	.timer-wrap {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 1.5rem;
+	}
+
+	.timer-display {
+		position: relative;
+		width: 140px;
+		height: 140px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+
+	.timer-ring {
+		position: absolute;
+		inset: 0;
+		border-radius: 50%;
+		background: conic-gradient(var(--accent) calc(var(--countdown) * 36deg), var(--surface-2) 0);
+		animation: countdown-ring 10s steps(10) infinite;
+	}
+
+	.timer-inner {
+		position: absolute;
+		inset: 8px;
+		background: var(--bg);
+		border-radius: 50%;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+
+	.timer-num {
+		--countdown: 10;
+		counter-reset: num var(--countdown);
+		font-size: 3rem;
+		font-weight: 800;
+		font-family: var(--font-mono);
+		color: var(--accent);
+		animation: countdown-num 10s steps(10) infinite;
+		line-height: 1;
+
+		&::after {
+			content: counter(num);
+		}
+	}
+
+	.timer-label {
+		font-size: .8rem;
+		color: var(--text-muted);
+		letter-spacing: .1em;
+		text-transform: uppercase;
+	}
+}
+
+@keyframes countdown-ring {
+	from { --countdown: 10; }
+	to   { --countdown: 0; }
+}
+
+@keyframes countdown-num {
+	from { --countdown: 10; }
+	to   { --countdown: 0; }
+}

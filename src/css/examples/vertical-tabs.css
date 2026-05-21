@@ -1,0 +1,84 @@
+/*
+ * PureCSS.com
+ * https://purecss.com/examples/vertical-tabs/
+ * Vertical tabbed navigation using radio inputs and the :checked pseudo-class.
+ */
+
+.demo-vertical-tabs {
+	.vtab-radio {
+		display: none;
+	}
+
+	.vtab-layout {
+		display: grid;
+		grid-template-columns: 160px 1fr;
+		gap: 0;
+		border: 1px solid var(--border);
+		border-radius: var(--radius-lg);
+		overflow: hidden;
+		min-height: 220px;
+	}
+
+	.vtab-nav {
+		background: var(--surface);
+		border-right: 1px solid var(--border);
+		padding: .5rem;
+		display: flex;
+		flex-direction: column;
+		gap: .2rem;
+
+		label {
+			display: block;
+			padding: .55rem .8rem;
+			border-radius: var(--radius);
+			color: var(--text-muted);
+			font-size: .875rem;
+			cursor: pointer;
+			transition: background .15s, color .15s;
+			font-weight: 500;
+			user-select: none;
+
+			&:hover {
+				background: var(--accent-dim);
+				color: var(--text);
+			}
+		}
+	}
+
+	.vtab-panels {
+		background: var(--surface-2);
+		padding: 1.25rem;
+	}
+
+	.vtab-panel {
+		display: none;
+
+		h3 {
+			font-size: 1rem;
+			margin-bottom: .5rem;
+		}
+
+		p {
+			font-size: .875rem;
+			color: var(--text-muted);
+			line-height: 1.6;
+		}
+	}
+}
+
+/* Active tab */
+#vtab1:checked ~ .vtab-layout .vtab-nav label[for="vtab1"],
+#vtab2:checked ~ .vtab-layout .vtab-nav label[for="vtab2"],
+#vtab3:checked ~ .vtab-layout .vtab-nav label[for="vtab3"],
+#vtab4:checked ~ .vtab-layout .vtab-nav label[for="vtab4"] {
+	background: var(--accent-dim);
+	color: var(--accent);
+}
+
+/* Active panel */
+#vtab1:checked ~ .vtab-layout .vtab-panel-1,
+#vtab2:checked ~ .vtab-layout .vtab-panel-2,
+#vtab3:checked ~ .vtab-layout .vtab-panel-3,
+#vtab4:checked ~ .vtab-layout .vtab-panel-4 {
+	display: block;
+}

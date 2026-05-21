@@ -1,0 +1,65 @@
+---
+title: Toast Notification
+description: A slide-in notification using `:target` to trigger and a CSS animation to auto-dismiss.
+slug: toast-notification
+cssFile: toast-notification.css
+explanation: "Trigger links use `href=\"#toast-success\"` to set the URL hash. The matching `<div id=\"toast-success\">` element receives the `:target` pseudo-class and switches from `display: none` to `display: flex`. A CSS animation slides it in from the right (`translateX(120%)` → `translateX(0)`), and a second delayed animation (`animation-delay: 3s`) fades it out. Clicking the close `<a href=\"#\">` removes the hash target, hiding the toast immediately."
+---
+{% extends "example.njk" %}
+{% block demo %}
+<div class="toast-triggers">
+	<a href="#toast-success" class="toast-btn toast-btn-success">✓ Show success</a>
+	<a href="#toast-error" class="toast-btn toast-btn-error">✕ Show error</a>
+	<a href="#toast-info" class="toast-btn toast-btn-info">ℹ Show info</a>
+</div>
+
+<div id="toast-success" class="toast">
+	<span class="toast-icon">✓</span>
+	<span class="toast-msg">Changes saved successfully!</span>
+	<a href="#" class="toast-close">✕</a>
+</div>
+
+<div id="toast-error" class="toast">
+	<span class="toast-icon">✕</span>
+	<span class="toast-msg">Something went wrong. Try again.</span>
+	<a href="#" class="toast-close">✕</a>
+</div>
+
+<div id="toast-info" class="toast">
+	<span class="toast-icon">ℹ</span>
+	<span class="toast-msg">Your session expires in 5 minutes.</span>
+	<a href="#" class="toast-close">✕</a>
+</div>
+{% endblock %}
+
+{% block html_code %}
+{%- highlight "html" %}
+<a href="#toast-1">Show Toast</a>
+
+<div id="toast-1" class="toast">
+  <span>Message saved!</span>
+  <a href="#" class="toast-close">✕</a>
+</div>
+{%- endhighlight %}
+{% endblock %}
+
+{% block css_code %}
+{%- highlight "css" %}
+.toast {
+  display: none;
+  position: fixed;
+  bottom: 1.5rem;
+  right: 1.5rem;
+}
+
+.toast:target {
+  display: flex;
+  animation:
+    toast-in .3s ease forwards,
+    toast-out .3s ease 3s forwards;
+}
+
+@keyframes toast-in  { from { transform: translateX(120%); } }
+@keyframes toast-out { to   { transform: translateX(120%); opacity: 0; } }
+{%- endhighlight %}
+{% endblock %}

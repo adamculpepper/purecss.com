@@ -1,0 +1,51 @@
+---
+title: Tooltip Directions
+description: Tooltips pointing top, right, bottom, and left using `::before` and `::after` pseudo-elements.
+slug: tooltip-directions
+cssFile: tooltip-directions.css
+explanation: "The tooltip bubble (`::before`) and arrow (`::after`) are positioned relative to the trigger element using a combination of `top`, `bottom`, `left`, `right`, and `translate`. Each direction shifts the bubble to the appropriate side. The arrow is created by a zero-size element with colored borders — only one border has color, the rest are transparent, forming a triangle pointing toward the trigger. A slide-in `transform` transition adds polish."
+---
+{% extends "example.njk" %}
+{% block demo %}
+<div class="td-grid">
+	<span class="td-tip" data-tip="Tooltip above" data-pos="top">Top ↑</span>
+	<span class="td-tip" data-tip="Tooltip to the right" data-pos="right">Right →</span>
+	<span class="td-tip" data-tip="Tooltip below" data-pos="bottom">Bottom ↓</span>
+	<span class="td-tip" data-tip="Tooltip to the left" data-pos="left">← Left</span>
+</div>
+{% endblock %}
+
+{% block html_code %}
+{%- highlight "html" %}
+<span class="td-tip" data-tip="Tooltip text" data-pos="top">Hover me</span>
+<span class="td-tip" data-tip="Tooltip text" data-pos="right">Hover me</span>
+<span class="td-tip" data-tip="Tooltip text" data-pos="bottom">Hover me</span>
+<span class="td-tip" data-tip="Tooltip text" data-pos="left">Hover me</span>
+{%- endhighlight %}
+{% endblock %}
+
+{% block css_code %}
+{%- highlight "css" %}
+.td-tip::before {
+  content: attr(data-tip);
+  position: absolute;
+  background: var(--text);
+  color: var(--bg);
+  padding: .35rem .65rem;
+  border-radius: 6px;
+  opacity: 0;
+  transition: opacity .2s, transform .2s;
+}
+
+/* Top */
+[data-pos="top"]::before {
+  bottom: calc(100% + 8px);
+  left: 50%;
+  transform: translateX(-50%) translateY(4px);
+}
+[data-pos="top"]:hover::before {
+  transform: translateX(-50%) translateY(0);
+  opacity: 1;
+}
+{%- endhighlight %}
+{% endblock %}

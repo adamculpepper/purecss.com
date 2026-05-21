@@ -1,51 +1,53 @@
-﻿/*
+/*
  * PureCSS.com
  * https://purecss.com/examples/hover-tooltip/
  * Tooltips on hover using CSS pseudo-elements and the data-tip attribute.
  */
 
-.demo-hover-tooltip .tip {
-	position: relative;
-	display: inline-block;
-	cursor: default;
-	border-bottom: 2px dashed var(--accent);
-	color: var(--accent);
-	font-weight: 500;
-}
+.demo-hover-tooltip {
+	.tip {
+		position: relative;
+		display: inline-block;
+		cursor: default;
+		border-bottom: 2px dashed var(--accent);
+		color: var(--accent);
+		font-weight: 500;
 
-.demo-hover-tooltip .tip::before {
-	content: attr(data-tip);
-	position: absolute;
-	bottom: calc(100% + 8px);
-	left: 50%;
-	transform: translateX(-50%);
-	background: var(--text);
-	color: var(--bg);
-	font-size: .8rem;
-	font-weight: 400;
-	white-space: nowrap;
-	padding: .4rem .7rem;
-	border-radius: 6px;
-	pointer-events: none;
-	opacity: 0;
-	z-index: 1;
-	transition: opacity .2s;
-}
+		&::before {
+			content: attr(data-tip);
+			position: absolute;
+			bottom: calc(100% + 8px);
+			left: 50%;
+			transform: translateX(-50%);
+			background: var(--text);
+			color: var(--bg);
+			font-size: .8rem;
+			font-weight: 400;
+			white-space: nowrap;
+			padding: .4rem .7rem;
+			border-radius: 6px;
+			pointer-events: none;
+			opacity: 0;
+			z-index: 1;
+			transition: opacity .2s;
+		}
 
-.demo-hover-tooltip .tip::after {
-	content: "";
-	position: absolute;
-	bottom: calc(100% + 2px);
-	left: 50%;
-	transform: translateX(-50%);
-	border: 6px solid transparent;
-	border-top-color: var(--text);
-	pointer-events: none;
-	opacity: 0;
-	transition: opacity .2s;
-}
+		&::after {
+			content: "";
+			position: absolute;
+			bottom: calc(100% + 2px);
+			left: 50%;
+			transform: translateX(-50%);
+			border: 6px solid transparent;
+			border-top-color: var(--text);
+			pointer-events: none;
+			opacity: 0;
+			transition: opacity .2s;
+		}
 
-.demo-hover-tooltip .tip:hover::before,
-.demo-hover-tooltip .tip:hover::after {
-	opacity: 1;
+		&:hover::before,
+		&:hover::after {
+			opacity: 1;
+		}
+	}
 }

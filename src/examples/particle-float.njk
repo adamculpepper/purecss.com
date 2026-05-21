@@ -1,0 +1,59 @@
+---
+title: Particle Float
+description: Floating particles using multiple elements with staggered CSS `animation-delay` values.
+slug: particle-float
+cssFile: particle-float.css
+explanation: "Each particle is a small `<div>` with `position: absolute` and `border-radius: 50%`. The `@keyframes` animation moves them from the bottom to the top of the container (`translateY`) while fading in and out via `opacity`. `animation-delay` offsets each particle's start time, and varying `animation-duration` values create different speeds — giving the illusion of independent movement from a single keyframe definition."
+---
+{% extends "example.njk" %}
+{% block demo %}
+<div class="particle-stage">
+	<div class="particle"></div>
+	<div class="particle"></div>
+	<div class="particle"></div>
+	<div class="particle"></div>
+	<div class="particle"></div>
+	<div class="particle"></div>
+	<div class="particle"></div>
+	<div class="particle"></div>
+	<div class="particle"></div>
+	<div class="particle"></div>
+	<div class="particle"></div>
+	<div class="particle"></div>
+</div>
+{% endblock %}
+
+{% block html_code %}
+{%- highlight "html" %}
+<div class="particle-stage">
+  <div class="particle"></div>
+  <div class="particle"></div>
+  <!-- repeat 10–20 times -->
+</div>
+{%- endhighlight %}
+{% endblock %}
+
+{% block css_code %}
+{%- highlight "css" %}
+.particle {
+  position: absolute;
+  border-radius: 50%;
+  animation: particle-rise linear infinite;
+  opacity: 0;
+}
+
+.particle:nth-child(1) {
+  left: 8%; width: 6px; height: 6px;
+  background: var(--accent);
+  animation-duration: 4s;
+  animation-delay: 0s;
+}
+/* more nth-child variations... */
+
+@keyframes particle-rise {
+  0%   { transform: translateY(240px); opacity: 0; }
+  10%  { opacity: .8; }
+  100% { transform: translateY(-20px); opacity: 0; }
+}
+{%- endhighlight %}
+{% endblock %}

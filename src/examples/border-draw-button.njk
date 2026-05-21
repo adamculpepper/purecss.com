@@ -1,0 +1,58 @@
+---
+title: Border Draw Button
+description: A button whose border traces itself on hover using SVG `stroke-dashoffset` animation.
+slug: border-draw-button
+cssFile: border-draw-button.css
+explanation: "`stroke-dasharray` sets the length of the dash pattern on an SVG stroke. Setting it equal to the shape's perimeter makes the entire stroke a single dash. `stroke-dashoffset` shifts that dash, so setting offset = perimeter hides the stroke entirely. On hover, transitioning `stroke-dashoffset` to 0 makes the border appear to draw itself. The perimeter of a `rect` is `2 × (width + height)`."
+---
+{% extends "example.njk" %}
+{% block demo %}
+<div class="draw-btns">
+	<button class="draw-btn">
+		<svg class="btn-border" viewBox="0 0 160 44" preserveAspectRatio="none">
+			<rect class="border-rect" x="1" y="1" width="158" height="42" rx="8" ry="8"/>
+		</svg>
+		<span>Hover me</span>
+	</button>
+	<button class="draw-btn draw-btn-blue">
+		<svg class="btn-border" viewBox="0 0 160 44" preserveAspectRatio="none">
+			<rect class="border-rect" x="1" y="1" width="158" height="42" rx="8" ry="8"/>
+		</svg>
+		<span>Draw border</span>
+	</button>
+	<button class="draw-btn draw-btn-pink">
+		<svg class="btn-border" viewBox="0 0 160 44" preserveAspectRatio="none">
+			<rect class="border-rect" x="1" y="1" width="158" height="42" rx="8" ry="8"/>
+		</svg>
+		<span>CSS only</span>
+	</button>
+</div>
+{% endblock %}
+
+{% block html_code %}
+{%- highlight "html" %}
+<button class="draw-btn">
+  <svg viewBox="0 0 160 44" preserveAspectRatio="none">
+    <rect class="border-rect" x="1" y="1" width="158" height="42" rx="8"/>
+  </svg>
+  <span>Hover me</span>
+</button>
+{%- endhighlight %}
+{% endblock %}
+
+{% block css_code %}
+{%- highlight "css" %}
+.border-rect {
+  fill: none;
+  stroke: var(--accent);
+  stroke-width: 2;
+  stroke-dasharray: 328; /* perimeter: 2*(158+42) */
+  stroke-dashoffset: 328;
+  transition: stroke-dashoffset .6s ease;
+}
+
+.draw-btn:hover .border-rect {
+  stroke-dashoffset: 0;
+}
+{%- endhighlight %}
+{% endblock %}

@@ -1,85 +1,87 @@
-﻿/*
+/*
  * PureCSS.com
  * https://purecss.com/examples/scroll-spy/
  * A reading progress bar that tracks scroll position using CSS scroll-driven animations.
  */
 
-.demo-scroll-spy .scroll-area {
-	border: 1px solid var(--border);
-	border-radius: 10px;
-	overflow: hidden;
-	display: flex;
-	flex-direction: column;
-}
+.demo-scroll-spy {
+	.scroll-area {
+		border: 1px solid var(--border);
+		border-radius: 10px;
+		overflow: hidden;
+		display: flex;
+		flex-direction: column;
+	}
 
-.demo-scroll-spy .scroll-header {
-	position: sticky;
-	top: 0;
-	background: var(--surface);
-	border-bottom: 1px solid var(--border);
-	padding: .6rem 1rem .5rem;
-	display: flex;
-	flex-direction: column;
-	gap: .45rem;
-	z-index: 2;
-}
+	.scroll-header {
+		position: sticky;
+		top: 0;
+		background: var(--surface);
+		border-bottom: 1px solid var(--border);
+		padding: .6rem 1rem .5rem;
+		display: flex;
+		flex-direction: column;
+		gap: .45rem;
+		z-index: 2;
+	}
 
-.demo-scroll-spy .scroll-label {
-	font-size: .7rem;
-	font-family: var(--font-mono);
-	color: var(--text-muted);
-	text-transform: uppercase;
-	letter-spacing: .08em;
-}
+	.scroll-label {
+		font-size: .7rem;
+		font-family: var(--font-mono);
+		color: var(--text-muted);
+		text-transform: uppercase;
+		letter-spacing: .08em;
+	}
 
-.demo-scroll-spy .bar-track {
-	height: 6px;
-	background: var(--surface-2);
-	border-radius: 999px;
-	overflow: hidden;
-}
+	.bar-track {
+		height: 6px;
+		background: var(--surface-2);
+		border-radius: 999px;
+		overflow: hidden;
+	}
 
-.demo-scroll-spy .bar-local {
-	height: 100%;
-	width: 0%;
-	background: linear-gradient(90deg, var(--accent), var(--teal));
-	border-radius: 999px;
-	animation: reading-progress linear;
-	animation-timeline: scroll(nearest block);
-	animation-fill-mode: both;
+	.bar-local {
+		height: 100%;
+		width: 0%;
+		background: linear-gradient(90deg, var(--accent), var(--teal));
+		border-radius: 999px;
+		animation: reading-progress linear;
+		animation-timeline: scroll(nearest block);
+		animation-fill-mode: both;
+	}
+
+	.scroll-content {
+		padding: 1.25rem 1.25rem 2rem;
+		height: 280px;
+		overflow-y: auto;
+
+		h4 {
+			font-size: .9rem;
+			font-weight: 700;
+			margin: 1.25rem 0 .5rem;
+			color: var(--text);
+
+			&:first-child {
+				margin-top: 0;
+			}
+		}
+
+		p {
+			margin-bottom: .85rem;
+			font-size: .875rem;
+			color: var(--text-muted);
+			line-height: 1.7;
+		}
+
+		code {
+			font-family: var(--font-mono);
+			font-size: .8em;
+			color: var(--accent);
+		}
+	}
 }
 
 @keyframes reading-progress {
 	from { width: 0%; }
 	to   { width: 100%; }
-}
-
-.demo-scroll-spy .scroll-content {
-	padding: 1.25rem 1.25rem 2rem;
-	height: 280px;
-	overflow-y: auto;
-}
-
-.demo-scroll-spy .scroll-content h4 {
-	font-size: .9rem;
-	font-weight: 700;
-	margin: 1.25rem 0 .5rem;
-	color: var(--text);
-}
-
-.demo-scroll-spy .scroll-content h4:first-child {
-	margin-top: 0;
-}
-
-.demo-scroll-spy .scroll-content p {
-	margin-bottom: .85rem;
-	font-size: .875rem;
-	color: var(--text-muted);
-	line-height: 1.7;
-}
-
-.demo-scroll-spy .scroll-content code {
-	font-family: var(--font-mono);
-	font-size: .8em;
-	color: var(--accent);
 }

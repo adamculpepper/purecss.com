@@ -1,48 +1,50 @@
-﻿/*
+/*
  * PureCSS.com
  * https://purecss.com/examples/scroll-carousel/
  * A horizontal carousel using scroll-snap-type and scroll-snap-align.
  */
 
-.demo-scroll-carousel .carousel-wrap {
-	position: relative;
-}
+.demo-scroll-carousel {
+	.carousel-wrap {
+		position: relative;
+	}
 
-.demo-scroll-carousel .carousel-hint {
-	text-align: center;
-	font-size: .75rem;
-	color: var(--text-muted);
-	margin-top: .6rem;
-	letter-spacing: .02em;
-}
+	.carousel-hint {
+		text-align: center;
+		font-size: .75rem;
+		color: var(--text-muted);
+		margin-top: .6rem;
+		letter-spacing: .02em;
+	}
 
-.demo-scroll-carousel .carousel {
-	display: flex;
-	overflow-x: auto;
-	scroll-snap-type: x mandatory;
-	border-radius: 10px;
-	scrollbar-width: none;
-}
+	.carousel {
+		display: flex;
+		overflow-x: auto;
+		scroll-snap-type: x mandatory;
+		border-radius: 10px;
+		scrollbar-width: none;
 
-.demo-scroll-carousel .carousel::-webkit-scrollbar {
-	display: none;
-}
+		&::-webkit-scrollbar {
+			display: none;
+		}
+	}
 
-.demo-scroll-carousel .carousel-slide {
-	flex: 0 0 100%;
-	height: 160px;
-	border-radius: 10px;
-	scroll-snap-align: start;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	font-size: 1.2rem;
-	font-weight: 700;
-	color: #fff;
-}
+	.carousel-slide {
+		flex: 0 0 100%;
+		height: 160px;
+		border-radius: 10px;
+		scroll-snap-align: start;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		font-size: 1.2rem;
+		font-weight: 700;
+		color: #fff;
 
-.demo-scroll-carousel .carousel-slide:nth-child(1) { background: var(--violet); }
-.demo-scroll-carousel .carousel-slide:nth-child(2) { background: var(--sky); }
-.demo-scroll-carousel .carousel-slide:nth-child(3) { background: var(--yellow); color: var(--bg); }
-.demo-scroll-carousel .carousel-slide:nth-child(4) { background: var(--teal); }
-.demo-scroll-carousel .carousel-slide:nth-child(5) { background: var(--accent); color: var(--bg); }
+		&:nth-child(1) { background: var(--violet); }
+		&:nth-child(2) { background: var(--sky); }
+		&:nth-child(3) { background: var(--yellow); color: var(--bg); }
+		&:nth-child(4) { background: var(--teal); }
+		&:nth-child(5) { background: var(--accent); color: var(--bg); }
+	}
+}

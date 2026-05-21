@@ -6,6 +6,7 @@
 		<a href="/" class="back-link">← All Examples</a>
 		<h1>{{ title }}</h1>
 		<p class="example-description">{{ description | markCode | safe }}</p>
+		{% if publishDate %}<p class="example-pub-date">Published {{ publishDate | formatDate }}</p>{% endif %}
 	</header>
 
 	<section class="demo-section">

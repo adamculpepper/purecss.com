@@ -1,0 +1,94 @@
+/*
+ * PureCSS.com
+ * https://purecss.com/examples/pagination/
+ * Numbered page buttons with an active state driven by radio inputs and :checked.
+ */
+
+.demo-pagination {
+	.pg-radio {
+		display: none;
+	}
+
+	.pg-wrap {
+		display: flex;
+		flex-direction: column;
+		gap: 1.25rem;
+		align-items: center;
+	}
+
+	.pg-bar {
+		display: flex;
+		align-items: center;
+		gap: .3rem;
+
+		label {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			width: 36px;
+			height: 36px;
+			border-radius: var(--radius);
+			border: 1px solid var(--border);
+			color: var(--text-muted);
+			font-size: .9rem;
+			font-weight: 500;
+			cursor: pointer;
+			transition: background .15s, color .15s, border-color .15s;
+			user-select: none;
+
+			&:hover {
+				background: var(--surface-2);
+				color: var(--text);
+				border-color: var(--text-muted);
+			}
+		}
+	}
+
+	.pg-prev,
+	.pg-next {
+		width: auto;
+		padding: 0 .75rem;
+		gap: .3rem;
+		font-size: .85rem;
+	}
+
+	.pg-content {
+		background: var(--surface);
+		border: 1px solid var(--border);
+		border-radius: var(--radius);
+		padding: .75rem 1.25rem;
+		font-size: .85rem;
+		color: var(--text-muted);
+		min-height: 44px;
+		display: flex;
+		align-items: center;
+		width: 100%;
+		max-width: 320px;
+		justify-content: center;
+	}
+
+	.pg-page {
+		display: none;
+	}
+}
+
+/* Active page button */
+#pg1:checked ~ .pg-wrap .pg-bar label[for="pg1"],
+#pg2:checked ~ .pg-wrap .pg-bar label[for="pg2"],
+#pg3:checked ~ .pg-wrap .pg-bar label[for="pg3"],
+#pg4:checked ~ .pg-wrap .pg-bar label[for="pg4"],
+#pg5:checked ~ .pg-wrap .pg-bar label[for="pg5"] {
+	background: var(--accent);
+	color: var(--bg);
+	border-color: var(--accent);
+}
+
+/* Show active page content */
+#pg1:checked ~ .pg-wrap .pg-content .pg-page-1,
+#pg2:checked ~ .pg-wrap .pg-content .pg-page-2,
+#pg3:checked ~ .pg-wrap .pg-content .pg-page-3,
+#pg4:checked ~ .pg-wrap .pg-content .pg-page-4,
+#pg5:checked ~ .pg-wrap .pg-content .pg-page-5 {
+	display: block;
+	color: var(--text);
+}

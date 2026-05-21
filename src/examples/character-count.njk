@@ -1,0 +1,55 @@
+---
+title: Character Count Indicator
+description: Input border changes color based on validity using `:user-invalid` and `:user-valid` with `minlength`/`maxlength`.
+slug: character-count
+cssFile: character-count.css
+explanation: "CSS alone can't read the live character count, but it can style inputs based on validity constraints. `maxlength` prevents typing past the limit. `minlength` sets the minimum. The `:user-valid` and `:user-invalid` pseudo-classes fire only after the user has interacted with the field — preventing red borders on untouched inputs. The sibling `~` combinator lets the hint text change color to match."
+---
+{% extends "example.njk" %}
+{% block demo %}
+<div class="cc-wrap">
+	<div class="cc-field">
+		<label for="cc-name">Name (min 2, max 40 chars)</label>
+		<input type="text" id="cc-name" minlength="2" maxlength="40" placeholder="Enter your name">
+		<div class="cc-meta">
+			<span>Min 2 characters</span>
+			<span>Max 40</span>
+		</div>
+	</div>
+	<div class="cc-field">
+		<label for="cc-bio">Bio (min 20, max 160 chars)</label>
+		<textarea id="cc-bio" minlength="20" maxlength="160" placeholder="Write a short bio..."></textarea>
+		<div class="cc-meta">
+			<span>Min 20 characters</span>
+			<span>Max 160</span>
+		</div>
+	</div>
+</div>
+{% endblock %}
+
+{% block html_code %}
+{%- highlight "html" %}
+<input type="text" minlength="2" maxlength="40" placeholder="Enter your name">
+<div class="cc-meta">Max 40 characters</div>
+{%- endhighlight %}
+{% endblock %}
+
+{% block css_code %}
+{%- highlight "css" %}
+input:user-valid {
+  border-color: var(--teal);
+}
+
+input:user-invalid {
+  border-color: var(--coral);
+}
+
+input:user-valid ~ .cc-meta {
+  color: var(--teal);
+}
+
+input:user-invalid ~ .cc-meta {
+  color: var(--coral);
+}
+{%- endhighlight %}
+{% endblock %}

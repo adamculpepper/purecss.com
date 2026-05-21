@@ -1,0 +1,41 @@
+---
+title: Neon Text Effect
+description: Glowing neon text using layered `text-shadow` values and a flicker CSS animation.
+slug: neon-text
+cssFile: neon-text.css
+explanation: "Neon glow is created by stacking multiple `text-shadow` layers with increasing blur radii and matching colors. The innermost shadows are tight and bright (small blur), while outer shadows spread the glow. A flicker animation using `opacity` and `filter: brightness` at specific keyframe points — like 20%, 24%, 55% — mimics the irregular flicker of real neon signs without JavaScript."
+---
+{% extends "example.njk" %}
+{% block demo %}
+<div class="neon-stage">
+	<p class="neon neon-green">PURE CSS</p>
+	<p class="neon neon-blue">NEON GLOW</p>
+	<p class="neon neon-pink">no javascript</p>
+</div>
+{% endblock %}
+
+{% block html_code %}
+{%- highlight "html" %}
+<p class="neon neon-green">PURE CSS</p>
+{%- endhighlight %}
+{% endblock %}
+
+{% block css_code %}
+{%- highlight "css" %}
+.neon-green {
+  color: #b8ff57;
+  text-shadow:
+    0 0 4px #b8ff57,
+    0 0 10px #b8ff57,
+    0 0 20px #b8ff57,
+    0 0 40px #6ddf00,
+    0 0 80px #6ddf00;
+  animation: neon-flicker 4s infinite;
+}
+
+@keyframes neon-flicker {
+  0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% { opacity: 1; }
+  20%, 24%, 55% { opacity: .7; filter: brightness(.8); }
+}
+{%- endhighlight %}
+{% endblock %}

@@ -1,0 +1,57 @@
+/*
+ * PureCSS.com
+ * https://purecss.com/examples/typewriter/
+ * Text typed letter by letter using a @keyframes width animation with steps() timing.
+ */
+
+.demo-typewriter {
+	.tw-stage {
+		display: flex;
+		flex-direction: column;
+		gap: 1.25rem;
+		padding: .5rem;
+	}
+
+	.tw-line {
+		overflow: hidden;
+		white-space: nowrap;
+		width: 0;
+		font-family: var(--font-mono);
+		border-right: 2px solid var(--accent);
+	}
+
+	.tw-line-1 {
+		font-size: 1.5rem;
+		font-weight: 600;
+		color: var(--text);
+		animation:
+			tw-type-1 1.8s steps(18) forwards,
+			tw-cursor .7s step-end infinite;
+	}
+
+	.tw-line-2 {
+		font-size: 1rem;
+		color: var(--accent);
+		animation:
+			tw-type-2 1.2s steps(14) 2s forwards,
+			tw-cursor .7s step-end 2s infinite;
+		border-right-color: var(--teal);
+	}
+
+	.tw-line-3 {
+		font-size: .85rem;
+		color: var(--text-muted);
+		animation:
+			tw-type-3 1s steps(22) 3.4s forwards,
+			tw-cursor .7s step-end 3.4s infinite;
+		border-right-color: var(--text-muted);
+	}
+}
+
+@keyframes tw-type-1 { to { width: 18ch; } }
+@keyframes tw-type-2 { to { width: 14ch; } }
+@keyframes tw-type-3 { to { width: 22ch; } }
+
+@keyframes tw-cursor {
+	50% { border-right-color: transparent; }
+}

@@ -1,0 +1,93 @@
+/*
+ * PureCSS.com
+ * https://purecss.com/examples/alert-banner/
+ * Info, success, warning, and error alert variants styled with CSS custom properties.
+ */
+
+.demo-alert-banner {
+	.alerts {
+		display: flex;
+		flex-direction: column;
+		gap: .65rem;
+	}
+
+	.alert {
+		display: flex;
+		align-items: flex-start;
+		gap: .75rem;
+		padding: .85rem 1rem;
+		border-radius: var(--radius);
+		border-left: 3px solid;
+		font-size: .9rem;
+		line-height: 1.5;
+	}
+
+	.alert-icon {
+		font-size: 1rem;
+		flex-shrink: 0;
+		margin-top: .05rem;
+	}
+
+	.alert-body {
+		flex: 1;
+
+		strong {
+			display: block;
+			font-size: .875rem;
+			font-weight: 600;
+			margin-bottom: .1rem;
+		}
+	}
+
+	.alert-info {
+		background: var(--sky-dim);
+		border-color: var(--sky);
+		color: var(--sky);
+	}
+
+	.alert-success {
+		background: rgba(87,217,163,.1);
+		border-color: var(--teal);
+		color: var(--teal);
+	}
+
+	.alert-warning {
+		background: var(--yellow-dim);
+		border-color: var(--yellow);
+		color: var(--yellow);
+	}
+
+	.alert-error {
+		background: var(--coral-dim);
+		border-color: var(--coral);
+		color: var(--coral);
+	}
+
+	/* Dismissible variant */
+	.alert-dismiss-input {
+		display: none;
+	}
+
+	.alert-dismissible {
+		position: relative;
+		transition: opacity .2s, max-height .3s;
+	}
+
+	.alert-close {
+		margin-left: auto;
+		cursor: pointer;
+		opacity: .6;
+		font-size: 1rem;
+		line-height: 1;
+		flex-shrink: 0;
+		user-select: none;
+
+		&:hover {
+			opacity: 1;
+		}
+	}
+
+	.alert-dismiss-input:checked ~ .alert-dismissible {
+		display: none;
+	}
+}

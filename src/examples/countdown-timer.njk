@@ -1,0 +1,50 @@
+---
+title: Countdown Timer
+description: A visual countdown using `@property` integers, CSS counters, and `steps()` animation.
+slug: countdown-timer
+cssFile: countdown-timer.css
+explanation: "`@property` registers `--countdown` as an `&lt;integer&gt;` type, allowing CSS to animate it as a number. `counter-reset: num var(--countdown)` sets a CSS counter to that value, and `content: counter(num)` displays it in a `::after` pseudo-element. `steps(10)` makes the animation jump in 10 discrete steps rather than interpolating smoothly — each step changes the displayed number. The ring uses `conic-gradient` driven by the same property."
+---
+{% extends "example.njk" %}
+{% block demo %}
+<div class="timer-wrap">
+	<div class="timer-display">
+		<div class="timer-ring"></div>
+		<div class="timer-inner">
+			<div class="timer-num"></div>
+		</div>
+	</div>
+	<p class="timer-label">Seconds</p>
+</div>
+{% endblock %}
+
+{% block html_code %}
+{%- highlight "html" %}
+<div class="timer-num"></div>
+{%- endhighlight %}
+{% endblock %}
+
+{% block css_code %}
+{%- highlight "css" %}
+@property --countdown {
+  syntax: "<integer>";
+  initial-value: 10;
+  inherits: false;
+}
+
+.timer-num {
+  --countdown: 10;
+  counter-reset: num var(--countdown);
+  animation: count-down 10s steps(10) infinite;
+}
+
+.timer-num::after {
+  content: counter(num);
+}
+
+@keyframes count-down {
+  from { --countdown: 10; }
+  to   { --countdown: 0; }
+}
+{%- endhighlight %}
+{% endblock %}

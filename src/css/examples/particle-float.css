@@ -1,0 +1,52 @@
+/*
+ * PureCSS.com
+ * https://purecss.com/examples/particle-float/
+ * Floating particles using multiple elements with staggered CSS animation-delay values.
+ */
+
+.demo-particle-float {
+	.particle-stage {
+		position: relative;
+		height: 240px;
+		overflow: hidden;
+		border-radius: var(--radius-lg);
+		background: var(--surface);
+	}
+
+	.particle {
+		position: absolute;
+		border-radius: 50%;
+		animation: particle-rise linear infinite;
+		opacity: 0;
+
+		&:nth-child(1)  { left: 8%;  width: 6px;  height: 6px;  background: var(--accent);  animation-duration: 4s;   animation-delay: 0s; }
+		&:nth-child(2)  { left: 16%; width: 4px;  height: 4px;  background: var(--sky);     animation-duration: 5.5s; animation-delay: 0.5s; }
+		&:nth-child(3)  { left: 24%; width: 8px;  height: 8px;  background: var(--violet);  animation-duration: 3.8s; animation-delay: 1s; }
+		&:nth-child(4)  { left: 32%; width: 3px;  height: 3px;  background: var(--coral);   animation-duration: 6s;   animation-delay: 1.5s; }
+		&:nth-child(5)  { left: 40%; width: 5px;  height: 5px;  background: var(--teal);    animation-duration: 4.5s; animation-delay: 0.3s; }
+		&:nth-child(6)  { left: 48%; width: 7px;  height: 7px;  background: var(--rose);    animation-duration: 5s;   animation-delay: 0.8s; }
+		&:nth-child(7)  { left: 56%; width: 4px;  height: 4px;  background: var(--yellow);  animation-duration: 3.5s; animation-delay: 1.2s; }
+		&:nth-child(8)  { left: 64%; width: 6px;  height: 6px;  background: var(--accent);  animation-duration: 5.8s; animation-delay: 0.6s; }
+		&:nth-child(9)  { left: 72%; width: 3px;  height: 3px;  background: var(--sky);     animation-duration: 4.2s; animation-delay: 1.8s; }
+		&:nth-child(10) { left: 80%; width: 8px;  height: 8px;  background: var(--orange);  animation-duration: 4.8s; animation-delay: 0.2s; }
+		&:nth-child(11) { left: 88%; width: 5px;  height: 5px;  background: var(--teal);    animation-duration: 3.2s; animation-delay: 1.4s; }
+		&:nth-child(12) { left: 94%; width: 4px;  height: 4px;  background: var(--violet);  animation-duration: 5.3s; animation-delay: 0.9s; }
+	}
+}
+
+@keyframes particle-rise {
+	0% {
+		transform: translateY(240px) translateX(0);
+		opacity: 0;
+	}
+	10% {
+		opacity: .8;
+	}
+	90% {
+		opacity: .6;
+	}
+	100% {
+		transform: translateY(-20px) translateX(20px);
+		opacity: 0;
+	}
+}

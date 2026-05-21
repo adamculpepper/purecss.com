@@ -1,0 +1,45 @@
+---
+title: Text Shimmer
+description: "A moving gradient shimmer across text using `background-clip: text` and CSS keyframes."
+slug: text-shimmer
+cssFile: text-shimmer.css
+explanation: "`background-clip: text` clips the background to the shape of the text characters. Combined with `-webkit-text-fill-color: transparent`, the background shows through the text instead of the text color. An `@keyframes` animation shifts `background-position` across a gradient with `background-size: 200% auto`, creating the illusion of a light sweeping across the text. The gradient can include any colors for different shimmer styles."
+---
+{% extends "example.njk" %}
+{% block demo %}
+<div class="shimmer-stage">
+	<span class="shimmer shimmer-green">Pure CSS</span>
+	<span class="shimmer shimmer-gold">Golden Shimmer</span>
+	<span class="shimmer shimmer-rainbow">Rainbow Text Effect</span>
+	<span class="shimmer shimmer-mono">// loading content...</span>
+</div>
+{% endblock %}
+
+{% block html_code %}
+{%- highlight "html" %}
+<span class="shimmer">Pure CSS</span>
+{%- endhighlight %}
+{% endblock %}
+
+{% block css_code %}
+{%- highlight "css" %}
+.shimmer {
+  background-image: linear-gradient(
+    90deg,
+    var(--text) 0%,
+    var(--accent) 50%,
+    var(--text) 100%
+  );
+  background-size: 200% auto;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shimmer-sweep 2s linear infinite;
+}
+
+@keyframes shimmer-sweep {
+  from { background-position: 200% center; }
+  to   { background-position: -200% center; }
+}
+{%- endhighlight %}
+{% endblock %}

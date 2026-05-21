@@ -1,0 +1,65 @@
+---
+title: Pagination Component
+description: Numbered page buttons with an active state driven by radio inputs and `:checked`.
+slug: pagination
+cssFile: pagination.css
+explanation: "Hidden radio inputs track which page is selected. Each numbered `<label>` targets one radio input. When a label is clicked, its radio becomes `:checked`. CSS then highlights that label and shows the corresponding content block using the `~` sibling combinator. The active page gets the accent background while unselected pages remain neutral."
+---
+{% extends "example.njk" %}
+{% block demo %}
+<input type="radio" name="page" id="pg1" class="pg-radio" checked>
+<input type="radio" name="page" id="pg2" class="pg-radio">
+<input type="radio" name="page" id="pg3" class="pg-radio">
+<input type="radio" name="page" id="pg4" class="pg-radio">
+<input type="radio" name="page" id="pg5" class="pg-radio">
+
+<div class="pg-wrap">
+	<div class="pg-bar">
+		<label class="pg-prev">← Prev</label>
+		<label for="pg1">1</label>
+		<label for="pg2">2</label>
+		<label for="pg3">3</label>
+		<label for="pg4">4</label>
+		<label for="pg5">5</label>
+		<label class="pg-next">Next →</label>
+	</div>
+	<div class="pg-content">
+		<span class="pg-page pg-page-1">Showing results 1–10 of 48</span>
+		<span class="pg-page pg-page-2">Showing results 11–20 of 48</span>
+		<span class="pg-page pg-page-3">Showing results 21–30 of 48</span>
+		<span class="pg-page pg-page-4">Showing results 31–40 of 48</span>
+		<span class="pg-page pg-page-5">Showing results 41–48 of 48</span>
+	</div>
+</div>
+{% endblock %}
+
+{% block html_code %}
+{%- highlight "html" %}
+<input type="radio" name="page" id="pg1" checked>
+<input type="radio" name="page" id="pg2">
+<input type="radio" name="page" id="pg3">
+
+<div class="pg-wrap">
+  <label for="pg1">1</label>
+  <label for="pg2">2</label>
+  <label for="pg3">3</label>
+</div>
+{%- endhighlight %}
+{% endblock %}
+
+{% block css_code %}
+{%- highlight "css" %}
+input[type="radio"] { display: none; }
+
+label {
+  /* button styles */
+}
+
+#pg1:checked ~ .pg-wrap label[for="pg1"],
+#pg2:checked ~ .pg-wrap label[for="pg2"],
+#pg3:checked ~ .pg-wrap label[for="pg3"] {
+  background: var(--accent);
+  color: var(--bg);
+}
+{%- endhighlight %}
+{% endblock %}

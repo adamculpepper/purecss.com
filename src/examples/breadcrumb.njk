@@ -1,0 +1,79 @@
+---
+title: Breadcrumb Trail
+description: Navigation breadcrumbs with `::before` arrow separators using CSS `content`.
+slug: breadcrumb
+cssFile: breadcrumb.css
+explanation: "Breadcrumbs are an `<ol>` list styled as a horizontal trail. The separator between items is injected using `li + li::before` — the adjacent sibling combinator selects every `<li>` that immediately follows another. The `content` property can be any character, string, or even an SVG. No JavaScript or extra HTML needed for the separators."
+---
+{% extends "example.njk" %}
+{% block demo %}
+<div class="breadcrumb-variants">
+	<nav aria-label="Slash variant">
+		<ol>
+			<li><a href="#">Home</a></li>
+			<li><a href="#">Components</a></li>
+			<li><a href="#">Navigation</a></li>
+			<li>Breadcrumb</li>
+		</ol>
+	</nav>
+	<nav aria-label="Arrow variant" class="bc-arrow">
+		<ol>
+			<li><a href="#">Dashboard</a></li>
+			<li><a href="#">Settings</a></li>
+			<li>Profile</li>
+		</ol>
+	</nav>
+	<nav aria-label="Chevron variant" class="bc-chevron">
+		<ol>
+			<li><a href="#">Products</a></li>
+			<li><a href="#">Electronics</a></li>
+			<li>Laptops</li>
+		</ol>
+	</nav>
+	<nav aria-label="Pill variant" class="bc-pill">
+		<ol>
+			<li><a href="#">Blog</a></li>
+			<li><a href="#">CSS Tips</a></li>
+			<li>Breadcrumbs</li>
+		</ol>
+	</nav>
+</div>
+{% endblock %}
+
+{% block html_code %}
+{%- highlight "html" %}
+<nav aria-label="Breadcrumb">
+  <ol>
+    <li><a href="#">Home</a></li>
+    <li><a href="#">Category</a></li>
+    <li>Current Page</li>
+  </ol>
+</nav>
+{%- endhighlight %}
+{% endblock %}
+
+{% block css_code %}
+{%- highlight "css" %}
+ol { display: flex; list-style: none; }
+
+li + li::before {
+  content: "/";
+  color: var(--text-muted);
+  margin: 0 .5rem;
+}
+
+/* Arrow variant */
+.bc-arrow li + li::before { content: "›"; }
+
+/* Chevron with CSS border trick */
+.bc-chevron li + li::before {
+  content: "";
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  border-top: 1.5px solid var(--text-muted);
+  border-right: 1.5px solid var(--text-muted);
+  transform: rotate(45deg);
+}
+{%- endhighlight %}
+{% endblock %}

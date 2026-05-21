@@ -1,0 +1,73 @@
+/*
+ * PureCSS.com
+ * https://purecss.com/examples/border-draw-button/
+ * A button whose border traces itself on hover using SVG stroke-dashoffset animation.
+ */
+
+.demo-border-draw-button {
+	.draw-btns {
+		display: flex;
+		gap: 1.5rem;
+		align-items: center;
+		justify-content: center;
+		flex-wrap: wrap;
+		padding: .5rem;
+	}
+
+	.draw-btn {
+		position: relative;
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		padding: .75rem 2rem;
+		background: transparent;
+		border: none;
+		color: var(--text);
+		font-family: var(--font-sans);
+		font-size: .95rem;
+		font-weight: 600;
+		cursor: pointer;
+		letter-spacing: .02em;
+
+		svg {
+			position: absolute;
+			inset: 0;
+			width: 100%;
+			height: 100%;
+			overflow: visible;
+		}
+
+		rect {
+			fill: none;
+			stroke: var(--accent);
+			stroke-width: 2;
+			rx: 8;
+		}
+
+		.border-rect {
+			stroke-dasharray: 328;
+			stroke-dashoffset: 328;
+			transition: stroke-dashoffset .6s cubic-bezier(0.4, 0, 0.2, 1);
+		}
+
+		&:hover .border-rect {
+			stroke-dashoffset: 0;
+		}
+	}
+
+	.draw-btn-blue {
+		color: var(--sky);
+
+		.border-rect {
+			stroke: var(--sky);
+		}
+	}
+
+	.draw-btn-pink {
+		color: var(--rose);
+
+		.border-rect {
+			stroke: var(--rose);
+		}
+	}
+}

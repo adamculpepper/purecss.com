@@ -1,0 +1,101 @@
+---
+title: CSS Pie Chart
+description: A pie chart drawn with `conic-gradient()` — no SVG, no JavaScript.
+slug: pie-chart
+cssFile: pie-chart.css
+explanation: "`conic-gradient()` creates a gradient that sweeps around a center point — perfect for pie charts. Each color stop defines a slice: `conic-gradient(red 0% 35%, blue 35% 60%)` creates a red slice covering 0°–35% and a blue slice from 35%–60%. Combining with `border-radius: 50%` turns the square into a circle. A donut variant adds a second radial-gradient mask in the center using `background` shorthand with multiple layers."
+---
+{% extends "example.njk" %}
+{% block demo %}
+<div class="chart-wrap">
+	<div>
+		<div class="pie pie-simple"></div>
+		<p class="chart-title">Pie chart</p>
+	</div>
+	<div class="legend">
+		<div class="legend-item">
+			<span class="legend-dot" style="background: var(--coral)"></span>
+			<span class="legend-label">Category A</span>
+			<span class="legend-val">35%</span>
+		</div>
+		<div class="legend-item">
+			<span class="legend-dot" style="background: var(--sky)"></span>
+			<span class="legend-label">Category B</span>
+			<span class="legend-val">25%</span>
+		</div>
+		<div class="legend-item">
+			<span class="legend-dot" style="background: var(--accent)"></span>
+			<span class="legend-label">Category C</span>
+			<span class="legend-val">20%</span>
+		</div>
+		<div class="legend-item">
+			<span class="legend-dot" style="background: var(--violet)"></span>
+			<span class="legend-label">Category D</span>
+			<span class="legend-val">20%</span>
+		</div>
+	</div>
+</div>
+<div class="chart-wrap" style="margin-top:1rem">
+	<div>
+		<div class="pie pie-donut"></div>
+		<p class="chart-title">Donut variant</p>
+	</div>
+	<div class="legend">
+		<div class="legend-item">
+			<span class="legend-dot" style="background: var(--accent)"></span>
+			<span class="legend-label">Revenue</span>
+			<span class="legend-val">42%</span>
+		</div>
+		<div class="legend-item">
+			<span class="legend-dot" style="background: var(--sky)"></span>
+			<span class="legend-label">Cost</span>
+			<span class="legend-val">23%</span>
+		</div>
+		<div class="legend-item">
+			<span class="legend-dot" style="background: var(--coral)"></span>
+			<span class="legend-label">Tax</span>
+			<span class="legend-val">20%</span>
+		</div>
+		<div class="legend-item">
+			<span class="legend-dot" style="background: var(--yellow)"></span>
+			<span class="legend-label">Other</span>
+			<span class="legend-val">15%</span>
+		</div>
+	</div>
+</div>
+{% endblock %}
+
+{% block html_code %}
+{%- highlight "html" %}
+<div class="pie"></div>
+{%- endhighlight %}
+{% endblock %}
+
+{% block css_code %}
+{%- highlight "css" %}
+/* Pie chart */
+.pie {
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  background: conic-gradient(
+    var(--coral)   0% 35%,
+    var(--sky)     35% 60%,
+    var(--accent)  60% 80%,
+    var(--violet)  80% 100%
+  );
+}
+
+/* Donut variant — mask the center */
+.pie-donut {
+  background:
+    radial-gradient(circle at center, var(--bg) 50%, transparent 50%),
+    conic-gradient(
+      var(--accent)  0% 42%,
+      var(--sky)     42% 65%,
+      var(--coral)   65% 85%,
+      var(--yellow)  85% 100%
+    );
+}
+{%- endhighlight %}
+{% endblock %}

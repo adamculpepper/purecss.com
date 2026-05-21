@@ -1,0 +1,68 @@
+/*
+ * PureCSS.com
+ * https://purecss.com/examples/morphing-blob/
+ * An organic shape that continuously morphs using animated border-radius keyframes.
+ */
+
+.demo-morphing-blob {
+	.blob-stage {
+		display: flex;
+		gap: 2rem;
+		align-items: center;
+		justify-content: center;
+		padding: 1rem;
+		flex-wrap: wrap;
+	}
+
+	.blob {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		animation: blob-morph 8s ease-in-out infinite;
+	}
+
+	.blob-green {
+		width: 120px;
+		height: 120px;
+		background: radial-gradient(circle at 30% 30%, var(--accent), #6ddf00);
+	}
+
+	.blob-blue {
+		width: 100px;
+		height: 100px;
+		background: radial-gradient(circle at 30% 30%, var(--sky), var(--violet));
+		animation-delay: -3s;
+		animation-duration: 6s;
+	}
+
+	.blob-pink {
+		width: 80px;
+		height: 80px;
+		background: radial-gradient(circle at 30% 30%, var(--rose), var(--orange));
+		animation-delay: -1.5s;
+		animation-duration: 7s;
+	}
+
+	.blob-label {
+		font-size: .7rem;
+		color: var(--bg);
+		font-weight: 700;
+		text-align: center;
+		letter-spacing: .05em;
+	}
+}
+
+@keyframes blob-morph {
+	0%, 100% {
+		border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+	}
+	25% {
+		border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%;
+	}
+	50% {
+		border-radius: 50% 60% 50% 40% / 40% 30% 60% 50%;
+	}
+	75% {
+		border-radius: 40% 50% 60% 30% / 60% 40% 50% 70%;
+	}
+}

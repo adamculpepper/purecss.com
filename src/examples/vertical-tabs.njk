@@ -1,0 +1,76 @@
+---
+title: Vertical Tabs
+description: Vertical tabbed navigation using radio inputs and the `:checked` pseudo-class.
+slug: vertical-tabs
+cssFile: vertical-tabs.css
+explanation: "The same radio-input pattern used in horizontal tabs works just as well vertically. Hidden radio inputs manage state. CSS grid creates a two-column layout with the nav on the left and content on the right. The `:checked` pseudo-class highlights the active nav label and shows the matching panel using the `~` sibling combinator targeting descendant panel elements."
+---
+{% extends "example.njk" %}
+{% block demo %}
+<input type="radio" name="vtab" id="vtab1" class="vtab-radio" checked>
+<input type="radio" name="vtab" id="vtab2" class="vtab-radio">
+<input type="radio" name="vtab" id="vtab3" class="vtab-radio">
+<input type="radio" name="vtab" id="vtab4" class="vtab-radio">
+
+<div class="vtab-layout">
+	<nav class="vtab-nav">
+		<label for="vtab1">Overview</label>
+		<label for="vtab2">Features</label>
+		<label for="vtab3">Pricing</label>
+		<label for="vtab4">Support</label>
+	</nav>
+	<div class="vtab-panels">
+		<div class="vtab-panel vtab-panel-1">
+			<h3>Overview</h3>
+			<p>A quick introduction to the product. Use vertical tabs to organize content into logical sections without page reloads.</p>
+		</div>
+		<div class="vtab-panel vtab-panel-2">
+			<h3>Features</h3>
+			<p>Zero JavaScript, accessible via keyboard, fully themeable with CSS custom properties. Works on all modern browsers.</p>
+		</div>
+		<div class="vtab-panel vtab-panel-3">
+			<h3>Pricing</h3>
+			<p>Free and open source. Use it in personal and commercial projects. No attribution required.</p>
+		</div>
+		<div class="vtab-panel vtab-panel-4">
+			<h3>Support</h3>
+			<p>Open an issue on GitHub or check the documentation. Community-driven support available 24/7.</p>
+		</div>
+	</div>
+</div>
+{% endblock %}
+
+{% block html_code %}
+{%- highlight "html" %}
+<input type="radio" name="vtab" id="vtab1" checked>
+<input type="radio" name="vtab" id="vtab2">
+
+<div class="vtab-layout">
+  <nav class="vtab-nav">
+    <label for="vtab1">Tab One</label>
+    <label for="vtab2">Tab Two</label>
+  </nav>
+  <div class="vtab-panels">
+    <div class="vtab-panel vtab-panel-1">Content One</div>
+    <div class="vtab-panel vtab-panel-2">Content Two</div>
+  </div>
+</div>
+{%- endhighlight %}
+{% endblock %}
+
+{% block css_code %}
+{%- highlight "css" %}
+.vtab-panel { display: none; }
+
+#vtab1:checked ~ .vtab-layout .vtab-panel-1,
+#vtab2:checked ~ .vtab-layout .vtab-panel-2 {
+  display: block;
+}
+
+#vtab1:checked ~ .vtab-layout label[for="vtab1"],
+#vtab2:checked ~ .vtab-layout label[for="vtab2"] {
+  background: var(--accent-dim);
+  color: var(--accent);
+}
+{%- endhighlight %}
+{% endblock %}

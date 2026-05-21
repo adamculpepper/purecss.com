@@ -1,0 +1,76 @@
+---
+title: Sticky Sidebar
+description: "A sidebar that sticks to the viewport while scrolling using `position: sticky`."
+slug: sticky-sidebar
+cssFile: sticky-sidebar.css
+explanation: "`position: sticky` places an element in normal flow but makes it stick to a specified position when it would otherwise scroll off. The sidebar uses `position: sticky; top: 0` inside a scrollable container. The key requirement is that the scrolling ancestor must have a finite height — here the layout wrapper uses `overflow-y: auto` and a fixed `height`. `align-self: start` is needed on the sidebar so it doesn't stretch to the grid row height."
+---
+{% extends "example.njk" %}
+{% block demo %}
+<div class="sticky-layout">
+	<nav class="sticky-nav">
+		<h3>Contents</h3>
+		<ul>
+			<li><a href="#" class="active">Introduction</a></li>
+			<li><a href="#">Installation</a></li>
+			<li><a href="#">Usage</a></li>
+			<li><a href="#">API Reference</a></li>
+			<li><a href="#">Examples</a></li>
+			<li><a href="#">FAQ</a></li>
+		</ul>
+	</nav>
+	<div class="sticky-content">
+		<div class="content-block">
+			<h4>Introduction</h4>
+			<p>This sidebar uses <code>position: sticky</code> to stay in view while the content area scrolls. Scroll down to see it in action.</p>
+		</div>
+		<div class="content-block">
+			<h4>Installation</h4>
+			<p>No dependencies required. Copy the CSS and HTML into your project. It works with any layout.</p>
+		</div>
+		<div class="content-block">
+			<h4>Usage</h4>
+			<p>Add <code>position: sticky; top: 0</code> to any element inside a scrolling container to pin it to the top.</p>
+		</div>
+		<div class="content-block">
+			<h4>API Reference</h4>
+			<p>The sticky behavior respects <code>top</code>, <code>bottom</code>, <code>left</code>, and <code>right</code> offset values for precise positioning.</p>
+		</div>
+		<div class="content-block">
+			<h4>Examples</h4>
+			<p>Common uses include sticky table headers, side navigation, announcement banners, and floating action buttons.</p>
+		</div>
+	</div>
+</div>
+{% endblock %}
+
+{% block html_code %}
+{%- highlight "html" %}
+<div class="layout">
+  <nav class="sticky-nav">
+    <!-- nav links -->
+  </nav>
+  <main class="content">
+    <!-- scrollable content -->
+  </main>
+</div>
+{%- endhighlight %}
+{% endblock %}
+
+{% block css_code %}
+{%- highlight "css" %}
+.layout {
+  display: grid;
+  grid-template-columns: 180px 1fr;
+  height: 260px;
+  overflow-y: auto;
+}
+
+.sticky-nav {
+  position: sticky;
+  top: 0;
+  align-self: start;
+  height: fit-content;
+}
+{%- endhighlight %}
+{% endblock %}

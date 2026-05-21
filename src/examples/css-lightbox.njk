@@ -1,0 +1,76 @@
+---
+title: CSS Lightbox
+description: Full-size image overlay using the `:target` pseudo-class — no JavaScript.
+slug: css-lightbox
+cssFile: css-lightbox.css
+explanation: "Each thumbnail is a link pointing to an `id` on a lightbox overlay: `<a href=\"#img1\">`. When clicked, the browser changes the URL hash and CSS applies `:target` styles to the matching overlay, showing it. Clicking the overlay's `<a href=\"#\">` close button removes the hash, hiding it again. The overlay uses `position: fixed` to cover the viewport."
+---
+{% extends "example.njk" %}
+{% block demo %}
+<div class="lb-gallery">
+	<a href="#lb-img1" class="lb-thumb"><div class="lb-thumb-img lb-img-1"></div></a>
+	<a href="#lb-img2" class="lb-thumb"><div class="lb-thumb-img lb-img-2"></div></a>
+	<a href="#lb-img3" class="lb-thumb"><div class="lb-thumb-img lb-img-3"></div></a>
+	<a href="#lb-img4" class="lb-thumb"><div class="lb-thumb-img lb-img-4"></div></a>
+	<a href="#lb-img5" class="lb-thumb"><div class="lb-thumb-img lb-img-5"></div></a>
+	<a href="#lb-img6" class="lb-thumb"><div class="lb-thumb-img lb-img-6"></div></a>
+</div>
+
+<div id="lb-img1" class="lb-overlay">
+	<a href="#" class="lb-close">✕</a>
+	<div class="lb-overlay-img lb-img-1" style="width:400px;height:280px"></div>
+</div>
+<div id="lb-img2" class="lb-overlay">
+	<a href="#" class="lb-close">✕</a>
+	<div class="lb-overlay-img lb-img-2" style="width:400px;height:280px"></div>
+</div>
+<div id="lb-img3" class="lb-overlay">
+	<a href="#" class="lb-close">✕</a>
+	<div class="lb-overlay-img lb-img-3" style="width:400px;height:280px"></div>
+</div>
+<div id="lb-img4" class="lb-overlay">
+	<a href="#" class="lb-close">✕</a>
+	<div class="lb-overlay-img lb-img-4" style="width:400px;height:280px"></div>
+</div>
+<div id="lb-img5" class="lb-overlay">
+	<a href="#" class="lb-close">✕</a>
+	<div class="lb-overlay-img lb-img-5" style="width:400px;height:280px"></div>
+</div>
+<div id="lb-img6" class="lb-overlay">
+	<a href="#" class="lb-close">✕</a>
+	<div class="lb-overlay-img lb-img-6" style="width:400px;height:280px"></div>
+</div>
+{% endblock %}
+
+{% block html_code %}
+{%- highlight "html" %}
+<!-- Thumbnail link -->
+<a href="#lightbox-1">
+  <img src="thumbnail.jpg" alt="Photo">
+</a>
+
+<!-- Lightbox overlay -->
+<div id="lightbox-1" class="lb-overlay">
+  <a href="#" class="lb-close">✕</a>
+  <img src="full-size.jpg" alt="Photo">
+</div>
+{%- endhighlight %}
+{% endblock %}
+
+{% block css_code %}
+{%- highlight "css" %}
+.lb-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,.85);
+  z-index: 999;
+  align-items: center;
+  justify-content: center;
+}
+
+.lb-overlay:target {
+  display: flex;
+}
+{%- endhighlight %}
+{% endblock %}

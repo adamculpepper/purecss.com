@@ -1,0 +1,82 @@
+/*
+ * PureCSS.com
+ * https://purecss.com/examples/pie-chart/
+ * A pie chart drawn with conic-gradient() — no SVG, no JavaScript.
+ */
+
+.demo-pie-chart {
+	.chart-wrap {
+		display: flex;
+		gap: 2rem;
+		align-items: center;
+		justify-content: center;
+		flex-wrap: wrap;
+	}
+
+	.pie {
+		width: 160px;
+		height: 160px;
+		border-radius: 50%;
+		flex-shrink: 0;
+	}
+
+	.pie-simple {
+		background: conic-gradient(
+			var(--coral)   0% 35%,
+			var(--sky)     35% 60%,
+			var(--accent)  60% 80%,
+			var(--violet)  80% 100%
+		);
+	}
+
+	.pie-donut {
+		background:
+			radial-gradient(circle at center, var(--bg) 50%, transparent 50%),
+			conic-gradient(
+				var(--accent)  0% 42%,
+				var(--sky)     42% 65%,
+				var(--coral)   65% 85%,
+				var(--yellow)  85% 100%
+			);
+	}
+
+	.legend {
+		display: flex;
+		flex-direction: column;
+		gap: .5rem;
+	}
+
+	.legend-item {
+		display: flex;
+		align-items: center;
+		gap: .5rem;
+		font-size: .82rem;
+	}
+
+	.legend-dot {
+		width: 10px;
+		height: 10px;
+		border-radius: 2px;
+		flex-shrink: 0;
+	}
+
+	.legend-label {
+		color: var(--text-muted);
+	}
+
+	.legend-val {
+		margin-left: auto;
+		font-weight: 600;
+		color: var(--text);
+		min-width: 2.5rem;
+		text-align: right;
+	}
+
+	.chart-title {
+		text-align: center;
+		font-size: .8rem;
+		color: var(--text-muted);
+		margin-top: .5rem;
+		font-weight: 500;
+	}
+}
