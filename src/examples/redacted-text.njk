@@ -1,0 +1,40 @@
+---
+title: Redacted Text
+description: "Sensitive text blurred by default and revealed on hover using CSS `filter: blur()` — no JavaScript."
+slug: redacted-text
+cssFile: redacted-text.css
+explanation: "`filter: blur()` is applied to inline `<span>` elements wrapping the sensitive words. The `transition` property smoothly animates the blur to `0` on `:hover`. `user-select: none` prevents copying the blurred text without revealing it first. This is a pure CSS privacy pattern — great for previewing redacted documents, hiding spoilers, or masking sensitive data in screenshots."
+---
+{% extends "example.njk" %}
+{% block demo %}
+<div class="demo-redacted-text">
+	<p>Project <span class="redacted">Nightfall</span> is our internal codename for the upcoming acquisition of <span class="redacted">Meridian Labs</span>. The deal is expected to close on <span class="redacted">March 14th</span> for a total of <span class="redacted">$240 million</span>.</p>
+	<p>The lead negotiator is <span class="redacted">Sarah Chen</span> from our legal team. Her direct contact is <span class="redacted">sarah@example.com</span> — please keep this confidential until the public announcement.</p>
+	<span class="hint">// hover to reveal</span>
+</div>
+{% endblock %}
+
+{% block html_code %}
+{%- highlight "html" %}
+<p>
+  Project <span class="redacted">Nightfall</span> is our
+  internal codename for the acquisition of
+  <span class="redacted">Meridian Labs</span>.
+</p>
+{%- endhighlight %}
+{% endblock %}
+
+{% block css_code %}
+{%- highlight "css" %}
+.redacted {
+  filter: blur(5px);
+  cursor: pointer;
+  transition: filter .4s ease;
+  user-select: none;
+}
+
+.redacted:hover {
+  filter: blur(0);
+}
+{%- endhighlight %}
+{% endblock %}

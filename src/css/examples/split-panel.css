@@ -1,0 +1,84 @@
+/*
+ * PureCSS.com
+ * https://purecss.com/examples/split-panel/
+ * Two side-by-side panels where the left can be dragged to resize using CSS resize: horizontal.
+ */
+
+.demo-split-panel {
+	width: 100%;
+	display: flex;
+	border: 1px solid var(--border);
+	border-radius: var(--radius-lg);
+	overflow: hidden;
+	height: 260px;
+
+	.split-left {
+		resize: horizontal;
+		overflow: auto;
+		min-width: 80px;
+		max-width: 70%;
+		width: 45%;
+		border-right: 1px solid var(--border);
+		background: var(--surface);
+		padding: 1.25rem;
+		display: flex;
+		flex-direction: column;
+		gap: .75rem;
+		flex-shrink: 0;
+		position: relative;
+
+		&::after {
+			content: "⠿";
+			position: absolute;
+			bottom: .4rem;
+			right: .35rem;
+			font-size: .7rem;
+			color: var(--text-muted);
+			opacity: .5;
+			pointer-events: none;
+		}
+	}
+
+	.split-right {
+		flex: 1;
+		background: var(--surface-2);
+		padding: 1.25rem;
+		display: flex;
+		flex-direction: column;
+		gap: .75rem;
+		overflow: auto;
+	}
+
+	.split-label {
+		font-family: var(--font-mono);
+		font-size: .6rem;
+		letter-spacing: .1em;
+		text-transform: uppercase;
+		color: var(--text-muted);
+		margin-bottom: .25rem;
+	}
+
+	.split-item {
+		background: var(--surface-2);
+		border: 1px solid var(--border);
+		border-radius: var(--radius);
+		padding: .5rem .75rem;
+		font-size: .8rem;
+		color: var(--text);
+		white-space: nowrap;
+		overflow: hidden;
+		text-overflow: ellipsis;
+	}
+
+	.split-right .split-item {
+		background: var(--surface);
+	}
+
+	.split-hint {
+		font-family: var(--font-mono);
+		font-size: .65rem;
+		color: var(--accent);
+		margin-top: auto;
+		letter-spacing: .04em;
+	}
+}

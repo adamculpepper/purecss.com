@@ -1,0 +1,101 @@
+/*
+ * PureCSS.com
+ * https://purecss.com/examples/scroll-reveal/
+ * Text reveals from left to right as it scrolls into view using scroll-driven clip-path animation.
+ */
+
+.demo-scroll-reveal {
+	width: 100%;
+	height: 320px;
+	overflow-y: auto;
+	scroll-snap-type: y proximity;
+	display: flex;
+	flex-direction: column;
+	gap: 0;
+
+	.reveal-section {
+		padding: 2.5rem 1.5rem;
+		display: flex;
+		flex-direction: column;
+		gap: 1rem;
+		border-bottom: 1px solid var(--border);
+		scroll-snap-align: start;
+
+		&:last-child {
+			border-bottom: none;
+		}
+	}
+
+	.reveal-heading {
+		font-size: 1.4rem;
+		font-weight: 800;
+		letter-spacing: -.03em;
+		color: var(--text);
+		animation: reveal-clip linear both;
+		animation-timeline: view(block);
+		animation-range: entry 0% entry 50%;
+	}
+
+	.reveal-text {
+		font-size: .875rem;
+		color: var(--text-muted);
+		line-height: 1.75;
+		max-width: 52ch;
+		animation: reveal-fade linear both;
+		animation-timeline: view(block);
+		animation-range: entry 5% entry 55%;
+	}
+
+	.reveal-tag {
+		display: inline-flex;
+		font-family: var(--font-mono);
+		font-size: .65rem;
+		letter-spacing: .08em;
+		text-transform: uppercase;
+		color: var(--accent);
+		border: 1px solid var(--accent-dim);
+		background: var(--accent-dim);
+		padding: .2rem .6rem;
+		border-radius: 999px;
+		animation: reveal-fade linear both;
+		animation-timeline: view(block);
+		animation-range: entry 0% entry 45%;
+	}
+
+	.scroll-hint {
+		text-align: center;
+		font-family: var(--font-mono);
+		font-size: .65rem;
+		color: var(--text-muted);
+		letter-spacing: .08em;
+		padding: 1rem;
+		animation: hint-bounce 1.5s ease-in-out infinite;
+	}
+}
+
+@keyframes reveal-clip {
+	from {
+		clip-path: inset(0 100% 0 0);
+		opacity: 0;
+	}
+	to {
+		clip-path: inset(0 0% 0 0);
+		opacity: 1;
+	}
+}
+
+@keyframes reveal-fade {
+	from {
+		opacity: 0;
+		transform: translateY(16px);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+@keyframes hint-bounce {
+	0%, 100% { transform: translateY(0); }
+	50%       { transform: translateY(4px); }
+}

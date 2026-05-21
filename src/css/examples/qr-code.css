@@ -1,0 +1,71 @@
+/*
+ * PureCSS.com
+ * https://purecss.com/examples/qr-code/
+ * A decorative QR-like grid pattern drawn with CSS box-shadow on a single element.
+ */
+
+.demo-qr-code {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 1.5rem;
+
+	.qr-wrap {
+		background: #ffffff;
+		border-radius: var(--radius-lg);
+		padding: 1.25rem;
+		display: inline-flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 1rem;
+	}
+
+	.qr-pixel {
+		/* Each box-shadow = one 10×10 cell; spread is 0, blur is 0 for sharp pixels */
+		width: 10px;
+		height: 10px;
+		background: #1a1a1a;
+		border-radius: 0;
+		box-shadow:
+			/* ── Finder: top-left 3×3 ── */
+			10px 0   0 0 #1a1a1a, 20px 0   0 0 #1a1a1a,
+			0   10px 0 0 #1a1a1a, 10px 10px 0 0 #1a1a1a, 20px 10px 0 0 #1a1a1a,
+			0   20px 0 0 #1a1a1a, 10px 20px 0 0 #1a1a1a, 20px 20px 0 0 #1a1a1a,
+
+			/* ── Finder: top-right 3×3 ── */
+			60px 0   0 0 #1a1a1a, 70px 0   0 0 #1a1a1a, 80px 0   0 0 #1a1a1a,
+			60px 10px 0 0 #1a1a1a, 70px 10px 0 0 #1a1a1a, 80px 10px 0 0 #1a1a1a,
+			60px 20px 0 0 #1a1a1a, 70px 20px 0 0 #1a1a1a, 80px 20px 0 0 #1a1a1a,
+
+			/* ── Finder: bottom-left 3×3 ── */
+			0   60px 0 0 #1a1a1a, 10px 60px 0 0 #1a1a1a, 20px 60px 0 0 #1a1a1a,
+			0   70px 0 0 #1a1a1a, 10px 70px 0 0 #1a1a1a, 20px 70px 0 0 #1a1a1a,
+			0   80px 0 0 #1a1a1a, 10px 80px 0 0 #1a1a1a, 20px 80px 0 0 #1a1a1a,
+
+			/* ── Data cells ── */
+			40px 10px 0 0 #1a1a1a,
+			40px 20px 0 0 #1a1a1a, 50px 20px 0 0 #1a1a1a,
+			20px 30px 0 0 #1a1a1a, 40px 30px 0 0 #1a1a1a, 60px 30px 0 0 #1a1a1a, 80px 30px 0 0 #1a1a1a,
+			10px 40px 0 0 #1a1a1a, 30px 40px 0 0 #1a1a1a, 50px 40px 0 0 #1a1a1a, 70px 40px 0 0 #1a1a1a,
+			0   50px 0 0 #1a1a1a, 20px 50px 0 0 #1a1a1a, 40px 50px 0 0 #1a1a1a, 60px 50px 0 0 #1a1a1a, 80px 50px 0 0 #1a1a1a,
+			40px 60px 0 0 #1a1a1a, 60px 60px 0 0 #1a1a1a, 80px 60px 0 0 #1a1a1a,
+			60px 70px 0 0 #1a1a1a,
+			40px 80px 0 0 #1a1a1a, 60px 80px 0 0 #1a1a1a, 80px 80px 0 0 #1a1a1a;
+	}
+
+	.qr-label {
+		font-family: var(--font-mono);
+		font-size: .65rem;
+		letter-spacing: .1em;
+		text-transform: uppercase;
+		color: #666;
+	}
+
+	.qr-caption {
+		font-family: var(--font-mono);
+		font-size: .7rem;
+		color: var(--text-muted);
+		letter-spacing: .04em;
+		text-align: center;
+	}
+}

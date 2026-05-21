@@ -1,0 +1,60 @@
+---
+title: CSS Geometric Art
+description: An animated solar system built entirely with CSS — orbiting planets, glowing star, no SVG, no JavaScript.
+slug: css-art
+cssFile: css-art.css
+explanation: "Each orbit is an absolutely-centered `<div>` with `border-radius: 50%`. Rotating the orbit div rotates the planet inside it — the planet stays at `top: 50%; left: 0` relative to the orbit, so as the orbit spins, the planet traces a perfect circle. The star's glow uses layered `box-shadow` values. `radial-gradient` on each planet creates a 3D sphere illusion with a single element."
+---
+{% extends "example.njk" %}
+{% block demo %}
+<div class="demo-css-art">
+	<div class="solar-system">
+		<div class="star-field"></div>
+		<div class="star"></div>
+		<div class="orbit orbit-1"><div class="planet"></div></div>
+		<div class="orbit orbit-2"><div class="planet"></div></div>
+		<div class="orbit orbit-3"><div class="planet"></div></div>
+		<div class="orbit orbit-4"><div class="planet"></div></div>
+	</div>
+</div>
+{% endblock %}
+
+{% block html_code %}
+{%- highlight "html" %}
+<div class="solar-system">
+  <div class="star"></div>
+  <div class="orbit orbit-1">
+    <div class="planet"></div>
+  </div>
+  <div class="orbit orbit-2">
+    <div class="planet"></div>
+  </div>
+</div>
+{%- endhighlight %}
+{% endblock %}
+
+{% block css_code %}
+{%- highlight "css" %}
+.orbit {
+  position: absolute;
+  border-radius: 50%;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  animation: orbit-spin linear infinite;
+}
+
+.orbit-1 { width: 90px;  height: 90px;  animation-duration: 4s; }
+.orbit-2 { width: 156px; height: 156px; animation-duration: 8s; }
+
+.planet {
+  position: absolute;
+  border-radius: 50%;
+  top: 50%; left: 0;
+  transform: translateY(-50%);
+}
+
+@keyframes orbit-spin {
+  to { transform: translate(-50%, -50%) rotate(360deg); }
+}
+{%- endhighlight %}
+{% endblock %}

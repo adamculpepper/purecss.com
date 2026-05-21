@@ -2,7 +2,7 @@
 
 ---
 
-## Current Examples (61)
+## Current Examples (72)
 
 - [x] 1. Toggle Switch — styled on/off checkbox with CSS `translate` thumb
 - [x] 2. Floating Labels — labels that float above input using `:placeholder-shown`
@@ -65,6 +65,17 @@
 - [x] 59. CSS Pie Chart — `conic-gradient()` slices with `border-radius: 50%`
 - [x] 60. CSS Bar Chart — `height: var(--h)` + `scaleY` grow animation per bar
 - [x] 61. Animated Donut Chart — SVG `stroke-dashoffset` animated from full to target
+- [x] 62. Expandable Card — `grid-template-rows: 0fr → 1fr` transition, checkbox state
+- [x] 63. Progress Button — `scaleX` fill animation + label swap via checkbox + `@keyframes` delay
+- [x] 64. Text Ticker — vertical word loop with fixed-height `overflow:hidden` + `translateY` keyframes
+- [x] 65. Redacted Text — `filter: blur()` on inline spans, removed on `:hover`
+- [x] 66. Marquee Text — infinite `translateX(-50%)` on duplicated content for seamless loop
+- [x] 67. Scroll Reveal — `clip-path: inset()` + `animation-timeline: view()` scroll-driven
+- [x] 68. CSS Calendar — `grid-template-columns: repeat(7, 1fr)` with `aspect-ratio: 1` day cells
+- [x] 69. CSS QR Code — entire pixel grid from one `<div>` using CSS `box-shadow` offsets
+- [x] 70. CSS Geometric Art — solar system with CSS `border-radius` orbits + `rotate` animation
+- [x] 71. Split Panel — `resize: horizontal` + `overflow: auto` + `flex: 1` right panel
+- [x] 72. Scroll-Triggered Reveal — `opacity`/`translateY` + `animation-timeline: view()` per item
 
 ---
 
@@ -127,12 +138,12 @@
 - [ ] 46. Testimonial card with star rating and quote
 - [ ] 47. Stat card with large number and trend indicator
 - [ ] 48. Media card (image left, content right) with hover effect
-- [ ] 49. Expandable card that grows to full height on click
+- [x] 49. Expandable card that grows to full height on click
 - [ ] 50. Stacked cards perspective effect on hover
 
 ### Buttons & Controls
 - [x] 51. Animated border draw button (SVG `stroke-dashoffset`)
-- [ ] 52. Filled progress button (`background-size` animation — label trick)
+- [x] 52. Filled progress button (`background-size` animation — label trick)
 - [ ] 53. Neumorphic button (soft shadow inset/outset)
 - [ ] 54. Split button (primary action + dropdown trigger)
 - [ ] 55. Floating action button (FAB) with radial menu
@@ -160,26 +171,26 @@
 - [ ] 73. Strikethrough price with discount badge
 - [ ] 74. Animated underline link (width grows from center on hover)
 - [ ] 75. Text with `letter-spacing` animation on hover
-- [ ] 76. Rotating text ticker (multiple words cycling vertically)
+- [x] 76. Rotating text ticker (multiple words cycling vertically)
 - [ ] 77. Outlined/stroked text (`-webkit-text-stroke`)
-- [ ] 78. Blurred redacted text (`filter: blur`, reveal on hover)
-- [ ] 79. Scrolling marquee text (pure CSS infinite `translateX`)
-- [ ] 80. Text reveal on scroll (scroll-driven `clip-path` animation)
+- [x] 78. Blurred redacted text (`filter: blur`, reveal on hover)
+- [x] 79. Scrolling marquee text (pure CSS infinite `translateX`)
+- [x] 80. Text reveal on scroll (scroll-driven `clip-path` animation)
 
 ### CSS Art & Data Viz
 - [ ] 81. CSS-drawn toggle icons (hamburger → X morphing)
 - [ ] 82. Dark/light mode switch with sun/moon CSS illustration
 - [x] 83. CSS-only pie chart (`conic-gradient`)
 - [x] 84. Bar chart (flex + CSS custom properties for bar heights)
-- [ ] 85. CSS calendar grid (7-column CSS grid + date styling)
+- [x] 85. CSS calendar grid (7-column CSS grid + date styling)
 - [ ] 86. CSS-drawn social media icons
 - [x] 87. Animated donut chart (SVG `stroke-dashoffset`, no JS)
 - [ ] 88. CSS color palette swatch grid with hover labels
-- [ ] 89. CSS-only QR code pattern (grid + colored cells)
-- [ ] 90. Abstract geometric art with CSS shapes + animation
+- [x] 89. CSS-only QR code pattern (grid + colored cells)
+- [x] 90. Abstract geometric art with CSS shapes + animation
 
 ### Utilities & Modern CSS
-- [ ] 91. Drag-to-resize split panel (CSS `resize: horizontal` demo)
+- [x] 91. Drag-to-resize split panel (CSS `resize: horizontal` demo)
 - [ ] 92. Print styles — hide nav, format page for paper
 - [ ] 93. Focus ring visibility demo (`:focus-visible` vs `:focus`)
 - [ ] 94. High-contrast mode demo (`forced-colors` media query)
@@ -188,4 +199,4 @@
 - [ ] 97. CSS `has()` selector interactive demo
 - [ ] 98. CSS logical properties direction switcher (LTR/RTL)
 - [ ] 99. View Transitions API page transition demo
-- [ ] 100. Scroll-triggered reveal animation (scroll-driven opacity/transform)
+- [x] 100. Scroll-triggered reveal animation (scroll-driven opacity/transform)

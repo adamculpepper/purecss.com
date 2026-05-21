@@ -1,0 +1,86 @@
+---
+title: Scroll-Triggered Reveal
+description: "Elements fade and slide up as they enter the viewport using CSS scroll-driven `animation-timeline: view()`."
+slug: scroll-triggered-reveal
+cssFile: scroll-triggered-reveal.css
+explanation: "`animation-timeline: view()` links animation progress to an element's position within its nearest scrollable ancestor. `animation-range: entry 0% entry 45%` means the animation plays while the element moves from 0% to 45% into the visible area — so it's fully revealed before reaching the center. Each list item animates independently, creating a natural staggered cascade as you scroll through them."
+---
+{% extends "example.njk" %}
+{% block demo %}
+<div class="demo-scroll-triggered-reveal">
+	<div class="scroll-hint">↓ scroll to reveal</div>
+	<div class="reveal-item">
+		<div class="reveal-icon reveal-icon-teal">⚡</div>
+		<div class="reveal-body">
+			<div class="reveal-title">Scroll-driven animations</div>
+			<div class="reveal-desc">Link animation progress directly to scroll position — no JavaScript, no IntersectionObserver.</div>
+		</div>
+	</div>
+	<div class="reveal-item">
+		<div class="reveal-icon reveal-icon-coral">🎨</div>
+		<div class="reveal-body">
+			<div class="reveal-title">CSS custom properties</div>
+			<div class="reveal-desc">Dynamic theming, animations, and calculations powered entirely by CSS variables.</div>
+		</div>
+	</div>
+	<div class="reveal-item">
+		<div class="reveal-icon reveal-icon-violet">📦</div>
+		<div class="reveal-body">
+			<div class="reveal-title">Container queries</div>
+			<div class="reveal-desc">Responsive components that adapt to their container's size, not the viewport.</div>
+		</div>
+	</div>
+	<div class="reveal-item">
+		<div class="reveal-icon reveal-icon-sky">🔗</div>
+		<div class="reveal-body">
+			<div class="reveal-title">CSS nesting</div>
+			<div class="reveal-desc">Write scoped, composable styles inside each other — native Sass-style syntax.</div>
+		</div>
+	</div>
+	<div class="reveal-item">
+		<div class="reveal-icon reveal-icon-orange">📐</div>
+		<div class="reveal-body">
+			<div class="reveal-title">Subgrid</div>
+			<div class="reveal-desc">Nested grids that align to their parent's tracks, making complex layouts trivial.</div>
+		</div>
+	</div>
+	<div class="reveal-item">
+		<div class="reveal-icon reveal-icon-yellow">✨</div>
+		<div class="reveal-body">
+			<div class="reveal-title">@starting-style</div>
+			<div class="reveal-desc">Animate elements from their initial state when they first appear in the DOM.</div>
+		</div>
+	</div>
+</div>
+{% endblock %}
+
+{% block html_code %}
+{%- highlight "html" %}
+<div class="scroll-container">
+  <div class="reveal-item">...</div>
+  <div class="reveal-item">...</div>
+  <div class="reveal-item">...</div>
+</div>
+{%- endhighlight %}
+{% endblock %}
+
+{% block css_code %}
+{%- highlight "css" %}
+.reveal-item {
+  animation: streveal-up linear both;
+  animation-timeline: view(block);
+  animation-range: entry 0% entry 45%;
+}
+
+@keyframes streveal-up {
+  from {
+    opacity: 0;
+    transform: translateY(32px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+{%- endhighlight %}
+{% endblock %}

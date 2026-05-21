@@ -1,0 +1,63 @@
+---
+title: Scroll Reveal
+description: Text sweeps in from left as it enters the viewport using scroll-driven `clip-path` animation — zero JavaScript.
+slug: scroll-reveal
+cssFile: scroll-reveal.css
+explanation: "`animation-timeline: view(block)` links the animation progress to the element's visibility within its scroll container. `animation-range: entry 0% entry 50%` means the animation runs while the element travels from completely off-screen to halfway into the visible area. `clip-path: inset(0 100% 0 0)` hides the text by clipping from the right edge; animating to `inset(0 0% 0 0)` reveals it. This works in any scrollable container — not just the main page viewport."
+---
+{% extends "example.njk" %}
+{% block demo %}
+<div class="demo-scroll-reveal">
+	<div class="scroll-hint">↓ scroll to reveal</div>
+	<div class="reveal-section">
+		<span class="reveal-tag">Design</span>
+		<h2 class="reveal-heading">Typography first.</h2>
+		<p class="reveal-text">Great design starts with type. Every layout decision — spacing, hierarchy, rhythm — flows from the words on the page. CSS gives you full control without a single line of JavaScript.</p>
+	</div>
+	<div class="reveal-section">
+		<span class="reveal-tag">Performance</span>
+		<h2 class="reveal-heading">No JavaScript overhead.</h2>
+		<p class="reveal-text">Scroll-driven animations run on the compositor thread. They don't block the main thread, don't require IntersectionObserver, and can't be slowed by heavy scripts. Pure CSS wins here.</p>
+	</div>
+	<div class="reveal-section">
+		<span class="reveal-tag">Modern CSS</span>
+		<h2 class="reveal-heading">Shipped in every browser.</h2>
+		<p class="reveal-text">Scroll-driven animations landed in Chrome 115, Firefox 110, and Safari 15.4. With progressive enhancement, you can use them today — non-supporting browsers simply see the final state.</p>
+	</div>
+</div>
+{% endblock %}
+
+{% block html_code %}
+{%- highlight "html" %}
+<div class="scroll-container">
+  <h2 class="reveal-heading">Typography first.</h2>
+  <p class="reveal-text">Great design starts with type.</p>
+</div>
+{%- endhighlight %}
+{% endblock %}
+
+{% block css_code %}
+{%- highlight "css" %}
+.reveal-heading {
+  animation: reveal-clip linear both;
+  animation-timeline: view(block);
+  animation-range: entry 0% entry 50%;
+}
+
+.reveal-text {
+  animation: reveal-fade linear both;
+  animation-timeline: view(block);
+  animation-range: entry 5% entry 55%;
+}
+
+@keyframes reveal-clip {
+  from { clip-path: inset(0 100% 0 0); opacity: 0; }
+  to   { clip-path: inset(0 0% 0 0);   opacity: 1; }
+}
+
+@keyframes reveal-fade {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+{%- endhighlight %}
+{% endblock %}

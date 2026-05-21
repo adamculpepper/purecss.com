@@ -1,0 +1,58 @@
+---
+title: Split Panel
+description: "Two side-by-side panels where the left panel can be drag-resized using CSS `resize: horizontal` — no JavaScript."
+slug: split-panel
+cssFile: split-panel.css
+explanation: "`resize: horizontal` tells the browser to render a native drag handle on the element. It requires `overflow` to be set to anything other than `visible` — here `overflow: auto` handles scrolling if content overflows while also enabling the resize. `min-width` and `max-width` prevent the panel from collapsing entirely or consuming the full container. The right panel uses `flex: 1` to fill the remaining space automatically."
+---
+{% extends "example.njk" %}
+{% block demo %}
+<div class="demo-split-panel">
+	<div class="split-left">
+		<span class="split-label">// Files</span>
+		<div class="split-item">index.njk</div>
+		<div class="split-item">global.css</div>
+		<div class="split-item">eleventy.config.js</div>
+		<div class="split-item">allExamples.js</div>
+		<div class="split-item">base.njk</div>
+		<span class="split-hint">drag corner ↘ to resize</span>
+	</div>
+	<div class="split-right">
+		<span class="split-label">// Preview</span>
+		<div class="split-item">← select a file to preview</div>
+	</div>
+</div>
+{% endblock %}
+
+{% block html_code %}
+{%- highlight "html" %}
+<div class="split-container">
+  <div class="split-left">
+    <!-- resizable panel -->
+  </div>
+  <div class="split-right">
+    <!-- fills remaining space -->
+  </div>
+</div>
+{%- endhighlight %}
+{% endblock %}
+
+{% block css_code %}
+{%- highlight "css" %}
+.split-container {
+  display: flex;
+}
+
+.split-left {
+  resize: horizontal;
+  overflow: auto;   /* required for resize to work */
+  min-width: 80px;
+  max-width: 70%;
+  width: 45%;
+}
+
+.split-right {
+  flex: 1; /* fill the rest */
+}
+{%- endhighlight %}
+{% endblock %}

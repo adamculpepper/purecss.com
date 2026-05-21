@@ -1,0 +1,87 @@
+---
+title: Expandable Card
+description: A card that expands to reveal more content on click — no JavaScript, no `max-height` hack.
+slug: expandable-card
+cssFile: expandable-card.css
+explanation: "The `grid-template-rows` trick is the cleanest CSS height animation. Setting `grid-template-rows: 0fr` collapses the child to zero height (because `min-height` on the inner element is 0 and `fr` units respect it), and transitioning to `1fr` lets the browser calculate the natural height automatically — no fixed pixel values needed. The `overflow: hidden` on `.exp-inner` clips the content during the animation."
+---
+{% extends "example.njk" %}
+{% block demo %}
+<div class="demo-expandable-card">
+	<div class="exp-card">
+		<input type="checkbox" id="exp-1" class="exp-toggle">
+		<label for="exp-1" class="exp-header">
+			<span class="exp-title">What is CSS nesting?</span>
+			<span class="exp-icon">+</span>
+		</label>
+		<div class="exp-body">
+			<div class="exp-inner">
+				<div class="exp-content">CSS nesting lets you write rules inside other rules, just like Sass — but natively in the browser. Child selectors, pseudo-classes, and media queries can all live inside their parent block.</div>
+			</div>
+		</div>
+	</div>
+	<div class="exp-card">
+		<input type="checkbox" id="exp-2" class="exp-toggle">
+		<label for="exp-2" class="exp-header">
+			<span class="exp-title">How does `grid-template-rows: 0fr` work?</span>
+			<span class="exp-icon">+</span>
+		</label>
+		<div class="exp-body">
+			<div class="exp-inner">
+				<div class="exp-content">When a grid child has `min-height: 0` (the default), setting the row track to `0fr` collapses it to exactly zero. Transitioning to `1fr` lets the browser interpolate to the natural content height — no JavaScript, no fixed heights required.</div>
+			</div>
+		</div>
+	</div>
+	<div class="exp-card">
+		<input type="checkbox" id="exp-3" class="exp-toggle">
+		<label for="exp-3" class="exp-header">
+			<span class="exp-title">Why not use `max-height` transitions?</span>
+			<span class="exp-icon">+</span>
+		</label>
+		<div class="exp-body">
+			<div class="exp-inner">
+				<div class="exp-content">The `max-height` approach requires you to set a fixed maximum (like `max-height: 1000px`), which causes the animation timing to feel wrong for short content — the browser animates through all the "empty" height before anything collapses. The grid trick avoids this entirely.</div>
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock %}
+
+{% block html_code %}
+{%- highlight "html" %}
+<div class="exp-card">
+  <input type="checkbox" id="exp-1" class="exp-toggle">
+  <label for="exp-1" class="exp-header">
+    <span class="exp-title">Question title</span>
+    <span class="exp-icon">+</span>
+  </label>
+  <div class="exp-body">
+    <div class="exp-inner">
+      <div class="exp-content">Hidden content here.</div>
+    </div>
+  </div>
+</div>
+{%- endhighlight %}
+{% endblock %}
+
+{% block css_code %}
+{%- highlight "css" %}
+.exp-body {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows .35s ease;
+}
+
+.exp-inner {
+  overflow: hidden;
+}
+
+.exp-toggle:checked ~ .exp-header .exp-icon {
+  transform: rotate(45deg);
+}
+
+.exp-toggle:checked ~ .exp-body {
+  grid-template-rows: 1fr;
+}
+{%- endhighlight %}
+{% endblock %}

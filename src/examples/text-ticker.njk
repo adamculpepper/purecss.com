@@ -1,0 +1,85 @@
+---
+title: Text Ticker
+description: "Words rotate vertically in a loop using CSS `@keyframes` and `overflow: hidden` — no JavaScript."
+slug: text-ticker
+cssFile: text-ticker.css
+explanation: "The trick is a fixed-height container with `overflow: hidden` that clips to exactly one word's height. Inside, words are stacked vertically in a flex column. The `@keyframes` animation moves the column upward in steps — each keyframe pair holds at a position briefly (the 'pause' between words) before snapping to the next. Adding a duplicate of the first word at the end creates a seamless loop back to the start."
+---
+{% extends "example.njk" %}
+{% block demo %}
+<div class="demo-text-ticker">
+	<div class="ticker-line">
+		<span class="ticker-static">CSS is</span>
+		<span class="ticker-slot">
+			<div class="ticker-inner">
+				<span class="ticker-word">powerful.</span>
+				<span class="ticker-word">modern.</span>
+				<span class="ticker-word">expressive.</span>
+				<span class="ticker-word">fast.</span>
+				<span class="ticker-word">powerful.</span>
+			</div>
+		</span>
+	</div>
+	<div class="ticker-line">
+		<span class="ticker-static">Build</span>
+		<span class="ticker-slot">
+			<div class="ticker-inner">
+				<span class="ticker-word">anything.</span>
+				<span class="ticker-word">boldly.</span>
+				<span class="ticker-word">natively.</span>
+				<span class="ticker-word">beautifully.</span>
+				<span class="ticker-word">anything.</span>
+			</div>
+		</span>
+	</div>
+</div>
+{% endblock %}
+
+{% block html_code %}
+{%- highlight "html" %}
+<div class="ticker-line">
+  <span class="ticker-static">CSS is</span>
+  <span class="ticker-slot">
+    <div class="ticker-inner">
+      <span class="ticker-word">powerful.</span>
+      <span class="ticker-word">modern.</span>
+      <span class="ticker-word">expressive.</span>
+      <span class="ticker-word">fast.</span>
+      <!-- duplicate first word for seamless loop -->
+      <span class="ticker-word">powerful.</span>
+    </div>
+  </span>
+</div>
+{%- endhighlight %}
+{% endblock %}
+
+{% block css_code %}
+{%- highlight "css" %}
+.ticker-slot {
+  height: 1.15em;
+  overflow: hidden;
+}
+
+.ticker-inner {
+  display: flex;
+  flex-direction: column;
+  animation: ticker-up 4s ease-in-out infinite;
+}
+
+.ticker-word {
+  height: 1.15em;
+}
+
+@keyframes ticker-up {
+  0%   { transform: translateY(0); }
+  18%  { transform: translateY(0); }
+  25%  { transform: translateY(-1.15em); }
+  43%  { transform: translateY(-1.15em); }
+  50%  { transform: translateY(-2.3em); }
+  68%  { transform: translateY(-2.3em); }
+  75%  { transform: translateY(-3.45em); }
+  93%  { transform: translateY(-3.45em); }
+  100% { transform: translateY(-4.6em); }
+}
+{%- endhighlight %}
+{% endblock %}

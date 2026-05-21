@@ -1,0 +1,79 @@
+---
+title: Marquee Text
+description: Infinite scrolling text using CSS `translateX` and `@keyframes` — the modern replacement for `<marquee>`.
+slug: marquee-text
+cssFile: marquee-text.css
+explanation: "The seamless loop requires the content to be duplicated inside `.marquee-inner`. The animation moves from `translateX(0)` to `translateX(-50%)` — at the halfway point, the second copy has slid into where the first started, making the jump back to 0 invisible. `animation-play-state: paused` on `:hover` stops the scroll so users can read the content."
+---
+{% extends "example.njk" %}
+{% block demo %}
+<div class="demo-marquee-text">
+	<div class="marquee-track">
+		<div class="marquee-inner">
+			<span class="marquee-item">Pure CSS</span>
+			<span class="marquee-item">Zero JavaScript</span>
+			<span class="marquee-item marquee-item-accent">No Dependencies</span>
+			<span class="marquee-item">Modern CSS</span>
+			<span class="marquee-item">Open Source</span>
+			<span class="marquee-item marquee-item-accent">Built with Eleventy</span>
+			<span class="marquee-item">Pure CSS</span>
+			<span class="marquee-item">Zero JavaScript</span>
+			<span class="marquee-item marquee-item-accent">No Dependencies</span>
+			<span class="marquee-item">Modern CSS</span>
+			<span class="marquee-item">Open Source</span>
+			<span class="marquee-item marquee-item-accent">Built with Eleventy</span>
+		</div>
+	</div>
+	<div class="marquee-track">
+		<div class="marquee-inner marquee-inner-rev">
+			<span class="marquee-item">Scroll Snap</span>
+			<span class="marquee-item marquee-item-accent">CSS Nesting</span>
+			<span class="marquee-item">Custom Properties</span>
+			<span class="marquee-item">Scroll-Driven</span>
+			<span class="marquee-item marquee-item-accent">Container Queries</span>
+			<span class="marquee-item">Cascade Layers</span>
+			<span class="marquee-item">Scroll Snap</span>
+			<span class="marquee-item marquee-item-accent">CSS Nesting</span>
+			<span class="marquee-item">Custom Properties</span>
+			<span class="marquee-item">Scroll-Driven</span>
+			<span class="marquee-item marquee-item-accent">Container Queries</span>
+			<span class="marquee-item">Cascade Layers</span>
+		</div>
+	</div>
+</div>
+{% endblock %}
+
+{% block html_code %}
+{%- highlight "html" %}
+<div class="marquee-track">
+  <div class="marquee-inner">
+    <!-- duplicate content for seamless loop -->
+    <span class="marquee-item">Pure CSS</span>
+    <span class="marquee-item">Pure CSS</span>
+  </div>
+</div>
+{%- endhighlight %}
+{% endblock %}
+
+{% block css_code %}
+{%- highlight "css" %}
+.marquee-track {
+  overflow: hidden;
+}
+
+.marquee-inner {
+  display: inline-flex;
+  white-space: nowrap;
+  animation: marquee-scroll 16s linear infinite;
+}
+
+.marquee-inner:hover {
+  animation-play-state: paused;
+}
+
+@keyframes marquee-scroll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+{%- endhighlight %}
+{% endblock %}

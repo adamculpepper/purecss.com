@@ -1,0 +1,75 @@
+---
+title: Progress Button
+description: A button that animates a fill on click using a checkbox and `background-size` — pure CSS state machine.
+slug: progress-button
+cssFile: progress-button.css
+explanation: "A hidden checkbox is the state machine. When checked, `::before` animates from `scaleX(0)` to `scaleX(1)` with `transform-origin: left` — this creates the left-to-right fill. Three label spans (idle, loading, done) swap visibility using `@keyframes` with `animation-delay`, so the text transitions happen at the right points in the 2-second fill animation."
+---
+{% extends "example.njk" %}
+{% block demo %}
+<div class="demo-progress-button">
+	<div class="prog-group">
+		<input type="checkbox" id="prog-1" class="prog-input">
+		<label for="prog-1" class="prog-btn">
+			<span class="prog-idle">▶ Run build</span>
+			<span class="prog-loading">Building…</span>
+			<span class="prog-done">✓ Complete</span>
+		</label>
+		<span class="prog-hint">click to start</span>
+	</div>
+	<div class="prog-group">
+		<input type="checkbox" id="prog-2" class="prog-input">
+		<label for="prog-2" class="prog-btn">
+			<span class="prog-idle">↑ Deploy</span>
+			<span class="prog-loading">Deploying…</span>
+			<span class="prog-done">✓ Live</span>
+		</label>
+		<span class="prog-hint">click to start</span>
+	</div>
+</div>
+{% endblock %}
+
+{% block html_code %}
+{%- highlight "html" %}
+<input type="checkbox" id="prog-1" class="prog-input">
+<label for="prog-1" class="prog-btn">
+  <span class="prog-idle">▶ Run build</span>
+  <span class="prog-loading">Building…</span>
+  <span class="prog-done">✓ Complete</span>
+</label>
+{%- endhighlight %}
+{% endblock %}
+
+{% block css_code %}
+{%- highlight "css" %}
+.prog-btn {
+  position: relative;
+  overflow: hidden;
+}
+
+.prog-btn::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--accent);
+  transform: scaleX(0);
+  transform-origin: left;
+}
+
+.prog-input:checked ~ .prog-btn::before {
+  animation: prog-fill 2s ease-in-out forwards;
+}
+
+.prog-input:checked ~ .prog-btn .prog-idle {
+  animation: prog-fade-out .2s forwards;
+}
+
+.prog-input:checked ~ .prog-btn .prog-done {
+  animation: prog-fade-in .2s 2s forwards;
+}
+
+@keyframes prog-fill {
+  to { transform: scaleX(1); }
+}
+{%- endhighlight %}
+{% endblock %}

@@ -1,0 +1,88 @@
+/*
+ * PureCSS.com
+ * https://purecss.com/examples/expandable-card/
+ * A card that expands to reveal more content using a checkbox and grid-template-rows transition.
+ */
+
+.demo-expandable-card {
+	display: flex;
+	flex-direction: column;
+	gap: .6rem;
+	width: 100%;
+	max-width: 420px;
+
+	.exp-card {
+		background: var(--surface);
+		border: 1px solid var(--border);
+		border-radius: var(--radius-lg);
+		overflow: hidden;
+	}
+
+	.exp-toggle {
+		display: none;
+	}
+
+	.exp-header {
+		padding: .9rem 1.1rem;
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: 1rem;
+		cursor: pointer;
+		user-select: none;
+		transition: background .15s;
+
+		&:hover {
+			background: var(--surface-2);
+		}
+	}
+
+	.exp-title {
+		font-size: .9rem;
+		font-weight: 600;
+		color: var(--text);
+	}
+
+	.exp-icon {
+		width: 22px;
+		height: 22px;
+		border: 1.5px solid var(--text-muted);
+		border-radius: 50%;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		flex-shrink: 0;
+		font-size: 1.1rem;
+		line-height: 1;
+		color: var(--text-muted);
+		transition: transform .35s ease, border-color .2s, color .2s;
+	}
+
+	.exp-body {
+		display: grid;
+		grid-template-rows: 0fr;
+		transition: grid-template-rows .35s ease;
+	}
+
+	.exp-inner {
+		overflow: hidden;
+	}
+
+	.exp-content {
+		padding: .9rem 1.1rem;
+		font-size: .85rem;
+		color: var(--text-muted);
+		line-height: 1.75;
+		border-top: 1px solid var(--border);
+	}
+
+	.exp-toggle:checked ~ .exp-header .exp-icon {
+		transform: rotate(45deg);
+		border-color: var(--accent);
+		color: var(--accent);
+	}
+
+	.exp-toggle:checked ~ .exp-body {
+		grid-template-rows: 1fr;
+	}
+}

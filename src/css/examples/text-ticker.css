@@ -1,0 +1,63 @@
+/*
+ * PureCSS.com
+ * https://purecss.com/examples/text-ticker/
+ * Words rotate vertically in a loop using CSS keyframes and overflow hidden.
+ */
+
+.demo-text-ticker {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 2.5rem;
+
+	.ticker-line {
+		display: flex;
+		align-items: center;
+		gap: .45em;
+		font-size: 1.6rem;
+		font-weight: 700;
+		color: var(--text);
+		letter-spacing: -.02em;
+	}
+
+	.ticker-static {
+		color: var(--text-muted);
+		font-weight: 400;
+	}
+
+	.ticker-slot {
+		height: 1.15em;
+		overflow: hidden;
+		position: relative;
+	}
+
+	.ticker-inner {
+		display: flex;
+		flex-direction: column;
+		animation: ticker-up 4s ease-in-out infinite;
+	}
+
+	.ticker-word {
+		height: 1.15em;
+		display: flex;
+		align-items: center;
+		color: var(--accent);
+		font-family: var(--font-serif);
+		font-style: italic;
+		font-weight: 400;
+		white-space: nowrap;
+		line-height: 1;
+	}
+}
+
+@keyframes ticker-up {
+	0%   { transform: translateY(0); }
+	18%  { transform: translateY(0); }
+	25%  { transform: translateY(-1.15em); }
+	43%  { transform: translateY(-1.15em); }
+	50%  { transform: translateY(-2.3em); }
+	68%  { transform: translateY(-2.3em); }
+	75%  { transform: translateY(-3.45em); }
+	93%  { transform: translateY(-3.45em); }
+	100% { transform: translateY(-4.6em); }
+}

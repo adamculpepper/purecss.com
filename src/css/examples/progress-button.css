@@ -1,0 +1,115 @@
+/*
+ * PureCSS.com
+ * https://purecss.com/examples/progress-button/
+ * A button that fills with a progress animation on click using a checkbox and background-size.
+ */
+
+.demo-progress-button {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 1.5rem;
+	align-items: center;
+	justify-content: center;
+
+	.prog-group {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: .5rem;
+	}
+
+	.prog-input {
+		display: none;
+	}
+
+	.prog-btn {
+		position: relative;
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		padding: .75rem 2.25rem;
+		border-radius: 999px;
+		border: 1.5px solid var(--accent);
+		background: var(--accent-dim);
+		color: var(--accent);
+		font-family: var(--font-mono);
+		font-size: .8rem;
+		font-weight: 500;
+		letter-spacing: .05em;
+		cursor: pointer;
+		overflow: hidden;
+		user-select: none;
+		min-width: 160px;
+		transition: color .3s;
+
+		&::before {
+			content: "";
+			position: absolute;
+			inset: 0;
+			background: var(--accent);
+			transform: scaleX(0);
+			transform-origin: left;
+		}
+	}
+
+	.prog-label {
+		position: relative;
+		z-index: 1;
+	}
+
+	.prog-idle,
+	.prog-loading,
+	.prog-done {
+		position: absolute;
+		z-index: 1;
+		left: 50%;
+		transform: translateX(-50%);
+		white-space: nowrap;
+		transition: opacity .2s;
+	}
+
+	.prog-idle    { opacity: 1; }
+	.prog-loading { opacity: 0; }
+	.prog-done    { opacity: 0; }
+
+	.prog-hint {
+		font-family: var(--font-mono);
+		font-size: .65rem;
+		color: var(--text-muted);
+		letter-spacing: .05em;
+	}
+
+	.prog-input:checked ~ .prog-btn {
+		color: #0c0c0d;
+
+		&::before {
+			animation: prog-fill 2s ease-in-out forwards;
+		}
+
+		.prog-idle {
+			animation: prog-fade-out .2s forwards;
+		}
+
+		.prog-loading {
+			animation: prog-fade-in .2s forwards, prog-fade-out .2s 1.8s forwards;
+		}
+
+		.prog-done {
+			animation: prog-fade-in .2s 2s forwards;
+		}
+	}
+}
+
+@keyframes prog-fill {
+	0%   { transform: scaleX(0); }
+	80%  { transform: scaleX(1); }
+	100% { transform: scaleX(1); }
+}
+
+@keyframes prog-fade-out {
+	to { opacity: 0; }
+}
+
+@keyframes prog-fade-in {
+	to { opacity: 1; }
+}

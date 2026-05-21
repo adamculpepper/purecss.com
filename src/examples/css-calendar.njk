@@ -1,0 +1,120 @@
+---
+title: CSS Calendar
+description: A monthly calendar built with CSS Grid — 7 equal columns, hover states, today highlighted, no JavaScript.
+slug: css-calendar
+cssFile: css-calendar.css
+explanation: "`grid-template-columns: repeat(7, 1fr)` creates seven equal-width columns automatically. Day name headers and date cells both flow into the same grid — the day numbers start in the correct weekday column via an empty `grid-column` offset on the first date cell. `aspect-ratio: 1` keeps each date cell square regardless of container width. The today highlight and event dot are pure CSS class targeting."
+---
+{% extends "example.njk" %}
+{% block demo %}
+<div class="demo-css-calendar">
+	<div class="cal-wrap">
+		<div class="cal-header">
+			<span class="cal-month-label">May 2026</span>
+			<div class="cal-nav">
+				<button class="cal-nav-btn" aria-label="Previous month">‹</button>
+				<button class="cal-nav-btn" aria-label="Next month">›</button>
+			</div>
+		</div>
+		<div class="cal-grid">
+			<span class="cal-day-name">Su</span>
+			<span class="cal-day-name">Mo</span>
+			<span class="cal-day-name">Tu</span>
+			<span class="cal-day-name">We</span>
+			<span class="cal-day-name">Th</span>
+			<span class="cal-day-name">Fr</span>
+			<span class="cal-day-name">Sa</span>
+			<!-- May 2026 starts on Friday (col 6) -->
+			<span class="cal-day cal-muted" style="grid-column: 1"></span>
+			<span class="cal-day cal-muted" style="grid-column: 2"></span>
+			<span class="cal-day cal-muted" style="grid-column: 3"></span>
+			<span class="cal-day cal-muted" style="grid-column: 4"></span>
+			<span class="cal-day cal-muted" style="grid-column: 5"></span>
+			<span class="cal-day" style="grid-column: 6">1</span>
+			<span class="cal-day">2</span>
+			<span class="cal-day">3</span>
+			<span class="cal-day">4</span>
+			<span class="cal-day">5</span>
+			<span class="cal-day cal-has-event">6</span>
+			<span class="cal-day">7</span>
+			<span class="cal-day">8</span>
+			<span class="cal-day">9</span>
+			<span class="cal-day">10</span>
+			<span class="cal-day">11</span>
+			<span class="cal-day">12</span>
+			<span class="cal-day cal-has-event">13</span>
+			<span class="cal-day">14</span>
+			<span class="cal-day">15</span>
+			<span class="cal-day">16</span>
+			<span class="cal-day">17</span>
+			<span class="cal-day">18</span>
+			<span class="cal-day">19</span>
+			<span class="cal-day cal-today cal-has-event">20</span>
+			<span class="cal-day">21</span>
+			<span class="cal-day">22</span>
+			<span class="cal-day">23</span>
+			<span class="cal-day">24</span>
+			<span class="cal-day">25</span>
+			<span class="cal-day">26</span>
+			<span class="cal-day">27</span>
+			<span class="cal-day">28</span>
+			<span class="cal-day">29</span>
+			<span class="cal-day">30</span>
+			<span class="cal-day">31</span>
+		</div>
+		<div class="cal-footer">
+			<span class="cal-legend cal-legend-today">Today</span>
+			<span class="cal-legend">Event</span>
+		</div>
+	</div>
+</div>
+{% endblock %}
+
+{% block html_code %}
+{%- highlight "html" %}
+<div class="cal-grid">
+  <span class="cal-day-name">Su</span>
+  <!-- ... 6 more day names ... -->
+
+  <!-- offset first date to correct weekday column -->
+  <span class="cal-day" style="grid-column: 6">1</span>
+  <span class="cal-day">2</span>
+  <!-- ... remaining days ... -->
+  <span class="cal-day cal-today">20</span>
+</div>
+{%- endhighlight %}
+{% endblock %}
+
+{% block css_code %}
+{%- highlight "css" %}
+.cal-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+}
+
+.cal-day {
+  aspect-ratio: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.cal-today {
+  background: var(--accent);
+  color: #0c0c0d;
+  font-weight: 700;
+}
+
+.cal-has-event::after {
+  content: "";
+  position: absolute;
+  bottom: 3px;
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: var(--accent);
+}
+{%- endhighlight %}
+{% endblock %}
